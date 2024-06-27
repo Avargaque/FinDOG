@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>FinDOG</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+			rel="stylesheet"
+		/>
+		<script
+			src="https://kit.fontawesome.com/0b9b37f370.js"
+			crossorigin="anonymous"
+		></script>
+		<link rel="stylesheet" href="./css/style.css" />
+	</head>
+	<body>
+		<nav>
+			<div class="wrapper">
+				<div class="nav-logo">
+					<a href="index.html"><img src="./img/logo.svg" alt="logo FinDOG" /></a>
+				</div>
+				<div class="nav-content">
+					<a href="breed-selector.html"
+						><button class="nav-btn nav-btn-inactive">dobierz psa</button></a
+					>
+					<a href="breeds.html"
+						><button class="nav-btn nav-btn-active">lista ras</button></a
+					>
+					<a href="login.html"
+						><button class="nav-btn nav-btn-inactive">login</button></a
+					>
+				</div>
+			</div>
+		</nav>
+		<main>
+			<div class="breeds wrapper flex-col">
+				<div class="header flex-col">
+					<h1>Lista ras</h1>
+					<div class="flex-row">
+						<p>Filtruj <i class="fa-solid fa-filter"></i></p>
+						<div class="search__container">
+							<input class="search__input" type="text" placeholder="Wyszukaj">
+						</div>
+					</div>
+				</div>
+				<div class="breed flex-row">
+					<div class="breed-text">
+						<h2>Aidi</h2>
+						<div class="breed-description right">
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestias debitis facere nisi quaerat dolore tempora vitae blanditiis voluptate enim accusamus esse aspernatur nesciunt, magnam qui. Rem nobis quidem assumenda.
+						</div>
+					</div>
+					<div class="image-container">
+						<img src="./img/aidi.jpg" alt="Aidi">
+					</div>
+				</div>
+				<div class="breed flex-row">
+					<div class="image-container">
+						<img src="./img/aidi.jpg" alt="Aidi">
+					</div>
+					<div class="breed-text">
+						<h2>Aidi</h2>
+						<div class="breed-description">
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt sapiente, placeat explicabo veritatis, sed commodi voluptatum dolores vitae ex ipsum nobis quaerat accusamus dolor incidunt! Voluptatem, voluptates magnam. Rerum, doloribus deserunt? Fuga, dolores, officiis nobis incidunt ipsam itaque commodi accusamus cum iusto assumenda architecto! Repellat atque porro voluptatem sit ab eaque iure, doloremque tempore corrupti, nobis pariatur facilis impedit magnam veritatis rerum similique sunt modi asperiores voluptas reiciendis nisi quod qui deserunt autem. Saepe, perferendis nam magni ullam fugit iste?
+						</div>
+					</div>
+				</div>
+				<div class="breed flex-row">
+					<div class="breed-text">
+						<h2>Aidi</h2>
+						<div class="breed-description right">
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestias debitis facere nisi quaerat dolore tempora vitae blanditiis voluptate enim accusamus esse aspernatur nesciunt, magnam qui. Rem nobis quidem assumenda.
+						</div>
+					</div>
+					<div class="image-container">
+						<img src="./img/aidi.jpg" alt="Aidi">
+					</div>
+				</div>
+				<div class="breed flex-row"></div>
+			</div>
+		</main>
+		<footer>
+			<div class="wrapper">
+				<div class="footer-contact">
+					<p>Masz pytania? Skontaktuj się z nami!</p>
+					<p class="email">
+						<i class="fa-solid fa-envelope"></i>kontakt@xxx.pl
+					</p>
+				</div>
+				<div class="footer-media">
+					<div>
+						<p>Zaobserwuj nas w social mediach</p>
+					</div>
+					<div class="media">
+						<div class="media-icon">
+							<i class="fa-brands fa-facebook"></i>
+						</div>
+						<div class="media-icon">
+							<i class="fa-brands fa-instagram"></i>
+						</div>
+						<div class="media-icon">
+							<i class="fa-brands fa-x-twitter"></i>
+						</div>
+					</div>
+				</div>
+				<div>
+					<p>&copy; <span id="currentYear"></span> | FinDOG</p>
+				</div>
+			</div>
+		</footer>
+		<div class="pop-up">
+			<p>Skopiowano adres e-mail</p>
+		</div>
+		<script src="./js/script.js"></script>
+	</body>
+</html>

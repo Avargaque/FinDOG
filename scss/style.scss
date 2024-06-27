@@ -20,6 +20,7 @@ body {
 	font-optical-sizing: auto;
 	font-weight: 400;
 	font-style: normal;
+	padding-bottom: 40px;
 }
 
 a {
@@ -79,7 +80,7 @@ nav {
 
 main {
 	height: calc(100vh - 80px);
-	.wrapper {
+	.main.wrapper {
 		height: 100%;
 		display: flex;
 		flex-direction: column;
@@ -91,72 +92,132 @@ main {
 			padding-top: 30px;
 			color: $main-dark-color;
 		}
-		.content {
+		.main-content {
 			flex: 6;
-            width: 100%;
+			width: 100%;
 			display: flex;
 			flex-direction: row;
-            overflow: hidden;
-            .races{
-                flex: 1;   
-                position: relative; 
-                img{
-                    position: absolute;
-                    width: 350px;
-                    bottom: 30px;
-                }  
-            }
-            .buttons{
-                flex: 1;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-around;
-                button{
-                    position: relative;
-                    padding: 16px 24px;
-                    font-family: "Montserrat", sans-serif;
-                    font-weight: 600;
-                    letter-spacing: 1px;
-                    font-size: 30px;
-                    border: none;
-                    transition: all 0.3s;
+			.races {
+				flex: 1;
+				position: relative;
+				img {
+					position: absolute;
+					width: 350px;
+					bottom: 30px;
+				}
+			}
+			.buttons {
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+				button {
+					position: relative;
+					padding: 16px 24px;
+					font-family: "Montserrat", sans-serif;
+					font-weight: 600;
+					letter-spacing: 1px;
+					font-size: 30px;
+					border: none;
+					transition: all 0.3s;
 					a {
 						color: $background-color;
 					}
-                }
-                button:hover{
-                    cursor: pointer;
-                    scale: 0.9;
-                }
-                .main-quiz-btn {
-                    margin-left: 80px;
+				}
+				button:hover {
+					cursor: pointer;
+					scale: 0.9;
+				}
+				.main-quiz-btn {
+					margin-left: 80px;
 					background-color: $main-btn-color;
 					border: none;
 				}
-                .main-quiz-btn:hover{
-                    box-shadow: 0px 0px 50px 0px $main-btn-color;
-                }
-                .main-races-btn{
-                    margin-right: 80px;
-                    background-color: $main-light-color;
-                }
-                .main-races-btn:hover{
-                    box-shadow: 0px 0px 50px 0px $main-light-color;
-                }
-            }
-			.quiz{
-                position: relative;
-                flex: 1;
+				.main-quiz-btn:hover {
+					box-shadow: 0px 0px 50px 0px $main-btn-color;
+				}
+				.main-races-btn {
+					margin-right: 80px;
+					background-color: $main-light-color;
+				}
+				.main-races-btn:hover {
+					box-shadow: 0px 0px 50px 0px $main-light-color;
+				}
+			}
+			.quiz {
+				position: relative;
+				flex: 1;
 				display: flex;
 				flex-direction: row;
-                padding:60px 0 15px 3px;
+				padding: 60px 0 15px 3px;
+			}
+		}
+	}
+	.breeds.wrapper {
+		height: 100%;
+		.header {
+			position: sticky;
+			top: 40px;
+			align-items: center;
+			background-color: $background-color;
+			h1 {
+				padding: 30px 15px 15px 15px;
+				color: $main-dark-color;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+			}
+			.flex-row{
+				width: 100%;
+				justify-content: center;
+				align-items: center;
+				color: $main-dark-color;
+				p,.search__container {
+					padding: 15px;
+				}
+				.search__container{
+					margin-right: 97px;
+				}
+			}
+			
+		}
+		.breed{
+			padding: 10px;
+			width: 100%;
+			align-items: center;
+			.breed-text {
+				flex: 1;
+				padding: 10px;
+				h2 {
+					padding: 15px;
+					color: $main-dark-color;
+					letter-spacing: 1px;
+					text-align: center;
+				}
+				.breed-description{
+					padding: 15px;
+					color: $main-dark-color;
+				}
+				.right{
+					text-align: right;
+				}
+			}
+			.image-container {
+				width: 480px;
+				height: 330px;
+				padding: 15px;
+				overflow: hidden;
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
 			}
 		}
 	}
 }
 
 footer {
-	position: sticky;
+	position: fixed;
 	bottom: 0;
 	width: 100%;
 	height: 40px;
@@ -239,12 +300,57 @@ footer {
 	display: block;
 }
 .color-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: $main-dark-color;
-    mix-blend-mode: screen;
-    opacity: 1;
-  }
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: $main-dark-color;
+	mix-blend-mode: screen;
+	opacity: 1;
+}
+.flex-row {
+	display: flex;
+	flex-direction: row;
+}
+.flex-col {
+	display: flex;
+	flex-direction: column;
+}
+.search {
+	&__input {
+		width: 400px;
+		padding: 12px 24px;
+		background-color: transparent;
+		transition: transform 250ms ease-in-out;
+		font-size: 14px;
+		line-height: 18px;
+		color: $main-dark-color;
+		background-color: transparent;
+		background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-size: 18px 18px;
+		background-position: 95% center;
+		border-radius: 50px;
+		border: 1px solid $main-dark-color;
+		transition: all 250ms ease-in-out;
+		backface-visibility: hidden;
+		transform-style: preserve-3d;
+
+		&::placeholder {
+			color: color($main-dark-color a(0.8));
+			text-transform: uppercase;
+			letter-spacing: 1.5px;
+		}
+
+		&:hover,
+		&:focus {
+			padding: 12px 0;
+			outline: 0;
+			border: 1px solid transparent;
+			border-bottom: 1px solid $main-dark-color;
+			border-radius: 0;
+			background-position: 100% center;
+		}
+	}
+}
