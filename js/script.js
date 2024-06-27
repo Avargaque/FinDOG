@@ -1,4 +1,4 @@
-// kopiowanie tekstu do schowka
+// copying text
 function copyText() {
 	const textarea = document.createElement("textarea");
 	textarea.value = this.textContent;
@@ -9,7 +9,7 @@ function copyText() {
 	textarea.select();
 	document.execCommand("copy");
 	document.body.removeChild(textarea);
-	// pop-up na 2 sekundy
+	// 2sec pop-up
 	const popup = document.querySelector(".pop-up");
 	popup.classList.add("show");
 	setTimeout(() => {
@@ -17,6 +17,10 @@ function copyText() {
 	}, 2000);
 }
 
-// skopiowanie adresu do schowka
+// copying e-mail address
 const email = document.querySelector(".email");
 email.addEventListener("click", copyText);
+
+// current year in footer
+let currentYear = new Date().getFullYear();
+document.getElementById("currentYear").textContent = currentYear;

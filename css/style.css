@@ -29,8 +29,9 @@ nav {
   position: sticky;
   top: 0;
   width: 100%;
-  height: 45px;
+  height: 40px;
   background-color: rgb(213, 222, 245);
+  z-index: 100;
 }
 nav .wrapper {
   height: 100%;
@@ -77,50 +78,111 @@ nav .wrapper .nav-content .nav-btn-active:hover {
 }
 
 main {
-  height: calc(100vh - 145px);
+  height: calc(100vh - 80px);
 }
 main .wrapper {
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
-main .wrapper .header {
+main .wrapper h1 {
   flex: 1;
+  text-align: center;
+  padding-top: 30px;
+  color: rgb(67, 15, 88);
 }
 main .wrapper .content {
-  flex: 3;
+  flex: 6;
+  width: 100%;
   display: flex;
   flex-direction: row;
+  overflow: hidden;
+}
+main .wrapper .content .races {
+  flex: 1;
+  position: relative;
+}
+main .wrapper .content .races img {
+  position: absolute;
+  width: 350px;
+  bottom: 30px;
+}
+main .wrapper .content .buttons {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+main .wrapper .content .buttons button {
+  position: relative;
+  padding: 16px 24px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 30px;
+  border: none;
+  transition: all 0.3s;
+}
+main .wrapper .content .buttons button a {
+  color: #fff;
+}
+main .wrapper .content .buttons button:hover {
+  cursor: pointer;
+  scale: 0.9;
+}
+main .wrapper .content .buttons .main-quiz-btn {
+  margin-left: 80px;
+  background-color: rgb(102, 67, 181);
+  border: none;
+}
+main .wrapper .content .buttons .main-quiz-btn:hover {
+  box-shadow: 0px 0px 50px 0px rgb(102, 67, 181);
+}
+main .wrapper .content .buttons .main-races-btn {
+  margin-right: 80px;
+  background-color: rgb(213, 222, 245);
+}
+main .wrapper .content .buttons .main-races-btn:hover {
+  box-shadow: 0px 0px 50px 0px rgb(213, 222, 245);
+}
+main .wrapper .content .quiz {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  padding: 60px 0 15px 3px;
 }
 
 footer {
   position: sticky;
   bottom: 0;
   width: 100%;
-  height: 100px;
+  height: 40px;
   color: #fff;
   background-color: rgb(67, 15, 88);
+  overflow: hidden;
 }
 footer .wrapper {
   height: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 footer .wrapper .footer-contact {
   height: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding-top: 16px;
-  text-align: center;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 footer .wrapper .footer-contact p {
-  margin: 4px;
-  padding: 4px;
+  padding: 0 8px;
 }
 footer .wrapper .footer-contact .email {
+  flex: 1;
   width: 60%;
   align-self: center;
   transition: all 0.3s;
@@ -135,10 +197,9 @@ footer .wrapper .footer-contact .email:hover {
 footer .wrapper .footer-media {
   height: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-start;
-  padding-top: 16px;
-  text-align: center;
+  align-items: center;
 }
 footer .wrapper .footer-media div {
   padding: 4px;
@@ -147,8 +208,10 @@ footer .wrapper .footer-media .media {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
 }
 footer .wrapper .footer-media .media .media-icon {
+  align-self: center;
   padding: 4px;
   margin: 0 8px;
   font-size: 26px;
@@ -175,4 +238,15 @@ footer .wrapper .footer-media .media .media-icon:hover {
 
 .pop-up.show {
   display: block;
+}
+
+.color-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(67, 15, 88);
+  mix-blend-mode: screen;
+  opacity: 1;
 }/*# sourceMappingURL=style.css.map */
