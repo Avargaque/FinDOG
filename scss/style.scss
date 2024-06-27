@@ -1,0 +1,61 @@
+@use "./colors" as *;
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+.wrapper {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 1200px;
+}
+html,
+body {
+	height: 100%;
+	font-family: "Montserrat", sans-serif;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+a {
+	text-decoration: none;
+}
+nav {
+	position: sticky;
+	width: 100%;
+	height: 40px;
+    background-color: $main-light-color;
+    .nav{
+        display: flex;
+        flex-direction: row;
+        .nav-logo{
+            width: 200px;
+        }
+        .nav-content{
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+            height: 100%;
+            right: 0;
+            .nav-btn{
+                width: 200px;
+                height: 100%;
+                text-transform: uppercase;
+                text-align: center;
+                font-weight: 800;
+                letter-spacing: 1px;
+                color: $main-dark-color;
+                background-color: $main-light-color;
+                border: none;
+            }
+            .nav-btn-active{
+                border: solid 2px $main-light-color;
+                background-color: $background-color;
+            }
+        }
+    }
+}

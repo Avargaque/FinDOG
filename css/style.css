@@ -1,0 +1,63 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: "Montserrat", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+}
+
+nav {
+  position: sticky;
+  width: 100%;
+  height: 40px;
+  background-color: rgb(213, 222, 245);
+}
+nav .nav {
+  display: flex;
+  flex-direction: row;
+}
+nav .nav .nav-logo {
+  width: 200px;
+}
+nav .nav .nav-content {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  right: 0;
+}
+nav .nav .nav-content .nav-btn {
+  width: 200px;
+  height: 100%;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: rgb(67, 15, 88);
+  background-color: rgb(213, 222, 245);
+  border: none;
+}
+nav .nav .nav-content .nav-btn-active {
+  border: solid 2px rgb(213, 222, 245);
+  background-color: #fff;
+}/*# sourceMappingURL=style.css.map */
