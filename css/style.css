@@ -162,6 +162,7 @@ main .breeds.wrapper .header {
   top: 40px;
   align-items: center;
   background-color: #fff;
+  z-index: 100;
 }
 main .breeds.wrapper .header h1 {
   padding: 30px 15px 15px 15px;
@@ -175,16 +176,24 @@ main .breeds.wrapper .header .flex-row {
   align-items: center;
   color: rgb(67, 15, 88);
 }
+main .breeds.wrapper .header .flex-row p {
+  transition: color 0.3s;
+}
 main .breeds.wrapper .header .flex-row p, main .breeds.wrapper .header .flex-row .search__container {
   padding: 15px;
 }
 main .breeds.wrapper .header .flex-row .search__container {
   margin-right: 97px;
 }
+main .breeds.wrapper .header .flex-row p:hover {
+  cursor: pointer;
+  color: rgb(102, 67, 181);
+}
 main .breeds.wrapper .breed {
   padding: 10px;
   width: 100%;
   align-items: center;
+  transition: all 0.3s;
 }
 main .breeds.wrapper .breed .breed-text {
   flex: 1;
@@ -214,6 +223,10 @@ main .breeds.wrapper .breed .image-container img {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+main .breeds.wrapper .breed:hover {
+  cursor: pointer;
+  scale: 0.95;
 }
 
 footer {

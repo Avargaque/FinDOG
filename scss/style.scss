@@ -160,6 +160,7 @@ main {
 			top: 40px;
 			align-items: center;
 			background-color: $background-color;
+			z-index: 100;
 			h1 {
 				padding: 30px 15px 15px 15px;
 				color: $main-dark-color;
@@ -171,11 +172,18 @@ main {
 				justify-content: center;
 				align-items: center;
 				color: $main-dark-color;
+				p{
+					transition: color 0.3s;
+				}
 				p,.search__container {
 					padding: 15px;
 				}
 				.search__container{
 					margin-right: 97px;
+				}
+				p:hover{
+					cursor: pointer;
+					color: $main-btn-color;
 				}
 			}
 			
@@ -184,6 +192,7 @@ main {
 			padding: 10px;
 			width: 100%;
 			align-items: center;
+			transition: all 0.3s;
 			.breed-text {
 				flex: 1;
 				padding: 10px;
@@ -212,6 +221,10 @@ main {
 					object-fit: cover;
 				}
 			}
+		}
+		.breed:hover{
+			cursor: pointer;
+			scale: 0.95;
 		}
 	}
 }
