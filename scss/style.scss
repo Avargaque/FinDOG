@@ -1,4 +1,5 @@
 @use "./colors" as *;
+@use "./animations" as *;
 *,
 *::after,
 *::before {
@@ -7,18 +8,18 @@
 	padding: 0;
 }
 .wrapper {
+	position: relative;
 	margin: 0 auto;
 	width: 100%;
 	max-width: 1200px;
 }
-html,
-body {
-	height: 100%;
-	font-family: "Montserrat", sans-serif;
-}
 
-html {
-	scroll-behavior: smooth;
+body {
+	background-color: $background-color;
+	font-family: "Montserrat", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
 }
 
 a {
@@ -26,36 +27,150 @@ a {
 }
 nav {
 	position: sticky;
+	top: 0;
 	width: 100%;
-	height: 40px;
-    background-color: $main-light-color;
-    .nav{
+	height: 45px;
+	background-color: $main-light-color;
+	.wrapper {
+		height: 100%;
+		display: flex;
+		flex-direction: row;
+		.nav-logo {
+			width: 200px;
+			height: 100%;
+			img {
+				height: 100%;
+			}
+		}
+		.nav-content {
+			position: absolute;
+			display: flex;
+			flex-direction: row;
+			height: 100%;
+			right: 0;
+			.nav-btn {
+				font-family: "Montserrat", sans-serif;
+				width: 200px;
+				height: 100%;
+				text-transform: uppercase;
+				text-align: center;
+				font-weight: 800;
+				letter-spacing: 1px;
+				color: $main-dark-color;
+				background-color: $main-light-color;
+				border: solid $main-light-color;
+				border-width: 2px 1px;
+				transition: background-color 0.3s;
+			}
+			.nav-btn-active {
+				background-color: $background-color;
+			}
+			.nav-btn-inactive:hover {
+				cursor: pointer;
+				background-color: #fff;
+			}
+			.nav-btn-active:hover {
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+main {
+	height: calc(100vh - 145px);
+    .wrapper{
+        height: 100%;
         display: flex;
-        flex-direction: row;
-        .nav-logo{
-            width: 200px;
+        flex-direction: column;
+        .header{
+            flex: 1;
         }
-        .nav-content{
-            position: absolute;
+        .content{
+            flex: 3;
             display: flex;
             flex-direction: row;
-            height: 100%;
-            right: 0;
-            .nav-btn{
-                width: 200px;
-                height: 100%;
-                text-transform: uppercase;
-                text-align: center;
-                font-weight: 800;
-                letter-spacing: 1px;
-                color: $main-dark-color;
-                background-color: $main-light-color;
-                border: none;
-            }
-            .nav-btn-active{
-                border: solid 2px $main-light-color;
-                background-color: $background-color;
-            }
         }
     }
+}
+
+footer {
+    position: sticky;
+	bottom: 0;
+	width: 100%;
+	height: 100px;
+	color: $background-color;
+	background-color: $main-dark-color;
+	.wrapper {
+		height: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: center;
+		.footer-contact {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			padding-top: 16px;
+			text-align: center;
+			p {
+				margin: 4px;
+				padding: 4px;
+			}
+			.email {
+				width: 60%;
+				align-self: center;
+				transition: all 0.3s;
+				i {
+					margin-right: 3px;
+				}
+			}
+			.email:hover {
+				cursor: pointer;
+				color: $main-light-color;
+			}
+		}
+		.footer-media {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			padding-top: 16px;
+			text-align: center;
+			div {
+				padding: 4px;
+			}
+			.media {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				.media-icon {
+					padding: 4px;
+					margin: 0 8px;
+					font-size: 26px;
+					transition: all 0.3s;
+				}
+				.media-icon:hover {
+					cursor: pointer;
+					color: $main-light-color;
+				}
+			}
+		}
+	}
+}
+.pop-up {
+	display: none;
+	position: fixed;
+	top: 90%;
+	left: 40%;
+	transform: translate(-50%, -50%);
+	padding: 15px;
+	font-weight: 600;
+	color: $main-dark-color;
+	background-color: $background-color;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	z-index: 1000;
+}
+.pop-up.show {
+	display: block;
 }
