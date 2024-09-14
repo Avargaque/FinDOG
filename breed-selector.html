@@ -17,81 +17,84 @@
 		<link rel="stylesheet" href="./css/style.css" />
 	</head>
 	<body>
-		<nav>
-			<div class="wrapper">
-				<div class="nav-logo">
+		<div class="wrapper">
+			<nav class="nav">
+				<div class="nav__logo">
 					<a href="index.html"
 						><img src="./img/logo.svg" alt="logo FinDOG"
 					/></a>
 				</div>
-				<div class="nav-content">
+				<div class="nav__buttons">
 					<a href="breed-selector.html"
-						><button class="nav-btn nav-btn-active">dobierz psa</button></a
+						><button class="nav__btn nav__btn--inactive">dobierz psa</button></a
 					>
 					<a href="breeds.html"
-						><button class="nav-btn nav-btn-inactive">lista ras</button></a
+						><button class="nav__btn nav__btn--inactive">lista ras</button></a
 					>
 					<a href="login.html"
-						><button class="nav-btn nav-btn-inactive">login</button></a
+						><button class="nav__btn nav__btn--inactive">login</button></a
 					>
 				</div>
-			</div>
-		</nav>
-		<main>
-			<div class="selector wrapper flex-col">
-				<div class="header flex-col">
-					<h1>Dobierz psa</h1>
-					<div class="selector-image">
-						<img src="./img/selector.png" alt="Trzy pieski" />
-						<div class="color-overlay"></div>
+			</nav>
+			<main>
+				<div class="selector flex-col">
+					<div class="header flex-col">
+						<h1>Dobierz psa</h1>
+						<div class="selector-image">
+							<img src="./img/selector.png" alt="Trzy pieski" />
+							<div class="color-overlay"></div>
+						</div>
 					</div>
+					<div class="content flex-row">
+						<div class="questions flex-col">
+							<div class="progress flex-col">
+								<div class="question-number">Pytanie 1 z 20</div>
+								<div class="progress-bar">
+									<div class="skill-wrapper">
+										<div class="skill css q1">
+										</div>
+									  </div>
+								</div>
+							</div>
+							<div class="question"><h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, fugiat?</h2></div>
+						</div>
+						<div class="answers flex-col">
+							<form>
+								<label>
+									<input type="radio" name="radio"/>
+									<span>Lorem ipsum dolor sit.</span>
+								</label>
+								<label>
+									<input type="radio" name="radio"/>
+									<span>Lorem ipsum dolor sit amet.</span>
+								</label>
+								<label>
+									<input type="radio" name="radio"/>
+									<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, praesentium minus! Soluta.</span>
+								</label>
+							</form>
+						</div>
+					</div>
+					
 				</div>
-                <div class="content flex-row">
-                    <div class="questions flex-col">
-                        <div class="progress flex-col">
-                            <div class="question-number">Pytanie 1 z 20</div>
-                            <div class="progress-bar">
-                                <div class="skill-wrapper">
-                                    <div class="skill css q1">
-                                    </div>
-                                  </div>
-                            </div>
-                        </div>
-                        <div class="question"><h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, fugiat?</h2></div>
-                    </div>
-                    <div class="answers flex-col">
-                        <form>
-                            <label>
-                                <input type="radio" name="radio"/>
-                                <span>Lorem ipsum dolor sit.</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="radio"/>
-                                <span>Lorem ipsum dolor sit amet.</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="radio"/>
-                                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, praesentium minus! Soluta.</span>
-                            </label>
-                        </form>
-                    </div>
-                </div>
-                
-			</div>
-		</main>
-		<footer>
-			<div class="wrapper">
-				<div class="footer-contact">
+			</main>
+			<footer class="footer">
+				<div class="footer__item">
 					<p>Masz pytania? Skontaktuj się z nami!</p>
 					<p class="email">
 						<i class="fa-solid fa-envelope"></i>kontakt@xxx.pl
 					</p>
 				</div>
-				<div class="footer-media">
+				<div class="footer__item footer__item--company-info">
+					<p>&copy; <span id="currentYear"></span> | FinDOG</p>
+				</div>
+				<div class="footer__item">
 					<div>
-						<p>Zaobserwuj nas w social mediach:</p>
+						<p class="footer__item-media-text">
+							Zaobserwuj nas w social mediach:
+						</p>
 					</div>
-					<div class="media">
+					<div class="footer__item-media">
 						<div class="media-icon">
 							<i class="fa-brands fa-facebook"></i>
 						</div>
@@ -103,14 +106,12 @@
 						</div>
 					</div>
 				</div>
-				<div>
-					<p>&copy; <span id="currentYear"></span> | FinDOG</p>
-				</div>
+			</footer>
+			<div class="pop-up">
+				<p>Skopiowano adres e-mail</p>
 			</div>
-		</footer>
-		<div class="pop-up">
-			<p>Skopiowano adres e-mail</p>
 		</div>
+
 		<script src="./js/script.js"></script>
 	</body>
 </html>

@@ -17,26 +17,38 @@
 		<link rel="stylesheet" href="./css/style.css" />
 	</head>
 	<body>
-		<nav>
-			<div class="wrapper">
-				<div class="nav-logo">
-					<a href="index.html"><img src="./img/logo.svg" alt="logo FinDOG" /></a>
+		<!-- <div class="bg-left">
+			<div class="bg-left--first"></div>
+			<div class="bg-left--second"></div>
+			<div class="bg-left--third"></div>
+		</div>
+		<div class="bg-right">
+			<div class="bg-right--first"></div>
+			<div class="bg-right--second"></div>
+			<div class="bg-right--third"></div>
+		</div> -->
+
+		<div class="wrapper">
+			<nav class="nav">
+				<div class="nav__logo">
+					<a href="index.html"
+						><img src="./img/logo.svg" alt="logo FinDOG"
+					/></a>
 				</div>
-				<div class="nav-content">
+				<div class="nav__buttons">
 					<a href="breed-selector.html"
-						><button class="nav-btn nav-btn-inactive">dobierz psa</button></a
+						><button class="nav__btn nav__btn--inactive">dobierz psa</button></a
 					>
 					<a href="breeds.html"
-						><button class="nav-btn nav-btn-inactive">lista ras</button></a
+						><button class="nav__btn nav__btn--inactive">lista ras</button></a
 					>
 					<a href="login.html"
-						><button class="nav-btn nav-btn-inactive">login</button></a
+						><button class="nav__btn nav__btn--inactive">login</button></a
 					>
 				</div>
-			</div>
-		</nav>
-		<main>
-			<div class="main wrapper">
+			</nav>
+			<header class="header"></header>
+			<main class="main">
 				<h1>
 					Zastanawiasz się, która rasa psa najbardziej będzie odpowiadała Twoim
 					wymaganiom i preferencjom?
@@ -60,21 +72,24 @@
 						<div class="color-overlay"></div>
 					</div>
 				</div>
-			</div>
-		</main>
-		<footer>
-			<div class="wrapper">
-				<div class="footer-contact">
+			</main>
+			<footer class="footer">
+				<div class="footer__item">
 					<p>Masz pytania? Skontaktuj się z nami!</p>
 					<p class="email">
 						<i class="fa-solid fa-envelope"></i>kontakt@xxx.pl
 					</p>
 				</div>
-				<div class="footer-media">
+				<div class="footer__item footer__item--company-info">
+					<p>&copy; <span id="currentYear"></span> | FinDOG</p>
+				</div>
+				<div class="footer__item">
 					<div>
-						<p>Zaobserwuj nas w social mediach:</p>
+						<p class="footer__item-media-text">
+							Zaobserwuj nas w social mediach:
+						</p>
 					</div>
-					<div class="media">
+					<div class="footer__item-media">
 						<div class="media-icon">
 							<i class="fa-brands fa-facebook"></i>
 						</div>
@@ -86,13 +101,10 @@
 						</div>
 					</div>
 				</div>
-				<div>
-					<p>&copy; <span id="currentYear"></span> | FinDOG</p>
-				</div>
+			</footer>
+			<div class="pop-up">
+				<p>Skopiowano adres e-mail</p>
 			</div>
-		</footer>
-		<div class="pop-up">
-			<p>Skopiowano adres e-mail</p>
 		</div>
 		<script src="./js/script.js"></script>
 	</body>

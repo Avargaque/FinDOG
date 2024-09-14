@@ -1,4 +1,12 @@
-// copying text
+// copying e-mail address
+const email = document.querySelector(".email");
+
+// current year in footer
+let currentYear = new Date().getFullYear();
+document.getElementById("currentYear").textContent = currentYear;
+
+
+// function to copy e-mail address
 function copyText() {
 	const textarea = document.createElement("textarea");
 	textarea.value = this.textContent;
@@ -17,10 +25,5 @@ function copyText() {
 	}, 2000);
 }
 
-// copying e-mail address
-const email = document.querySelector(".email");
-email.addEventListener("click", copyText);
 
-// current year in footer
-let currentYear = new Date().getFullYear();
-document.getElementById("currentYear").textContent = currentYear;
+email.addEventListener("click", copyText);
