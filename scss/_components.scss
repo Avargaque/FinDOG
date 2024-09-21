@@ -1,16 +1,10 @@
-// background
-.bg-left, .bg-right{
-	position: absolute;
-	top: 0;
-	height: 100%;
-	width: calc((100vw - 1200px)/2);
-	z-index: -10;
-}
-.bg-left{
-	left: 0;
-}
-.bg-right{
-	right: 0;
+// buttons
+button{
+	text-transform: uppercase;
+	text-align: center;
+	font-family: inherit;
+	border: none;
+	transition: all 0.3s;
 }
 
 // images color overlay
@@ -22,8 +16,26 @@
 	height: 100%;
 	background-color: $main-dark-color;
 	mix-blend-mode: screen;
-	opacity: 1;
 }
+
+// .color-overlay {
+// 	position:relative;
+//   display:inline-block;
+//   width: 300px;
+//   -webkit-mask:url(../img/race-list.png) center/contain no-repeat;
+//   mask:url(../img/race-list.png) center/contain no-repeat;
+// }
+// .color-overlay:before{
+// 	content:"";
+// 	position:absolute;
+// 	left:0;
+// 	right:0;
+// 	top:0;
+// 	bottom: 0;
+// 	height:100%; /* adjust this */
+// 	background-color:rgba(234, 0, 255, 0.5);
+// } 
+// poza tym klasa nadana na rodzica obrazu - nie wiem jak naprawić rozmiar
 
 // pop-up
 .pop-up {
@@ -87,7 +99,7 @@
 	border-bottom-right-radius: 12px;
 	border-top-left-radius: 12px;
 	border-bottom-left-radius: 12px;
-	background: $main-light-color;
+	background: $supporting-color;
 	.skill {
 		border-top-right-radius: 12px;
 		border-bottom-right-radius: 12px;

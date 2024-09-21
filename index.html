@@ -17,23 +17,15 @@
 		<link rel="stylesheet" href="./css/style.css" />
 	</head>
 	<body>
-		<!-- <div class="bg-left">
-			<div class="bg-left--first"></div>
-			<div class="bg-left--second"></div>
-			<div class="bg-left--third"></div>
-		</div>
-		<div class="bg-right">
-			<div class="bg-right--first"></div>
-			<div class="bg-right--second"></div>
-			<div class="bg-right--third"></div>
-		</div> -->
-
 		<div class="wrapper">
 			<nav class="nav">
 				<div class="nav__logo">
 					<a href="index.html"
 						><img src="./img/logo.svg" alt="logo FinDOG"
 					/></a>
+				</div>
+				<div class="nav__burger-menu">
+					<svg  xmlns="http://www.w3.org/2000/svg"  width="80"  height="80"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-menu-3"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 6h10" /><path d="M4 12h16" /><path d="M7 12h13" /><path d="M4 18h10" /></svg>
 				</div>
 				<div class="nav__buttons">
 					<a href="breed-selector.html"
@@ -47,30 +39,40 @@
 					>
 				</div>
 			</nav>
-			<header class="header"></header>
-			<main class="main">
+			<header class="header">
 				<h1>
 					Zastanawiasz się, która rasa psa najbardziej będzie odpowiadała Twoim
 					wymaganiom i preferencjom?
 				</h1>
-
-				<div class="main-content">
-					<div class="races">
-						<img src="./img/race-list.png" alt="" />
-						<div class="color-overlay"></div>
-					</div>
-					<div class="buttons">
-						<button class="main-quiz-btn">
-							<a href="./breed-selector.html">Wypełnij quiz i dobierz psa!</a>
-						</button>
-						<button class="main-races-btn">
-							<a href="./breeds.html">Sprawdź listę wszystkich ras</a>
-						</button>
-					</div>
-					<div class="quiz">
-						<img src="./img/choose-dog.png" alt="pies na dwóch łapach" />
-						<div class="color-overlay"></div>
-					</div>
+			</header>
+			<main class="main">
+				<div class="main__races-img">
+					<img
+						src="./img/race-list.png"
+						alt="ciemnofioletowa głowa psa z profilu"
+					/>
+					<div class="color-overlay"></div>
+				</div>
+				<div class="main__buttons">
+					<button
+						class="main__btn main__btn--quiz"
+						onclick="location.href='./breed-selector.html'"
+					>
+						Wypełnij quiz i dobierz psa!
+					</button>
+					<button
+						class="main__btn main__btn"
+						onclick="location.href='./breeds.html'"
+					>
+						Sprawdź listę wszystkich ras
+					</button>
+				</div>
+				<div class="main__quiz-img">
+					<img
+						src="./img/choose-dog.png"
+						alt="ciemnofioletowa sylwetka psa na dwóch łapach"
+					/>
+					<div class="color-overlay"></div>
 				</div>
 			</main>
 			<footer class="footer">
