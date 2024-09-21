@@ -1,3 +1,27 @@
+@keyframes navItemsIn {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-200%);
+  }
+}
+@keyframes navItemsOut {
+  from {
+    transform: translateX(-200%);
+  }
+  to {
+    transform: translateX(-400%);
+  }
+}
+.nav-items-in {
+  animation: navItemsIn 1s both;
+}
+
+.nav-items-out {
+  animation: navItemsOut 1s backwards;
+}
+
 button {
   text-transform: uppercase;
   text-align: center;
@@ -236,8 +260,7 @@ a {
 }
 .nav__buttons {
   position: absolute;
-  visibility: hidden;
-  left: -10px;
+  left: calc(200% + 30px);
   top: 79px;
   display: flex;
   flex-direction: column;
@@ -259,8 +282,10 @@ a {
     width: auto;
   }
 }
-.nav__buttons--visible {
-  visibility: visible;
+@media (max-height: 380px) {
+  .nav__buttons {
+    height: 150px;
+  }
 }
 .nav__btn {
   left: 0;
@@ -282,6 +307,7 @@ a {
     background-color: #fff;
     border: solid #fff;
     border-width: 2px 1px;
+    animation: none;
   }
 }
 .nav__btn--active {

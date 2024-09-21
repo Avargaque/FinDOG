@@ -96,8 +96,7 @@ a {
 
 	&__buttons {
 		position: absolute;
-		visibility: hidden;
-		left: -10px;
+		left: calc(200% + 30px);
 		top: 79px;
 		display: flex;
 		flex-direction: column;
@@ -118,8 +117,8 @@ a {
 			width: auto;
 		}
 
-		&--visible {
-			visibility: visible;
+		@media (max-height: 380px){
+			height: 150px;
 		}
 	}
 
@@ -142,6 +141,7 @@ a {
 			background-color: $background-color;
 			border: solid $background-color;
 			border-width: 2px 1px;
+			animation: none;
 		}
 	}
 

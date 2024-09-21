@@ -1,0 +1,26 @@
+// navigation items slide
+@keyframes navItemsIn {
+	from {
+		transform: translateX(0);
+	}
+
+	to {
+		transform: translateX(-200%);
+	}
+}
+@keyframes navItemsOut {
+	from {
+		transform: translateX(-200%);
+	}
+
+	to {
+		transform: translateX(-400%);
+	}
+}
+.nav-items-in {
+	animation: navItemsIn 1s both;
+}
+.nav-items-out {
+	animation: navItemsOut 1s backwards;
+}
+
