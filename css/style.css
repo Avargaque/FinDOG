@@ -193,7 +193,7 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 100px;
+  height: 80px;
   width: calc(100vw - 20px);
   background-color: #fff;
   border-bottom: 1px solid #29155B;
@@ -216,7 +216,7 @@ a {
 .nav__logo a:hover {
   cursor: pointer;
 }
-.nav__burger-menu {
+.nav__burger-container {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -224,47 +224,93 @@ a {
   padding: 1rem;
 }
 @media (min-width: 768px) {
-  .nav__burger-menu {
+  .nav__burger-container {
     display: none;
   }
 }
+.nav__burger-menu {
+  width: 60px;
+  height: 60px;
+  padding: 0.5rem;
+  color: #430f58;
+}
 .nav__buttons {
-  display: none;
+  position: absolute;
+  visibility: hidden;
+  left: -10px;
+  top: 79px;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 300px;
+  z-index: 100;
 }
 @media (min-width: 768px) {
   .nav__buttons {
     position: absolute;
+    visibility: visible;
     display: flex;
     flex-direction: row;
     right: 0;
+    left: auto;
     bottom: 0;
+    top: auto;
     height: 40px;
+    width: auto;
   }
 }
-.nav__btn {
-  width: 200px;
-  height: 100%;
-  font-weight: 800;
-  letter-spacing: 2px;
-  color: #430f58;
-  background-color: #fff;
-  border: solid #fff;
-  border-width: 2px 1px;
-  transition: 0.3s;
+.nav__buttons--visible {
+  visibility: visible;
 }
-.nav__btn--active {
+.nav__btn {
+  left: 0;
+  width: 100vw;
+  height: 100px;
+  font-weight: 600;
+  letter-spacing: 2px;
   color: #fff;
   background-color: #430f58;
-  font-weight: 600;
+  border-bottom: 1px solid #fff;
+  transition: all 0.3s;
+}
+@media (min-width: 768px) {
+  .nav__btn {
+    width: 200px;
+    height: 100%;
+    font-weight: 800;
+    color: #430f58;
+    background-color: #fff;
+    border: solid #fff;
+    border-width: 2px 1px;
+  }
+}
+.nav__btn--active {
+  color: #430f58;
+  background-color: #fff;
+  font-weight: 800;
+}
+@media (min-width: 768px) {
+  .nav__btn--active {
+    color: #fff;
+    background-color: #430f58;
+    font-weight: 600;
+  }
 }
 .nav__btn--active:hover {
   cursor: pointer;
 }
 .nav__btn--inactive:hover {
   cursor: pointer;
-  color: #fff;
-  background-color: #430f58;
-  font-weight: 600;
+  color: #430f58;
+  background-color: #fff;
+  font-weight: 800;
+}
+@media (min-width: 768px) {
+  .nav__btn--inactive:hover {
+    color: #fff;
+    background-color: #430f58;
+    font-weight: 600;
+  }
 }
 
 .header {

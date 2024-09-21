@@ -1,12 +1,14 @@
-// copying e-mail address
 const email = document.querySelector(".email");
+const burgerBtn = document.querySelector('.nav__burger-menu')
+const navBtns = document.querySelector('.nav__buttons')
 
-// current year in footer
-let currentYear = new Date().getFullYear();
-document.getElementById("currentYear").textContent = currentYear;
+// puts current year in footer
+function footerYear(){
+	let currentYear = new Date().getFullYear();
+	document.getElementById("currentYear").textContent = currentYear;
+}
 
-
-// function to copy e-mail address
+// copies e-mail address
 function copyText() {
 	const textarea = document.createElement("textarea");
 	textarea.value = this.textContent;
@@ -25,5 +27,15 @@ function copyText() {
 	}, 2000);
 }
 
+// toggles burger menu
+function toggleBurgerMenu(){
+	navBtns.classList.toggle('nav__buttons--visible')
+}
+
 
 email.addEventListener("click", copyText);
+burgerBtn.addEventListener('click', toggleBurgerMenu)
+
+document.addEventListener("DOMContentLoaded", function(){
+	footerYear();
+})
