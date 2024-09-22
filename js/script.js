@@ -36,6 +36,16 @@ function toggleBurgerMenu() {
 	} else {
 		handleNavItemsInAnimation();
 	}
+
+	disableBurgerMenu();
+}
+
+// disables burger menu for 1 second
+function disableBurgerMenu() {
+	burgerBtn.style.pointerEvents = "none";
+	setTimeout(() => {
+		burgerBtn.style.pointerEvents = "auto";
+	}, 1000);
 }
 
 // adds navItemsIn animation
@@ -63,7 +73,7 @@ function handleNavItemsOutAnimation() {
 }
 
 // resets animations after changing screen orientation
-function resetNavAnimations(){
+function resetNavAnimations() {
 	const btns = document.querySelectorAll(".nav__btn");
 	let delayTime = 0;
 	btns.forEach((item) => {
@@ -77,7 +87,7 @@ function resetNavAnimations(){
 
 email.addEventListener("click", copyText);
 burgerBtn.addEventListener("click", toggleBurgerMenu);
-screen.orientation.addEventListener('change', resetNavAnimations);
+screen.orientation.addEventListener("change", resetNavAnimations);
 
 document.addEventListener("DOMContentLoaded", function () {
 	footerYear();

@@ -60,6 +60,10 @@ a {
 		width: 1200px;
 	}
 
+	@media (max-height: 380px) {
+		height: 40px;
+	}
+
 	&__logo {
 		height: 100%;
 
@@ -92,6 +96,11 @@ a {
 		height: 60px;
 		padding: 0.5rem;
 		color: $main-color;
+
+		@media (max-height: 380px) {
+			width: 40px;
+			height: 40px;
+		}
 	}
 
 	&__buttons {
@@ -117,8 +126,9 @@ a {
 			width: auto;
 		}
 
-		@media (max-height: 380px){
+		@media (max-height: 380px) {
 			height: 150px;
+			top: 39px;
 		}
 	}
 
@@ -178,11 +188,15 @@ a {
 // header
 .header {
 	width: 100%;
-	padding-top: 100px;
+	padding-top: 80px;
 	h1 {
 		text-align: center;
-		padding: 4rem;
+		padding: 2rem 0;
 		color: $main-color;
+
+		@media (min-width: 1200px) {
+			padding: 4rem;
+		}
 	}
 }
 
@@ -190,26 +204,86 @@ a {
 .main {
 	display: flex;
 	flex: 1;
-	flex-direction: row;
-	justify-content: space-between;
+	flex-direction: column;
+	justify-content: center;
 	align-items: stretch;
+
+	@media (min-width: 992px) {
+		flex-direction: row;
+	}
 
 	&__races-img {
 		position: relative;
+		display: flex;
 		flex: 1;
-		align-self: flex-end;
+		align-self: center;
+
+		@media (min-width: 992px) {
+			align-self: flex-end;
+		}
 		img {
-			width: 300px;
-			padding-bottom: 3rem;
+			width: 200px;
+			align-self: center;
+
+			@media (min-width: 576px) {
+				width: 300px;
+			}
+
+			@media (min-width: 992px) {
+				padding-bottom: 3rem;
+			}
 		}
 	}
-	&__buttons {
+
+	&__quiz-img {
+		display: none;
+		position: relative;
+		flex: 1;
+		align-self: center;
+		img {
+			height: 500px;
+		}
+
+		@media (min-width: 992px) {
+			display: block;
+		}
+	}
+
+	&__button {
 		display: flex;
+		margin: 1rem 2rem;
+		align-self: center;
+		flex: 1;
+
+		@media (min-width: 992px) {
+			display: none;
+		}
+
+		.main__btn {
+			align-self: center;
+			width: 200px;
+			height: 60px;
+			font-size: 1.4rem;
+
+			@media (min-width: 576px) {
+				width: 300px;
+				height: 90px;
+				font-size: 1.8rem;
+			}
+		}
+	}
+
+	&__buttons {
+		display: none;
 		flex: 1;
 		flex-direction: column;
 		justify-content: space-around;
 		align-content: center;
 		flex-wrap: wrap;
+
+		@media (min-width: 992px) {
+			display: flex;
+		}
 	}
 
 	&__btn {
@@ -251,6 +325,8 @@ a {
 	}
 
 	&__btn:hover::after {
+		width: 90%;
+		height: 90%;
 		bottom: -10px;
 		right: -10px;
 		border-bottom: 3px solid $main-color;
@@ -258,19 +334,12 @@ a {
 	}
 
 	&__btn:hover::before {
+		width: 90%;
+		height: 90%;
 		top: -10px;
 		left: -10px;
 		border-top: 3px solid $main-color;
 		border-left: 3px solid $main-color;
-	}
-
-	&__quiz-img {
-		position: relative;
-		flex: 1;
-		align-self: center;
-		img {
-			height: 500px;
-		}
 	}
 }
 
@@ -405,51 +474,68 @@ a {
 
 .footer {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	height: 100px;
 	padding: 0.5rem;
 	color: $main-color;
 	background-color: $background-color;
-	font-size: 1.3rem;
+	font-size: 1.1rem;
 	font-weight: 800;
 	border-top: 1px solid $highlight-color;
 
-	&__item {
-		height: 100%;
-		display: flex;
+	@media (min-width: 576px) {
 		flex-direction: row;
+		height: 100px;
+	}
+	@media (min-width: 992px) {
+		font-size: 1.3rem;
+	}
+
+	&__item {
+		display: flex;
+		height: 100%;
+		width: 100%;
+		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		flex: 3;
+		padding: 0.5rem;
 
-		.email {
-			padding: 0.5rem 1rem;
+		&-email {
+			min-width: 120px;
+			padding: 0.4rem;
 			transition: all 0.3s;
 			i {
 				margin-right: 0.3rem;
 			}
 		}
-		.email:hover {
+		&-email:hover {
 			cursor: pointer;
 			color: $highlight-color;
 		}
 
-		&-media-text {
-			padding-right: 10px;
+		.email{
+			padding: 1.3rem 0 1.2rem 0;
+
+			@media (min-width: 992px){
+				padding: 1.2rem 0 1.1rem 0;
+			}
 		}
 
-		&-media {
-			height: 100%;
+		&-media-text {
+			padding: 0.4rem;
+		}
+
+		&-media-icons {
 			display: flex;
 			flex-direction: row;
 			justify-content: flex-start;
 			align-items: center;
 			.media-icon {
 				align-self: center;
-				padding: 1rem 1.4rem;
+				padding: 0.5rem 1rem;
 				font-size: 2.6rem;
 				transition: all 0.3s;
 			}
@@ -459,8 +545,21 @@ a {
 			}
 		}
 
+		&--email-info{
+			order: 1;
+		}
+
+		&--media-info{
+			order: 3;
+		}
+
 		&--company-info {
 			flex: 2;
+			order: 4;
+
+			@media (min-width: 576px) {
+				order: 2;
+			}
 		}
 	}
 }

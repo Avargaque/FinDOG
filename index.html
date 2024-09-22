@@ -103,10 +103,18 @@
 				</h1>
 			</header>
 			<main class="main">
+				<div class="main__button">
+					<button
+						class="main__btn main__btn--quiz"
+						onclick="location.href='./breed-selector.html'"
+					>
+						Wypełnij quiz i dobierz psa!
+					</button>
+				</div>
 				<div class="main__races-img">
 					<img
 						src="./img/race-list.png"
-						alt="ciemnofioletowa głowa psa z profilu"
+						alt="ilustrowana głowa psa z profilu"
 					/>
 					<div class="color-overlay"></div>
 				</div>
@@ -127,28 +135,33 @@
 				<div class="main__quiz-img">
 					<img
 						src="./img/choose-dog.png"
-						alt="ciemnofioletowa sylwetka psa na dwóch łapach"
+						alt="ilustrowana sylwetka psa na dwóch łapach"
 					/>
 					<div class="color-overlay"></div>
 				</div>
+				<div class="main__button">
+					<button
+						class="main__btn main__btn"
+						onclick="location.href='./breeds.html'"
+					>
+						Sprawdź listę wszystkich ras
+					</button>
+				</div>
 			</main>
 			<footer class="footer">
-				<div class="footer__item">
-					<p>Masz pytania? Skontaktuj się z nami!</p>
-					<p class="email">
+				<div class="footer__item footer__item--email-info">
+					<p class="footer__item-email">Masz pytania? Skontaktuj się z nami!</p>
+					<p class="footer__item-email email">
 						<i class="fa-solid fa-envelope"></i>kontakt@xxx.pl
 					</p>
 				</div>
-				<div class="footer__item footer__item--company-info">
-					<p>&copy; <span id="currentYear"></span> | FinDOG</p>
-				</div>
-				<div class="footer__item">
+				<div class="footer__item footer__item--media-info">
 					<div>
 						<p class="footer__item-media-text">
 							Zaobserwuj nas w social mediach:
 						</p>
 					</div>
-					<div class="footer__item-media">
+					<div class="footer__item-media-icons">
 						<div class="media-icon">
 							<i class="fa-brands fa-facebook"></i>
 						</div>
@@ -159,6 +172,9 @@
 							<i class="fa-brands fa-x-twitter"></i>
 						</div>
 					</div>
+				</div>
+				<div class="footer__item footer__item--company-info">
+					<p>&copy; <span id="currentYear"></span> | FinDOG</p>
 				</div>
 			</footer>
 			<div class="pop-up">
