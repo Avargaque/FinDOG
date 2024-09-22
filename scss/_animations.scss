@@ -24,3 +24,20 @@
 	animation: navItemsOut 1s backwards;
 }
 
+// background animation
+@keyframes spinForwards {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+@keyframes spinBackwards {
+    from {
+        transform:rotate(360deg);
+    }
+    to {
+        transform:rotate(0deg);
+    }
+}

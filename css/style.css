@@ -22,6 +22,22 @@
   animation: navItemsOut 1s backwards;
 }
 
+@keyframes spinForwards {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinBackwards {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
 button {
   text-transform: uppercase;
   text-align: center;
@@ -30,14 +46,119 @@ button {
   transition: all 0.3s;
 }
 
-.color-overlay {
+.color-overlay, .color-overlay-transparent {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #430f58;
   mix-blend-mode: screen;
+  z-index: 100;
+}
+
+.color-overlay {
+  background-color: #430f58;
+}
+
+.color-overlay-transparent {
+  background-color: #f4e7fa;
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: calc((100vw - 1200px) / 2);
+  overflow: hidden;
+  visibility: hidden;
+}
+@media (min-width: 1550px) and (min-height: 550px) {
+  .bg {
+    visibility: visible;
+  }
+}
+.bg__1, .bg__2, .bg__3, .bg__4 {
+  position: absolute;
+}
+
+.bg--left {
+  left: 0;
+}
+.bg--left .bg__1 {
+  top: 5%;
+  left: 25%;
+  transform: rotate(30deg);
+}
+.bg--left .bg__1 .bg-bone {
+  height: 115px;
+  animation: spinForwards 10s infinite linear;
+}
+.bg--left .bg__2 {
+  top: 30%;
+  right: 10%;
+  transform: rotate(130deg);
+}
+.bg--left .bg__2 .bg-bone {
+  height: 105px;
+  animation: spinBackwards 16s infinite linear;
+}
+.bg--left .bg__3 {
+  bottom: 30%;
+  left: 10%;
+  transform: rotate(60deg);
+}
+.bg--left .bg__3 .bg-bone {
+  height: 125px;
+  animation: spinForwards 12s infinite linear;
+}
+.bg--left .bg__4 {
+  bottom: 5%;
+  right: 20%;
+  transform: rotate(150deg);
+}
+.bg--left .bg__4 .bg-bone {
+  height: 95px;
+  animation: spinForwards 18s infinite linear;
+}
+
+.bg--right {
+  right: 0;
+}
+.bg--right .bg__1 {
+  top: 5%;
+  right: 20%;
+  transform: rotate(120deg);
+}
+.bg--right .bg__1 .bg-bone {
+  height: 95px;
+  animation: spinBackwards 14s infinite linear;
+}
+.bg--right .bg__2 {
+  top: 30%;
+  left: 10%;
+  transform: rotate(60deg);
+}
+.bg--right .bg__2 .bg-bone {
+  height: 125px;
+  animation: spinForwards 12s infinite linear;
+}
+.bg--right .bg__3 {
+  bottom: 30%;
+  right: 20%;
+  transform: rotate(0deg);
+}
+.bg--right .bg__3 .bg-bone {
+  height: 105px;
+  animation: spinForwards 10s infinite linear;
+}
+.bg--right .bg__4 {
+  bottom: 5%;
+  right: 40%;
+  transform: rotate(140deg);
+}
+.bg--right .bg__4 .bg-bone {
+  height: 115px;
+  animation: spinForwards 16s infinite linear;
 }
 
 .pop-up {
@@ -102,7 +223,7 @@ button {
   border-bottom-right-radius: 12px;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
-  background: #29155B;
+  background: #f4e7fa;
 }
 .skill-wrapper .skill {
   border-top-right-radius: 12px;
@@ -115,7 +236,7 @@ button {
   margin-top: 5px;
 }
 .skill-wrapper .skill.css {
-  background: linear-gradient(to left, #6E0F3E, #430f58);
+  background: linear-gradient(to left, #c7a6d6, #430f58);
 }
 .skill-wrapper .skill.css.q1 {
   width: 5%;
@@ -140,10 +261,10 @@ label input {
   left: -9999px;
 }
 label input:checked + span {
-  background-color: #e8d9e0;
+  background-color: #f6f1f8;
 }
 label input:checked + span:before {
-  box-shadow: inset 0 0 0 0.4375em #6E0F3E;
+  box-shadow: inset 0 0 0 0.4375em #c7a6d6;
 }
 label span {
   display: flex;
@@ -154,7 +275,7 @@ label span {
   transition: 0.25s ease;
 }
 label span:hover {
-  background-color: #e8d9e0;
+  background-color: #f6f1f8;
 }
 label span:before {
   display: flex;
@@ -166,7 +287,7 @@ label span:before {
   border-radius: 50%;
   margin-right: 0.375em;
   transition: 0.25s ease;
-  box-shadow: inset 0 0 0 0.125em #6E0F3E;
+  box-shadow: inset 0 0 0 0.125em #c7a6d6;
 }
 
 *,
@@ -220,7 +341,7 @@ a {
   height: 80px;
   width: calc(100vw - 20px);
   background-color: #fff;
-  border-bottom: 1px solid #29155B;
+  border-bottom: 1px solid #c7a6d6;
   z-index: 100;
 }
 @media (min-width: 1200px) {
@@ -381,8 +502,8 @@ a {
   font-weight: 600;
   letter-spacing: 2px;
   font-size: 1.8rem;
-  color: #fff;
-  background-color: #6E0F3E;
+  color: #430f58;
+  background-color: #f4e7fa;
   transition: background-color 0.5s, color 0.5s;
 }
 .main__btn::after, .main__btn::before {
@@ -402,20 +523,20 @@ a {
 }
 .main__btn:hover {
   cursor: pointer;
-  color: #29155B;
+  color: #430f58;
   background-color: #fff;
 }
 .main__btn:hover::after {
   bottom: -10px;
   right: -10px;
-  border-bottom: 3px solid #29155B;
-  border-right: 3px solid #29155B;
+  border-bottom: 3px solid #430f58;
+  border-right: 3px solid #430f58;
 }
 .main__btn:hover::before {
   top: -10px;
   left: -10px;
-  border-top: 3px solid #29155B;
-  border-left: 3px solid #29155B;
+  border-top: 3px solid #430f58;
+  border-left: 3px solid #430f58;
 }
 .main__quiz-img {
   position: relative;
@@ -460,7 +581,7 @@ a {
 }
 .breeds .header .flex-row p:hover {
   cursor: pointer;
-  color: #6E0F3E;
+  color: #430f58;
 }
 .breeds .breed {
   padding: 5px;
@@ -565,7 +686,7 @@ a {
   background-color: #fff;
   font-size: 1.3rem;
   font-weight: 800;
-  border-top: 1px solid #29155B;
+  border-top: 1px solid #c7a6d6;
 }
 .footer__item {
   height: 100%;
@@ -584,7 +705,7 @@ a {
 }
 .footer__item .email:hover {
   cursor: pointer;
-  color: #6E0F3E;
+  color: #c7a6d6;
 }
 .footer__item-media-text {
   padding-right: 10px;
@@ -604,7 +725,7 @@ a {
 }
 .footer__item-media .media-icon:hover {
   cursor: pointer;
-  color: #6E0F3E;
+  color: #c7a6d6;
 }
 .footer__item--company-info {
   flex: 2;
