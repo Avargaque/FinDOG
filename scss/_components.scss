@@ -292,12 +292,7 @@ button {
 }
 
 // quiz checkbox
-form {
-	display: flex;
-	flex-wrap: wrap;
-	flex-direction: column;
-}
-label {
+label.answers__checkbox {
 	display: flex;
 	cursor: pointer;
 	font-weight: 500;

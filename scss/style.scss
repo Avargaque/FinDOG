@@ -392,13 +392,15 @@ a {
 
 	.answers{
 		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
 		padding: 1rem;
 
 		@media(min-width: 992px){
 			padding: 2rem;
 		}
 
-		label{
+		&__checkbox{
 			width: 100%;
 			max-width: 600px;
 			padding: 0.5rem 0;
