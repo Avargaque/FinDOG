@@ -189,6 +189,7 @@ a {
 .header {
 	width: 100%;
 	padding-top: 80px;
+
 	h1 {
 		text-align: center;
 		padding: 2rem 0;
@@ -198,9 +199,20 @@ a {
 			padding: 4rem;
 		}
 	}
+
+	.breed-selector-img{
+		position: relative;
+		width: calc(100vw - 20px);
+		max-width: 500px;
+		margin: 0 auto;
+
+		img{
+			width: 100%;
+		}
+	}
 }
 
-// main
+// main for home page
 .main {
 	display: flex;
 	flex: 1;
@@ -251,7 +263,7 @@ a {
 
 	&__button {
 		display: flex;
-		margin: 1rem 2rem;
+		margin: 1.5rem 3rem;
 		align-self: center;
 		flex: 1;
 
@@ -343,6 +355,64 @@ a {
 	}
 }
 
+// main for breed selector page
+.main-breed-selector{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+
+	@media(min-width: 768px){
+		flex-direction: row;
+	}
+
+	.questions{
+		display: flex;
+		flex-direction: column;
+		padding: 1rem;
+
+		@media(min-width: 992px){
+			padding: 2rem;
+		}
+
+		&__progress, &__question{
+			width: 100%;
+			max-width: 600px;
+			margin: 0 auto;
+		}
+
+		&__number{
+			font-size: 1.1rem;
+		}
+
+		h2{
+			text-align: center;
+			color: $main-color;
+		}
+	}
+
+	.answers{
+		display: flex;
+		padding: 1rem;
+
+		@media(min-width: 992px){
+			padding: 2rem;
+		}
+
+		label{
+			width: 100%;
+			max-width: 600px;
+			padding: 0.5rem 0;
+			margin: 0 auto;
+			font-size: 1.2rem;
+
+			@media (min-width: 992px){
+				padding: 1rem 0;
+				font-size: 1.4rem;
+			}
+		}
+	}
+}
+
 .breeds {
 	height: 100%;
 	.header {
@@ -417,60 +487,7 @@ a {
 		scale: 0.95;
 	}
 }
-.selector {
-	height: 100%;
-	.header {
-		height: 0;
-		flex: 1;
-		align-items: center;
-		h1 {
-			padding: 40px 5px 5px 5px;
-			color: $main-color;
-			text-transform: uppercase;
-			letter-spacing: 1px;
-		}
-		.selector-image {
-			position: relative;
-			height: 70%;
-			img {
-				height: 100%;
-			}
-		}
-	}
-	.content {
-		flex: 3;
-		align-items: center;
-		.questions {
-			flex: 3;
-			margin: 0 50px 200px 50px;
-			.progress {
-				.question-number {
-					text-align: center;
-					padding: 15px;
-					color: $main-color;
-					font-weight: 600;
-				}
-				.progress-bar {
-					padding: 15px 30px;
-				}
-			}
-			.question {
-				h2 {
-					text-align: center;
-					color: $main-color;
-				}
-			}
-		}
-		.answers {
-			flex: 2;
-			justify-content: space-around;
-			margin: 0 50px 100px 50px;
-			label {
-				padding: 15px 0;
-			}
-		}
-	}
-}
+
 
 .footer {
 	display: flex;
@@ -511,17 +528,17 @@ a {
 				margin-right: 0.3rem;
 			}
 		}
-		&-email:hover {
-			cursor: pointer;
-			color: $highlight-color;
-		}
 
-		.email{
+		.email {
 			padding: 1.3rem 0 1.2rem 0;
 
-			@media (min-width: 992px){
+			@media (min-width: 992px) {
 				padding: 1.2rem 0 1.1rem 0;
 			}
+		}
+		.email:hover {
+			cursor: pointer;
+			color: $highlight-color;
 		}
 
 		&-media-text {
@@ -545,12 +562,12 @@ a {
 			}
 		}
 
-		&--email-info{
-			order: 1;
+		&--email-info {
+			order: 3;
 		}
 
-		&--media-info{
-			order: 3;
+		&--media-info {
+			order: 1;
 		}
 
 		&--company-info {

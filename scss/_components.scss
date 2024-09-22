@@ -1,4 +1,4 @@
-// buttons
+// universal button
 button {
 	text-transform: uppercase;
 	text-align: center;
@@ -41,7 +41,6 @@ button {
 		position: absolute;
 	}
 }
-
 .bg--left {
 	left: 0;
 
@@ -85,7 +84,6 @@ button {
 		}
 	}
 }
-
 .bg--right {
 	right: 0;
 
@@ -168,7 +166,7 @@ button {
 	display: block;
 }
 
-// searchbar
+// breed searchbar
 .search {
 	&__input {
 		width: 400px;
@@ -206,31 +204,94 @@ button {
 		}
 	}
 }
-.skill-wrapper {
+
+// quiz progress bar
+.questions__progress-bar {
 	border-top-right-radius: 12px;
 	border-bottom-right-radius: 12px;
 	border-top-left-radius: 12px;
 	border-bottom-left-radius: 12px;
 	background: $supporting-color;
-	.skill {
+	&--done {
 		border-top-right-radius: 12px;
 		border-bottom-right-radius: 12px;
 		border-top-left-radius: 12px;
 		border-bottom-left-radius: 12px;
 		box-shadow: 0 0 5px $main-color;
-		height: 24px;
-		margin-bottom: 40px;
-		margin-top: 5px;
+		height: 15px;
+		margin-bottom: 2rem;
+		margin-top: 1rem;
+
+		@media (min-width: 768px) and (min-height: 768px){
+			margin-bottom: 4rem;
+		}
 		&.css {
-			background: linear-gradient(to left, $highlight-color, $main-color);
+			background: $main-color;
 			&.q1 {
-				width: 5%;
+				width: 5%; // depends on number of questions
+			}
+			&.q2{
+				width: 10%;
+			}
+			&.q3{
+				width: 15%;
+			}
+			&.q4{
+				width: 20%;
+			}
+			&.q5{
+				width: 25%;
+			}
+			&.q6{
+				width: 30%;
+			}
+			&.q7{
+				width: 35%;
+			}
+			&.q8{
+				width: 40%;
+			}
+			&.q9{
+				width: 45%;
+			}
+			&.q10{
+				width: 50%;
+			}
+			&.q11{
+				width: 55%;
+			}
+			&.q12{
+				width: 60%;
+			}
+			&.q13{
+				width: 65%;
+			}
+			&.q14{
+				width: 70%;
+			}
+			&.q15{
+				width: 75%;
+			}
+			&.q16{
+				width: 80%;
+			}
+			&.q17{
+				width: 85%;
+			}
+			&.q18{
+				width: 90%;
+			}
+			&.q19{
+				width: 95%;
+			}
+			&.q20{
+				width: 100%;
 			}
 		}
 	}
 }
 
-// checkbox
+// quiz checkbox
 form {
 	display: flex;
 	flex-wrap: wrap;

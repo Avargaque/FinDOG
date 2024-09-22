@@ -17,6 +17,36 @@
 		<link rel="stylesheet" href="./css/style.css" />
 	</head>
 	<body>
+		<div class="bg bg--left">
+			<div class="bg__1">
+				<img class="bg-bone" src="./img/bone.png" alt="mała kość" />
+			</div>
+			<div class="bg__2">
+				<img class="bg-bone" src="./img/bone.png" alt="mała kość" />
+			</div>
+			<div class="bg__3">
+				<img class="bg-bone" src="./img/bone.png" alt="mała kość" />
+			</div>
+			<div class="bg__4">
+				<img class="bg-bone" src="./img/bone.png" alt="mała kość" />
+			</div>
+			<div class="color-overlay-transparent"></div>
+		</div>
+		<div class="bg bg--right">
+			<div class="bg__1">
+				<img class="bg-bone" src="./img/bone.png" alt="mała kość" />
+			</div>
+			<div class="bg__2">
+				<img class="bg-bone" src="./img/bone.png" alt="mała kość" />
+			</div>
+			<div class="bg__3">
+				<img class="bg-bone" src="./img/bone.png" alt="mała kość" />
+			</div>
+			<div class="bg__4">
+				<img class="bg-bone" src="./img/bone.png" alt="mała kość" />
+			</div>
+			<div class="color-overlay-transparent"></div>
+		</div>
 		<div class="wrapper">
 			<nav class="nav">
 				<div class="nav__logo">
@@ -24,77 +54,98 @@
 						><img src="./img/logo.svg" alt="logo FinDOG"
 					/></a>
 				</div>
+				<div class="nav__burger-container">
+					<svg
+						class="nav__burger-menu nav__burger-menu--inactive"
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="icon icon-tabler icons-tabler-outline icon-tabler-menu-3"
+					>
+						<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+						<path d="M10 6h10" />
+						<path d="M4 12h16" />
+						<path d="M7 12h13" />
+						<path d="M4 18h10" />
+					</svg>
+				</div>
 				<div class="nav__buttons">
-					<a href="breed-selector.html"
-						><button class="nav__btn nav__btn--inactive">dobierz psa</button></a
+					<button
+						class="nav__btn nav__btn--inactive"
+						onclick="location.href='./breed-selector.html'"
 					>
-					<a href="breeds.html"
-						><button class="nav__btn nav__btn--inactive">lista ras</button></a
+						dobierz psa
+					</button>
+					<button
+						class="nav__btn nav__btn--inactive"
+						onclick="location.href='./breeds.html'"
 					>
-					<a href="login.html"
-						><button class="nav__btn nav__btn--inactive">login</button></a
+						lista ras
+					</button>
+					<button
+						class="nav__btn nav__btn--inactive"
+						onclick="location.href='./login.html'"
 					>
+						login
+					</button>
 				</div>
 			</nav>
-			<main>
-				<div class="selector flex-col">
-					<div class="header flex-col">
-						<h1>Dobierz psa</h1>
-						<div class="selector-image">
-							<img src="./img/selector.png" alt="Trzy pieski" />
-							<div class="color-overlay"></div>
-						</div>
-					</div>
-					<div class="content flex-row">
-						<div class="questions flex-col">
-							<div class="progress flex-col">
-								<div class="question-number">Pytanie 1 z 20</div>
-								<div class="progress-bar">
-									<div class="skill-wrapper">
-										<div class="skill css q1">
-										</div>
-									  </div>
-								</div>
-							</div>
-							<div class="question"><h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, fugiat?</h2></div>
-						</div>
-						<div class="answers flex-col">
-							<form>
-								<label>
-									<input type="radio" name="radio"/>
-									<span>Lorem ipsum dolor sit.</span>
-								</label>
-								<label>
-									<input type="radio" name="radio"/>
-									<span>Lorem ipsum dolor sit amet.</span>
-								</label>
-								<label>
-									<input type="radio" name="radio"/>
-									<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, praesentium minus! Soluta.</span>
-								</label>
-							</form>
-						</div>
-					</div>
-					
+			<header class="header">
+				<h1>DOBIERZ PSA</h1>
+				<div class="breed-selector-img">
+					<img src="./img/selector.png" alt="Trzy sylwetki piesków" />
+					<div class="color-overlay"></div>
 				</div>
+			</header>
+
+			<main class="main-breed-selector">
+				<div class="questions">
+					<div class="questions__progress">
+						<div class="questions__number">Pytanie 1 z 20</div>
+						<div class="questions__progress-bar">
+							<div class="questions__progress-bar--done css q1"></div>
+						</div>
+					</div>
+					<div class="questions__question">
+						<h2>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet,
+							fugiat?
+						</h2>
+					</div>
+				</div>
+				<form class="answers">
+					<label>
+						<input type="radio" name="radio" />
+						<span>Lorem ipsum dolor sit.</span>
+					</label>
+					<label>
+						<input type="radio" name="radio" />
+						<span>Lorem ipsum dolor sit amet.</span>
+					</label>
+					<label>
+						<input type="radio" name="radio" />
+						<span
+							>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa,
+							praesentium minus! Soluta.</span
+						>
+					</label>
+				</form>
 			</main>
+			
 			<footer class="footer">
-				<div class="footer__item">
-					<p>Masz pytania? Skontaktuj się z nami!</p>
-					<p class="email">
-						<i class="fa-solid fa-envelope"></i>kontakt@xxx.pl
-					</p>
-				</div>
-				<div class="footer__item footer__item--company-info">
-					<p>&copy; <span id="currentYear"></span> | FinDOG</p>
-				</div>
-				<div class="footer__item">
+				<div class="footer__item footer__item--media-info">
 					<div>
 						<p class="footer__item-media-text">
 							Zaobserwuj nas w social mediach:
 						</p>
 					</div>
-					<div class="footer__item-media">
+					<div class="footer__item-media-icons">
 						<div class="media-icon">
 							<i class="fa-brands fa-facebook"></i>
 						</div>
@@ -105,6 +156,15 @@
 							<i class="fa-brands fa-x-twitter"></i>
 						</div>
 					</div>
+				</div>
+				<div class="footer__item footer__item--email-info">
+					<p class="footer__item-email">Masz pytania? Skontaktuj się z nami!</p>
+					<p class="footer__item-email email">
+						<i class="fa-solid fa-envelope"></i>kontakt@xxx.pl
+					</p>
+				</div>
+				<div class="footer__item footer__item--company-info">
+					<p>&copy; <span id="currentYear"></span> | FinDOG</p>
 				</div>
 			</footer>
 			<div class="pop-up">

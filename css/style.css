@@ -218,28 +218,90 @@ button {
   background-position: 100% center;
 }
 
-.skill-wrapper {
+.questions__progress-bar {
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
   background: #f4e7fa;
 }
-.skill-wrapper .skill {
+.questions__progress-bar--done {
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
   box-shadow: 0 0 5px #430f58;
-  height: 24px;
-  margin-bottom: 40px;
-  margin-top: 5px;
+  height: 15px;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
 }
-.skill-wrapper .skill.css {
-  background: linear-gradient(to left, #c7a6d6, #430f58);
+@media (min-width: 768px) and (min-height: 768px) {
+  .questions__progress-bar--done {
+    margin-bottom: 4rem;
+  }
 }
-.skill-wrapper .skill.css.q1 {
+.questions__progress-bar--done.css {
+  background: #430f58;
+}
+.questions__progress-bar--done.css.q1 {
   width: 5%;
+}
+.questions__progress-bar--done.css.q2 {
+  width: 10%;
+}
+.questions__progress-bar--done.css.q3 {
+  width: 15%;
+}
+.questions__progress-bar--done.css.q4 {
+  width: 20%;
+}
+.questions__progress-bar--done.css.q5 {
+  width: 25%;
+}
+.questions__progress-bar--done.css.q6 {
+  width: 30%;
+}
+.questions__progress-bar--done.css.q7 {
+  width: 35%;
+}
+.questions__progress-bar--done.css.q8 {
+  width: 40%;
+}
+.questions__progress-bar--done.css.q9 {
+  width: 45%;
+}
+.questions__progress-bar--done.css.q10 {
+  width: 50%;
+}
+.questions__progress-bar--done.css.q11 {
+  width: 55%;
+}
+.questions__progress-bar--done.css.q12 {
+  width: 60%;
+}
+.questions__progress-bar--done.css.q13 {
+  width: 65%;
+}
+.questions__progress-bar--done.css.q14 {
+  width: 70%;
+}
+.questions__progress-bar--done.css.q15 {
+  width: 75%;
+}
+.questions__progress-bar--done.css.q16 {
+  width: 80%;
+}
+.questions__progress-bar--done.css.q17 {
+  width: 85%;
+}
+.questions__progress-bar--done.css.q18 {
+  width: 90%;
+}
+.questions__progress-bar--done.css.q19 {
+  width: 95%;
+}
+.questions__progress-bar--done.css.q20 {
+  width: 100%;
 }
 
 form {
@@ -486,6 +548,15 @@ a {
     padding: 4rem;
   }
 }
+.header .breed-selector-img {
+  position: relative;
+  width: calc(100vw - 20px);
+  max-width: 500px;
+  margin: 0 auto;
+}
+.header .breed-selector-img img {
+  width: 100%;
+}
 
 .main {
   display: flex;
@@ -540,7 +611,7 @@ a {
 }
 .main__button {
   display: flex;
-  margin: 1rem 2rem;
+  margin: 1.5rem 3rem;
   align-self: center;
   flex: 1;
 }
@@ -624,6 +695,61 @@ a {
   border-left: 3px solid #430f58;
 }
 
+.main-breed-selector {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+@media (min-width: 768px) {
+  .main-breed-selector {
+    flex-direction: row;
+  }
+}
+.main-breed-selector .questions {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+@media (min-width: 992px) {
+  .main-breed-selector .questions {
+    padding: 2rem;
+  }
+}
+.main-breed-selector .questions__progress, .main-breed-selector .questions__question {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.main-breed-selector .questions__number {
+  font-size: 1.1rem;
+}
+.main-breed-selector .questions h2 {
+  text-align: center;
+  color: #430f58;
+}
+.main-breed-selector .answers {
+  display: flex;
+  padding: 1rem;
+}
+@media (min-width: 992px) {
+  .main-breed-selector .answers {
+    padding: 2rem;
+  }
+}
+.main-breed-selector .answers label {
+  width: 100%;
+  max-width: 600px;
+  padding: 0.5rem 0;
+  margin: 0 auto;
+  font-size: 1.2rem;
+}
+@media (min-width: 992px) {
+  .main-breed-selector .answers label {
+    padding: 1rem 0;
+    font-size: 1.4rem;
+  }
+}
+
 .breeds {
   height: 100%;
 }
@@ -700,57 +826,6 @@ a {
   scale: 0.95;
 }
 
-.selector {
-  height: 100%;
-}
-.selector .header {
-  height: 0;
-  flex: 1;
-  align-items: center;
-}
-.selector .header h1 {
-  padding: 40px 5px 5px 5px;
-  color: #430f58;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-.selector .header .selector-image {
-  position: relative;
-  height: 70%;
-}
-.selector .header .selector-image img {
-  height: 100%;
-}
-.selector .content {
-  flex: 3;
-  align-items: center;
-}
-.selector .content .questions {
-  flex: 3;
-  margin: 0 50px 200px 50px;
-}
-.selector .content .questions .progress .question-number {
-  text-align: center;
-  padding: 15px;
-  color: #430f58;
-  font-weight: 600;
-}
-.selector .content .questions .progress .progress-bar {
-  padding: 15px 30px;
-}
-.selector .content .questions .question h2 {
-  text-align: center;
-  color: #430f58;
-}
-.selector .content .answers {
-  flex: 2;
-  justify-content: space-around;
-  margin: 0 50px 100px 50px;
-}
-.selector .content .answers label {
-  padding: 15px 0;
-}
-
 .footer {
   display: flex;
   flex-direction: column;
@@ -793,10 +868,6 @@ a {
 .footer__item-email i {
   margin-right: 0.3rem;
 }
-.footer__item-email:hover {
-  cursor: pointer;
-  color: #c7a6d6;
-}
 .footer__item .email {
   padding: 1.3rem 0 1.2rem 0;
 }
@@ -804,6 +875,10 @@ a {
   .footer__item .email {
     padding: 1.2rem 0 1.1rem 0;
   }
+}
+.footer__item .email:hover {
+  cursor: pointer;
+  color: #c7a6d6;
 }
 .footer__item-media-text {
   padding: 0.4rem;
@@ -825,10 +900,10 @@ a {
   color: #c7a6d6;
 }
 .footer__item--email-info {
-  order: 1;
+  order: 3;
 }
 .footer__item--media-info {
-  order: 3;
+  order: 1;
 }
 .footer__item--company-info {
   flex: 2;
