@@ -7,8 +7,13 @@ button {
 	transition: all 0.3s;
 }
 
+.invisible {
+	visibility: hidden;
+}
+
 // images color overlay
-.color-overlay, .color-overlay-transparent {
+.color-overlay,
+.color-overlay-transparent {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -17,10 +22,10 @@ button {
 	mix-blend-mode: screen;
 	z-index: 10;
 }
-.color-overlay{
+.color-overlay {
 	background-color: $main-color;
 }
-.color-overlay-transparent{
+.color-overlay-transparent {
 	background-color: $supporting-color;
 }
 
@@ -33,52 +38,55 @@ button {
 	overflow: hidden;
 	visibility: hidden;
 
-	@media (min-width: 1550px) and (min-height: 550px){
+	@media (min-width: 1550px) and (min-height: 550px) {
 		visibility: visible;
 	}
 
-	&__1, &__2, &__3, &__4 {
+	&__1,
+	&__2,
+	&__3,
+	&__4 {
 		position: absolute;
 	}
 }
 .bg--left {
 	left: 0;
 
-	.bg__1{
+	.bg__1 {
 		top: 5%;
 		left: 25%;
 		transform: rotate(30deg);
-		.bg-bone{
+		.bg-bone {
 			height: 115px;
 			animation: spinForwards 10s infinite linear;
 		}
 	}
 
-	.bg__2{
+	.bg__2 {
 		top: 30%;
 		right: 10%;
 		transform: rotate(130deg);
-		.bg-bone{
+		.bg-bone {
 			height: 105px;
 			animation: spinBackwards 16s infinite linear;
 		}
 	}
 
-	.bg__3{
+	.bg__3 {
 		bottom: 30%;
 		left: 10%;
 		transform: rotate(60deg);
-		.bg-bone{
+		.bg-bone {
 			height: 125px;
 			animation: spinForwards 12s infinite linear;
 		}
 	}
 
-	.bg__4{
+	.bg__4 {
 		bottom: 5%;
 		right: 20%;
 		transform: rotate(150deg);
-		.bg-bone{
+		.bg-bone {
 			height: 95px;
 			animation: spinForwards 18s infinite linear;
 		}
@@ -87,41 +95,41 @@ button {
 .bg--right {
 	right: 0;
 
-	.bg__1{
+	.bg__1 {
 		top: 5%;
 		right: 20%;
 		transform: rotate(120deg);
-		.bg-bone{
+		.bg-bone {
 			height: 95px;
 			animation: spinBackwards 14s infinite linear;
 		}
 	}
 
-	.bg__2{
+	.bg__2 {
 		top: 30%;
 		left: 10%;
 		transform: rotate(60deg);
-		.bg-bone{
+		.bg-bone {
 			height: 125px;
 			animation: spinForwards 12s infinite linear;
 		}
 	}
 
-	.bg__3{
+	.bg__3 {
 		bottom: 30%;
 		right: 20%;
 		transform: rotate(0deg);
-		.bg-bone{
+		.bg-bone {
 			height: 105px;
 			animation: spinForwards 10s infinite linear;
 		}
 	}
 
-	.bg__4{
+	.bg__4 {
 		bottom: 5%;
 		right: 40%;
 		transform: rotate(140deg);
-		.bg-bone{
+		.bg-bone {
 			height: 115px;
 			animation: spinForwards 16s infinite linear;
 		}
@@ -150,17 +158,23 @@ button {
 // pop-up
 .pop-up {
 	display: none;
-	position: fixed;
-	top: 90%;
-	left: 30%;
+	position: absolute;
+	width: 200px;
+	top: 30%;
+	left: 50%;
 	padding: 15px;
 	font-size: 1.2rem;
 	font-weight: 600;
 	color: $main-color;
 	background-color: $background-color;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 10px rgba(67, 15, 88, 0.4);
 	transform: translate(-50%, -50%);
 	z-index: 1000;
+
+	@media (min-width: 576px) {
+		top: 10%;
+		left: 80%;
+	}
 }
 .pop-up.show {
 	display: block;
@@ -222,83 +236,36 @@ button {
 		margin-bottom: 2rem;
 		margin-top: 1rem;
 
-		@media (min-width: 768px) and (min-height: 768px){
+		@media (min-width: 768px) and (min-height: 768px) {
 			margin-bottom: 4rem;
 		}
-		&.css {
+		&.bar {
 			background: $main-color;
-			&.q1 {
-				width: 5%; // depends on number of questions
-			}
-			&.q2{
-				width: 10%;
-			}
-			&.q3{
-				width: 15%;
-			}
-			&.q4{
-				width: 20%;
-			}
-			&.q5{
-				width: 25%;
-			}
-			&.q6{
-				width: 30%;
-			}
-			&.q7{
-				width: 35%;
-			}
-			&.q8{
-				width: 40%;
-			}
-			&.q9{
-				width: 45%;
-			}
-			&.q10{
-				width: 50%;
-			}
-			&.q11{
-				width: 55%;
-			}
-			&.q12{
-				width: 60%;
-			}
-			&.q13{
-				width: 65%;
-			}
-			&.q14{
-				width: 70%;
-			}
-			&.q15{
-				width: 75%;
-			}
-			&.q16{
-				width: 80%;
-			}
-			&.q17{
-				width: 85%;
-			}
-			&.q18{
-				width: 90%;
-			}
-			&.q19{
-				width: 95%;
-			}
-			&.q20{
-				width: 100%;
-			}
 		}
 	}
 }
 
-// quiz checkbox
-label.answers__checkbox {
+// quiz radio label
+label.answers__label {
+	position: relative;
 	display: flex;
+	flex-wrap: wrap;
+	
+	padding: 0.5rem 0;
+	margin-bottom: 0.375em;
 	cursor: pointer;
 	font-weight: 500;
-	position: relative;
-	overflow: hidden;
-	margin-bottom: 0.375em;
+	font-size: 1.2rem;
+
+	@media (min-width: 768px){
+		
+	}
+	@media (min-width: 992px) {
+		
+		padding: 1rem 0;
+		font-size: 1.4rem;
+	}
+
 	input {
 		position: absolute;
 		left: -9999px;

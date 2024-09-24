@@ -105,37 +105,100 @@
 			</header>
 
 			<main class="main-breed-selector">
+				<div
+					class="previous-question-container previous-question-container--desktop"
+				>
+					<svg
+						class="previous-question-icon"
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-compact-left"
+					>
+						<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+						<path d="M13 20l-3 -8l3 -8" />
+					</svg>
+				</div>
 				<div class="questions">
 					<div class="questions__progress">
-						<div class="questions__number">Pytanie 1 z 20</div>
+						<div class="questions__number">
+							<p>Pytanie <span class="current-question-number"></span> z 20</p>
+						</div>
 						<div class="questions__progress-bar">
-							<div class="questions__progress-bar--done css q1"></div>
+							<div class="questions__progress-bar--done bar bar-width"></div>
 						</div>
 					</div>
 					<div class="questions__question">
-						<h2>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet,
-							fugiat?
+						<h2 class="current-question-text">
 						</h2>
 					</div>
 				</div>
-				<form class="answers">
-					<label class="answers__checkbox">
-						<input type="radio" name="radio" />
-						<span>Lorem ipsum dolor sit.</span>
-					</label>
-					<label class="answers__checkbox">
-						<input type="radio" name="radio" />
-						<span>Lorem ipsum dolor sit amet.</span>
-					</label>
-					<label class="answers__checkbox">
-						<input type="radio" name="radio" />
-						<span
-							>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa,
-							praesentium minus! Soluta.</span
+				<div class="answers-arrows-container">
+					<div
+						class="previous-question-container previous-question-container--mobile"
+					>
+						<svg
+							class="previous-question-icon"
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-compact-left"
 						>
-					</label>
-				</form>
+							<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+							<path d="M13 20l-3 -8l3 -8" />
+						</svg>
+					</div>
+					<form class="answers">
+					</form>
+					<div class="next-question-container next-question-container--mobile">
+						<svg
+							class="next-question-icon"
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-compact-right"
+						>
+							<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+							<path d="M11 4l3 8l-3 8" />
+						</svg>
+					</div>
+				</div>
+				<div class="next-question-container next-question-container--desktop">
+					<svg
+						class="next-question-icon"
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-compact-right"
+					>
+						<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+						<path d="M11 4l3 8l-3 8" />
+					</svg>
+				</div>
 			</main>
 
 			<footer class="footer">
@@ -166,12 +229,13 @@
 				<div class="footer__item footer__item--company-info">
 					<p>&copy; <span id="currentYear"></span> | FinDOG</p>
 				</div>
+				<div class="pop-up">
+					<p>Skopiowano adres e-mail</p>
+				</div>
 			</footer>
-			<div class="pop-up">
-				<p>Skopiowano adres e-mail</p>
-			</div>
 		</div>
 
 		<script src="./js/script.js"></script>
+		<script src="./js/quiz.js"></script>
 	</body>
 </html>
