@@ -256,14 +256,54 @@ button {
   background: #430f58;
 }
 
-label.answers__label {
+label.answers__label, label.priority-label {
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  padding: 0.5rem 0;
-  margin-bottom: 0.375em;
   cursor: pointer;
   font-weight: 500;
+}
+label.answers__label input, label.priority-label input {
+  position: absolute;
+  left: -9999px;
+}
+label.answers__label input:checked + span, label.priority-label input:checked + span {
+  background-color: #ebe0f1;
+}
+label.answers__label input:checked + span:before, label.priority-label input:checked + span:before {
+  box-shadow: inset 0 0 0 0.375em #c7a6d6;
+}
+label.answers__label span, label.priority-label span {
+  display: flex;
+  align-items: center;
+  padding: 0.75em 1.5em 0.75em 0.75em;
+  color: #430f58;
+  transition: 0.25s ease;
+}
+label.answers__label span:hover, label.priority-label span:hover {
+  background-color: #f6f1f8;
+}
+label.answers__label span:before, label.priority-label span:before {
+  display: flex;
+  flex-shrink: 0;
+  content: "";
+  background-color: #fff;
+  width: 1.5em;
+  height: 1.5em;
+  margin-right: 0.375em;
+  transition: 0.25s ease;
+  box-shadow: inset 0 0 0 0.125em #c7a6d6;
+}
+label.answers__label input[type=radio] + span, label.priority-label input[type=radio] + span {
+  border-radius: 99em;
+}
+label.answers__label input[type=radio] + span:before, label.priority-label input[type=radio] + span:before {
+  border-radius: 50%;
+}
+
+label.answers__label {
+  padding: 0.5rem 0;
+  margin-bottom: 0.375em;
   font-size: 1.2rem;
 }
 @media (min-width: 992px) {
@@ -272,38 +312,16 @@ label.answers__label {
     font-size: 1.4rem;
   }
 }
-label.answers__label input {
-  position: absolute;
-  left: -9999px;
+
+label.priority-label {
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
 }
-label.answers__label input:checked + span {
-  background-color: #f6f1f8;
-}
-label.answers__label input:checked + span:before {
-  box-shadow: inset 0 0 0 0.4375em #c7a6d6;
-}
-label.answers__label span {
-  display: flex;
-  align-items: center;
-  padding: 0.75em 1.5em 0.75em 0.75em;
-  color: #430f58;
-  border-radius: 99em;
-  transition: 0.25s ease;
-}
-label.answers__label span:hover {
-  background-color: #f6f1f8;
-}
-label.answers__label span:before {
-  display: flex;
-  flex-shrink: 0;
-  content: "";
-  background-color: #fff;
-  width: 1.5em;
-  height: 1.5em;
-  border-radius: 50%;
-  margin-right: 0.375em;
-  transition: 0.25s ease;
-  box-shadow: inset 0 0 0 0.125em #c7a6d6;
+@media (min-width: 992px) {
+  label.priority-label {
+    font-size: 1.2rem;
+  }
 }
 
 *,
@@ -668,6 +686,7 @@ a {
   flex: 1 1;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   padding: 1rem;
 }
 @media (min-width: 992px) {
@@ -680,12 +699,12 @@ a {
   max-width: 600px;
   margin: 0 auto;
 }
-.main-breed-selector .questions__number {
-  font-size: 1.1rem;
-}
-.main-breed-selector .questions h2 {
+.main-breed-selector .questions__progress .current-question-text, .main-breed-selector .questions__question .current-question-text {
   text-align: center;
   color: #430f58;
+}
+.main-breed-selector .questions__number {
+  font-size: 1.1rem;
 }
 .main-breed-selector .answers-arrows-container {
   display: flex;
@@ -723,21 +742,25 @@ a {
     padding-left: 2rem;
   }
 }
-.main-breed-selector .previous-question-container--desktop, .main-breed-selector .next-question-container--desktop {
+.main-breed-selector .previous-question-container--desktop,
+.main-breed-selector .next-question-container--desktop {
   display: none;
 }
 @media (min-width: 768px) {
-  .main-breed-selector .previous-question-container--desktop, .main-breed-selector .next-question-container--desktop {
+  .main-breed-selector .previous-question-container--desktop,
+  .main-breed-selector .next-question-container--desktop {
     display: flex;
     align-self: center;
   }
 }
 @media (min-width: 768px) {
-  .main-breed-selector .previous-question-container--mobile, .main-breed-selector .next-question-container--mobile {
+  .main-breed-selector .previous-question-container--mobile,
+  .main-breed-selector .next-question-container--mobile {
     display: none;
   }
 }
-.main-breed-selector .previous-question-icon, .main-breed-selector .next-question-icon {
+.main-breed-selector .previous-question-icon,
+.main-breed-selector .next-question-icon {
   align-self: center;
   height: 50px;
   width: 30px;
@@ -745,16 +768,68 @@ a {
   transition: transform 0.3s;
 }
 @media (min-width: 992px) {
-  .main-breed-selector .previous-question-icon, .main-breed-selector .next-question-icon {
+  .main-breed-selector .previous-question-icon,
+  .main-breed-selector .next-question-icon {
     height: 100px;
     width: 60px;
   }
 }
-.main-breed-selector .previous-question-icon:hover, .main-breed-selector .next-question-icon:hover {
+.main-breed-selector .previous-question-icon:hover,
+.main-breed-selector .next-question-icon:hover {
   cursor: pointer;
   transform: scale(120%);
 }
 
+.main-breed-selector-priority {
+  display: flex;
+  align-items: flex-start;
+}
+.main-breed-selector-priority .blank-space {
+  display: none;
+  flex: 1;
+}
+@media (min-width: 768px) {
+  .main-breed-selector-priority .blank-space {
+    display: block;
+  }
+}
+.main-breed-selector-priority .priority {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  color: #430f58;
+}
+@media (min-width: 768px) {
+  .main-breed-selector-priority .priority {
+    align-items: flex-end;
+    border-top: 0;
+  }
+}
+@media (min-width: 992px) {
+  .main-breed-selector-priority .priority {
+    padding: 2rem;
+  }
+}
+.main-breed-selector-priority .priority h3 {
+  padding-bottom: 1rem;
+}
+.main-breed-selector-priority .priority .priority-form {
+  display: grid;
+  grid-template-columns: 110px 110px;
+}
+@media (min-width: 768px) {
+  .main-breed-selector-priority .priority .priority-form {
+    grid-template-columns: 80px 80px 80px 80px;
+  }
+}
+@media (min-width: 992px) {
+  .main-breed-selector-priority .priority .priority-form {
+    grid-template-columns: 100px 100px 100px 100px;
+  }
+}
 .breeds {
   height: 100%;
 }
