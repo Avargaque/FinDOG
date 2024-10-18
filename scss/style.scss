@@ -26,6 +26,7 @@ a {
 	text-decoration: none;
 }
 
+// universal wrapper
 .wrapper {
 	display: flex;
 	flex-direction: column;
@@ -127,7 +128,6 @@ a {
 		}
 
 		@media (max-height: 380px) {
-			height: 150px;
 			top: 39px;
 		}
 	}
@@ -470,57 +470,6 @@ a {
 		transform: scale(120%);
 	}
 }
-.main-breed-selector-priority {
-	display: flex;
-	align-items: flex-start;
-
-	.blank-space {
-		display: none;
-		flex: 1;
-
-		@media (min-width: 768px){
-			display: block;
-		}
-	}
-
-	.priority {
-		display: flex;
-		flex: 1;
-		flex-direction: column;
-		align-items: center;
-		width: 100%;
-		padding: 1rem;
-		color: $main-color;
-
-		@media (min-width: 768px){
-			align-items: flex-end;
-			border-top: 0;
-		}
-
-		@media (min-width: 992px) {
-			padding: 2rem;
-		}
-
-		h3{
-			padding-bottom: 1rem;
-		}
-
-		.priority-form {
-			display: grid;
-			grid-template-columns: 110px 110px;
-
-			@media (min-width: 768px) {
-				grid-template-columns: 80px 80px 80px 80px;
-			}
-			@media (min-width: 992px) {
-				grid-template-columns: 100px 100px 100px 100px;
-			}
-		}
-
-		.priority-label {
-		}
-	}
-}
 
 .breeds {
 	height: 100%;
@@ -597,6 +546,7 @@ a {
 	}
 }
 
+// footer
 .footer {
 	position: relative;
 	display: flex;
@@ -689,7 +639,3 @@ a {
 		}
 	}
 }
-
-// zrobić określenie priorytetu
-
-// do naprawienia żeby overlay był tylko na obrazku a nie na tle - ważne w przypadku zmiany koloru tła

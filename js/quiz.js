@@ -1,171 +1,4 @@
-const quizQuestions = [
-	{
-		id: 1,
-		question: "Jakiego rozmiaru psa preferujesz?",
-		answers: ["Mały", "Średni", "Duży"],
-		inputType: "checkbox",
-		userAnswersCheckbox: [],
-		userPriority: "",
-	},
-	{
-		id: 2,
-		question:
-			"Jaki poziom aktywności psa Ci odpowiada da da da da d a da  da da ?",
-		answers: [
-			"Niski",
-			"Średni",
-			"Wysoki WysokiWysokiWy sokiWysokiWys okiWysokiW ysokiWysokiW ysoki",
-		],
-		inputType: "radio",
-		userAnswerRadio: "",
-		userPriority: "",
-	},
-	{
-		id: 3,
-		question: "Czy masz inne zwierzęta w domu?",
-		answers: ["Tak", "Nie"],
-		inputType: "radio",
-		userAnswerRadio: "",
-		userPriority: "",
-	},
-	{
-		id: 4,
-		question: "Ile czasu dziennie możesz poświęcić na spacery z psem?",
-		answers: ["30 minut", "1 godzina", "Więcej niż 1 godzina"],
-		inputType: "checkbox",
-		userAnswersCheckbox: [],
-		userPriority: "",
-	},
-	{
-		id: 5,
-		question: "Czy pies będzie przebywał głównie w domu czy na zewnątrz?",
-		answers: ["W domu", "Na zewnątrz", "Obie opcje"],
-		inputType: "radio",
-		userAnswerRadio: "",
-		userPriority: "",
-	},
-	{
-		id: 6,
-		question: "Jak często planujesz pielęgnować psa?",
-		answers: ["Codziennie", "Raz w tygodniu", "Rzadko"],
-		inputType: "radio",
-		userAnswerRadio: "",
-		userPriority: "",
-	},
-	{
-		id: 7,
-		question: "Czy masz dzieci w domu?",
-		answers: ["Tak", "Nie"],
-		inputType: "radio",
-		userAnswerRadio: "",
-		userPriority: "",
-	},
-	{
-		id: 8,
-		question: "Czy pies powinien być łatwy w tresurze?",
-		answers: ["Tak", "Nie ma to znaczenia"],
-		inputType: "radio",
-		userAnswerRadio: "",
-		userPriority: "",
-	},
-	{
-		id: 9,
-		question: "Czy pies ma być towarzyszem do biegania?",
-		answers: ["Tak", "Nie"],
-		inputType: "radio",
-		userAnswerRadio: "",
-		userPriority: "",
-	},
-	{
-		id: 10,
-		question: "Jaka długość sierści psa Ci odpowiada?",
-		answers: ["Krótka", "Średnia", "Długa"],
-		inputType: "radio",
-		userAnswerRadio: "",
-		userPriority: "",
-	},
-	{
-		id: 11,
-		question: "Czy pies będzie często podróżował samochodem?",
-		answers: ["Tak", "Nie"],
-		inputType: "radio",
-		userAnswerRadio: "",
-		userPriority: "",
-	},
-	{
-		id: 12,
-		question: "Czy pies powinien dobrze znosić przebywanie sam w domu?",
-		answers: ["Tak", "Nie"],
-		inputType: "radio",
-		userAnswerRadio: "",
-		userPriority: "",
-	},
-	{
-		id: 13,
-		question: "Czy preferujesz psy, które są ciche?",
-		answers: ["Tak", "Nie ma to znaczenia"],
-		inputType: "radio",
-		userAnswerRadio: "",
-		userPriority: "",
-	},
-	{
-		id: 14,
-		question: "Jakie jest Twoje doświadczenie z opieką nad psami?",
-		answers: ["Brak", "Średnie", "Duże"],
-		inputType: "radio",
-		userAnswerRadio: "",
-		userPriority: "",
-	},
-	{
-		id: 15,
-		question: "Czy pies ma pełnić funkcję stróża?",
-		answers: ["Tak", "Nie"],
-		inputType: "radio",
-		userAnswerRadio: "",
-		userPriority: "",
-	},
-	{
-		id: 16,
-		question: "Czy jesteś gotowy na codzienne szkolenie psa?",
-		answers: ["Tak", "Nie"],
-		inputType: "radio",
-		userAnswerRadio: "",
-		userPriority: "",
-	},
-	{
-		id: 17,
-		question:
-			"Czy wolisz psa bardziej niezależnego czy przywiązanego do właściciela?",
-		answers: ["Niezależnego", "Przywiązanego"],
-		inputType: "radio",
-		userAnswerRadio: "",
-		userPriority: "",
-	},
-	{
-		id: 18,
-		question: "Czy pies powinien dobrze znosić zimno?",
-		answers: ["Tak", "Nie ma to znaczenia"],
-		inputType: "radio",
-		userAnswerRadio: "",
-		userPriority: "",
-	},
-	{
-		id: 19,
-		question: "Jakie jest Twoje środowisko mieszkaniowe?",
-		answers: ["Mieszkanie", "Dom z ogrodem", "Dom bez ogrodu"],
-		inputType: "radio",
-		userAnswerRadio: "",
-		userPriority: "",
-	},
-	{
-		id: 20,
-		question: "Jak bardzo zależy Ci na rasie psa?",
-		answers: ["Bardzo", "Nie ma to znaczenia"],
-		inputType: "radio",
-		userAnswerRadio: "",
-		userPriority: "",
-	},
-];
+import {quizQuestions} from './quizQuestions.js' 
 
 let currentQuestionIndex = 0;
 let barWidth = document.querySelector(".bar-width");
@@ -250,48 +83,39 @@ function loadQuestion(questionIndex) {
 		label.append(span);
 		answersForm.append(label);
 	});
-
-	// resets priority form
-	document.querySelector(".priority-form").reset();
-
-	// restores previously selected priority
-	const priorityInputs = document.querySelectorAll(`input[name="radio-priority"]`);
-	priorityInputs.forEach((input) => {
-		if (input.nextElementSibling.textContent.trim() === currentQuestion.userPriority) {
-			input.checked = true;
-		}
-	});
 }
 
 // loads next quiz question
 function nextQuestion() {
 	// checks checkbox answers
-    if ("userAnswersCheckbox" in quizQuestions[currentQuestionIndex]) {
-        const checkedCheckboxes = document.querySelectorAll(`input[name="checkbox-answer"]:checked`);
-        const priorityChecked = document.querySelector(`input[name="radio-priority"]:checked`);
+	if ("userAnswersCheckbox" in quizQuestions[currentQuestionIndex]) {
+		const checkedCheckboxes = document.querySelectorAll(
+			`input[name="checkbox-answer"]:checked`
+		);
+		const priorityChecked = document.querySelector(
+			`input[name="radio-priority"]:checked`
+		);
 
-        if (checkedCheckboxes.length === 0) {
-            alert("Proszę zaznaczyć odpowiedzi przed pójściem dalej");
-            return;
-        } else if (priorityChecked === null) {
-            alert("Proszę określić wagę pytania przed pójściem dalej");
-            return;
-        }
-    }
+		if (checkedCheckboxes.length === 0) {
+			alert("Proszę zaznaczyć odpowiedzi przed pójściem dalej");
+			return;
+		} else if (priorityChecked === null) {
+			alert("Proszę określić wagę pytania przed pójściem dalej");
+			return;
+		}
+	}
 
-    // checks radio answers
-    if ("userAnswerRadio" in quizQuestions[currentQuestionIndex]) {
-        const checkedRadio = document.querySelector(`input[name="radio-answer"]:checked`);
-        const priorityChecked = document.querySelector(`input[name="radio-priority"]:checked`);
+	// checks radio answers
+	if ("userAnswerRadio" in quizQuestions[currentQuestionIndex]) {
+		const checkedRadio = document.querySelector(
+			`input[name="radio-answer"]:checked`
+		);
 
-        if (checkedRadio === null) {
-            alert("Proszę zaznaczyć odpowiedź przed pójściem dalej");
-            return;
-        } else if (priorityChecked === null) {
-            alert("Proszę określić wagę pytania przed pójściem dalej");
-            return;
-        }
-    }
+		if (checkedRadio === null) {
+			alert("Proszę zaznaczyć odpowiedź przed pójściem dalej");
+			return;
+		}
+	}
 
 	// saves answers
 	if (currentQuestionIndex >= quizQuestions.length - 1) {
@@ -323,7 +147,7 @@ function saveAnswers() {
 		);
 		if (checkboxAnswers.length > 0) {
 			quizQuestions[currentQuestionIndex].userAnswersCheckbox = [];
-			checkboxAnswers.forEach((input) => 
+			checkboxAnswers.forEach((input) =>
 				quizQuestions[currentQuestionIndex].userAnswersCheckbox.push(
 					input.nextElementSibling.textContent.trim()
 				)
@@ -340,15 +164,6 @@ function saveAnswers() {
 			quizQuestions[currentQuestionIndex].userAnswerRadio =
 				radioAnswer.nextElementSibling.textContent.trim();
 		}
-	}
-
-	// saves radio priority to quizQuestions array
-	const radioPriority = document.querySelector(
-		`input[name="radio-priority"]:checked`
-	);
-	if (radioPriority !== null) {
-		quizQuestions[currentQuestionIndex].userPriority =
-			radioPriority.nextElementSibling.textContent.trim();
 	}
 
 	console.log(quizQuestions[currentQuestionIndex]);

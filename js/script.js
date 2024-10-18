@@ -9,7 +9,7 @@ function footerYear() {
 }
 
 // copies e-mail address
-function copyText() {
+function copyMailAdress() {
 	const textarea = document.createElement("textarea");
 	textarea.value = this.textContent;
 	textarea.setAttribute("readonly", "");
@@ -20,7 +20,7 @@ function copyText() {
 	document.execCommand("copy");
 	document.body.removeChild(textarea);
 	// 2sec pop-up
-	const popup = document.querySelector(".pop-up");
+	const popup = document.querySelector(".pop-up-mail");
 	popup.classList.add("show");
 	setTimeout(() => {
 		popup.classList.remove("show");
@@ -60,7 +60,7 @@ function handleNavItemsInAnimation() {
 	});
 }
 
-// adds navItemsIn animation
+// adds navItemsOut animation
 function handleNavItemsOutAnimation() {
 	const btns = document.querySelectorAll(".nav__btn");
 	let delayTime = 0;
@@ -85,7 +85,7 @@ function resetNavAnimations() {
 	});
 }
 
-email.addEventListener("click", copyText);
+email.addEventListener("click", copyMailAdress);
 burgerBtn.addEventListener("click", toggleBurgerMenu);
 screen.orientation.addEventListener("change", resetNavAnimations);
 

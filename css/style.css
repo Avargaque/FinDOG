@@ -166,7 +166,7 @@ button {
   animation: spinForwards 16s infinite linear;
 }
 
-.pop-up {
+.pop-up-mail {
   display: none;
   position: absolute;
   width: 200px;
@@ -182,13 +182,13 @@ button {
   z-index: 1000;
 }
 @media (min-width: 576px) {
-  .pop-up {
+  .pop-up-mail {
     top: 10%;
     left: 80%;
   }
 }
 
-.pop-up.show {
+.pop-up-mail.show {
   display: block;
 }
 
@@ -256,34 +256,34 @@ button {
   background: #430f58;
 }
 
-label.answers__label, label.priority-label {
+label.answers__label {
   position: relative;
   display: flex;
   flex-wrap: wrap;
   cursor: pointer;
   font-weight: 500;
 }
-label.answers__label input, label.priority-label input {
+label.answers__label input {
   position: absolute;
   left: -9999px;
 }
-label.answers__label input:checked + span, label.priority-label input:checked + span {
+label.answers__label input:checked + span {
   background-color: #ebe0f1;
 }
-label.answers__label input:checked + span:before, label.priority-label input:checked + span:before {
+label.answers__label input:checked + span:before {
   box-shadow: inset 0 0 0 0.375em #c7a6d6;
 }
-label.answers__label span, label.priority-label span {
+label.answers__label span {
   display: flex;
   align-items: center;
   padding: 0.75em 1.5em 0.75em 0.75em;
   color: #430f58;
   transition: 0.25s ease;
 }
-label.answers__label span:hover, label.priority-label span:hover {
+label.answers__label span:hover {
   background-color: #f6f1f8;
 }
-label.answers__label span:before, label.priority-label span:before {
+label.answers__label span:before {
   display: flex;
   flex-shrink: 0;
   content: "";
@@ -294,10 +294,10 @@ label.answers__label span:before, label.priority-label span:before {
   transition: 0.25s ease;
   box-shadow: inset 0 0 0 0.125em #c7a6d6;
 }
-label.answers__label input[type=radio] + span, label.priority-label input[type=radio] + span {
+label.answers__label input[type=radio] + span {
   border-radius: 99em;
 }
-label.answers__label input[type=radio] + span:before, label.priority-label input[type=radio] + span:before {
+label.answers__label input[type=radio] + span:before {
   border-radius: 50%;
 }
 
@@ -310,17 +310,6 @@ label.answers__label {
   label.answers__label {
     padding: 1rem 0;
     font-size: 1.4rem;
-  }
-}
-
-label.priority-label {
-  padding: 0;
-  margin: 0;
-  font-size: 1rem;
-}
-@media (min-width: 992px) {
-  label.priority-label {
-    font-size: 1.2rem;
   }
 }
 
@@ -450,7 +439,6 @@ a {
 }
 @media (max-height: 380px) {
   .nav__buttons {
-    height: 150px;
     top: 39px;
   }
 }
@@ -780,56 +768,6 @@ a {
   transform: scale(120%);
 }
 
-.main-breed-selector-priority {
-  display: flex;
-  align-items: flex-start;
-}
-.main-breed-selector-priority .blank-space {
-  display: none;
-  flex: 1;
-}
-@media (min-width: 768px) {
-  .main-breed-selector-priority .blank-space {
-    display: block;
-  }
-}
-.main-breed-selector-priority .priority {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding: 1rem;
-  color: #430f58;
-}
-@media (min-width: 768px) {
-  .main-breed-selector-priority .priority {
-    align-items: flex-end;
-    border-top: 0;
-  }
-}
-@media (min-width: 992px) {
-  .main-breed-selector-priority .priority {
-    padding: 2rem;
-  }
-}
-.main-breed-selector-priority .priority h3 {
-  padding-bottom: 1rem;
-}
-.main-breed-selector-priority .priority .priority-form {
-  display: grid;
-  grid-template-columns: 110px 110px;
-}
-@media (min-width: 768px) {
-  .main-breed-selector-priority .priority .priority-form {
-    grid-template-columns: 80px 80px 80px 80px;
-  }
-}
-@media (min-width: 992px) {
-  .main-breed-selector-priority .priority .priority-form {
-    grid-template-columns: 100px 100px 100px 100px;
-  }
-}
 .breeds {
   height: 100%;
 }

@@ -155,8 +155,8 @@ button {
 // }
 // poza tym klasa nadana na rodzica obrazu - nie wiem jak naprawić rozmiar
 
-// pop-up
-.pop-up {
+// pop-up-mail
+.pop-up-mail {
 	display: none;
 	position: absolute;
 	width: 200px;
@@ -176,7 +176,7 @@ button {
 		left: 80%;
 	}
 }
-.pop-up.show {
+.pop-up-mail.show {
 	display: block;
 }
 
@@ -246,7 +246,7 @@ button {
 }
 
 // quiz labels
-label.answers__label, label.priority-label {
+label.answers__label{
 	position: relative;
 	display: flex;
 	flex-wrap: wrap;
@@ -300,14 +300,5 @@ label.answers__label{
 	@media (min-width: 992px) {
 		padding: 1rem 0;
 		font-size: 1.4rem;
-	}
-}
-label.priority-label{
-	padding: 0;
-	margin: 0;
-	font-size: 1rem;
-
-	@media (min-width: 992px) {
-		font-size: 1.2rem;
 	}
 }
