@@ -518,6 +518,10 @@ a {
   width: 100%;
 }
 
+main {
+  flex: 1;
+}
+
 .main {
   display: flex;
   flex: 1;

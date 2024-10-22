@@ -1,4 +1,246 @@
-import {quizQuestions} from './quizQuestions.js' 
+export const quizQuestions = [
+	{
+		id: 1,
+		question: "Dlaczego chcesz psa? Wybierz jeden najważniejszy powód:",
+		answers: [
+			"By zyskać bliskiego przyjaciela",
+			"By służył jako kompan dla moich dzieci",
+			"By mieć towarzysza do spacerów i innych aktywności fizycznych",
+			"Dla obrony domu i bliskich",
+		],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 2,
+		question: "Czy posiadałeś wcześniej własnego psa na stałe?",
+		answers: ["Nie", "Tak"],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 3,
+		question: "Gdzie będziecie mieszkać?",
+		answers: ["W mieszkaniu", "W domu wolnostojącym"],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 4,
+		question: "Jak duże podwórko pies bedzie miał do dyspozycji?",
+		answers: ["Brak podwórka", "Małe podwórko", "Duże podwórze, ogród"],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 5,
+		question:
+			"Jak duży ruch ma miejsce przy podwórku, na którym przebywać będzie pies?",
+		answers: ["Brak podwórka", "Niewielki ruch", "Duży ruch"],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 6,
+		question: "Gdzie pies będzie mieszkał i spał?",
+		answers: [
+			"Będzie mieszkał i spał w domu",
+			"Będzie mieszkał i spał na zewnątrz",
+			"Różnie",
+		],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 7,
+		question:
+			"Czy w twoim domu dominuje cisza i spokój, czy jest raczej głośno i ruchliwie? Weź pod uwagę domowników, inne zwierzęta, gości czy ogólny hałas.",
+		answers: [
+			"Jest cicho i spokojnie",
+			"Jest głośno i ruchliwie",
+			"Coś pomiędzy",
+		],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 8,
+		question:
+			"Jak bardzo istotne dla ciebie jest, aby pies był przyjazny dzieciom?",
+		answers: ["Kluczowe", "Ważne", "Bez znaczenia"],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 9,
+		question:
+			"Jak często planujesz wychodzić z psem na spacery i jak długie one będą?",
+		answers: [
+			"Wcale lub tylko w celu wypróżnienia",
+			"Często, lecz krótkie",
+			"Rzadko, lecz długie",
+			"Często i długie",
+		],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 10,
+		question:
+			"Preferujesz psa mocno przywiązanego i nieodstępującego cię o krok czy bardziej niezależnego i potrafiącego się sobą zająć?",
+		answers: ["Przywiązanego", "Niezależnego", "Pomiędzy"],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 11,
+		question:
+			"Jak często pies będzie zostawał sam w domu?",
+		answers: ["Nigdy lub prawie nigdy", "Czasami", "Codziennie na wiele godzin"],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 12,
+		question:
+			"Czy otoczenie psa (miejsce zamieszkania, domownicy, styl życia) często będzie ulegać zmianie?",
+		answers: ["Tak", "Nie", "Ciężko powiedzieć"],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 13,
+		question:
+			"Czy posiadasz inne zwierzęta domowe, z którymi pies będzie miał bliską styczność?",
+		answers: ["Tak", "Nie"],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 14,
+		question: "Wolisz, aby pies łatwo ufał nowym osobom?",
+		answers: ["Tak", "Nie", "Bez znaczenia"],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 15,
+		question:
+			"Czy chcesz by twój pies pełnił rolę strażnika ostrzegając przed obcymi?",
+		answers: ["Tak", "Nie, wręcz przeciwnie", "Bez znaczenia"],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 16,
+		question: "Czy przeszkadza ci częste szczekanie psa?",
+		answers: ["Tak", "Trochę", "Nie", "Wręcz przeciwnie!"],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 17,
+		question:
+			"Czy przeszkadza ci kiedy pies bywa uparty i nie zawsze słucha swojego właściciela?",
+		answers: ["Tak", "Trochę", "Nie"],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 18,
+		question: "Czy preferujesz bardzo aktywnego psa, wymagającego dużo ruchu?",
+		answers: [
+			"Tak, wolę psa aktywnego",
+			"Nie, wolę psa mniej wymagającego ruchu",
+			"Bez znaczenia",
+		],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 19,
+		question:
+			"Czy preferujesz psa, który potrzebuje wielu różnych stymulujących zajęć?",
+		answers: [
+			"Tak, chcę psa, z którym można spędzać czas na różne sposoby",
+			"Nie, wolę takiego, który sam się sobą zajmie",
+			"Bez znaczenia",
+		],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 20,
+		question: "Czy preferujesz psa, który uwielbia bawić się z tobą bez końca?",
+		answers: [
+			"Tak",
+			"Nie, wolę takiego, który nie domaga się zabawy",
+			"Bez znaczenia",
+		],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 21,
+		question:
+			"Czy preferujesz psa, który kocha trening i poznawanie nowych sztuczek?",
+		answers: ["Tak", "Nie, wręcz przeciwnie", "Bez znaczenia"],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 22,
+		question: "Czy zależy ci na tym, by pies był długowieczny?",
+		answers: ["Tak, to ważne", "Nie jest to dla mnie istotne"],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 23,
+		question: "Czy przeszkadza ci konieczność częstego czesania psa?",
+		answers: ["Tak", "Nie"],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 24,
+		question:
+			"Czy przeszkadza ci duża ilość sierści zostawianej przez psa?",
+		answers: ["Tak", "Nie"],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 25,
+		question: "Czy przeszkadza ci ślinienie się psa?",
+		answers: ["Tak", "Nie"],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 26,
+		question:
+			"Czy zależy ci na tym, aby dobrana rasa była jak najłatwiej dostępna do pozyskania w naszym kraju?",
+		answers: ["Tak", "Nie jest to dla mnie istotne"],
+		inputType: "radio",
+		userAnswerRadio: "",
+	},
+	{
+		id: 27,
+		question: "Jaki rozmiar psa preferujesz? (Możesz wybrać kilka odpowiedzi)",
+		answers: ["Mały", "Średni", "Duży"],
+		inputType: "checkbox",
+		userAnswersCheckbox: [],
+	},
+	{
+		id: 28,
+		question:
+			"Jaką długość sierści psa preferujesz? (Możesz wybrać kilka odpowiedzi)",
+		answers: ["Krótka", "Średnia", "Długa"],
+		inputType: "checkbox",
+		userAnswersCheckbox: [],
+	},
+];
 
 let currentQuestionIndex = 0;
 let barWidth = document.querySelector(".bar-width");
@@ -39,6 +281,8 @@ function loadQuestion(questionIndex) {
 	// updates question number
 	document.querySelector(".current-question-number").textContent =
 		currentQuestion.id;
+	document.querySelector(".num-of-questions").textContent =
+		quizQuestions.length;
 
 	// updates question
 	document.querySelector(".current-question-text").textContent =
@@ -98,9 +342,6 @@ function nextQuestion() {
 
 		if (checkedCheckboxes.length === 0) {
 			alert("Proszę zaznaczyć odpowiedzi przed pójściem dalej");
-			return;
-		} else if (priorityChecked === null) {
-			alert("Proszę określić wagę pytania przed pójściem dalej");
 			return;
 		}
 	}

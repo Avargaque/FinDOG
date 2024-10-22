@@ -1,0 +1,374 @@
+import { quizQuestions } from "./quiz.js";
+
+// parameters on a scale 1-3
+// 0 if doesn't matter
+
+let lifeExpectancy = 0;
+let availability = 0;
+
+// parameters on a scale 1-3
+// in array because of multiply possible user choices
+
+let height = [];
+let weight = [];
+let coatLength = [];
+
+// parameters on a scale 1-5
+// starts in the middle
+
+let sociability = 3;
+let goodWithKids = 3;
+let goodWithPets = 3;
+let approachToStrangers = 3;
+let playfulness = 3;
+let energy = 3;
+let needsActivity = 3;
+let territorial = 3;
+let barking = 3;
+let training = 3;
+let adapdability = 3;
+let canBeAlone = 3;
+let stubborn = 3;
+
+// parameters on a scale 1-5
+// 0 if doesn't matter
+
+let shedding = 0;
+let combing = 0;
+let drooling = 0;
+
+// functions determining user score for every question
+function question1() {
+	if (quizQuestions[0].userAnswerRadio === quizQuestions[0].answers[0]) {
+		sociability += 1;
+		playfulness += 1;
+	}
+	if (quizQuestions[0].userAnswerRadio === quizQuestions[0].answers[1]) {
+		sociability += 1;
+		goodWithKids += 2;
+		playfulness += 1;
+		energy += 1;
+	}
+	if (quizQuestions[0].userAnswerRadio === quizQuestions[0].answers[2]) {
+		energy += 2;
+		needsActivity += 1;
+		training += 1;
+	}
+	if (quizQuestions[0].userAnswerRadio === quizQuestions[0].answers[3]) {
+		approachToStrangers -= 2;
+		territorial += 2;
+		training += 1;
+		barking += 1;
+		canBeAlone += 2;
+	}
+}
+
+function question2() {
+	if (quizQuestions[1].userAnswerRadio === quizQuestions[1].answers[0]) {
+		sociability += 1;
+		needsActivity -= 1;
+		adapdability += 2;
+		canBeAlone += 1;
+		stubborn -= 2;
+	}
+}
+
+function question3() {
+	if (quizQuestions[2].userAnswerRadio === quizQuestions[2].answers[0]) {
+		approachToStrangers += 1;
+		territorial -= 2;
+		barking -= 2;
+	}
+}
+
+function question4() {
+	if (quizQuestions[3].userAnswerRadio === quizQuestions[3].answers[0]) {
+		energy -= 1;
+		needsActivity -= 1;
+	}
+	if (quizQuestions[3].userAnswerRadio === quizQuestions[3].answers[2]) {
+		energy += 1;
+		needsActivity += 1;
+	}
+}
+
+function question5() {
+	if (quizQuestions[4].userAnswerRadio === quizQuestions[4].answers[0]) {
+		territorial -= 1;
+	}
+	if (quizQuestions[4].userAnswerRadio === quizQuestions[4].answers[2]) {
+		territorial -= 1;
+		approachToStrangers += 2;
+	}
+}
+
+function question6() {
+	if (quizQuestions[5].userAnswerRadio === quizQuestions[5].answers[0]) {
+		sociability += 2;
+	}
+	if (quizQuestions[5].userAnswerRadio === quizQuestions[5].answers[1]) {
+		sociability -= 1;
+		approachToStrangers += 1;
+		barking -= 1;
+		canBeAlone += 2;
+	}
+	if (quizQuestions[5].userAnswerRadio === quizQuestions[5].answers[2]) {
+		canBeAlone += 1;
+	}
+}
+
+function question7() {
+	if (quizQuestions[6].userAnswerRadio === quizQuestions[6].answers[0]) {
+		canBeAlone += 1;
+	}
+	if (quizQuestions[6].userAnswerRadio === quizQuestions[6].answers[1]) {
+		sociability += 1;
+		goodWithKids += 1;
+		goodWithPets += 1;
+		adapdability += 1;
+		territorial -= 1;
+		barking -= 1;
+	}
+}
+
+function question8() {
+	if (quizQuestions[7].userAnswerRadio === quizQuestions[7].answers[0]) {
+		sociability += 2;
+		goodWithKids += 2;
+		playfulness += 2;
+		energy += 1;
+		stubborn -= 1;
+	}
+	if (quizQuestions[7].userAnswerRadio === quizQuestions[7].answers[1]) {
+		sociability += 1;
+		goodWithKids += 1;
+		playfulness += 1;
+	}
+}
+
+function question9() {
+	if (quizQuestions[8].userAnswerRadio === quizQuestions[8].answers[0]) {
+		energy -= 2;
+		needsActivity -= 2;
+	}
+	if (quizQuestions[8].userAnswerRadio === quizQuestions[8].answers[1]) {
+		needsActivity += 1;
+	}
+	if (quizQuestions[8].userAnswerRadio === quizQuestions[8].answers[2]) {
+		needsActivity -= 1;
+	}
+	if (quizQuestions[8].userAnswerRadio === quizQuestions[8].answers[3]) {
+		energy += 2;
+		needsActivity += 2;
+		approachToStrangers += 1;
+	}
+}
+
+function question10() {
+	if (quizQuestions[9].userAnswerRadio === quizQuestions[9].answers[0]) {
+		sociability += 2;
+		canBeAlone -= 1;
+		stubborn -= 1;
+	}
+	if (quizQuestions[9].userAnswerRadio === quizQuestions[9].answers[1]) {
+		sociability -= 2;
+		canBeAlone += 1;
+		stubborn += 1;
+	}
+}
+
+function question11() {
+	if (quizQuestions[10].userAnswerRadio === quizQuestions[10].answers[0]) {
+		canBeAlone -= 1;
+	}
+	if (quizQuestions[10].userAnswerRadio === quizQuestions[10].answers[1]) {
+		canBeAlone += 1;
+	}
+	if (quizQuestions[10].userAnswerRadio === quizQuestions[10].answers[2]) {
+		canBeAlone += 2;
+	}
+}
+
+function question12() {
+	if (quizQuestions[11].userAnswerRadio === quizQuestions[11].answers[0]) {
+		adapdability += 2;
+	}
+	if (quizQuestions[11].userAnswerRadio === quizQuestions[11].answers[1]) {
+		adapdability -= 1;
+	}
+}
+
+function question13() {
+	if (quizQuestions[12].userAnswerRadio === quizQuestions[12].answers[0]) {
+		sociability += 1;
+		goodWithPets += 2;
+		stubborn -= 1;
+	}
+}
+
+function question14() {
+	if (quizQuestions[13].userAnswerRadio === quizQuestions[13].answers[0]) {
+		approachToStrangers += 2;
+		territorial -= 1;
+	}
+	if (quizQuestions[13].userAnswerRadio === quizQuestions[13].answers[1]) {
+		approachToStrangers -= 2;
+	}
+}
+
+function question15() {
+	if (quizQuestions[14].userAnswerRadio === quizQuestions[14].answers[0]) {
+		territorial += 2;
+		barking += 2;
+	}
+	if (quizQuestions[14].userAnswerRadio === quizQuestions[14].answers[1]) {
+		territorial -= 2;
+		barking -= 2;
+	}
+}
+
+function question16() {
+	if (quizQuestions[15].userAnswerRadio === quizQuestions[15].answers[0]) {
+		barking -= 2;
+	}
+	if (quizQuestions[15].userAnswerRadio === quizQuestions[15].answers[1]) {
+		barking -= 1;
+	}
+	if (quizQuestions[15].userAnswerRadio === quizQuestions[15].answers[2]) {
+		barking += 2;
+	}
+}
+
+function question17() {
+	if (quizQuestions[16].userAnswerRadio === quizQuestions[16].answers[0]) {
+		stubborn -= 2;
+	}
+	if (quizQuestions[16].userAnswerRadio === quizQuestions[16].answers[1]) {
+		stubborn -= 1;
+	}
+}
+
+function question18() {
+	if (quizQuestions[17].userAnswerRadio === quizQuestions[17].answers[0]) {
+		energy += 2;
+	}
+	if (quizQuestions[17].userAnswerRadio === quizQuestions[17].answers[1]) {
+		energy -= 2;
+	}
+}
+
+function question19() {
+	if (quizQuestions[18].userAnswerRadio === quizQuestions[18].answers[0]) {
+		needsActivity += 2;
+	}
+	if (quizQuestions[18].userAnswerRadio === quizQuestions[18].answers[1]) {
+		needsActivity -= 2;
+	}
+}
+
+function question20() {
+	if (quizQuestions[19].userAnswerRadio === quizQuestions[19].answers[0]) {
+		playfulness += 2;
+	}
+	if (quizQuestions[19].userAnswerRadio === quizQuestions[19].answers[1]) {
+		playfulness -= 2;
+	}
+}
+
+function question21() {
+	if (quizQuestions[20].userAnswerRadio === quizQuestions[20].answers[0]) {
+		training += 2;
+	}
+	if (quizQuestions[20].userAnswerRadio === quizQuestions[20].answers[1]) {
+		training -= 2;
+	}
+}
+
+function question22() {
+	if (quizQuestions[21].userAnswerRadio === quizQuestions[21].answers[0]) {
+		lifeExpectancy = 3;
+	}
+}
+
+function question23() {
+	if (quizQuestions[22].userAnswerRadio === quizQuestions[22].answers[0]) {
+		combing = 1;
+	}
+}
+
+function question24() {
+	if (quizQuestions[23].userAnswerRadio === quizQuestions[23].answers[0]) {
+		shedding = 1;
+	}
+}
+
+function question25() {
+	if (quizQuestions[24].userAnswerRadio === quizQuestions[24].answers[0]) {
+		drooling = 1;
+	}
+}
+
+function question26() {
+	if (quizQuestions[25].userAnswersRadio === quizQuestions[25].answers[0]) {
+		availability = 3;
+	}
+}
+
+function question27() {
+	if (quizQuestions[26].userAnswersCheckbox.includes(quizQuestions[26].answers[0])) {
+		height.push(1)
+		weight.push(1)
+	}
+	if (quizQuestions[26].userAnswersCheckbox.includes(quizQuestions[26].answers[1])) {
+		height.push(2)
+		weight.push(2)
+	}
+	if (quizQuestions[26].userAnswersCheckbox.includes(quizQuestions[26].answers[2])) {
+		height.push(3)
+		weight.push(3)
+	}
+}
+
+function question28() {
+	if (quizQuestions[27].userAnswersCheckbox.includes(quizQuestions[27].answers[0])) {
+		coatLength.push(1)
+	}
+	if (quizQuestions[27].userAnswersCheckbox.includes(quizQuestions[27].answers[1])) {
+		coatLength.push(2)
+	}
+	if (quizQuestions[27].userAnswersCheckbox.includes(quizQuestions[27].answers[2])) {
+		coatLength.push(3)
+	}
+}
+
+// calculates user score by activating previous functions
+function calculateUserScore(){
+	question1()
+	question2()
+	question3()
+	question4()
+	question5()
+	question6()
+	question7()
+	question8()
+	question9()
+	question10()
+	question11()
+	question12()
+	question13()
+	question14()
+	question15()
+	question16()
+	question17()
+	question18()
+	question19()
+	question20()
+	question21()
+	question22()
+	question23()
+	question24()
+	question25()
+	question26()
+	question27()
+	question28()
+}
