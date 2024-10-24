@@ -111,7 +111,7 @@ export const quizQuestions = [
 	{
 		id: 13,
 		question:
-			"Czy posiadasz inne zwierzęta domowe, z którymi pies będzie miał bliską styczność?",
+			"Czy posiadasz inne duże zwierzęta domowe, z którymi pies będzie miał bliską styczność?",
 		answers: ["Tak", "Nie"],
 		inputType: "radio",
 		userAnswerRadio: "",
@@ -134,15 +134,15 @@ export const quizQuestions = [
 	{
 		id: 16,
 		question: "Czy przeszkadza ci częste szczekanie psa?",
-		answers: ["Tak", "Trochę", "Nie", "Wręcz przeciwnie!"],
+		answers: ["Tak", "Trochę", "Nie", "Wręcz przeciwnie, lubię szczekliwe psy"],
 		inputType: "radio",
 		userAnswerRadio: "",
 	},
 	{
 		id: 17,
 		question:
-			"Czy przeszkadza ci kiedy pies bywa uparty i nie zawsze słucha swojego właściciela?",
-		answers: ["Tak", "Trochę", "Nie"],
+			"Czy przeszkadza ci kiedy pies nie zawsze słucha swojego właściciela, bywa uparty i chce robić co mu się podoba?",
+		answers: ["Bardzo", "Trochę", "Nie"],
 		inputType: "radio",
 		userAnswerRadio: "",
 	},
@@ -248,6 +248,7 @@ const nextQuestionBtns = document.querySelectorAll(".next-question-icon");
 const previousQuestionBtns = document.querySelectorAll(
 	".previous-question-icon"
 );
+const btnResults = document.querySelector('.btn-results')
 
 // loads quiz question
 function loadQuestion(questionIndex) {
@@ -258,7 +259,7 @@ function loadQuestion(questionIndex) {
 	let width = (currentQuestionIndex + 1) * (100 / quizQuestions.length);
 	barWidth.style.width = `${width}%`;
 
-	// removes arrow in first and last questions
+	// removes unnecessary arrows, adds result button
 	if (questionIndex === 0) {
 		previousQuestionBtns.forEach((btn) => {
 			btn.classList.add("invisible");
@@ -272,10 +273,12 @@ function loadQuestion(questionIndex) {
 		nextQuestionBtns.forEach((btn) => {
 			btn.classList.add("invisible");
 		});
+		btnResults.style.display = 'block';
 	} else {
 		nextQuestionBtns.forEach((btn) => {
 			btn.classList.remove("invisible");
 		});
+		btnResults.style.display = 'none';
 	}
 
 	// updates question number
@@ -416,6 +419,7 @@ nextQuestionBtns.forEach((btn) => {
 previousQuestionBtns.forEach((btn) => {
 	btn.addEventListener("click", previousQuestion);
 });
+btnResults.addEventListener('click', saveAnswers)
 
 document.addEventListener("DOMContentLoaded", function () {
 	loadQuestion(currentQuestionIndex);

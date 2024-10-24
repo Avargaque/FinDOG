@@ -1,5 +1,7 @@
 import { quizQuestions } from "./quiz.js";
 
+const btnResults = document.querySelector(".btn-results");
+
 // parameters on a scale 1-3
 // 0 if doesn't matter
 
@@ -59,7 +61,7 @@ function question1() {
 		territorial += 2;
 		training += 1;
 		barking += 1;
-		canBeAlone += 2;
+		canBeAlone += 1;
 	}
 }
 
@@ -69,7 +71,7 @@ function question2() {
 		needsActivity -= 1;
 		adapdability += 2;
 		canBeAlone += 1;
-		stubborn -= 2;
+		stubborn -= 1;
 	}
 }
 
@@ -118,16 +120,14 @@ function question6() {
 }
 
 function question7() {
-	if (quizQuestions[6].userAnswerRadio === quizQuestions[6].answers[0]) {
-		canBeAlone += 1;
-	}
 	if (quizQuestions[6].userAnswerRadio === quizQuestions[6].answers[1]) {
 		sociability += 1;
-		goodWithKids += 1;
-		goodWithPets += 1;
-		adapdability += 1;
+		adapdability += 2;
 		territorial -= 1;
 		barking -= 1;
+	}
+	if (quizQuestions[6].userAnswerRadio === quizQuestions[6].answers[2]) {
+		adapdability += 1;
 	}
 }
 
@@ -161,6 +161,7 @@ function question9() {
 		energy += 2;
 		needsActivity += 2;
 		approachToStrangers += 1;
+		training += 1;
 	}
 }
 
@@ -174,6 +175,7 @@ function question10() {
 		sociability -= 2;
 		canBeAlone += 1;
 		stubborn += 1;
+		training -= 1;
 	}
 }
 
@@ -202,7 +204,9 @@ function question13() {
 	if (quizQuestions[12].userAnswerRadio === quizQuestions[12].answers[0]) {
 		sociability += 1;
 		goodWithPets += 2;
-		stubborn -= 1;
+	}
+	if (quizQuestions[12].userAnswerRadio === quizQuestions[12].answers[1]) {
+		goodWithPets -= 1;
 	}
 }
 
@@ -213,6 +217,7 @@ function question14() {
 	}
 	if (quizQuestions[13].userAnswerRadio === quizQuestions[13].answers[1]) {
 		approachToStrangers -= 2;
+		goodWithPets -= 1;
 	}
 }
 
@@ -220,6 +225,8 @@ function question15() {
 	if (quizQuestions[14].userAnswerRadio === quizQuestions[14].answers[0]) {
 		territorial += 2;
 		barking += 2;
+		goodWithPets -= 1;
+		training += 1;
 	}
 	if (quizQuestions[14].userAnswerRadio === quizQuestions[14].answers[1]) {
 		territorial -= 2;
@@ -309,66 +316,227 @@ function question25() {
 }
 
 function question26() {
-	if (quizQuestions[25].userAnswersRadio === quizQuestions[25].answers[0]) {
+	if (quizQuestions[25].userAnswerRadio === quizQuestions[25].answers[0]) {
 		availability = 3;
 	}
 }
 
 function question27() {
-	if (quizQuestions[26].userAnswersCheckbox.includes(quizQuestions[26].answers[0])) {
-		height.push(1)
-		weight.push(1)
+	if (
+		quizQuestions[26].userAnswersCheckbox.includes(quizQuestions[26].answers[0])
+	) {
+		height.push(1);
+		weight.push(1);
 	}
-	if (quizQuestions[26].userAnswersCheckbox.includes(quizQuestions[26].answers[1])) {
-		height.push(2)
-		weight.push(2)
+	if (
+		quizQuestions[26].userAnswersCheckbox.includes(quizQuestions[26].answers[1])
+	) {
+		height.push(2);
+		weight.push(2);
 	}
-	if (quizQuestions[26].userAnswersCheckbox.includes(quizQuestions[26].answers[2])) {
-		height.push(3)
-		weight.push(3)
+	if (
+		quizQuestions[26].userAnswersCheckbox.includes(quizQuestions[26].answers[2])
+	) {
+		height.push(3);
+		weight.push(3);
 	}
 }
 
 function question28() {
-	if (quizQuestions[27].userAnswersCheckbox.includes(quizQuestions[27].answers[0])) {
-		coatLength.push(1)
+	if (
+		quizQuestions[27].userAnswersCheckbox.includes(quizQuestions[27].answers[0])
+	) {
+		coatLength.push(1);
 	}
-	if (quizQuestions[27].userAnswersCheckbox.includes(quizQuestions[27].answers[1])) {
-		coatLength.push(2)
+	if (
+		quizQuestions[27].userAnswersCheckbox.includes(quizQuestions[27].answers[1])
+	) {
+		coatLength.push(2);
 	}
-	if (quizQuestions[27].userAnswersCheckbox.includes(quizQuestions[27].answers[2])) {
-		coatLength.push(3)
+	if (
+		quizQuestions[27].userAnswersCheckbox.includes(quizQuestions[27].answers[2])
+	) {
+		coatLength.push(3);
 	}
 }
 
-// calculates user score by activating previous functions
-function calculateUserScore(){
-	question1()
-	question2()
-	question3()
-	question4()
-	question5()
-	question6()
-	question7()
-	question8()
-	question9()
-	question10()
-	question11()
-	question12()
-	question13()
-	question14()
-	question15()
-	question16()
-	question17()
-	question18()
-	question19()
-	question20()
-	question21()
-	question22()
-	question23()
-	question24()
-	question25()
-	question26()
-	question27()
-	question28()
+// calculates score for every question by activating question functions
+function calculateQuestionsScore() {
+	question1();
+	question2();
+	question3();
+	question4();
+	question5();
+	question6();
+	question7();
+	question8();
+	question9();
+	question10();
+	question11();
+	question12();
+	question13();
+	question14();
+	question15();
+	question16();
+	question17();
+	question18();
+	question19();
+	question20();
+	question21();
+	question22();
+	question23();
+	question24();
+	question25();
+	question26();
+	question27();
+	question28();
 }
+
+// changes points below 0 and above 5
+function reduceExcessPoints() {
+	if (sociability > 5) {
+		sociability = 5;
+	}
+	if (goodWithKids > 5) {
+		goodWithKids = 5;
+	}
+	if (goodWithPets > 5) {
+		goodWithPets = 5;
+	}
+	if (approachToStrangers > 5) {
+		approachToStrangers = 5;
+	}
+	if (playfulness > 5) {
+		playfulness = 5;
+	}
+	if (energy > 5) {
+		energy = 5;
+	}
+	if (needsActivity > 5) {
+		needsActivity = 5;
+	}
+	if (territorial > 5) {
+		territorial = 5;
+	}
+	if (barking > 5) {
+		barking = 5;
+	}
+	if (training > 5) {
+		training = 5;
+	}
+	if (adapdability > 5) {
+		adapdability = 5;
+	}
+	if (canBeAlone > 5) {
+		canBeAlone = 5;
+	}
+	if (stubborn > 5) {
+		stubborn = 5;
+	}
+
+	if (sociability < 0) {
+		sociability = 0;
+	}
+	if (goodWithKids < 0) {
+		goodWithKids = 0;
+	}
+	if (goodWithPets < 0) {
+		goodWithPets = 0;
+	}
+	if (approachToStrangers < 0) {
+		approachToStrangers = 0;
+	}
+	if (playfulness < 0) {
+		playfulness = 0;
+	}
+	if (energy < 0) {
+		energy = 0;
+	}
+	if (needsActivity < 0) {
+		needsActivity = 0;
+	}
+	if (territorial < 0) {
+		territorial = 0;
+	}
+	if (barking < 0) {
+		barking = 0;
+	}
+	if (training < 0) {
+		training = 0;
+	}
+	if (adapdability < 0) {
+		adapdability = 0;
+	}
+	if (canBeAlone < 0) {
+		canBeAlone = 0;
+	}
+	if (stubborn < 0) {
+		stubborn = 0;
+	}
+}
+
+// resets previous values
+function resetScore() {
+	lifeExpectancy = 0;
+	availability = 0;
+
+	height = [];
+	weight = [];
+	coatLength = [];
+
+	sociability = 3;
+	goodWithKids = 3;
+	goodWithPets = 3;
+	approachToStrangers = 3;
+	playfulness = 3;
+	energy = 3;
+	needsActivity = 3;
+	territorial = 3;
+	barking = 3;
+	training = 3;
+	adapdability = 3;
+	canBeAlone = 3;
+	stubborn = 3;
+
+	shedding = 0;
+	combing = 0;
+	drooling = 0;
+}
+
+// calculates total user score
+function calculateTotalScore() {
+	resetScore();
+	calculateQuestionsScore();
+	reduceExcessPoints();
+}
+
+// shows user score in console
+function showUserScore() {
+	console.log("height: " + height);
+	console.log("weight: " + weight);
+	console.log("coatLength: " + coatLength);
+
+	console.log("sociability: " + sociability);
+	console.log("goodWithKids: " + goodWithKids);
+	console.log("goodWithPets: " + goodWithPets);
+	console.log("approachToStrangers: " + approachToStrangers);
+	console.log("playfulness: " + playfulness);
+	console.log("energy: " + energy);
+	console.log("needsActivity: " + needsActivity);
+	console.log("territorial: " + territorial);
+	console.log("barking: " + barking);
+	console.log("training: " + training);
+	console.log("adapdability: " + adapdability);
+	console.log("canBeAlone: " + canBeAlone);
+	console.log("stubborn: " + stubborn);
+
+	console.log("shedding: " + shedding);
+	console.log("combing: " + combing);
+	console.log("drooling: " + drooling);
+
+	console.log("lifeExpectancy: " + lifeExpectancy);
+	console.log("availability: " + availability);
+}
+
+btnResults.addEventListener("click", calculateTotalScore);
+btnResults.addEventListener("click", showUserScore);

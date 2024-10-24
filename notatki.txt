@@ -47,8 +47,4 @@ NA RAZIE ZROBIĆ CAŁĄ STRONĘ DLA PIERWSZYCH POWIEDZMY 2 GRUP FCI
 
 sprawdzić ile do kazdej cechy mozna stracic/zyskac punktow zeby nie przesadzic
 
-jesli cos jest ponizej 1 to tak jakby 1, jesli cos jest powyzej 5 to tak jakby 5
-
-jesli jakas statystyka nie zmienila sie w quizie to ustawic jako bez znaczenia? (0)
-
-przycisk na koniec quizu wywoluje funkcje calculateUserScore i na razie w konsoli niech pokaze wynik
+podczas sprawdzania cech 0 oznacza, że nie cecha jest nieistotna, więc ująć to w funkcjach odpowiadających za porównanie wyników
