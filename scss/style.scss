@@ -185,8 +185,8 @@ a {
 	}
 }
 
-// header for home page
-.header-home {
+// header for home page and breed selection
+.header {
 	width: 100%;
 	padding-top: 80px;
 
@@ -452,10 +452,11 @@ main{
 			width: 100%;
 			max-width: 600px;
 			margin: 0 auto;
+			color: $main-color;
 
 			.current-question-text {
 				text-align: center;
-				color: $main-color;
+				
 			}
 		}
 
