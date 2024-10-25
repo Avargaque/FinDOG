@@ -192,12 +192,13 @@ button {
   display: block;
 }
 
-.search__input {
-  width: 400px;
+.searchbar__input {
+  width: 250px;
   padding: 12px 24px;
   background-color: transparent;
   transition: transform 250ms ease-in-out;
   font-size: 14px;
+  font-family: inherit;
   line-height: 18px;
   color: #430f58;
   background-color: transparent;
@@ -211,17 +212,22 @@ button {
   backface-visibility: hidden;
   transform-style: preserve-3d;
 }
-.search__input::-moz-placeholder {
+@media (min-width: 576px) {
+  .searchbar__input {
+    width: 400px;
+  }
+}
+.searchbar__input::-moz-placeholder {
   color: color(#430f58 a(0.8));
   text-transform: uppercase;
   letter-spacing: 1.5px;
 }
-.search__input::placeholder {
+.searchbar__input::placeholder {
   color: color(#430f58 a(0.8));
   text-transform: uppercase;
   letter-spacing: 1.5px;
 }
-.search__input:hover, .search__input:focus {
+.searchbar__input:hover, .searchbar__input:focus {
   padding: 12px 0;
   outline: 0;
   border: 1px solid transparent;
@@ -494,28 +500,86 @@ a {
   }
 }
 
-.header {
+.header-home {
   width: 100%;
   padding-top: 80px;
 }
-.header h1 {
+.header-home h1 {
   text-align: center;
   padding: 2rem 0;
   color: #430f58;
 }
 @media (min-width: 1200px) {
-  .header h1 {
+  .header-home h1 {
     padding: 4rem;
   }
 }
-.header .breed-selector-img {
+.header-home .breed-selector-img {
   position: relative;
   width: calc(100vw - 20px);
   max-width: 500px;
   margin: 0 auto;
 }
-.header .breed-selector-img img {
+.header-home .breed-selector-img img {
   width: 100%;
+}
+
+.header-breeds-list {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(100vw - 20px);
+  padding-top: 8rem;
+  padding-bottom: 1rem;
+  background-color: #fff;
+  z-index: 10;
+}
+@media (min-width: 1200px) {
+  .header-breeds-list {
+    width: 1200px;
+  }
+}
+.header-breeds-list h1 {
+  margin: 2rem 0 1rem 0;
+  color: #430f58;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+@media (min-height: 600px) {
+  .header-breeds-list h1 {
+    margin: 4rem 0 2rem 0;
+  }
+}
+.header-breeds-list .search-container {
+  display: flex;
+}
+.header-breeds-list .search-container .search-filter {
+  align-self: center;
+  padding: 1rem;
+  color: #430f58;
+  transition: color 0.3s;
+}
+.header-breeds-list .search-container .search-filter--big {
+  display: none;
+  font-size: 1.6rem;
+}
+@media (min-width: 400px) {
+  .header-breeds-list .search-container .search-filter--big {
+    display: block;
+  }
+}
+.header-breeds-list .search-container .search-filter--small {
+  font-size: 2rem;
+}
+@media (min-width: 400px) {
+  .header-breeds-list .search-container .search-filter--small {
+    display: none;
+  }
+}
+.header-breeds-list .search-container .search-filter:hover {
+  cursor: pointer;
+  color: #c7a6d6;
 }
 
 main {
@@ -841,6 +905,72 @@ main {
   left: -10px;
   border-top: 3px solid #430f58;
   border-left: 3px solid #430f58;
+}
+
+.main-breeds-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 215px;
+}
+.main-breeds-list .breeds-item {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 350px;
+  align-items: center;
+  padding: 1rem;
+  transition: all 0.3s;
+}
+@media (min-width: 400px) and (min-height: 600px) {
+  .main-breeds-list .breeds-item {
+    width: 300px;
+    height: 420px;
+  }
+}
+.main-breeds-list .breeds-item__img {
+  width: 240px;
+  height: 160px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media (min-width: 400px) and (min-height: 600px) {
+  .main-breeds-list .breeds-item__img {
+    width: 280px;
+    height: 186.6666666667px;
+  }
+}
+.main-breeds-list .breeds-item__name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 60px;
+  color: #430f58;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+}
+.main-breeds-list .breeds-item__description {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  font-size: 1.2rem;
+  color: #430f58;
+}
+@media (min-width: 400px) and (min-height: 600px) {
+  .main-breeds-list .breeds-item__description {
+    font-size: 1.4rem;
+  }
+}
+.main-breeds-list .breeds-item:hover {
+  cursor: pointer;
+  background-color: #f4e7fa;
+  scale: 0.95;
 }
 
 .breeds {

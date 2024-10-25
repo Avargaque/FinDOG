@@ -1,8 +1,6 @@
 
 zmienić alerty w quizie na lepszy pop-up
 
-dodać przy ostatnim pytaniu w quizie przycisk kończący quiz i przenoszący do wyników
-
 do naprawienia żeby overlay był tylko na obrazku a nie na tle - ważne w przypadku zmiany koloru tła
 
 da się zrobić w next.js tak, żeby dynamicznie generowały się podstrony każdej rasy bez konieczności tworzenia tylu htmli
@@ -10,11 +8,11 @@ da się zrobić w next.js tak, żeby dynamicznie generowały się podstrony każ
 -----------------------------------------------------------------
 obiekt rasy:
 - name
-- short description (grupa fci + 3 podstawowe pozytywne cechy)
+- short description (krótki opis z podstawowymi cechami)
 
 - about
 - standard (link pl + link eng)
-- trudność (dla nowicjusza)
+- grupa fci
 
 --------------------- m.in. do quizu
 - height (zakres cm)
@@ -45,6 +43,5 @@ cechy: (1-5 pionowe? kreski)
 
 NA RAZIE ZROBIĆ CAŁĄ STRONĘ DLA PIERWSZYCH POWIEDZMY 2 GRUP FCI
 
-sprawdzić ile do kazdej cechy mozna stracic/zyskac punktow zeby nie przesadzic
-
 podczas sprawdzania cech 0 oznacza, że nie cecha jest nieistotna, więc ująć to w funkcjach odpowiadających za porównanie wyników
+

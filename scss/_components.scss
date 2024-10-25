@@ -181,13 +181,15 @@ button {
 }
 
 // breed searchbar
-.search {
+.searchbar {
+
 	&__input {
-		width: 400px;
+		width: 250px;
 		padding: 12px 24px;
 		background-color: transparent;
 		transition: transform 250ms ease-in-out;
 		font-size: 14px;
+		font-family: inherit;
 		line-height: 18px;
 		color: $main-color;
 		background-color: transparent;
@@ -200,6 +202,10 @@ button {
 		transition: all 250ms ease-in-out;
 		backface-visibility: hidden;
 		transform-style: preserve-3d;
+
+		@media (min-width: 576px){
+			width: 400px;
+		}
 
 		&::placeholder {
 			color: color($main-color a(0.8));
