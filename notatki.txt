@@ -45,3 +45,4 @@ NA RAZIE ZROBIĆ CAŁĄ STRONĘ DLA PIERWSZYCH POWIEDZMY 2 GRUP FCI
 
 podczas sprawdzania cech 0 oznacza, że nie cecha jest nieistotna, więc ująć to w funkcjach odpowiadających za porównanie wyników
 
+ogarnąć importy, showAlert funkcja

@@ -27,7 +27,7 @@ export const quizQuestions = [
 	},
 	{
 		id: 4,
-		question: "Jak duże podwórko pies bedzie miał do dyspozycji?",
+		question: "Jak duże podwórko pies będzie miał do dyspozycji?",
 		answers: ["Brak podwórka", "Małe podwórko", "Duże podwórze, ogród"],
 		inputType: "radio",
 		userAnswerRadio: "",
@@ -94,9 +94,12 @@ export const quizQuestions = [
 	},
 	{
 		id: 11,
-		question:
-			"Jak często pies będzie zostawał sam w domu?",
-		answers: ["Nigdy lub prawie nigdy", "Czasami", "Codziennie na wiele godzin"],
+		question: "Jak często pies będzie zostawał sam w domu?",
+		answers: [
+			"Nigdy lub prawie nigdy",
+			"Czasami",
+			"Codziennie na wiele godzin",
+		],
 		inputType: "radio",
 		userAnswerRadio: "",
 	},
@@ -204,8 +207,7 @@ export const quizQuestions = [
 	},
 	{
 		id: 24,
-		question:
-			"Czy przeszkadza ci duża ilość sierści zostawianej przez psa?",
+		question: "Czy przeszkadza ci duża ilość sierści zostawianej przez psa?",
 		answers: ["Tak", "Nie"],
 		inputType: "radio",
 		userAnswerRadio: "",
@@ -242,13 +244,14 @@ export const quizQuestions = [
 	},
 ];
 
-let currentQuestionIndex = 0;
+export let currentQuestionIndex = 0;
 let barWidth = document.querySelector(".bar-width");
 const nextQuestionBtns = document.querySelectorAll(".next-question-icon");
 const previousQuestionBtns = document.querySelectorAll(
 	".previous-question-icon"
 );
-const btnResults = document.querySelector('.btn-results')
+const btnResults = document.querySelector(".btn-results");
+export const answersForm = document.querySelector(".answers");
 
 // loads quiz question
 function loadQuestion(questionIndex) {
@@ -273,12 +276,12 @@ function loadQuestion(questionIndex) {
 		nextQuestionBtns.forEach((btn) => {
 			btn.classList.add("invisible");
 		});
-		btnResults.style.display = 'block';
+		btnResults.style.display = "block";
 	} else {
 		nextQuestionBtns.forEach((btn) => {
 			btn.classList.remove("invisible");
 		});
-		btnResults.style.display = 'none';
+		btnResults.style.display = "none";
 	}
 
 	// updates question number
@@ -293,6 +296,12 @@ function loadQuestion(questionIndex) {
 
 	// deletes previous answers
 	answersForm.innerHTML = "";
+
+	// removes alert
+	if (answersForm.classList.contains("check-alert")) {
+		answersForm.classList.remove("check-alert");
+		answersForm.classList.remove("check-alert--last");
+	}
 
 	// adds new answers
 	currentQuestion.answers.forEach((answer) => {
@@ -334,33 +343,30 @@ function loadQuestion(questionIndex) {
 
 // loads next quiz question
 function nextQuestion() {
-	// checks checkbox answers
+
+	// checks user answers and potentailly shows alert
+	// for checkbox
 	if ("userAnswersCheckbox" in quizQuestions[currentQuestionIndex]) {
 		const checkedCheckboxes = document.querySelectorAll(
 			`input[name="checkbox-answer"]:checked`
 		);
-		const priorityChecked = document.querySelector(
-			`input[name="radio-priority"]:checked`
-		);
 
 		if (checkedCheckboxes.length === 0) {
-			alert("Proszę zaznaczyć odpowiedzi przed pójściem dalej");
+			answersForm.classList.add("check-alert");
 			return;
 		}
 	}
-
-	// checks radio answers
+	// for radio
 	if ("userAnswerRadio" in quizQuestions[currentQuestionIndex]) {
 		const checkedRadio = document.querySelector(
 			`input[name="radio-answer"]:checked`
 		);
 
 		if (checkedRadio === null) {
-			alert("Proszę zaznaczyć odpowiedź przed pójściem dalej");
+			answersForm.classList.add("check-alert");
 			return;
 		}
 	}
-
 	// saves answers
 	if (currentQuestionIndex >= quizQuestions.length - 1) {
 		saveAnswers();
@@ -419,7 +425,7 @@ nextQuestionBtns.forEach((btn) => {
 previousQuestionBtns.forEach((btn) => {
 	btn.addEventListener("click", previousQuestion);
 });
-btnResults.addEventListener('click', saveAnswers)
+btnResults.addEventListener("click", saveAnswers);
 
 document.addEventListener("DOMContentLoaded", function () {
 	loadQuestion(currentQuestionIndex);

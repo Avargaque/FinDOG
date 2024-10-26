@@ -1,4 +1,6 @@
 import { quizQuestions } from "./quiz.js";
+import { answersForm } from "./quiz.js";
+import {currentQuestionIndex} from "./quiz.js";
 
 const btnResults = document.querySelector(".btn-results");
 
@@ -538,5 +540,34 @@ function showUserScore() {
 	console.log("availability: " + availability);
 }
 
+// checks user answers and potentailly shows alert for last question
+function showAlertResultBtn() {
+	// for checkbox
+	if ("userAnswersCheckbox" in quizQuestions[currentQuestionIndex]) {
+		const checkedCheckboxes = document.querySelectorAll(
+			`input[name="checkbox-answer"]:checked`
+		);
+
+		if (checkedCheckboxes.length === 0) {
+			answersForm.classList.add("check-alert");
+			answersForm.classList.add("check-alert--last");
+			return;
+		}
+	}
+	// for radio
+	if ("userAnswerRadio" in quizQuestions[currentQuestionIndex]) {
+		const checkedRadio = document.querySelector(
+			`input[name="radio-answer"]:checked`
+		);
+
+		if (checkedRadio === null) {
+			answersForm.classList.add("check-alert");
+			answersForm.classList.add("check-alert--last");
+			return;
+		}
+	}
+}
+
 btnResults.addEventListener("click", calculateTotalScore);
 btnResults.addEventListener("click", showUserScore);
+btnResults.addEventListener("click", showAlertResultBtn);
