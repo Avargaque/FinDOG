@@ -7,14 +7,13 @@ const btnResults = document.querySelector(".btn-results");
 // parameters on a scale 1-3
 // 0 if doesn't matter
 
-let lifeExpectancy = 0;
+let lifeExpectancy = 0; // -11 // 11 - 13 // 13+
 let availability = 0;
 
 // parameters on a scale 1-3
 // in array because of multiply possible user choices
 
-let height = [];
-let weight = [];
+let size = [];
 let coatLength = [];
 
 // parameters on a scale 1-5
@@ -27,7 +26,7 @@ let approachToStrangers = 3;
 let playfulness = 3;
 let energy = 3;
 let needsActivity = 3;
-let territorial = 3;
+let controlling = 3;
 let barking = 3;
 let training = 3;
 let adapdability = 3;
@@ -60,7 +59,7 @@ function question1() {
 	}
 	if (quizQuestions[0].userAnswerRadio === quizQuestions[0].answers[3]) {
 		approachToStrangers -= 2;
-		territorial += 2;
+		controlling += 2;
 		training += 1;
 		barking += 1;
 		canBeAlone += 1;
@@ -80,7 +79,7 @@ function question2() {
 function question3() {
 	if (quizQuestions[2].userAnswerRadio === quizQuestions[2].answers[0]) {
 		approachToStrangers += 1;
-		territorial -= 2;
+		controlling -= 2;
 		barking -= 2;
 	}
 }
@@ -98,10 +97,10 @@ function question4() {
 
 function question5() {
 	if (quizQuestions[4].userAnswerRadio === quizQuestions[4].answers[0]) {
-		territorial -= 1;
+		controlling -= 1;
 	}
 	if (quizQuestions[4].userAnswerRadio === quizQuestions[4].answers[2]) {
-		territorial -= 1;
+		controlling -= 1;
 		approachToStrangers += 2;
 	}
 }
@@ -125,7 +124,7 @@ function question7() {
 	if (quizQuestions[6].userAnswerRadio === quizQuestions[6].answers[1]) {
 		sociability += 1;
 		adapdability += 2;
-		territorial -= 1;
+		controlling -= 1;
 		barking -= 1;
 	}
 	if (quizQuestions[6].userAnswerRadio === quizQuestions[6].answers[2]) {
@@ -215,7 +214,7 @@ function question13() {
 function question14() {
 	if (quizQuestions[13].userAnswerRadio === quizQuestions[13].answers[0]) {
 		approachToStrangers += 2;
-		territorial -= 1;
+		controlling -= 1;
 	}
 	if (quizQuestions[13].userAnswerRadio === quizQuestions[13].answers[1]) {
 		approachToStrangers -= 2;
@@ -225,13 +224,13 @@ function question14() {
 
 function question15() {
 	if (quizQuestions[14].userAnswerRadio === quizQuestions[14].answers[0]) {
-		territorial += 2;
+		controlling += 2;
 		barking += 2;
 		goodWithPets -= 1;
 		training += 1;
 	}
 	if (quizQuestions[14].userAnswerRadio === quizQuestions[14].answers[1]) {
-		territorial -= 2;
+		controlling -= 2;
 		barking -= 2;
 	}
 }
@@ -327,20 +326,17 @@ function question27() {
 	if (
 		quizQuestions[26].userAnswersCheckbox.includes(quizQuestions[26].answers[0])
 	) {
-		height.push(1);
-		weight.push(1);
+		size.push(1);
 	}
 	if (
 		quizQuestions[26].userAnswersCheckbox.includes(quizQuestions[26].answers[1])
 	) {
-		height.push(2);
-		weight.push(2);
+		size.push(2);
 	}
 	if (
 		quizQuestions[26].userAnswersCheckbox.includes(quizQuestions[26].answers[2])
 	) {
-		height.push(3);
-		weight.push(3);
+		size.push(3);
 	}
 }
 
@@ -417,8 +413,8 @@ function reduceExcessPoints() {
 	if (needsActivity > 5) {
 		needsActivity = 5;
 	}
-	if (territorial > 5) {
-		territorial = 5;
+	if (controlling > 5) {
+		controlling = 5;
 	}
 	if (barking > 5) {
 		barking = 5;
@@ -457,8 +453,8 @@ function reduceExcessPoints() {
 	if (needsActivity < 0) {
 		needsActivity = 0;
 	}
-	if (territorial < 0) {
-		territorial = 0;
+	if (controlling < 0) {
+		controlling = 0;
 	}
 	if (barking < 0) {
 		barking = 0;
@@ -482,8 +478,7 @@ function resetScore() {
 	lifeExpectancy = 0;
 	availability = 0;
 
-	height = [];
-	weight = [];
+	size = [];
 	coatLength = [];
 
 	sociability = 3;
@@ -493,7 +488,7 @@ function resetScore() {
 	playfulness = 3;
 	energy = 3;
 	needsActivity = 3;
-	territorial = 3;
+	controlling = 3;
 	barking = 3;
 	training = 3;
 	adapdability = 3;
@@ -514,8 +509,7 @@ function calculateTotalScore() {
 
 // shows user score in console
 function showUserScore() {
-	console.log("height: " + height);
-	console.log("weight: " + weight);
+	console.log("size: " + size);
 	console.log("coatLength: " + coatLength);
 
 	console.log("sociability: " + sociability);
@@ -525,7 +519,7 @@ function showUserScore() {
 	console.log("playfulness: " + playfulness);
 	console.log("energy: " + energy);
 	console.log("needsActivity: " + needsActivity);
-	console.log("territorial: " + territorial);
+	console.log("controlling: " + controlling);
 	console.log("barking: " + barking);
 	console.log("training: " + training);
 	console.log("adapdability: " + adapdability);

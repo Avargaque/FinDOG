@@ -19,7 +19,7 @@ obiekt rasy:
 - weight (zakres kg)
 - life expectancy (zakres)
 - coat length (krótka, średnia, długa)
-- availability (powszechna - umiarkowana - niska/brak)
+- availability (bardzo niska/brak - umiarkowana - powszechna)
 
 cechy: (1-5 pionowe? kreski)
 0- przywiązanie, towarzyskość/niezależność
@@ -29,20 +29,69 @@ cechy: (1-5 pionowe? kreski)
 0- zabawa
 0- aktywność/energia
 0- nudziarz/musi mieć zajęcie
-0- wartownik/terytorialność
+0- wartownik/terytorialność/kontrola
 0- szczekliwość
 0- trening/sztuczki
 0- przystosowanie do zmian
 0- może być sam
 0- uparty i niezależny/uległy
 0- linienie
-0- czesanie
+0- czesanie, mycie i ogólnie dbanie o sierść
 0- ślinienie
 
 ---------------------------------------------------------------
 
-NA RAZIE ZROBIĆ CAŁĄ STRONĘ DLA PIERWSZYCH POWIEDZMY 2 GRUP FCI
+NA RAZIE ZROBIĆ CAŁĄ STRONĘ DLA PIERWSZEJ GRUPY FCI - POTEM DODAWAĆ KOLEJNE
 
-podczas sprawdzania cech 0 oznacza, że nie cecha jest nieistotna, więc ująć to w funkcjach odpowiadających za porównanie wyników
+podczas sprawdzania cech 0 oznacza, że cecha jest nieistotna, więc ująć to w funkcjach odpowiadających za porównanie wyników
 
 ogarnąć importy, showAlert funkcja
+
+live server z jakiegoś powodu wyświetla footer w quizie poza wrapperem?
+
+na obronę prezentacja np powerpoint 5-10 minut, fajnie jak będzie nagranie z działaniem strony
+
+w wynikach dać wyszukiwarkę i filtr tak jak w liście ras - wyniki psów pokazywać procent zgodności i malejąco od najlepiej dobranych
+
+json importować do mongoDB
+
+może przerobić quiz żeby był w mongoDB?
+
+
+
+
+    {
+        "name": "",
+        "photoSmall": "",
+        "photoBig": "",
+        "shortAbout": "",
+        "longAbout": "",
+        "standardPl": "",
+        "standardEng": "",
+        "fciGroup": "",
+        "heightText": "",
+        "weightText": "",
+        "lifeExpectancyText": "",
+
+        "height": ,
+        "weight": ,
+        "coatLength": ,       
+        "lifeExpectancy": ,
+        "availability": ,
+        "sociability": ,
+        "goodWithKids": ,
+        "goodWithPets": ,
+        "approachToStrangers": ,
+        "playfulness": ,
+        "energy": ,
+        "needsActivity": ,
+        "territorial": ,
+        "barking": ,
+        "training": ,
+        "adaptability": ,
+        "canBeAlone": ,
+        "stubborn": ,
+        "shedding": ,
+        "combing": ,
+        "drooling": 
+    },
