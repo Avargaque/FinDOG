@@ -73,11 +73,11 @@ może przerobić quiz żeby był w mongoDB?
         "weightText": "",
         "lifeExpectancyText": "",
 
-        "height": ,
-        "weight": ,
+        "size": ,
         "coatLength": ,       
         "lifeExpectancy": ,
         "availability": ,
+
         "sociability": ,
         "goodWithKids": ,
         "goodWithPets": ,
@@ -85,7 +85,7 @@ może przerobić quiz żeby był w mongoDB?
         "playfulness": ,
         "energy": ,
         "needsActivity": ,
-        "territorial": ,
+        "controlling": ,
         "barking": ,
         "training": ,
         "adaptability": ,
