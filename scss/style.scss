@@ -228,15 +228,16 @@ a {
 		width: 1200px;
 	}
 
+	@media (max-height: 380px){
+		padding-top: 4rem;
+	}
+
 	h1 {
 		margin: 2rem 0 1rem 0;
 		color: $main-color;
 		text-transform: uppercase;
 		letter-spacing: 1px;
 
-		@media (min-height: 600px){
-			margin: 4rem 0 2rem 0;
-		}
 	}
 
 	.search-container{
@@ -665,20 +666,20 @@ main{
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-	margin-top: 215px;
+	margin-top: 188px;
 
 	.breeds-item{
 		display: flex;
 		flex-direction: column;
 		width: 300px;
-		height: 350px;
+		height: 300px;
 		align-items: center;
 		padding: 1rem;
 		transition: all 0.3s;
 
 		@media (min-width: 400px) and (min-height: 600px){
 			width: 300px;
-			height: 420px;
+			height: 350px;
 		}
 
 		&__img{
@@ -723,81 +724,6 @@ main{
 	.breeds-item:hover{
 		cursor: pointer;
 		background-color: $supporting-color;
-		scale: 0.95;
-	}
-}
-
-.breeds {
-	height: 100%;
-	.header {
-		position: sticky;
-		top: 40px;
-		align-items: center;
-		background-color: $background-color;
-		z-index: 100;
-		h1 {
-			padding: 40px 15px 15px 15px;
-			color: $main-color;
-			text-transform: uppercase;
-			letter-spacing: 1px;
-		}
-		.flex-row {
-			width: 100%;
-			justify-content: center;
-			align-items: center;
-			color: $main-color;
-			p {
-				transition: color 0.3s;
-			}
-			p,
-			.search__container {
-				padding: 15px;
-			}
-			.search__container {
-				margin-right: 97px;
-			}
-			p:hover {
-				cursor: pointer;
-				color: $main-color;
-			}
-		}
-	}
-	.breed {
-		padding: 5px;
-		width: 100%;
-		align-items: center;
-		transition: all 0.3s;
-		.breed-text {
-			flex: 1;
-			padding: 10px;
-			h2 {
-				padding: 15px;
-				color: $main-color;
-				letter-spacing: 1px;
-				text-align: center;
-			}
-			.breed-description {
-				padding: 15px;
-				color: $main-color;
-			}
-			.right {
-				text-align: right;
-			}
-		}
-		.image-container {
-			width: 480px;
-			height: 330px;
-			padding: 15px;
-			overflow: hidden;
-			img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-			}
-		}
-	}
-	.breed:hover {
-		cursor: pointer;
 		scale: 0.95;
 	}
 }
@@ -895,3 +821,10 @@ main{
 		}
 	}
 }
+
+
+
+
+
+
+

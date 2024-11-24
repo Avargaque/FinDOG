@@ -182,7 +182,6 @@ button {
 
 // breed searchbar
 .searchbar {
-
 	&__input {
 		width: 250px;
 		padding: 12px 24px;
@@ -203,7 +202,7 @@ button {
 		backface-visibility: hidden;
 		transform-style: preserve-3d;
 
-		@media (min-width: 576px){
+		@media (min-width: 576px) {
 			width: 400px;
 		}
 
@@ -224,6 +223,142 @@ button {
 		}
 	}
 }
+
+// search filter
+.filter {
+	display: flex; // ustawić none
+	flex-direction: column;
+	position: fixed;
+	width: calc(100vw - 20px);
+	max-width: 1200px;
+	margin-top: 188px;
+	color: $main-color;
+	font-size: 1rem;
+	background-color: $background-color;
+	border: solid 2px $highlight-color;
+	overflow: hidden;
+	z-index: 1000;
+
+	@media (max-height: 380px){
+		margin-top: 150px;
+	}
+
+	@media (min-width: 576px) and (min-height: 500px){
+		font-size: 1.2rem;
+	}
+
+	@media (min-width: 992px){
+		font-size: 1.3rem;
+	}
+
+	.checkbox-container {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+
+		@media (min-width: 576px){
+			justify-content: space-around;
+		}
+
+		.checkbox-item {
+			display: flex;
+			flex-direction: column;
+			padding: 1rem;
+			border: none;
+
+			p{
+				font-weight: 800;
+			}
+
+			input {
+				position: absolute;
+				left: -9999px;
+
+				&:checked + span {
+					background-color: mix($background-color, $highlight-color, 65%);
+					&:before {
+						box-shadow: inset 0 0 0 0.375em $highlight-color;
+					}
+				}
+			}
+			span {
+				display: flex;
+				align-items: center;
+				padding: 0.75em 1.5em 0.75em 0.75em;
+				color: $main-color;
+				cursor: pointer;
+				transition: 0.25s ease;
+				&:hover {
+					background-color: mix(#fff, $highlight-color, 84%);
+				}
+				&:before {
+					display: flex;
+					flex-shrink: 0;
+					content: "";
+					background-color: $background-color;
+					width: 1.5em;
+					height: 1.5em;
+					margin-right: 0.375em;
+					transition: 0.25s ease;
+					box-shadow: inset 0 0 0 0.125em $highlight-color;
+				}
+			}
+		}
+	}
+}
+
+// filter pseudosliders
+.pseudoslider {
+	display: flex;
+	align-items: center;
+  
+	.value {
+	  width: 20px;
+	  height: 20px;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  color: $main-color;
+	  font-size: 1rem;
+	  border: 1px solid $main-color;
+	  border-radius: 50%;
+	  cursor: pointer;
+	  transition: background-color 0.3s, color 0.3s;
+	  z-index: 5;
+  
+	  &:hover {
+		background-color: $main-color;
+		color: $background-color;
+	  }
+  
+	  &.selected {
+		background-color: $main-color;
+		color: $background-color;
+	  }
+	}
+	.line {
+		height: 10px;
+		width: 20px;
+		margin-left: -5px;
+		margin-right: -5px;
+		background-color: $background-color;
+		transition: background-color 0.3s;
+	  }
+	
+	  .line.selected {
+		background-color: $main-color; // Kolor linii między wybranymi wartościami
+	  }
+
+	  .value.hover-range {
+		background-color: $main-color;
+		color: $background-color;
+	  }
+	  
+	  .line.hover-range {
+		background-color: $main-color;
+	  }
+  }
+  
 
 // quiz progress bar
 .questions__progress-bar {
@@ -252,7 +387,7 @@ button {
 }
 
 // quiz labels
-label.answers__label{
+label.answers__label {
 	position: relative;
 	display: flex;
 	flex-wrap: wrap;
@@ -291,14 +426,14 @@ label.answers__label{
 			box-shadow: inset 0 0 0 0.125em $highlight-color;
 		}
 	}
-	input[type="radio"] + span{
+	input[type="radio"] + span {
 		border-radius: 99em;
-			&:before{
-				border-radius: 50%;
-			}
+		&:before {
+			border-radius: 50%;
+		}
 	}
 }
-label.answers__label{
+label.answers__label {
 	padding: 0.5rem 0;
 	margin-bottom: 0.375em;
 	font-size: 1.2rem;
