@@ -1,3 +1,4 @@
+w wersji mobilnej źle się odznacza filtry (tak jakby zostawał hover po kliknięciu), nie wiem czy da się coś zrobić
 
 do naprawienia żeby overlay był tylko na obrazku a nie na tle - ważne w przypadku zmiany koloru tła
 
@@ -49,7 +50,7 @@ live server z jakiegoś powodu wyświetla footer w quizie poza wrapperem?
 
 na obronę prezentacja np powerpoint 5-10 minut, fajnie jak będzie nagranie z działaniem strony
 
-w wynikach dać wyszukiwarkę i filtr tak jak w liście ras - wyniki psów pokazywać procent zgodności i malejąco od najlepiej dobranych
+w wynikach dać wyszukiwarkę i filtr tak jak w liście ras - wyniki psów powinny pokazywać procent zgodności i malejąco od najlepiej dobranych
 
 
 
