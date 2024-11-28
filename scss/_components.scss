@@ -215,7 +215,7 @@ button {
 // breed searchbar
 .searchbar {
 	&__input {
-		width: 250px;
+		width: 200px;
 		padding: 12px 24px;
 		background-color: transparent;
 		transition: transform 250ms ease-in-out;
@@ -233,6 +233,10 @@ button {
 		transition: all 250ms ease-in-out;
 		backface-visibility: hidden;
 		transform-style: preserve-3d;
+
+		@media (min-width: 450px) {
+			width: 300px;
+		}
 
 		@media (min-width: 576px) {
 			width: 400px;
@@ -256,7 +260,7 @@ button {
 	}
 }
 
-// search filter
+// filter field
 .filter {
 	display: none;
 	flex-direction: column;
@@ -266,15 +270,15 @@ button {
 	max-width: 1200px;
 	margin-top: 188px;
 	color: $main-color;
-	font-size: 1rem;
+	font-size: 0.9rem;
 	background-color: $background-color;
 	border: solid 2px $highlight-color;
 	overflow-y: auto;
-	z-index: 1000;
+	z-index: 100;
 
 	@media (max-height: 380px) {
-		max-height: calc(100vh - 160px);
-		margin-top: 150px;
+		max-height: calc(100vh - 150px);
+		margin-top: 140px;
 	}
 
 	@media (min-width: 576px) and (min-height: 500px) {
@@ -285,24 +289,19 @@ button {
 		font-size: 1.3rem;
 	}
 
+	p {
+		font-weight: 800;
+	}
+
 	.checkbox-container {
 		display: flex;
-		justify-content: center;
+		justify-content: space-around;
 		flex-wrap: wrap;
-
-		@media (min-width: 576px) {
-			justify-content: space-around;
-		}
-
 		.checkbox-item {
 			display: flex;
 			flex-direction: column;
 			padding: 1rem;
 			border: none;
-
-			p {
-				font-weight: 800;
-			}
 
 			input {
 				position: absolute;
@@ -365,9 +364,39 @@ button {
 			}
 		}
 	}
+
+	.buttons-container{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+
+		.apply, .reset{
+			width: 200px;
+			height: 40px;
+			margin: 5px;
+			color: $main-color;
+			font-weight: 600;
+			letter-spacing: 1px;
+			cursor: pointer;
+		}
+
+		.reset{
+			background-color: $supporting-color;
+		}
+
+		.apply{
+			background-color: $highlight-color;
+		}
+	
+		.apply:hover, .reset:hover{
+			background-color: $main-color;
+			color: $background-color
+		}
+	}
 }
 
-// filter pseudoslider
+// filter field pseudoslider
 .pseudoslider {
 	display: flex;
 	align-items: center;

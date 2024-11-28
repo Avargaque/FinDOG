@@ -3,6 +3,12 @@ const burgerBtn = document.querySelector(".nav__burger-menu");
 const navBtns = document.querySelector(".nav__buttons");
 const filterBtns = document.querySelectorAll(".search-filter");
 const filter = document.querySelector(".filter");
+const resetFilterBtn = document.querySelector(".reset");
+const applyFilterBtn = document.querySelector(".apply");
+
+let dogData = []; // Wszystkie psy z JSON
+let selectedFilters = {}; // Filtry pseudosliderów
+let selectedCheckboxes = {}; // Filtry checkboxów
 
 // fetches dog breeds
 async function fetchDogBreeds() {
@@ -71,6 +77,17 @@ function toggleFilter() {
 		filter.style.display = "none";
 	} else {
 		filter.style.display = "flex";
+	}
+}
+
+// hides filter after clicking outside of it
+function hideFilter(event) {
+	if (
+		!filter.contains(event.target) &&
+		!Array.from(filterBtns).some((btn) => btn.contains(event.target))
+	) {
+		filter.style.display = "none";
+		document.removeEventListener("click", hideFilter);
 	}
 }
 
@@ -161,8 +178,20 @@ email.addEventListener("click", copyMailAdress);
 burgerBtn.addEventListener("click", toggleBurgerMenu);
 screen.orientation.addEventListener("change", resetNavAnimations);
 filterBtns.forEach((btn) => {
-	btn.addEventListener("click", toggleFilter);
+	btn.addEventListener("click", (event) => {
+		toggleFilter();
+
+		// adds event listerner if filter is active
+		if (filter.style.display === "flex") {
+			document.addEventListener("click", hideFilter);
+		}
+	});
 });
+if (applyFilterBtn){
+	applyFilterBtn.addEventListener("click", toggleFilter);
+}
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
 	if (window.location.href.includes("breeds-list.html")) {
@@ -175,10 +204,6 @@ document.addEventListener("DOMContentLoaded", function () {
 // ogarnąć burdel niżej
 
 document.addEventListener("DOMContentLoaded", () => {
-	let dogData = []; // Wszystkie psy z JSON
-	let selectedFilters = {}; // Filtry pseudosliderów
-	let selectedCheckboxes = {}; // Filtry checkboxów
-
 	// Ładowanie danych psów
 	async function fetchDogBreeds() {
 		try {
@@ -199,7 +224,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		container.innerHTML = ""; // Czyszczenie kontenera
 
 		if (dogs.length === 0) {
-			container.innerHTML = "<p>Brak wyników dla wybranych filtrów.</p>";
+			container.innerHTML =
+				"<p class='breeds-item__description'>Brak wyników dla wybranych filtrów.</p>";
 			return;
 		}
 
@@ -399,8 +425,42 @@ document.addEventListener("DOMContentLoaded", () => {
 		return null;
 	}
 
+	// resets filters
+function resetFilters() {
+	// Resetowanie pseudosliderów
+	const pseudosliders = document.querySelectorAll(".pseudoslider");
+	pseudosliders.forEach((slider) => {
+	  const values = slider.querySelectorAll(".value");
+	  const lines = slider.querySelectorAll(".line");
+  
+	  // Usuwanie klas "selected"
+	  values.forEach((value) => value.classList.remove("selected"));
+	  lines.forEach((line) => line.classList.remove("selected"));
+	});
+  
+	// Czyszczenie obiektu selectedFilters
+	selectedFilters = {};
+  
+	// Resetowanie checkboxów
+	const checkboxes = document.querySelectorAll(
+	  ".checkbox-container input[type='checkbox']"
+	);
+	checkboxes.forEach((checkbox) => {
+	  checkbox.checked = false; // Odznaczanie checkboxów
+	});
+  
+	// Czyszczenie obiektu selectedCheckboxes
+	selectedCheckboxes = {};
+  
+	// Przywrócenie pełnej listy psów
+	renderDogs(dogData);
+  }
+
 	// Inicjalizacja funkcji
 	fetchDogBreeds();
 	handlePseudosliderChanges();
 	handleCheckboxChanges();
+	if (resetFilterBtn){
+		resetFilterBtn.addEventListener("click", resetFilters)
+	}
 });
