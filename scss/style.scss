@@ -12,6 +12,7 @@
 
 html {
 	font-size: 62.5%;
+	overflow-y: scroll;
 }
 
 body {
@@ -22,6 +23,11 @@ body {
 	font-optical-sizing: auto;
 	font-weight: 400;
 	font-style: normal;
+	overflow: hidden;
+}
+
+body.loaded{
+	overflow: auto;
 }
 
 a {
@@ -189,7 +195,7 @@ a {
 }
 
 // header for home page and breed selection
-.header {
+.header-home, .header-breed-selector {
 	width: 100%;
 	padding-top: 80px;
 
@@ -252,13 +258,13 @@ a {
 			align-self: center;
 			padding: 1rem;
 			color: $main-color;
-			font-size: 1.5rem;
+			font-size: 1.4rem;
 			transition: color 0.3s;
 
 			@media (min-width: 400px) {
-				font-size: 2rem;
-			}	
-			p{
+				font-size: 1.8rem;
+			}
+			p {
 				margin-right: 0.5rem;
 			}
 		}

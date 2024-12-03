@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>FinDOG</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+			rel="stylesheet"
+		/>
+		<script
+			src="https://kit.fontawesome.com/0b9b37f370.js"
+			crossorigin="anonymous"
+		></script>
+		<link rel="stylesheet" href="./css/style.css" />
+	</head>
+	<body>
+		<div class="bg bg--left">
+			<div class="bg__1">
+				<img class="bg-bone" src="./img/bone.png" alt="mała kość" />
+			</div>
+			<div class="bg__2">
+				<img class="bg-bone" src="./img/bone.png" alt="mała kość" />
+			</div>
+			<div class="bg__3">
+				<img class="bg-bone" src="./img/bone.png" alt="mała kość" />
+			</div>
+			<div class="bg__4">
+				<img class="bg-bone" src="./img/bone.png" alt="mała kość" />
+			</div>
+			<div class="color-overlay-transparent"></div>
+		</div>
+		<div class="bg bg--right">
+			<div class="bg__1">
+				<img class="bg-bone" src="./img/bone.png" alt="mała kość" />
+			</div>
+			<div class="bg__2">
+				<img class="bg-bone" src="./img/bone.png" alt="mała kość" />
+			</div>
+			<div class="bg__3">
+				<img class="bg-bone" src="./img/bone.png" alt="mała kość" />
+			</div>
+			<div class="bg__4">
+				<img class="bg-bone" src="./img/bone.png" alt="mała kość" />
+			</div>
+			<div class="color-overlay-transparent"></div>
+		</div>
+		<div class="wrapper">
+			<nav class="nav">
+				<div class="nav__logo">
+					<a href="index.html"
+						><img src="./img/logo.svg" alt="logo FinDOG"
+					/></a>
+				</div>
+				<div class="nav__burger-container">
+					<svg
+						class="nav__burger-menu nav__burger-menu--inactive"
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="icon icon-tabler icons-tabler-outline icon-tabler-menu-3"
+					>
+						<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+						<path d="M10 6h10" />
+						<path d="M4 12h16" />
+						<path d="M7 12h13" />
+						<path d="M4 18h10" />
+					</svg>
+				</div>
+				<div class="nav__buttons">
+					<button
+						class="nav__btn nav__btn--inactive"
+						onclick="location.href='./breeds-list.html'"
+					>
+						lista ras
+					</button>
+					<button
+						class="nav__btn nav__btn--inactive"
+						onclick="location.href='./breed-selector.html'"
+					>
+						quiz doboru psa
+					</button>
+					<button
+						class="nav__btn nav__btn--inactive"
+						onclick="location.href='./results.html'"
+					>
+						wyniki quizu
+					</button>
+				</div>
+			</nav>
+			<header class="">
+				<h1 id="breed-name">Ładowanie...</h1>
+			</header>
+			<main>
+				<img id="breed-image" src="" alt="">
+				<p id="breed-short-about"></p>
+				<p id="breed-long-about"></p>
+				<p id="breed-height"></p>
+				<p id="breed-weight"></p>
+				<p id="breed-life-expectancy"></p>
+				<p id="breed-fci-group"></p>
+		
+				<p>Standardy:</p>
+				<a id="standard-pl" target="_blank">Standard PL</a> |
+				<a id="standard-eng" target="_blank">Standard ENG</a>
+		
+				<ul id="breed-characteristics"></ul>
+			</main>
+			<footer class="footer">
+				<div class="footer__item footer__item--media-info">
+					<div>
+						<p class="footer__item-media-text">
+							Zaobserwuj nas w social mediach:
+						</p>
+					</div>
+					<div class="footer__item-media-icons">
+						<div class="media-icon">
+							<i class="fa-brands fa-facebook"></i>
+						</div>
+						<div class="media-icon">
+							<i class="fa-brands fa-instagram"></i>
+						</div>
+						<div class="media-icon">
+							<i class="fa-brands fa-x-twitter"></i>
+						</div>
+					</div>
+				</div>
+				<div class="footer__item footer__item--email-info">
+					<p class="footer__item-email">Masz pytania? Skontaktuj się z nami!</p>
+					<p class="footer__item-email email">
+						<i class="fa-solid fa-envelope"></i>kontakt@xxx.pl
+					</p>
+				</div>
+				<div class="footer__item footer__item--company-info">
+					<p>&copy; <span id="currentYear"></span> | FinDOG</p>
+				</div>
+				<div class="pop-up-mail">
+					<p>Skopiowano adres e-mail</p>
+				</div>
+			</footer>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+		<script type="module" src="/js/script.js"></script>
+	</body>
+</html>

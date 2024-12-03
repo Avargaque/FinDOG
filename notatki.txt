@@ -1,8 +1,12 @@
+zrobić animacje w gsap
+
 w wersji mobilnej źle się odznacza filtry (tak jakby zostawał hover po kliknięciu), nie wiem czy da się coś zrobić
 
 do naprawienia żeby overlay był tylko na obrazku a nie na tle - ważne w przypadku zmiany koloru tła
 
 da się zrobić w next.js tak, żeby dynamicznie generowały się podstrony każdej rasy bez konieczności tworzenia tylu htmli
+
+dodać atrybuty do kilku zdjęć
 
 -----------------------------------------------------------------
 obiekt rasy:
@@ -45,8 +49,6 @@ NA RAZIE ZROBIĆ CAŁĄ STRONĘ DLA PIERWSZEJ GRUPY FCI - POTEM DODAWAĆ KOLEJNE
 podczas sprawdzania cech 0 oznacza, że cecha jest nieistotna, więc ująć to w funkcjach odpowiadających za porównanie wyników
 
 ogarnąć importy, showAlert funkcja
-
-live server z jakiegoś powodu wyświetla footer w quizie poza wrapperem?
 
 na obronę prezentacja np powerpoint 5-10 minut, fajnie jak będzie nagranie z działaniem strony
 

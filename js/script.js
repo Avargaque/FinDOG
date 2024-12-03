@@ -1,3 +1,19 @@
+import { gsap } from "https://cdn.jsdelivr.net/npm/gsap@3.12.2/index.js";
+
+const animationTime = 0.7;
+const animationTimeMs = 700;
+// function to set OUT animations
+function gsapInAnimations() {
+
+}
+
+// function to set IN animations
+function gsapOutAnimations() {
+
+}
+
+//////////////////////////////////////////////////////////// VARIABLES
+
 const email = document.querySelector(".email");
 const burgerBtn = document.querySelector(".nav__burger-menu");
 const navBtns = document.querySelector(".nav__buttons");
@@ -5,10 +21,14 @@ const filterBtns = document.querySelectorAll(".search-filter");
 const filter = document.querySelector(".filter");
 const resetFilterBtn = document.querySelector(".reset");
 const applyFilterBtn = document.querySelector(".apply");
+const searchInput = document.querySelector(".searchbar__input");
+const pseudosliders = document.querySelectorAll(".pseudoslider");
 
-let dogData = []; // Wszystkie psy z JSON
-let selectedFilters = {}; // Filtry pseudosliderów
-let selectedCheckboxes = {}; // Filtry checkboxów
+let dogData = []; // all dogs from JSON
+let selectedFilters = {}; // selected pseudoslider filters
+let selectedCheckboxes = {}; // selected checkbox filters
+
+////////////////////////////////////////////////////////////// FUNCTIONS
 
 // fetches dog breeds
 async function fetchDogBreeds() {
@@ -17,28 +37,14 @@ async function fetchDogBreeds() {
 		if (!response.ok) {
 			throw new Error(`HTTP error! Status: ${response.status}`);
 		}
-		const dogs = await response.json();
-
-		// finds container for dog breeds
-		const container = document.getElementById("main-breeds-list");
-		if (!container) {
-			throw new Error("Container 'main-breeds-list' not found!");
-		}
-
-		// creates HTML for each dog breed
-		dogs.forEach((dog) => {
-			const dogElement = createDogForBreedsList(dog);
-			container.appendChild(dogElement);
-		});
+		dogData = await response.json();
+		renderDogs(dogData);
 	} catch (error) {
 		console.error("Error loading dog breeds:", error);
 	}
-
-	// sorts results alphabetically
-	sortBreedsAlphabetically();
 }
 
-// creates HTML for a single dog in breed list
+// creates HTML code for a single dog in breed list
 function createDogForBreedsList(dog) {
 	const dogElement = document.createElement("div");
 	dogElement.className = "breeds-item";
@@ -71,12 +77,30 @@ function sortBreedsAlphabetically() {
 	items.forEach((item) => container.appendChild(item));
 }
 
+// shows breed details							- DOKOŃCZYĆ
+function showBreed(){
+	const breedsItems = document.querySelectorAll(".breeds-item")
+	breedsItems.forEach((item) => {
+		item.addEventListener("click", () => {
+			const itemName = item.querySelector('.breeds-item__name').textContent
+
+			dogData.forEach((dog) => {
+				if (dog.name === itemName){
+					console.log(itemName);
+				}
+			})
+		})
+	})
+}
+
 // toggles filter button
 function toggleFilter() {
-	if (filter.style.display === "flex") {
-		filter.style.display = "none";
+	if (filter.style.opacity === "1") {
+		filter.style.pointerEvents = "none";
+		filter.style.opacity = "0";
 	} else {
-		filter.style.display = "flex";
+		filter.style.pointerEvents = "auto";
+		filter.style.opacity = "1";
 	}
 }
 
@@ -86,7 +110,8 @@ function hideFilter(event) {
 		!filter.contains(event.target) &&
 		!Array.from(filterBtns).some((btn) => btn.contains(event.target))
 	) {
-		filter.style.display = "none";
+		filter.style.pointerEvents = "none";
+		filter.style.opacity = "0";
 		document.removeEventListener("click", hideFilter);
 	}
 }
@@ -174,293 +199,291 @@ function resetNavAnimations() {
 	});
 }
 
+// renders dog breeds and shows them in main
+function renderDogs(dogs) {
+	const container = document.getElementById("main-breeds-list");
+	container.innerHTML = "";
+
+	if (dogs.length === 0) {
+		container.innerHTML =
+			"<p class='breeds-item__description'>Brak wyników dla wybranych filtrów.</p>";
+		return;
+	}
+
+	// creates HTML element for each dog
+	dogs.forEach((dog) => {
+		const dogElement = createDogForBreedsList(dog);
+		container.appendChild(dogElement);
+	});
+
+	console.log("Rendered dogs:", dogs);
+
+	sortBreedsAlphabetically();
+}
+
+// filters dogs in searchbar
+function filterDogSearch(query) {
+	let filteredDogs = dogData.filter((dog) => {
+		return dog.name.toLowerCase().includes(query);
+	});
+
+	renderDogs(filteredDogs);
+}
+
+// handles filter pseudosliders
+function handlePseudosliderChanges() {
+	pseudosliders.forEach((slider) => {
+		const sliderId = slider.getAttribute("data-id");
+		let rangeStart = null;
+		let rangeEnd = null;
+
+		const values = slider.querySelectorAll(".value");
+		const lines = slider.querySelectorAll(".line");
+
+		values.forEach((value) => {
+			value.addEventListener("click", () =>
+				handleValueClick(value, values, lines, sliderId)
+			);
+			value.addEventListener("mouseenter", () =>
+				handleValueHover(value, values, lines, rangeStart, rangeEnd)
+			);
+			value.addEventListener("mouseleave", () =>
+				updateSelection(values, lines, rangeStart, rangeEnd)
+			);
+		});
+
+		// handles selecting a value
+		function handleValueClick(value, values, lines, sliderId) {
+			const clickedValue = parseInt(value.getAttribute("data-value"), 10);
+
+			if (rangeStart === null && rangeEnd === null) {
+				rangeStart = clickedValue;
+				rangeEnd = clickedValue;
+			} else if (rangeStart !== null && rangeEnd !== null) {
+				if (clickedValue === rangeStart || clickedValue === rangeEnd) {
+					resetRange();
+				} else if (clickedValue > rangeStart && clickedValue < rangeEnd) {
+					resetRange();
+				} else {
+					rangeStart = Math.min(clickedValue, rangeStart, rangeEnd);
+					rangeEnd = Math.max(clickedValue, rangeStart, rangeEnd);
+				}
+			} else {
+				rangeEnd = clickedValue;
+				if (rangeEnd < rangeStart) {
+					[rangeStart, rangeEnd] = [rangeEnd, rangeStart];
+				}
+			}
+
+			updateSelection(values, lines, rangeStart, rangeEnd);
+
+			if (rangeStart !== null && rangeEnd !== null) {
+				selectedFilters[sliderId] = { min: rangeStart, max: rangeEnd };
+			} else {
+				delete selectedFilters[sliderId];
+			}
+
+			filterDogs();
+		}
+
+		// handles hovering over a value
+		function handleValueHover(value, values, lines, rangeStart, rangeEnd) {
+			if (rangeStart === null || rangeEnd === null) return;
+		
+			// parses hovered element to int
+			const valueData = parseInt(value.getAttribute("data-value"), 10);
+		
+			// compares hovered element to selected range
+			const min = Math.min(rangeStart, rangeEnd, valueData);
+			const max = Math.max(rangeStart, rangeEnd, valueData);
+		
+			// updates the visuals
+			updateSelection(values, lines, min, max);
+		}
+		
+		// resets range of chosen values
+		function resetRange() {
+			rangeStart = null;
+			rangeEnd = null;
+			delete selectedFilters[sliderId];
+			updateSelection(values, lines, null, null);
+		}
+	});
+}
+
+// visually updates slider selection
+function updateSelection(values, lines, rangeStart, rangeEnd) {
+	// removes previous selections
+	values.forEach((v) => {
+		v.classList.remove("selected");
+	});
+	lines.forEach((l) => l.classList.remove("selected"));
+
+	// returns if range is not selected
+	if (rangeStart === null || rangeEnd === null) return;
+
+	const min = Math.min(rangeStart, rangeEnd);
+	const max = Math.max(rangeStart, rangeEnd);
+
+	values.forEach((v) => {
+		const val = parseInt(v.getAttribute("data-value"), 10);
+		if (val >= min && val <= max) {
+			v.classList.add("selected");
+		}
+	});
+
+	lines.forEach((line, idx) => {
+		const lineValue = idx + 1;
+		if (lineValue >= min && lineValue < max) {
+			line.classList.add("selected");
+		}
+	});
+}
+
+// handles filter checkboxes
+function handleCheckboxChanges() {
+	const checkboxes = document.querySelectorAll(
+		".checkbox-container input[type='checkbox']"
+	);
+
+	checkboxes.forEach((checkbox) => {
+		checkbox.addEventListener("change", () => {
+			const group = checkbox.id.split("-")[0];
+			const value = checkbox.id.split("-")[1]; 
+
+			if (!selectedCheckboxes[group]) {
+				selectedCheckboxes[group] = new Set();
+			}
+
+			if (checkbox.checked) {
+				selectedCheckboxes[group].add(value);
+			} else {
+				selectedCheckboxes[group].delete(value);
+			}
+
+			filterDogs();
+		});
+	});
+}
+
+// changes checkbox filters into dog properties
+function mapCheckboxGroupToDogProperty(group, dog) {
+	if (group === "size") {
+		return dog.size === 1 ? "s" : dog.size === 2 ? "m" : "l";
+	} else if (group === "coat") {
+		return dog.coatLength === 1 ? "s" : dog.coatLength === 2 ? "m" : "l";
+	} else if (group === "availability") {
+		return dog.availability === 1 ? "s" : dog.availability === 2 ? "m" : "l";
+	}
+	return null;
+}
+
+// filters dog breeds
+function filterDogs() {
+	let filteredDogs = dogData;
+
+	// filters sliders
+	for (const [key, range] of Object.entries(selectedFilters)) {
+		filteredDogs = filteredDogs.filter((dog) => {
+			return dog[key] >= range.min && dog[key] <= range.max;
+		});
+	}
+
+	// filters checkboxes
+	for (const [group, values] of Object.entries(selectedCheckboxes)) {
+		if (values.size > 0) {
+			filteredDogs = filteredDogs.filter((dog) => {
+				const dogValue = mapCheckboxGroupToDogProperty(group, dog);
+				return values.has(dogValue);
+			});
+		}
+	}
+
+	// shows all dogs if no filters selected
+	if (
+		Object.keys(selectedFilters).length === 0 &&
+		Object.keys(selectedCheckboxes).length === 0
+	) {
+		filteredDogs = dogData;
+	}
+
+	renderDogs(filteredDogs);
+}
+
+// resets filters
+function resetFilters() {
+	// resets sliders
+	pseudosliders.forEach((slider) => {
+		const sliderId = slider.getAttribute("data-id");
+		selectedFilters[sliderId] = { min: null, max: null };
+
+		const values = slider.querySelectorAll(".value");
+		const lines = slider.querySelectorAll(".line");
+
+		values.forEach((value) => value.classList.remove("selected"));
+		lines.forEach((line) => line.classList.remove("selected"));
+	});
+
+	// resets checkboxes
+	const checkboxes = document.querySelectorAll(
+		".checkbox-container input[type='checkbox']"
+	);
+	checkboxes.forEach((checkbox) => {
+		checkbox.checked = false;
+	});
+
+	// clears data
+	selectedCheckboxes = {};
+	selectedFilters = {};
+
+	filterDogs();
+	renderDogs(dogData);
+}
+////////////////////////////////////////////////////////////// EVENT LISTENERS
+
 email.addEventListener("click", copyMailAdress);
 burgerBtn.addEventListener("click", toggleBurgerMenu);
 screen.orientation.addEventListener("change", resetNavAnimations);
 filterBtns.forEach((btn) => {
-	btn.addEventListener("click", (event) => {
+	btn.addEventListener("click", () => {
 		toggleFilter();
 
 		// adds event listerner if filter is active
-		if (filter.style.display === "flex") {
+		if (filter.style.opacity === "1") {
 			document.addEventListener("click", hideFilter);
 		}
 	});
 });
-if (applyFilterBtn){
+if (applyFilterBtn) {
 	applyFilterBtn.addEventListener("click", toggleFilter);
 }
+if (resetFilterBtn) {
+	resetFilterBtn.addEventListener("click", resetFilters);
+}
+if (searchInput) {
+	searchInput.addEventListener("input", () => {
+		const query = this.value.toLowerCase();
+		filterDogSearch(query);
+	});
+}
 
+window.addEventListener("load", () => {
+	document.body.classList.add("loaded");
+  });
 
+////////////////////////////////////////////////////////// DOM
 
 document.addEventListener("DOMContentLoaded", function () {
+	gsapInAnimations();
+
 	if (window.location.href.includes("breeds-list.html")) {
-		fetchDogBreeds();
+		fetchDogBreeds().then(() => {
+			showBreed()
+		})
 	}
-
-	footerYear();
-});
-
-// ogarnąć burdel niżej
-
-document.addEventListener("DOMContentLoaded", () => {
-	// Ładowanie danych psów
-	async function fetchDogBreeds() {
-		try {
-			const response = await fetch("../data/breeds.json");
-			if (!response.ok) {
-				throw new Error(`HTTP error! Status: ${response.status}`);
-			}
-			dogData = await response.json();
-			renderDogs(dogData); // Wyświetlenie pełnej listy psów
-		} catch (error) {
-			console.error("Error loading dog breeds:", error);
-		}
-	}
-
-	// Renderowanie psów na podstawie filtrów
-	function renderDogs(dogs) {
-		const container = document.getElementById("main-breeds-list");
-		container.innerHTML = ""; // Czyszczenie kontenera
-
-		if (dogs.length === 0) {
-			container.innerHTML =
-				"<p class='breeds-item__description'>Brak wyników dla wybranych filtrów.</p>";
-			return;
-		}
-
-		dogs.forEach((dog) => {
-			const dogElement = createDogForBreedsList(dog); // Korzystamy z istniejącej funkcji
-			container.appendChild(dogElement);
-		});
-
-		sortBreedsAlphabetically(); // Sortowanie alfabetyczne po wyświetleniu
-	}
-
-	// Obsługa zmian pseudosliderów
-	function handlePseudosliderChanges() {
-		const pseudosliders = document.querySelectorAll(".pseudoslider");
-
-		pseudosliders.forEach((slider) => {
-			const sliderId = slider.getAttribute("data-id");
-
-			let rangeStart = null;
-			let rangeEnd = null;
-
-			const values = slider.querySelectorAll(".value");
-			const lines = slider.querySelectorAll(".line");
-
-			values.forEach((value) => {
-				value.addEventListener("click", () => {
-					const clickedValue = parseInt(value.getAttribute("data-value"), 10);
-
-					if (rangeStart === null && rangeEnd === null) {
-						// Pierwszy klik, ustalamy początek zakresu
-						rangeStart = clickedValue;
-						rangeEnd = clickedValue;
-					} else if (rangeStart !== null && rangeEnd !== null) {
-						// Jeżeli oba punkty zakresu są ustawione
-						if (clickedValue === rangeStart || clickedValue === rangeEnd) {
-							// Kliknięcie na jeden z już zaznaczonych punktów, resetujemy cały zakres
-							rangeStart = null;
-							rangeEnd = null;
-							delete selectedFilters[sliderId];
-
-							// Upewnijmy się, że usuwamy zaznaczenia natychmiast po odznaczeniu
-							updateSelection(values, lines, null, null); // Resetujemy zaznaczenie
-						} else if (clickedValue > rangeStart && clickedValue < rangeEnd) {
-							// Kliknięcie w wartość środkową w obrębie zakresu, resetujemy zakres
-							rangeStart = null;
-							rangeEnd = null;
-							delete selectedFilters[sliderId];
-
-							// Resetujemy zaznaczenie
-							updateSelection(values, lines, null, null);
-						} else {
-							// Ustawiamy nowy zakres
-							rangeStart = Math.min(clickedValue, rangeStart, rangeEnd);
-							rangeEnd = Math.max(clickedValue, rangeStart, rangeEnd);
-						}
-					} else {
-						// Jeśli tylko jeden punkt zakresu jest ustawiony, ustawiamy drugi
-						rangeEnd = clickedValue;
-						if (rangeEnd < rangeStart) {
-							[rangeStart, rangeEnd] = [rangeEnd, rangeStart];
-						}
-					}
-
-					// Zaktualizuj zaznaczenia na sliderze
-					updateSelection(values, lines, rangeStart, rangeEnd);
-
-					// Zapisz filtr w obiekcie selectedFilters, jeśli zakres jest ustawiony
-					if (rangeStart !== null && rangeEnd !== null) {
-						selectedFilters[sliderId] = {
-							min: Math.min(rangeStart, rangeEnd),
-							max: Math.max(rangeStart, rangeEnd),
-						};
-					}
-
-					filterDogs(); // Filtruj psy po zmianie
-				});
-
-				// Dodanie logiki hover
-				value.addEventListener("mouseenter", () => {
-					// Jeśli oba punkty zakresu są ustawione, zablokuj hover
-					if (rangeStart !== null && rangeEnd !== null) {
-						return; // Zatrzymujemy wykonanie funkcji, żeby hover nic nie robił
-					}
-
-					if (rangeStart !== null) {
-						// Jeśli tylko jeden punkt zakresu jest ustawiony, pokazujemy zakres
-						const valueData = parseInt(value.getAttribute("data-value"), 10);
-						const min = Math.min(rangeStart, valueData);
-						const max = Math.max(rangeStart, valueData);
-						updateSelection(values, lines, min, max); // Pokazanie zakresu
-					}
-				});
-
-				// Przywracanie widoczności pełnego zakresu po wyjściu
-				value.addEventListener("mouseleave", () => {
-					updateSelection(values, lines, rangeStart, rangeEnd); // Przywracamy zaznaczenie
-				});
-			});
-		});
-	}
-
-	// Aktualizacja zaznaczeń pseudoslidera
-	function updateSelection(values, lines, rangeStart, rangeEnd) {
-		values.forEach((v) => {
-			v.classList.remove("selected");
-		});
-		lines.forEach((l) => l.classList.remove("selected"));
-
-		// Jeśli brak zaznaczenia, nie zmieniamy stylów
-		if (rangeStart === null || rangeEnd === null) return;
-
-		const min = Math.min(rangeStart, rangeEnd);
-		const max = Math.max(rangeStart, rangeEnd);
-
-		values.forEach((v) => {
-			const val = parseInt(v.getAttribute("data-value"), 10);
-			if (val >= min && val <= max) {
-				v.classList.add("selected");
-			}
-		});
-
-		lines.forEach((line, idx) => {
-			const lineValue = idx + 1;
-			if (lineValue >= min && lineValue < max) {
-				line.classList.add("selected");
-			}
-		});
-	}
-
-	// Obsługa zmian w checkboxach
-	function handleCheckboxChanges() {
-		const checkboxes = document.querySelectorAll(
-			".checkbox-container input[type='checkbox']"
-		);
-
-		checkboxes.forEach((checkbox) => {
-			checkbox.addEventListener("change", () => {
-				const group = checkbox.id.split("-")[0]; // Grupa np. "size"
-				const value = checkbox.id.split("-")[1]; // Wartość np. "s"
-
-				if (!selectedCheckboxes[group]) {
-					selectedCheckboxes[group] = new Set();
-				}
-
-				if (checkbox.checked) {
-					selectedCheckboxes[group].add(value);
-				} else {
-					selectedCheckboxes[group].delete(value);
-				}
-
-				filterDogs(); // Filtruj psy po zmianie
-			});
-		});
-	}
-
-	// Filtracja psów
-	function filterDogs() {
-		let filteredDogs = dogData;
-
-		// Filtracja pseudosliderami
-		for (const [key, range] of Object.entries(selectedFilters)) {
-			filteredDogs = filteredDogs.filter((dog) => {
-				return dog[key] >= range.min && dog[key] <= range.max;
-			});
-		}
-
-		// Filtracja checkboxami
-		for (const [group, values] of Object.entries(selectedCheckboxes)) {
-			if (values.size > 0) {
-				filteredDogs = filteredDogs.filter((dog) => {
-					const dogValue = mapCheckboxGroupToDogProperty(group, dog);
-					return values.has(dogValue);
-				});
-			}
-		}
-
-		// Jeśli nie ma aktywnych filtrów, pokazujemy wszystkie psy
-		if (
-			Object.keys(selectedFilters).length === 0 &&
-			Object.keys(selectedCheckboxes).length === 0
-		) {
-			filteredDogs = dogData;
-		}
-
-		renderDogs(filteredDogs); // Wyświetlenie wyników po filtracji
-	}
-
-	// Mapowanie grup checkboxów na właściwości psa
-	function mapCheckboxGroupToDogProperty(group, dog) {
-		if (group === "size") {
-			return dog.size === 1 ? "s" : dog.size === 2 ? "m" : "l";
-		} else if (group === "coat") {
-			return dog.coatLength === 1 ? "s" : dog.coatLength === 2 ? "m" : "l";
-		} else if (group === "availability") {
-			return dog.availability === 1 ? "s" : dog.availability === 2 ? "m" : "l";
-		}
-		return null;
-	}
-
-	// resets filters
-function resetFilters() {
-	// Resetowanie pseudosliderów
-	const pseudosliders = document.querySelectorAll(".pseudoslider");
-	pseudosliders.forEach((slider) => {
-	  const values = slider.querySelectorAll(".value");
-	  const lines = slider.querySelectorAll(".line");
-  
-	  // Usuwanie klas "selected"
-	  values.forEach((value) => value.classList.remove("selected"));
-	  lines.forEach((line) => line.classList.remove("selected"));
-	});
-  
-	// Czyszczenie obiektu selectedFilters
-	selectedFilters = {};
-  
-	// Resetowanie checkboxów
-	const checkboxes = document.querySelectorAll(
-	  ".checkbox-container input[type='checkbox']"
-	);
-	checkboxes.forEach((checkbox) => {
-	  checkbox.checked = false; // Odznaczanie checkboxów
-	});
-  
-	// Czyszczenie obiektu selectedCheckboxes
-	selectedCheckboxes = {};
-  
-	// Przywrócenie pełnej listy psów
-	renderDogs(dogData);
-  }
-
-	// Inicjalizacja funkcji
-	fetchDogBreeds();
 	handlePseudosliderChanges();
 	handleCheckboxChanges();
-	if (resetFilterBtn){
-		resetFilterBtn.addEventListener("click", resetFilters)
-	}
+	footerYear();
+
+	gsapOutAnimations();
 });

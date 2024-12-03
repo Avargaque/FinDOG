@@ -11,6 +11,28 @@ button {
 	visibility: hidden;
 }
 
+// scrollbar
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: $highlight-color $background-color;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: $highlight-color;
+    border-radius: 10px;
+	transition: background-color 0.3s ease;
+  }
+
 // images color overlay
 .color-overlay,
 .color-overlay-transparent {
@@ -34,7 +56,7 @@ button {
 	position: absolute;
 	top: 0;
 	height: 100%;
-	width: calc((100vw - 1200px) / 2);
+	width: calc((100vw - 1200px - 16px) / 2);
 	overflow: hidden;
 	visibility: hidden;
 
@@ -168,25 +190,6 @@ button {
 	}
 }
 
-// .color-overlay {
-// 	position:relative;
-//   display:inline-block;
-//   width: 300px;
-//   -webkit-mask:url(../img/race-list.png) center/contain no-repeat;
-//   mask:url(../img/race-list.png) center/contain no-repeat;
-// }
-// .color-overlay:before{
-// 	content:"";
-// 	position:absolute;
-// 	left:0;
-// 	right:0;
-// 	top:0;
-// 	bottom: 0;
-// 	height:100%; /* adjust this */
-// 	background-color:rgba(234, 0, 255, 0.5);
-// }
-// poza tym klasa nadana na rodzica obrazu - nie wiem jak naprawić rozmiar
-
 // pop-up-mail
 .pop-up-mail {
 	display: none;
@@ -262,7 +265,7 @@ button {
 
 // filter field
 .filter {
-	display: none;
+	opacity: 0;
 	flex-direction: column;
 	position: fixed;
 	width: calc(100vw - 20px);
@@ -274,6 +277,8 @@ button {
 	background-color: $background-color;
 	border: solid 2px $highlight-color;
 	overflow-y: auto;
+	pointer-events: none;
+	transition: opacity 0.3s ease;
 	z-index: 100;
 
 	@media (max-height: 380px) {
@@ -365,13 +370,14 @@ button {
 		}
 	}
 
-	.buttons-container{
+	.buttons-container {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		flex-wrap: wrap;
 
-		.apply, .reset{
+		.apply,
+		.reset {
 			width: 200px;
 			height: 40px;
 			margin: 5px;
@@ -381,17 +387,18 @@ button {
 			cursor: pointer;
 		}
 
-		.reset{
+		.reset {
 			background-color: $supporting-color;
 		}
 
-		.apply{
+		.apply {
 			background-color: $highlight-color;
 		}
-	
-		.apply:hover, .reset:hover{
+
+		.apply:hover,
+		.reset:hover {
 			background-color: $main-color;
-			color: $background-color
+			color: $background-color;
 		}
 	}
 }

@@ -51,6 +51,28 @@ button {
   visibility: hidden;
 }
 
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #c7a6d6 #fff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #c7a6d6;
+  border-radius: 10px;
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+
 .color-overlay,
 .color-overlay-transparent {
   position: absolute;
@@ -74,7 +96,7 @@ button {
   position: absolute;
   top: 0;
   height: 100%;
-  width: calc((100vw - 1200px) / 2);
+  width: calc((100vw - 1200px - 16px) / 2);
   overflow: hidden;
   visibility: hidden;
 }
@@ -291,7 +313,7 @@ button {
 }
 
 .filter {
-  display: none;
+  opacity: 0;
   flex-direction: column;
   position: fixed;
   width: calc(100vw - 20px);
@@ -303,6 +325,8 @@ button {
   background-color: #fff;
   border: solid 2px #c7a6d6;
   overflow-y: auto;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
   z-index: 100;
 }
 @media (max-height: 380px) {
@@ -399,7 +423,8 @@ button {
   align-items: center;
   flex-wrap: wrap;
 }
-.filter .buttons-container .apply, .filter .buttons-container .reset {
+.filter .buttons-container .apply,
+.filter .buttons-container .reset {
   width: 200px;
   height: 40px;
   margin: 5px;
@@ -414,7 +439,8 @@ button {
 .filter .buttons-container .apply {
   background-color: #c7a6d6;
 }
-.filter .buttons-container .apply:hover, .filter .buttons-container .reset:hover {
+.filter .buttons-container .apply:hover,
+.filter .buttons-container .reset:hover {
   background-color: #430f58;
   color: #fff;
 }
@@ -559,6 +585,7 @@ label.answers__label {
 
 html {
   font-size: 62.5%;
+  overflow-y: scroll;
 }
 
 body {
@@ -569,6 +596,11 @@ body {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  overflow: hidden;
+}
+
+body.loaded {
+  overflow: auto;
 }
 
 a {
@@ -733,27 +765,27 @@ a {
   }
 }
 
-.header {
+.header-home, .header-breed-selector {
   width: 100%;
   padding-top: 80px;
 }
-.header h1 {
+.header-home h1, .header-breed-selector h1 {
   text-align: center;
   padding: 2rem 0;
   color: #430f58;
 }
 @media (min-width: 1200px) {
-  .header h1 {
+  .header-home h1, .header-breed-selector h1 {
     padding: 4rem;
   }
 }
-.header .breed-selector-img {
+.header-home .breed-selector-img, .header-breed-selector .breed-selector-img {
   position: relative;
   width: calc(100vw - 20px);
   max-width: 500px;
   margin: 0 auto;
 }
-.header .breed-selector-img img {
+.header-home .breed-selector-img img, .header-breed-selector .breed-selector-img img {
   width: 100%;
 }
 
@@ -794,12 +826,12 @@ a {
   align-self: center;
   padding: 1rem;
   color: #430f58;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   transition: color 0.3s;
 }
 @media (min-width: 400px) {
   .header-breeds-list .search-container .search-filter {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 }
 .header-breeds-list .search-container .search-filter p {
