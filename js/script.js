@@ -3,14 +3,10 @@ import { gsap } from "https://cdn.jsdelivr.net/npm/gsap@3.12.2/index.js";
 const animationTime = 0.7;
 const animationTimeMs = 700;
 // function to set OUT animations
-function gsapInAnimations() {
-
-}
+function gsapInAnimations() {}
 
 // function to set IN animations
-function gsapOutAnimations() {
-
-}
+function gsapOutAnimations() {}
 
 //////////////////////////////////////////////////////////// VARIABLES
 
@@ -38,7 +34,10 @@ async function fetchDogBreeds() {
 			throw new Error(`HTTP error! Status: ${response.status}`);
 		}
 		dogData = await response.json();
-		renderDogs(dogData);
+
+		if (window.location.href.includes("breeds-list.html")) {
+			renderDogs(dogData);
+		}	
 	} catch (error) {
 		console.error("Error loading dog breeds:", error);
 	}
@@ -77,20 +76,79 @@ function sortBreedsAlphabetically() {
 	items.forEach((item) => container.appendChild(item));
 }
 
-// shows breed details							- DOKOŃCZYĆ
-function showBreed(){
-	const breedsItems = document.querySelectorAll(".breeds-item")
+// takes user to breed details
+function goToBreed() {
+	const breedsItems = document.querySelectorAll(".breeds-item");
 	breedsItems.forEach((item) => {
 		item.addEventListener("click", () => {
-			const itemName = item.querySelector('.breeds-item__name').textContent
+			const itemName = item.querySelector(".breeds-item__name").textContent;
 
 			dogData.forEach((dog) => {
-				if (dog.name === itemName){
-					console.log(itemName);
+				if (dog.name === itemName) {
+					let currentDogName = itemName;
+					localStorage.setItem("currentDogName", currentDogName)
+					window.location.href = "/breed-details.html";
 				}
-			})
-		})
-	})
+			});
+		});
+	});
+}
+
+function showBreedDetails(breedName) {
+	const breed = dogData.find((dog) => dog.name === breedName);
+	console.log(dogData);
+	if (breed) {
+		document.getElementById("breed-name").innerText = breed.name;
+		document.getElementById("breed-image").src = breed.photoBig;
+		document.getElementById("breed-image").alt = `Zdjęcie ${breed.name}`;
+		document.getElementById("breed-short-about").innerText = breed.shortAbout;
+		document.getElementById("breed-long-about").innerText = breed.longAbout;
+		document.getElementById(
+			"breed-height"
+		).innerText = `Wzrost: ${breed.height}`;
+		document.getElementById("breed-weight").innerText = `Waga: ${breed.weight}`;
+		document.getElementById(
+			"breed-life-expectancy"
+		).innerText = `Długość życia: ${breed.lifeExpectancyText}`;
+		document.getElementById(
+			"breed-fci-group"
+		).innerText = `Grupa FCI: ${breed.fciGroup}`;
+
+		const plLink = document.getElementById("standard-pl");
+		const engLink = document.getElementById("standard-eng");
+		plLink.href = breed.standardPl;
+		engLink.href = breed.standardEng;
+		plLink.innerText = "Standard PL";
+		engLink.innerText = "Standard ENG";
+
+		const characteristics = document.getElementById("breed-characteristics");
+		Object.entries({
+			Wielkość: breed.size,
+			"Długość sierści": breed.coatLength,
+			"Długość życia": breed.lifeExpectancy,
+			Dostępność: breed.availability,
+			Towarzyskość: breed.sociability,
+			"Dobry z dziećmi": breed.goodWithKids,
+			"Dobry z innymi zwierzętami": breed.goodWithPets,
+			"Podejście do obcych": breed.approachToStrangers,
+			Zabawy: breed.playfulness,
+			"Poziom energii": breed.energy,
+			"Potrzeby aktywności": breed.needsActivity,
+			Kontrola: breed.controlling,
+			Hałasowanie: breed.barking,
+			Szkolenie: breed.training,
+			Adaptacja: breed.adaptability,
+			Samodzielność: breed.canBeAlone,
+			Upartość: breed.stubborn,
+			Linienie: breed.shedding,
+			Czesanie: breed.combing,
+			"Ślinienie się": breed.drooling,
+		}).forEach(([key, value]) => {
+			const li = document.createElement("li");
+			li.innerText = `${key}: ${value}`;
+			characteristics.appendChild(li);
+		});
+	}
 }
 
 // toggles filter button
@@ -289,18 +347,18 @@ function handlePseudosliderChanges() {
 		// handles hovering over a value
 		function handleValueHover(value, values, lines, rangeStart, rangeEnd) {
 			if (rangeStart === null || rangeEnd === null) return;
-		
+
 			// parses hovered element to int
 			const valueData = parseInt(value.getAttribute("data-value"), 10);
-		
+
 			// compares hovered element to selected range
 			const min = Math.min(rangeStart, rangeEnd, valueData);
 			const max = Math.max(rangeStart, rangeEnd, valueData);
-		
+
 			// updates the visuals
 			updateSelection(values, lines, min, max);
 		}
-		
+
 		// resets range of chosen values
 		function resetRange() {
 			rangeStart = null;
@@ -349,7 +407,7 @@ function handleCheckboxChanges() {
 	checkboxes.forEach((checkbox) => {
 		checkbox.addEventListener("change", () => {
 			const group = checkbox.id.split("-")[0];
-			const value = checkbox.id.split("-")[1]; 
+			const value = checkbox.id.split("-")[1];
 
 			if (!selectedCheckboxes[group]) {
 				selectedCheckboxes[group] = new Set();
@@ -469,7 +527,7 @@ if (searchInput) {
 
 window.addEventListener("load", () => {
 	document.body.classList.add("loaded");
-  });
+});
 
 ////////////////////////////////////////////////////////// DOM
 
@@ -478,9 +536,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	if (window.location.href.includes("breeds-list.html")) {
 		fetchDogBreeds().then(() => {
-			showBreed()
-		})
+			goToBreed();
+		});
 	}
+	if (window.location.href.includes("breed-details.html")) {
+		fetchDogBreeds().then(() => {
+			let currentDogName = localStorage.getItem("currentDogName")
+			showBreedDetails(currentDogName)
+		});
+	}
+
 	handlePseudosliderChanges();
 	handleCheckboxChanges();
 	footerYear();
