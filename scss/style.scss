@@ -26,7 +26,7 @@ body {
 	overflow: hidden;
 }
 
-body.loaded{
+body.loaded {
 	overflow: auto;
 }
 
@@ -47,7 +47,7 @@ a {
 	overflow: hidden;
 	z-index: 0;
 
-	@media (min-width: 1200px) {
+	@media (min-width: 1230px) {
 		padding: 0;
 		max-width: 1200px;
 	}
@@ -195,7 +195,9 @@ a {
 }
 
 // header for home page and breed selection
-.header-home, .header-breed-selector {
+.header-home,
+.header-breed-selector,
+.header-breed-details {
 	width: 100%;
 	padding-top: 80px;
 
@@ -726,6 +728,100 @@ main {
 		cursor: pointer;
 		background-color: $supporting-color;
 		scale: 0.95;
+	}
+}
+
+// main for single breed details
+.main-breed-details {
+	color: $main-color;
+	font-size: 1.3rem;
+	font-weight: 500;
+
+	@media (min-width: 768px) {
+		font-size: 1.6rem;
+	}
+
+	.breed-info-container {
+		display: flex;
+		flex-direction: column;
+		padding: 1rem 0;
+
+		@media (min-width: 600px) {
+			flex-direction: row;
+		}
+
+		.breed-image-container {
+			display: flex;
+			align-items: center;
+			flex: 1;
+
+			@media (min-width: 600px) {
+				flex-direction: row;
+			}
+			@media (min-width: 1100px) {
+				flex: 4;
+			}
+
+			img {
+				width: 100%;
+			}
+		}
+
+		.breed-info-items {
+			flex: 1;
+			padding: 0.5rem;
+
+			@media (min-width: 768px) {
+				padding: 1.5rem;
+			}
+			@media (min-width: 1100px) {
+				flex: 6;
+			}
+
+			.breed-info-item {
+				display: flex;
+				padding: 0.5rem;
+				font-size: 1.5rem;
+
+				@media (min-width: 768px) {
+					padding: 1rem;
+				}
+
+				@media (min-width: 900px) {
+					font-size: 1.8rem;
+				}
+
+				i {
+					width: 25px;
+
+					@media (min-width: 768px) {
+						width: 30px;
+					}
+				}
+				i.fa-ruler-vertical {
+					padding-left: 7px;
+				}
+				i.fa-heart-pulse {
+					padding-left: 4px;
+				}
+
+				.standard-pl,
+				.standard-eng {
+					a {
+						color: $highlight-color;
+						font-weight: 600;
+					}
+
+					svg {
+						width: 17px;
+					}
+				}
+			}
+			.breed-info-item > * {
+				padding: 0.2rem;
+				line-height: normal;
+			}
+		}
 	}
 }
 

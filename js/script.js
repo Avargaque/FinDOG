@@ -101,8 +101,7 @@ function showBreedDetails(breedName) {
 		document.getElementById("breed-name").innerText = breed.name;
 		document.getElementById("breed-image").src = breed.photoBig;
 		document.getElementById("breed-image").alt = `Zdjęcie ${breed.name}`;
-		document.getElementById("breed-short-about").innerText = breed.shortAbout;
-		document.getElementById("breed-long-about").innerText = breed.longAbout;
+		document.getElementById("breed-about").innerText = breed.longAbout;
 		document.getElementById(
 			"breed-height"
 		).innerText = `Wzrost: ${breed.height}`;

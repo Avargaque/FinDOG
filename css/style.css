@@ -619,7 +619,7 @@ a {
   overflow: hidden;
   z-index: 0;
 }
-@media (min-width: 1200px) {
+@media (min-width: 1230px) {
   .wrapper {
     padding: 0;
     max-width: 1200px;
@@ -765,27 +765,37 @@ a {
   }
 }
 
-.header-home, .header-breed-selector {
+.header-home,
+.header-breed-selector,
+.header-breed-details {
   width: 100%;
   padding-top: 80px;
 }
-.header-home h1, .header-breed-selector h1 {
+.header-home h1,
+.header-breed-selector h1,
+.header-breed-details h1 {
   text-align: center;
   padding: 2rem 0;
   color: #430f58;
 }
 @media (min-width: 1200px) {
-  .header-home h1, .header-breed-selector h1 {
+  .header-home h1,
+  .header-breed-selector h1,
+  .header-breed-details h1 {
     padding: 4rem;
   }
 }
-.header-home .breed-selector-img, .header-breed-selector .breed-selector-img {
+.header-home .breed-selector-img,
+.header-breed-selector .breed-selector-img,
+.header-breed-details .breed-selector-img {
   position: relative;
   width: calc(100vw - 20px);
   max-width: 500px;
   margin: 0 auto;
 }
-.header-home .breed-selector-img img, .header-breed-selector .breed-selector-img img {
+.header-home .breed-selector-img img,
+.header-breed-selector .breed-selector-img img,
+.header-breed-details .breed-selector-img img {
   width: 100%;
 }
 
@@ -1278,6 +1288,101 @@ main {
   cursor: pointer;
   background-color: #f4e7fa;
   scale: 0.95;
+}
+
+.main-breed-details {
+  color: #430f58;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+@media (min-width: 768px) {
+  .main-breed-details {
+    font-size: 1.6rem;
+  }
+}
+.main-breed-details .breed-info-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+}
+@media (min-width: 600px) {
+  .main-breed-details .breed-info-container {
+    flex-direction: row;
+  }
+}
+.main-breed-details .breed-info-container .breed-image-container {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+@media (min-width: 600px) {
+  .main-breed-details .breed-info-container .breed-image-container {
+    flex-direction: row;
+  }
+}
+@media (min-width: 1100px) {
+  .main-breed-details .breed-info-container .breed-image-container {
+    flex: 4;
+  }
+}
+.main-breed-details .breed-info-container .breed-image-container img {
+  width: 100%;
+}
+.main-breed-details .breed-info-container .breed-info-items {
+  flex: 1;
+  padding: 0.5rem;
+}
+@media (min-width: 768px) {
+  .main-breed-details .breed-info-container .breed-info-items {
+    padding: 1.5rem;
+  }
+}
+@media (min-width: 1100px) {
+  .main-breed-details .breed-info-container .breed-info-items {
+    flex: 6;
+  }
+}
+.main-breed-details .breed-info-container .breed-info-items .breed-info-item {
+  display: flex;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+}
+@media (min-width: 768px) {
+  .main-breed-details .breed-info-container .breed-info-items .breed-info-item {
+    padding: 1rem;
+  }
+}
+@media (min-width: 900px) {
+  .main-breed-details .breed-info-container .breed-info-items .breed-info-item {
+    font-size: 1.8rem;
+  }
+}
+.main-breed-details .breed-info-container .breed-info-items .breed-info-item i {
+  width: 25px;
+}
+@media (min-width: 768px) {
+  .main-breed-details .breed-info-container .breed-info-items .breed-info-item i {
+    width: 30px;
+  }
+}
+.main-breed-details .breed-info-container .breed-info-items .breed-info-item i.fa-ruler-vertical {
+  padding-left: 7px;
+}
+.main-breed-details .breed-info-container .breed-info-items .breed-info-item i.fa-heart-pulse {
+  padding-left: 4px;
+}
+.main-breed-details .breed-info-container .breed-info-items .breed-info-item .standard-pl a,
+.main-breed-details .breed-info-container .breed-info-items .breed-info-item .standard-eng a {
+  color: #c7a6d6;
+  font-weight: 600;
+}
+.main-breed-details .breed-info-container .breed-info-items .breed-info-item .standard-pl svg,
+.main-breed-details .breed-info-container .breed-info-items .breed-info-item .standard-eng svg {
+  width: 17px;
+}
+.main-breed-details .breed-info-container .breed-info-items .breed-info-item > * {
+  padding: 0.2rem;
+  line-height: normal;
 }
 
 .footer {

@@ -1,4 +1,4 @@
-zrobić animacje w gsap
+zrobić animacje w gsap, w pracy wpisać też font awesome
 
 w wersji mobilnej źle się odznacza filtry (tak jakby zostawał hover po kliknięciu), nie wiem czy da się coś zrobić
 
