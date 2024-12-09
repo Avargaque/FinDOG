@@ -30,6 +30,12 @@ body.loaded {
 	overflow: auto;
 }
 
+h1{
+	font-size: 2rem;
+	font-weight: 700;
+	font-family: inherit;
+}
+
 a {
 	text-decoration: none;
 }
@@ -62,6 +68,7 @@ a {
 	justify-content: space-between;
 	height: 80px;
 	width: calc(100vw - 20px);
+	font-size: 1.2rem;
 	background-color: $background-color;
 	border-bottom: 1px solid $highlight-color;
 	z-index: 1000;
@@ -98,6 +105,10 @@ a {
 
 		@media (min-width: 768px) and (min-height: 380px) {
 			display: none;
+		}
+
+		@media (max-height: 380px) {
+			padding: 0;
 		}
 	}
 
@@ -267,7 +278,10 @@ a {
 				font-size: 1.8rem;
 			}
 			p {
-				margin-right: 0.5rem;
+				margin: 0 0.5rem 0 0;
+			}
+			i{
+				margin-top: 0.4rem;
 			}
 		}
 

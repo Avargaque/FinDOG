@@ -1,4 +1,8 @@
-zrobić animacje w gsap, w pracy wpisać też font awesome
+zrobić animacje w gsap
+
+może jednak zrobić określanie priorytetów dla cech na koniec quizu?
+
+biblioteki (paczki?): gsap, font awesome, bootstrap, google fonts (można dopisać do czego użyte)
 
 w wersji mobilnej źle się odznacza filtry (tak jakby zostawał hover po kliknięciu), nie wiem czy da się coś zrobić
 
@@ -6,7 +10,7 @@ do naprawienia żeby overlay był tylko na obrazku a nie na tle - ważne w przyp
 
 da się zrobić w next.js tak, żeby dynamicznie generowały się podstrony każdej rasy bez konieczności tworzenia tylu htmli
 
-dodać atrybuty do kilku zdjęć
+dodać atrybuty praw autorskich do kilku zdjęć
 
 -----------------------------------------------------------------
 obiekt rasy:

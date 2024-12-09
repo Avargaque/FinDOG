@@ -12,26 +12,26 @@ button {
 }
 
 // scrollbar
-  /* Firefox */
-  * {
-    scrollbar-width: auto;
-    scrollbar-color: $highlight-color $background-color;
-  }
+/* Firefox */
+* {
+	scrollbar-width: auto;
+	scrollbar-color: $highlight-color $background-color;
+}
 
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 16px;
-  }
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+	width: 16px;
+}
 
-  *::-webkit-scrollbar-track {
-    background: $background-color;
-  }
+*::-webkit-scrollbar-track {
+	background: $background-color;
+}
 
-  *::-webkit-scrollbar-thumb {
-    background-color: $highlight-color;
-    border-radius: 10px;
+*::-webkit-scrollbar-thumb {
+	background-color: $highlight-color;
+	border-radius: 10px;
 	transition: background-color 0.3s ease;
-  }
+}
 
 // images color overlay
 .color-overlay,
@@ -538,5 +538,78 @@ label.answers__label {
 	@media (min-width: 992px) {
 		padding: 1rem 0;
 		font-size: 1.4rem;
+	}
+}
+
+// breed details accordion
+.accordion {
+	--bs-accordion-active-bg: $background-color;
+	--bs-accordion-btn-focus-box-shadow: none;
+
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: 100%;
+	margin: 2rem 0;
+
+	.accordion-group{
+		width: 100%;
+	
+		@media(min-width: 992px){
+			width: 47%;
+			margin: 0 1rem;
+		}
+
+		.accordion-item {
+		
+			.accordion-header {
+				border: solid 1px $supporting-color;
+				border-bottom: none;
+	
+				.accordion-button {
+					position: relative;
+					display: flex;
+					flex-direction: column;
+					text-align: center;
+					color: $main-color;
+					font-size: 1.4rem;
+					font-weight: 600;
+					letter-spacing: 2px;
+	
+					.score-blocks {
+						display: flex;
+						margin: 0 1rem;
+	
+						.score-block {
+							width: 40px;
+							height: 10px;
+							margin: 0.5rem;
+							background-color: $supporting-color;
+						}
+
+						.score-block.active{
+							background-color: $main-color;
+						}
+					}
+				}
+				.accordion-button::after {
+					position: absolute;
+					right: 0.5rem;
+					top: calc(50% - 4px);
+					color: $main-color;
+				}
+				.accordion-button:active {
+					background-color: $background-color;
+				}
+			}
+			.accordion-collapse {
+				color: $main-color;
+				background-color: $supporting-color;
+				font-size: 1.2rem;
+				font-weight: 500;
+				border: none;
+	
+			}
+		}
 	}
 }

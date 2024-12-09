@@ -1,6 +1,6 @@
 import { quizQuestions } from "./quiz.js";
 import { answersForm } from "./quiz.js";
-import {currentQuestionIndex} from "./quiz.js";
+import { currentQuestionIndex } from "./quiz.js";
 
 const btnResults = document.querySelector(".btn-results");
 
@@ -562,6 +562,8 @@ function showAlertResultBtn() {
 	}
 }
 
-btnResults.addEventListener("click", calculateTotalScore);
-btnResults.addEventListener("click", showUserScore);
-btnResults.addEventListener("click", showAlertResultBtn);
+btnResults.addEventListener("click", () => {
+	showAlertResultBtn();
+	calculateTotalScore();
+	showUserScore();
+});

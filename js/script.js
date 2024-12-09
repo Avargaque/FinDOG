@@ -2,10 +2,10 @@ import { gsap } from "https://cdn.jsdelivr.net/npm/gsap@3.12.2/index.js";
 
 const animationTime = 0.7;
 const animationTimeMs = 700;
-// function to set OUT animations
+// function to set OUT animations - do edycji
 function gsapInAnimations() {}
 
-// function to set IN animations
+// function to set IN animations - do edycji
 function gsapOutAnimations() {}
 
 //////////////////////////////////////////////////////////// VARIABLES
@@ -94,10 +94,12 @@ function goToBreed() {
 	});
 }
 
+// shows breed details by changing breed info and characteristics
 function showBreedDetails(breedName) {
 	const breed = dogData.find((dog) => dog.name === breedName);
 	console.log(dogData);
 	if (breed) {
+		// basic information
 		document.getElementById("breed-name").innerText = breed.name;
 		document.getElementById("breed-image").src = breed.photoBig;
 		document.getElementById("breed-image").alt = `Zdjęcie ${breed.name}`;
@@ -113,6 +115,7 @@ function showBreedDetails(breedName) {
 			"breed-fci-group"
 		).innerText = `Grupa FCI: ${breed.fciGroup}`;
 
+		// standards
 		const plLink = document.getElementById("standard-pl");
 		const engLink = document.getElementById("standard-eng");
 		plLink.href = breed.standardPl;
@@ -120,35 +123,36 @@ function showBreedDetails(breedName) {
 		plLink.innerText = "Standard PL";
 		engLink.innerText = "Standard ENG";
 
-		const characteristics = document.getElementById("breed-characteristics");
-		Object.entries({
-			Wielkość: breed.size,
-			"Długość sierści": breed.coatLength,
-			"Długość życia": breed.lifeExpectancy,
-			Dostępność: breed.availability,
-			Towarzyskość: breed.sociability,
-			"Dobry z dziećmi": breed.goodWithKids,
-			"Dobry z innymi zwierzętami": breed.goodWithPets,
-			"Podejście do obcych": breed.approachToStrangers,
-			Zabawy: breed.playfulness,
-			"Poziom energii": breed.energy,
-			"Potrzeby aktywności": breed.needsActivity,
-			Kontrola: breed.controlling,
-			Hałasowanie: breed.barking,
-			Szkolenie: breed.training,
-			Adaptacja: breed.adaptability,
-			Samodzielność: breed.canBeAlone,
-			Upartość: breed.stubborn,
-			Linienie: breed.shedding,
-			Czesanie: breed.combing,
-			"Ślinienie się": breed.drooling,
-		}).forEach(([key, value]) => {
-			const li = document.createElement("li");
-			li.innerText = `${key}: ${value}`;
-			characteristics.appendChild(li);
-		});
+		// characteristics
+		updateScore('sociability', breed.sociability);
+		updateScore('goodWithKids', breed.goodWithKids);
+		updateScore('goodWithPets', breed.goodWithPets);
+		updateScore('approachToStrangers', breed.approachToStrangers);
+		updateScore('playfulness', breed.playfulness);
+		updateScore('energy', breed.energy);
+		updateScore('needsActivity', breed.needsActivity);
+		updateScore('controlling', breed.controlling);
+		updateScore('barking', breed.barking);
+		updateScore('training', breed.training);
+		updateScore('adaptability', breed.adaptability);
+		updateScore('canBeAlone', breed.canBeAlone);
+		updateScore('stubborn', breed.stubborn);
+		updateScore('shedding', breed.shedding);
+		updateScore('combing', breed.combing);
+		updateScore('drooling', breed.drooling);
 	}
 }
+
+// updates block scores for breed characteristics
+function updateScore(containerId, value) {
+	const scoreBlocks = document.querySelectorAll(`#${containerId} .score-block`);
+	scoreBlocks.forEach(block => block.classList.remove('active'));
+	for (let i = 0; i < value; i++) {
+	  if (scoreBlocks[i]) {
+		scoreBlocks[i].classList.add('active');
+	  }
+	}
+  }
 
 // toggles filter button
 function toggleFilter() {

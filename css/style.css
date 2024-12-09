@@ -575,6 +575,68 @@ label.answers__label {
   }
 }
 
+.accordion {
+  --bs-accordion-active-bg: $background-color;
+  --bs-accordion-btn-focus-box-shadow: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 2rem 0;
+}
+.accordion .accordion-group {
+  width: 100%;
+}
+@media (min-width: 992px) {
+  .accordion .accordion-group {
+    width: 47%;
+    margin: 0 1rem;
+  }
+}
+.accordion .accordion-group .accordion-item .accordion-header {
+  border: solid 1px #f4e7fa;
+  border-bottom: none;
+}
+.accordion .accordion-group .accordion-item .accordion-header .accordion-button {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: #430f58;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+.accordion .accordion-group .accordion-item .accordion-header .accordion-button .score-blocks {
+  display: flex;
+  margin: 0 1rem;
+}
+.accordion .accordion-group .accordion-item .accordion-header .accordion-button .score-blocks .score-block {
+  width: 40px;
+  height: 10px;
+  margin: 0.5rem;
+  background-color: #f4e7fa;
+}
+.accordion .accordion-group .accordion-item .accordion-header .accordion-button .score-blocks .score-block.active {
+  background-color: #430f58;
+}
+.accordion .accordion-group .accordion-item .accordion-header .accordion-button::after {
+  position: absolute;
+  right: 0.5rem;
+  top: calc(50% - 4px);
+  color: #430f58;
+}
+.accordion .accordion-group .accordion-item .accordion-header .accordion-button:active {
+  background-color: #fff;
+}
+.accordion .accordion-group .accordion-item .accordion-collapse {
+  color: #430f58;
+  background-color: #f4e7fa;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border: none;
+}
+
 *,
 *::after,
 *::before {
@@ -601,6 +663,12 @@ body {
 
 body.loaded {
   overflow: auto;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: inherit;
 }
 
 a {
@@ -634,6 +702,7 @@ a {
   justify-content: space-between;
   height: 80px;
   width: calc(100vw - 20px);
+  font-size: 1.2rem;
   background-color: #fff;
   border-bottom: 1px solid #c7a6d6;
   z-index: 1000;
@@ -670,6 +739,11 @@ a {
 @media (min-width: 768px) and (min-height: 380px) {
   .nav__burger-container {
     display: none;
+  }
+}
+@media (max-height: 380px) {
+  .nav__burger-container {
+    padding: 0;
   }
 }
 .nav__burger-menu {
@@ -845,7 +919,10 @@ a {
   }
 }
 .header-breeds-list .search-container .search-filter p {
-  margin-right: 0.5rem;
+  margin: 0 0.5rem 0 0;
+}
+.header-breeds-list .search-container .search-filter i {
+  margin-top: 0.4rem;
 }
 .header-breeds-list .search-container .search-filter:hover {
   cursor: pointer;
