@@ -1,3 +1,5 @@
+https://avargaque.github.io/FinDOG/index.html
+
 plany na przyszłość -> panel administracyjny do dodawania, usuwania ras, aktualizowania informacji o rasach
 
 zrobić animacje w gsap

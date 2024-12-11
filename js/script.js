@@ -88,7 +88,7 @@ function goToBreed() {
 				if (dog.name === itemName) {
 					let currentDogName = itemName;
 					localStorage.setItem("currentDogName", currentDogName)
-					window.location.href = "/breed-details.html";
+					window.location.href = "breed-details.html";
 				}
 			});
 		});
