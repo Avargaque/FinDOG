@@ -700,6 +700,7 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: nowrap;
   height: 80px;
   width: calc(100vw - 20px);
   font-size: 1.2rem;

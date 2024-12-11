@@ -68,8 +68,8 @@ cechy: (1-5 pionowe? kreski)
         "standardPl": "",
         "standardEng": "",
         "fciGroup": "",
-        "heightText": "",
-        "weightText": "",
+        "height": "",
+        "weight": "",
         "lifeExpectancyText": "",
 
         "size": ,
