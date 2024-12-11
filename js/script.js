@@ -524,7 +524,7 @@ if (resetFilterBtn) {
 }
 if (searchInput) {
 	searchInput.addEventListener("input", () => {
-		const query = this.value.toLowerCase();
+		const query = searchInput.value.toLowerCase();
 		filterDogSearch(query);
 	});
 }

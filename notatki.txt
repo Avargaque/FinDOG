@@ -12,6 +12,14 @@ da się zrobić w next.js tak, żeby dynamicznie generowały się podstrony każ
 
 dodać atrybuty praw autorskich do kilku zdjęć
 
+NA RAZIE ZROBIĆ CAŁĄ STRONĘ DLA PIERWSZEJ GRUPY FCI - POTEM DODAWAĆ KOLEJNE
+
+podczas sprawdzania cech 0 oznacza, że cecha jest nieistotna, więc ująć to w funkcjach odpowiadających za porównanie wyników
+
+w wynikach dać wyszukiwarkę i filtr tak jak w liście ras - wyniki psów powinny pokazywać procent zgodności i malejąco od najlepiej dobranych
+
+WYSZUKIWARKA ANULUJE FILTRY I NA ODWROT - NAPRAWIC
+
 -----------------------------------------------------------------
 obiekt rasy:
 - name
@@ -47,13 +55,6 @@ cechy: (1-5 pionowe? kreski)
 0- ślinienie
 
 ---------------------------------------------------------------
-
-NA RAZIE ZROBIĆ CAŁĄ STRONĘ DLA PIERWSZEJ GRUPY FCI - POTEM DODAWAĆ KOLEJNE
-
-podczas sprawdzania cech 0 oznacza, że cecha jest nieistotna, więc ująć to w funkcjach odpowiadających za porównanie wyników
-
-w wynikach dać wyszukiwarkę i filtr tak jak w liście ras - wyniki psów powinny pokazywać procent zgodności i malejąco od najlepiej dobranych
-
 
 
     {
