@@ -23,6 +23,7 @@ const pseudosliders = document.querySelectorAll(".pseudoslider");
 let dogData = []; // all dogs from JSON
 let selectedFilters = {}; // selected pseudoslider filters
 let selectedCheckboxes = {}; // selected checkbox filters
+let searchQuery = ""; // text in search container
 
 ////////////////////////////////////////////////////////////// FUNCTIONS
 
@@ -283,15 +284,6 @@ function renderDogs(dogs) {
 	goToBreed();
 }
 
-// filters dogs in searchbar
-function filterDogSearch(query) {
-	let filteredDogs = dogData.filter((dog) => {
-		return dog.name.toLowerCase().includes(query);
-	});
-
-	renderDogs(filteredDogs);
-}
-
 // handles filter pseudosliders
 function handlePseudosliderChanges() {
 	pseudosliders.forEach((slider) => {
@@ -443,6 +435,13 @@ function mapCheckboxGroupToDogProperty(group, dog) {
 // filters dog breeds
 function filterDogs() {
 	let filteredDogs = dogData;
+	
+	// checks search input
+	if (searchQuery) {
+		filteredDogs = filteredDogs.filter((dog) => {
+			return dog.name.toLowerCase().includes(searchQuery.toLowerCase());
+		});
+	}
 
 	// filters sliders
 	for (const [key, range] of Object.entries(selectedFilters)) {
@@ -464,7 +463,8 @@ function filterDogs() {
 	// shows all dogs if no filters selected
 	if (
 		Object.keys(selectedFilters).length === 0 &&
-		Object.keys(selectedCheckboxes).length === 0
+		Object.keys(selectedCheckboxes).length === 0 &&
+		!searchQuery
 	) {
 		filteredDogs = dogData;
 	}
@@ -493,6 +493,12 @@ function resetFilters() {
 	checkboxes.forEach((checkbox) => {
 		checkbox.checked = false;
 	});
+
+	// resets search input
+	if (searchInput) {
+		searchInput.value = "";
+		searchQuery = "";
+	}
 
 	// clears data
 	selectedCheckboxes = {};
@@ -523,9 +529,9 @@ if (resetFilterBtn) {
 	resetFilterBtn.addEventListener("click", resetFilters);
 }
 if (searchInput) {
-	searchInput.addEventListener("input", () => {
-		const query = searchInput.value.toLowerCase();
-		filterDogSearch(query);
+	searchInput.addEventListener("input", (event) => {
+		searchQuery = event.target.value;
+		filterDogs();
 	});
 }
 
