@@ -392,7 +392,7 @@ main {
 		font-size: 1.8rem;
 		color: $background-color;
 		background-color: $highlight-color;
-		transition: background-color 0.5s, color 0.5s;
+		transition: background-color 0.4s, color 0.4s;
 	}
 
 	&__btn::after,
@@ -401,7 +401,7 @@ main {
 		content: "";
 		width: 100%;
 		height: 100%;
-		transition: top 0.5s, bottom 0.5s, left 0.5s, right 0.5s;
+		transition: top 0.4s, bottom 0.4s, left 0.4s, right 0.4s;
 	}
 
 	&__btn::after {

@@ -1,10 +1,10 @@
-zrobić animacje w gsap
+plany na przyszłość -> panel administracyjny do dodawania, usuwania ras, aktualizowania informacji o rasach
 
-może jednak zrobić określanie priorytetów dla cech na koniec quizu?
+zrobić animacje w gsap
 
 biblioteki (paczki?): gsap, font awesome, bootstrap, google fonts (można dopisać do czego użyte)
 
-w wersji mobilnej źle się odznacza filtry (tak jakby zostawał hover po kliknięciu), nie wiem czy da się coś zrobić
+w wersji mobilnej źle się odznacza filtry (tak jakby zostawał hover po kliknięciu), nie wiem jak naprawić
 
 do naprawienia żeby overlay był tylko na obrazku a nie na tle - ważne w przypadku zmiany koloru tła
 
@@ -51,10 +51,6 @@ cechy: (1-5 pionowe? kreski)
 NA RAZIE ZROBIĆ CAŁĄ STRONĘ DLA PIERWSZEJ GRUPY FCI - POTEM DODAWAĆ KOLEJNE
 
 podczas sprawdzania cech 0 oznacza, że cecha jest nieistotna, więc ująć to w funkcjach odpowiadających za porównanie wyników
-
-ogarnąć importy, showAlert funkcja
-
-na obronę prezentacja np powerpoint 5-10 minut, fajnie jak będzie nagranie z działaniem strony
 
 w wynikach dać wyszukiwarkę i filtr tak jak w liście ras - wyniki psów powinny pokazywać procent zgodności i malejąco od najlepiej dobranych
 

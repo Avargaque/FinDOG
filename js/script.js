@@ -280,6 +280,7 @@ function renderDogs(dogs) {
 	console.log("Rendered dogs:", dogs);
 
 	sortBreedsAlphabetically();
+	goToBreed();
 }
 
 // filters dogs in searchbar
