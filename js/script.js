@@ -30,7 +30,7 @@ let searchQuery = ""; // text in search container
 // fetches dog breeds
 async function fetchDogBreeds() {
 	try {
-		const response = await fetch("../data/breeds.json");
+		const response = await fetch("./data/breeds.json");
 		if (!response.ok) {
 			throw new Error(`HTTP error! Status: ${response.status}`);
 		}
