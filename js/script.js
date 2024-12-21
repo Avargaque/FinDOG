@@ -2,10 +2,10 @@ import { gsap } from "https://cdn.jsdelivr.net/npm/gsap@3.12.2/index.js";
 
 const animationTime = 0.7;
 const animationTimeMs = 700;
-// function to set OUT animations - do edycji
+// function to set IN animations - do edycji
 function gsapInAnimations() {}
 
-// function to set IN animations - do edycji
+// function to set OUT animations - do edycji
 function gsapOutAnimations() {}
 
 //////////////////////////////////////////////////////////// VARIABLES
@@ -38,7 +38,7 @@ async function fetchDogBreeds() {
 
 		if (window.location.href.includes("breeds-list.html")) {
 			renderDogs(dogData);
-		}	
+		}
 	} catch (error) {
 		console.error("Error loading dog breeds:", error);
 	}
@@ -87,8 +87,11 @@ function goToBreed() {
 			dogData.forEach((dog) => {
 				if (dog.name === itemName) {
 					let currentDogName = itemName;
-					localStorage.setItem("currentDogName", currentDogName)
-					window.location.href = "breed-details.html";
+					localStorage.setItem("currentDogName", currentDogName);
+
+					// creates proper link
+					let breedName = dog.name.toLowerCase().replace(/\s+/g, "-");
+					window.location.href = `breed-details.html?breed=${breedName}`;
 				}
 			});
 		});
@@ -96,8 +99,14 @@ function goToBreed() {
 }
 
 // shows breed details by changing breed info and characteristics
-function showBreedDetails(breedName) {
-	const breed = dogData.find((dog) => dog.name === breedName);
+function showBreedDetails() {
+	const urlParams = new URLSearchParams(window.location.search);
+	const breedName = urlParams.get("breed");
+
+	// finds proper breed in dogData
+	const breed = dogData.find(
+		(dog) => dog.name.toLowerCase().replace(/\s+/g, "-") === breedName
+	);
 	console.log(dogData);
 	if (breed) {
 		// basic information
@@ -125,35 +134,37 @@ function showBreedDetails(breedName) {
 		engLink.innerText = "Standard ENG";
 
 		// characteristics
-		updateScore('sociability', breed.sociability);
-		updateScore('goodWithKids', breed.goodWithKids);
-		updateScore('goodWithPets', breed.goodWithPets);
-		updateScore('approachToStrangers', breed.approachToStrangers);
-		updateScore('playfulness', breed.playfulness);
-		updateScore('energy', breed.energy);
-		updateScore('needsActivity', breed.needsActivity);
-		updateScore('controlling', breed.controlling);
-		updateScore('barking', breed.barking);
-		updateScore('training', breed.training);
-		updateScore('adaptability', breed.adaptability);
-		updateScore('canBeAlone', breed.canBeAlone);
-		updateScore('stubborn', breed.stubborn);
-		updateScore('shedding', breed.shedding);
-		updateScore('combing', breed.combing);
-		updateScore('drooling', breed.drooling);
+		updateScore("sociability", breed.sociability);
+		updateScore("goodWithKids", breed.goodWithKids);
+		updateScore("goodWithPets", breed.goodWithPets);
+		updateScore("approachToStrangers", breed.approachToStrangers);
+		updateScore("playfulness", breed.playfulness);
+		updateScore("energy", breed.energy);
+		updateScore("needsActivity", breed.needsActivity);
+		updateScore("controlling", breed.controlling);
+		updateScore("barking", breed.barking);
+		updateScore("training", breed.training);
+		updateScore("adaptability", breed.adaptability);
+		updateScore("canBeAlone", breed.canBeAlone);
+		updateScore("stubborn", breed.stubborn);
+		updateScore("shedding", breed.shedding);
+		updateScore("combing", breed.combing);
+		updateScore("drooling", breed.drooling);
+	} else {
+		console.error("Breed not found");
 	}
 }
 
 // updates block scores for breed characteristics
 function updateScore(containerId, value) {
 	const scoreBlocks = document.querySelectorAll(`#${containerId} .score-block`);
-	scoreBlocks.forEach(block => block.classList.remove('active'));
+	scoreBlocks.forEach((block) => block.classList.remove("active"));
 	for (let i = 0; i < value; i++) {
-	  if (scoreBlocks[i]) {
-		scoreBlocks[i].classList.add('active');
-	  }
+		if (scoreBlocks[i]) {
+			scoreBlocks[i].classList.add("active");
+		}
 	}
-  }
+}
 
 // toggles filter button
 function toggleFilter() {
@@ -435,7 +446,7 @@ function mapCheckboxGroupToDogProperty(group, dog) {
 // filters dog breeds
 function filterDogs() {
 	let filteredDogs = dogData;
-	
+
 	// checks search input
 	if (searchQuery) {
 		filteredDogs = filteredDogs.filter((dog) => {
@@ -551,8 +562,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 	if (window.location.href.includes("breed-details.html")) {
 		fetchDogBreeds().then(() => {
-			let currentDogName = localStorage.getItem("currentDogName")
-			showBreedDetails(currentDogName)
+			let currentDogName = localStorage.getItem("currentDogName");
+			showBreedDetails();
 		});
 	}
 
