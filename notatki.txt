@@ -1,6 +1,8 @@
 https://avargaque.github.io/FinDOG/index.html
 
-plany na przyszłość -> panel administracyjny do dodawania, usuwania ras, aktualizowania informacji o rasach
+może na koniec quizu zapytać użytkownika które cechy są dla niego najbardziej istotne?
+
+plany na przyszłość -> panel administracyjny do dodawania, usuwania ras, aktualizowania informacji o rasach; wyniki quizu opracowane poprzez uczenie maszynowe - aktualnie samemu musiałbym utworzyć modele przez brak dostępności interesujących datasetów np na kaggle
 
 zrobić animacje w gsap
 

@@ -1,257 +1,52 @@
-export const quizQuestions = [
-	{
-		id: 1,
-		question: "Dlaczego chcesz psa? Wybierz jeden najważniejszy powód:",
-		answers: [
-			"By zyskać bliskiego przyjaciela",
-			"By służył jako kompan dla moich dzieci",
-			"By mieć towarzysza do spacerów i innych aktywności fizycznych",
-			"Dla obrony domu i bliskich",
-		],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 2,
-		question: "Czy posiadałeś wcześniej własnego psa na stałe?",
-		answers: ["Nie", "Tak"],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 3,
-		question: "Gdzie będziecie mieszkać?",
-		answers: ["W mieszkaniu", "W domu wolnostojącym"],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 4,
-		question: "Jak duże podwórko pies będzie miał do dyspozycji?",
-		answers: ["Brak podwórka", "Małe podwórko", "Duże podwórze, ogród"],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 5,
-		question:
-			"Jak duży ruch ma miejsce przy podwórku, na którym przebywać będzie pies?",
-		answers: ["Brak podwórka", "Niewielki ruch", "Duży ruch"],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 6,
-		question: "Gdzie pies będzie mieszkał i spał?",
-		answers: [
-			"Będzie mieszkał i spał w domu",
-			"Będzie mieszkał i spał na zewnątrz",
-			"Różnie",
-		],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 7,
-		question:
-			"Czy w twoim domu dominuje cisza i spokój, czy jest raczej głośno i ruchliwie? Weź pod uwagę domowników, inne zwierzęta, gości czy ogólny hałas.",
-		answers: [
-			"Jest cicho i spokojnie",
-			"Jest głośno i ruchliwie",
-			"Coś pomiędzy",
-		],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 8,
-		question:
-			"Jak bardzo istotne dla ciebie jest, aby pies był przyjazny dzieciom?",
-		answers: ["Kluczowe", "Ważne", "Bez znaczenia"],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 9,
-		question:
-			"Jak często planujesz wychodzić z psem na spacery i jak długie one będą?",
-		answers: [
-			"Wcale lub tylko w celu wypróżnienia",
-			"Często, lecz krótkie",
-			"Rzadko, lecz długie",
-			"Często i długie",
-		],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 10,
-		question:
-			"Preferujesz psa mocno przywiązanego i nieodstępującego cię o krok czy bardziej niezależnego i potrafiącego się sobą zająć?",
-		answers: ["Przywiązanego", "Niezależnego", "Pomiędzy"],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 11,
-		question: "Jak często pies będzie zostawał sam w domu?",
-		answers: [
-			"Nigdy lub prawie nigdy",
-			"Czasami",
-			"Codziennie na wiele godzin",
-		],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 12,
-		question:
-			"Czy otoczenie psa (miejsce zamieszkania, domownicy, styl życia) często będzie ulegać zmianie?",
-		answers: ["Tak", "Nie", "Ciężko powiedzieć"],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 13,
-		question:
-			"Czy posiadasz inne duże zwierzęta domowe, z którymi pies będzie miał bliską styczność?",
-		answers: ["Tak", "Nie"],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 14,
-		question: "Wolisz, aby pies łatwo ufał nowym osobom?",
-		answers: ["Tak", "Nie", "Bez znaczenia"],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 15,
-		question:
-			"Czy chcesz by twój pies pełnił rolę strażnika ostrzegając przed obcymi?",
-		answers: ["Tak", "Nie, wręcz przeciwnie", "Bez znaczenia"],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 16,
-		question: "Czy przeszkadza ci częste szczekanie psa?",
-		answers: ["Tak", "Trochę", "Nie", "Wręcz przeciwnie, lubię szczekliwe psy"],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 17,
-		question:
-			"Czy przeszkadza ci kiedy pies nie zawsze słucha swojego właściciela, bywa uparty i chce robić co mu się podoba?",
-		answers: ["Bardzo", "Trochę", "Nie"],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 18,
-		question: "Czy preferujesz bardzo aktywnego psa, wymagającego dużo ruchu?",
-		answers: [
-			"Tak, wolę psa aktywnego",
-			"Nie, wolę psa mniej wymagającego ruchu",
-			"Bez znaczenia",
-		],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 19,
-		question:
-			"Czy preferujesz psa, który potrzebuje wielu różnych stymulujących zajęć?",
-		answers: [
-			"Tak, chcę psa, z którym można spędzać czas na różne sposoby",
-			"Nie, wolę takiego, który sam się sobą zajmie",
-			"Bez znaczenia",
-		],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 20,
-		question: "Czy preferujesz psa, który uwielbia bawić się z tobą bez końca?",
-		answers: [
-			"Tak",
-			"Nie, wolę takiego, który nie domaga się zabawy",
-			"Bez znaczenia",
-		],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 21,
-		question:
-			"Czy preferujesz psa, który kocha trening i poznawanie nowych sztuczek?",
-		answers: ["Tak", "Nie, wręcz przeciwnie", "Bez znaczenia"],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 22,
-		question: "Czy zależy ci na tym, by pies był długowieczny?",
-		answers: ["Tak, to ważne", "Nie jest to dla mnie istotne"],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 23,
-		question: "Czy przeszkadza ci konieczność częstego czesania psa?",
-		answers: ["Tak", "Nie"],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 24,
-		question: "Czy przeszkadza ci duża ilość sierści zostawianej przez psa?",
-		answers: ["Tak", "Nie"],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 25,
-		question: "Czy przeszkadza ci ślinienie się psa?",
-		answers: ["Tak", "Nie"],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 26,
-		question:
-			"Czy zależy ci na tym, aby dobrana rasa była jak najłatwiej dostępna do pozyskania w naszym kraju?",
-		answers: ["Tak", "Nie jest to dla mnie istotne"],
-		inputType: "radio",
-		userAnswerRadio: "",
-	},
-	{
-		id: 27,
-		question: "Jaki rozmiar psa preferujesz? (Możesz wybrać kilka odpowiedzi)",
-		answers: ["Mały", "Średni", "Duży"],
-		inputType: "checkbox",
-		userAnswersCheckbox: [],
-	},
-	{
-		id: 28,
-		question:
-			"Jaką długość sierści psa preferujesz? (Możesz wybrać kilka odpowiedzi)",
-		answers: ["Krótka", "Średnia", "Długa"],
-		inputType: "checkbox",
-		userAnswersCheckbox: [],
-	},
-];
+let quizQuestions = [];
+let currentQuestionIndex = 0;
 
-export let currentQuestionIndex = 0;
 let barWidth = document.querySelector(".bar-width");
 const nextQuestionBtns = document.querySelectorAll(".next-question-icon");
 const previousQuestionBtns = document.querySelectorAll(
 	".previous-question-icon"
 );
 const btnResults = document.querySelector(".btn-results");
-export const answersForm = document.querySelector(".answers");
+const answersForm = document.querySelector(".answers");
+
+let dogAttributes = {
+	sociability: 3,
+	playfulness: 3,
+	energy: 3,
+	needsActivity: 3,
+	training: 3,
+	approachToStrangers: 3,
+	controlling: 3,
+	barking: 3,
+	canBeAlone: 3,
+	goodWithKids: 3,
+	goodWithPets: 3,
+	adapdability: 3,
+	stubborn: 3,
+	lifeExpectancy: 0,
+	availability: 0,
+	combing: 0,
+	shedding: 0,
+	drooling: 0,
+	size: [],
+	coatLength: [],
+};
+let previousDogAttributes = { ...dogAttributes };
+
+// fetches quiz questions from data
+async function fetchQuizQuestions() {
+	try {
+		const response = await fetch("./data/quizQuestions.json");
+		if (!response.ok) {
+			throw new Error(`HTTP error! Status: ${response.status}`);
+		}
+		quizQuestions = await response.json();
+
+		loadQuestion(currentQuestionIndex);
+	} catch (error) {
+		console.error("Error loading quiz questions:", error);
+	}
+}
 
 // loads quiz question
 function loadQuestion(questionIndex) {
@@ -343,7 +138,6 @@ function loadQuestion(questionIndex) {
 
 // loads next quiz question
 function nextQuestion() {
-
 	// checks user answers and potentailly shows alert
 	// for checkbox
 	if ("userAnswersCheckbox" in quizQuestions[currentQuestionIndex]) {
@@ -367,19 +161,15 @@ function nextQuestion() {
 			return;
 		}
 	}
-	// saves answers
-	if (currentQuestionIndex >= quizQuestions.length - 1) {
-		saveAnswers();
-		loadQuestion(currentQuestionIndex);
-	} else {
-		saveAnswers();
-		currentQuestionIndex++;
-		loadQuestion(currentQuestionIndex);
-	}
+
+	saveAnswers();
+	currentQuestionIndex++;
+	loadQuestion(currentQuestionIndex);
 }
 
 // loads previous quiz question
 function previousQuestion() {
+	resetScore();
 	saveAnswers();
 	currentQuestionIndex--;
 	if (currentQuestionIndex < 0) {
@@ -390,7 +180,7 @@ function previousQuestion() {
 
 // saves answers for current question
 function saveAnswers() {
-	// saves radio answer to quizQuestions array
+	// saves checkbox answers to quizQuestions array
 	if ("userAnswersCheckbox" in quizQuestions[currentQuestionIndex]) {
 		const checkboxAnswers = document.querySelectorAll(
 			`input[name="checkbox-answer"]:checked`
@@ -405,7 +195,7 @@ function saveAnswers() {
 		}
 	}
 
-	// saves checkbox answers to quizQuestions array
+	// saves radio answer to quizQuestions array
 	if ("userAnswerRadio" in quizQuestions[currentQuestionIndex]) {
 		const radioAnswer = document.querySelector(
 			`input[name="radio-answer"]:checked`
@@ -416,7 +206,180 @@ function saveAnswers() {
 		}
 	}
 
+	// shows object and user score in console
 	console.log(quizQuestions[currentQuestionIndex]);
+}
+
+// handles score for a question
+function handleScore(questionId, userAnswer, type) {
+	// finds proper question
+	const question = quizQuestions.find((q) => q.id === questionId);
+	//checks type
+	let isRadio;
+	if (type === "radio") {
+		isRadio = true;
+	} else {
+		isRadio = false;
+	}
+	// assigns user answer/answers of proper type
+	const answers = isRadio ? [userAnswer] : userAnswer;
+
+	// checks user answers and changes dogAttributes
+	answers.forEach((answer) => {
+		const answerIndex = question.answers.indexOf(answer);
+		if (answerIndex >= 0) {
+			const effects = question.effects[answerIndex];
+			Object.entries(effects).forEach(([key, value]) => {
+				if (Array.isArray(dogAttributes[key])) {
+					dogAttributes[key].push(value);
+				} else if (
+					[
+						"lifeExpectancy",
+						"availability",
+						"combing",
+						"shedding",
+						"drooling",
+					].includes(key)
+				) {
+					dogAttributes[key] = value;
+				} else {
+					dogAttributes[key] += value;
+				}
+			});
+		}
+	});
+
+	if (isRadio) {
+		question.userAnswerRadio = userAnswer;
+	} else {
+		question.userAnswersCheckbox = userAnswer;
+	}
+}
+
+// handles all scores
+function handleAllScores() {
+	quizQuestions.forEach((question) => {
+		if (question.userAnswerRadio) {
+			handleScore(question.id, question.userAnswerRadio, "radio");
+		}
+		if (question.userAnswersCheckbox) {
+			handleScore(question.id, question.userAnswersCheckbox, "checkbox");
+		}
+	});
+}
+
+// Changes points below 1 or above 5 for some of the attributes
+function reduceExcessPoints() {
+	const attributesToCheck = [
+		"sociability",
+		"goodWithKids",
+		"goodWithPets",
+		"approachToStrangers",
+		"playfulness",
+		"energy",
+		"needsActivity",
+		"controlling",
+		"barking",
+		"training",
+		"adapdability",
+		"canBeAlone",
+		"stubborn",
+	];
+
+	attributesToCheck.forEach((attribute) => {
+		if (dogAttributes[attribute] > 5) {
+			dogAttributes[attribute] = 5;
+		} else if (dogAttributes[attribute] < 1) {
+			dogAttributes[attribute] = 1;
+		}
+	});
+}
+
+// resets previous values
+function resetScore() {
+	dogAttributes = {
+		sociability: 3,
+		playfulness: 3,
+		energy: 3,
+		needsActivity: 3,
+		training: 3,
+		approachToStrangers: 3,
+		controlling: 3,
+		barking: 3,
+		canBeAlone: 3,
+		goodWithKids: 3,
+		goodWithPets: 3,
+		adapdability: 3,
+		stubborn: 3,
+		lifeExpectancy: 0,
+		availability: 0,
+		combing: 0,
+		shedding: 0,
+		drooling: 0,
+		size: [],
+		coatLength: [],
+	};
+}
+
+// checks user answers for the last questions and shows alert if needed
+function showAlertResultBtn() {
+	// for checkbox
+	if ("userAnswersCheckbox" in quizQuestions[currentQuestionIndex]) {
+		const checkedCheckboxes = document.querySelectorAll(
+			`input[name="checkbox-answer"]:checked`
+		);
+
+		if (checkedCheckboxes.length === 0) {
+			answersForm.classList.add("check-alert");
+			answersForm.classList.add("check-alert--last");
+			return;
+		}
+	}
+	// for radio
+	if ("userAnswerRadio" in quizQuestions[currentQuestionIndex]) {
+		const checkedRadio = document.querySelector(
+			`input[name="radio-answer"]:checked`
+		);
+
+		if (checkedRadio === null) {
+			answersForm.classList.add("check-alert");
+			answersForm.classList.add("check-alert--last");
+			return;
+		}
+	}
+}
+
+// saves results to localStorage
+function saveResults() {
+	const results = dogAttributes;
+	localStorage.setItem("quizResults", JSON.stringify(results));
+}
+
+// shows user score in console
+function showUserScore() {
+	console.log("size: " + dogAttributes.size);
+	console.log("coatLength: " + dogAttributes.coatLength);
+
+	console.log("sociability: " + dogAttributes.sociability);
+	console.log("goodWithKids: " + dogAttributes.goodWithKids);
+	console.log("goodWithPets: " + dogAttributes.goodWithPets);
+	console.log("approachToStrangers: " + dogAttributes.approachToStrangers);
+	console.log("playfulness: " + dogAttributes.playfulness);
+	console.log("energy: " + dogAttributes.energy);
+	console.log("needsActivity: " + dogAttributes.needsActivity);
+	console.log("controlling: " + dogAttributes.controlling);
+	console.log("barking: " + dogAttributes.barking);
+	console.log("training: " + dogAttributes.training);
+	console.log("adapdability: " + dogAttributes.adapdability);
+	console.log("canBeAlone: " + dogAttributes.canBeAlone);
+	console.log("stubborn: " + dogAttributes.stubborn);
+
+	console.log("shedding: " + dogAttributes.shedding);
+	console.log("combing: " + dogAttributes.combing);
+	console.log("drooling: " + dogAttributes.drooling);
+
+	console.log("lifeExpectancy: " + dogAttributes.lifeExpectancy);
+	console.log("availability: " + dogAttributes.availability);
 }
 
 nextQuestionBtns.forEach((btn) => {
@@ -425,8 +388,18 @@ nextQuestionBtns.forEach((btn) => {
 previousQuestionBtns.forEach((btn) => {
 	btn.addEventListener("click", previousQuestion);
 });
-btnResults.addEventListener("click", saveAnswers);
+btnResults.addEventListener("click", () => {
+	resetScore();
+	showAlertResultBtn();
+	saveAnswers();
+	handleAllScores();
+	reduceExcessPoints();
+	saveResults();
+	showUserScore();
+});
 
 document.addEventListener("DOMContentLoaded", function () {
-	loadQuestion(currentQuestionIndex);
+	resetScore();
+	showUserScore();
+	fetchQuizQuestions();
 });
