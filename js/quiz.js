@@ -312,7 +312,7 @@ function handleScore(questionId, userAnswer, type) {
 						"shedding",
 						"drooling",
 					].includes(key):
-						dogAttributes[key] = 100;
+						dogAttributes[key] = 0;
 						break;
 
 					// default case for normal additive attributes
