@@ -12,7 +12,6 @@ function gsapOutAnimations() {}
 
 const email = document.querySelector(".email");
 const burgerBtn = document.querySelector(".nav__burger-menu");
-const navBtns = document.querySelector(".nav__buttons");
 const filterBtns = document.querySelectorAll(".search-filter");
 const filter = document.querySelector(".filter");
 const resetFilterBtn = document.querySelector(".reset");
@@ -93,25 +92,39 @@ function sortBreedsByCompatibility() {
 	dogs.forEach((dogElement) => container.appendChild(dogElement));
 }
 
-// takes user to breed details
+// takes user to breed details of the dog he clicked
 function goToBreed() {
 	const breedsItems = document.querySelectorAll(".breeds-item");
+
 	breedsItems.forEach((item) => {
+		item.setAttribute("draggable", "true");
 		item.addEventListener("click", () => {
-			const itemName = item.querySelector(".breeds-item__name").textContent;
-
-			dogData.forEach((dog) => {
-				if (dog.name === itemName) {
-					let currentDogName = itemName;
-					localStorage.setItem("currentDogName", currentDogName);
-
-					// creates proper link
-					let breedName = dog.name.toLowerCase().replace(/\s+/g, "-");
-					window.location.href = `breed-details.html?breed=${breedName}`;
-				}
-			});
+			handleBreedSelection(item);
+		});
+		item.addEventListener("mousedown", (event) => {
+			// pressing scroll
+			if (event.button === 1) {
+				handleBreedSelection(item);
+			}
 		});
 	});
+
+	function handleBreedSelection(item){
+		const itemName = item.querySelector(".breeds-item__name").textContent;
+
+		dogData.forEach((dog) => {
+			if (dog.name === itemName) {
+				let currentDogName = itemName;
+				localStorage.setItem("currentDogName", currentDogName);
+
+				// creates proper link
+				let breedName = dog.name.toLowerCase().replace(/\s+/g, "-");
+
+				// opens in new window
+				window.open(`breed-details.html?breed=${breedName}`, '_blank');
+			}
+		});
+	}
 }
 
 // shows breed details by changing breed info and traits

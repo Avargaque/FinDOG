@@ -1,5 +1,6 @@
 https://avargaque.github.io/FinDOG/index.html
 
+zrobić kilka przedziałów "score" i zasygnalizować np kolorem i napisem czy kompatybilność jest bardzo dobra, dobra itd
 
 może na koniec quizu zapytać użytkownika które cechy są dla niego najbardziej istotne?
 
