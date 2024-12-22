@@ -214,13 +214,8 @@ function saveAnswers() {
 function handleScore(questionId, userAnswer, type) {
 	// finds proper question
 	const question = quizQuestions.find((q) => q.id === questionId);
-	//checks type
-	let isRadio;
-	if (type === "radio") {
-		isRadio = true;
-	} else {
-		isRadio = false;
-	}
+	// checks type
+	const isRadio = type === "radio";
 	// assigns user answer/answers of proper type
 	const answers = isRadio ? [userAnswer] : userAnswer;
 
@@ -229,21 +224,101 @@ function handleScore(questionId, userAnswer, type) {
 		const answerIndex = question.answers.indexOf(answer);
 		if (answerIndex >= 0) {
 			const effects = question.effects[answerIndex];
+
 			Object.entries(effects).forEach(([key, value]) => {
-				if (Array.isArray(dogAttributes[key])) {
-					dogAttributes[key].push(value);
-				} else if (
-					[
+				// handle cases with switch
+				switch (true) {
+					// special case: question 8, third answer
+					case questionId === 8 && key === "controlling" && answerIndex === 2:
+						dogAttributes[key] = 100; // sets to 0 instead of adding
+						break;
+
+					// special case: question 9, third answer
+					case questionId === 9 && key === "goodWithKids" && answerIndex === 2:
+						dogAttributes[key] = 100; // sets to 0 instead of adding
+						break;
+
+					// special case: question 11, fourth answer
+					case questionId === 11 && key === "sociability" && answerIndex === 3:
+						dogAttributes[key] = 100; // sets to 0 instead of adding
+						break;
+
+					// special case: question 12, first answer
+					case questionId === 12 && key === "canBeAlone" && answerIndex === 0:
+						dogAttributes[key] = 100; // sets to 0 instead of adding
+						break;
+
+					// special case: question 13, second answer
+					case questionId === 13 && key === "adaptability" && answerIndex === 1:
+						dogAttributes[key] = 100; // sets to 0 instead of adding
+						break;
+
+					// special case: question 14, third answer
+					case questionId === 14 && key === "goodWithPets" && answerIndex === 2:
+						dogAttributes[key] = 100; // sets to 0 instead of adding
+						break;
+
+					// special case: question 15, third answer
+					case questionId === 15 &&
+						key === "approachToStrangers" &&
+						answerIndex === 2:
+						dogAttributes[key] = 100; // sets to 0 instead of adding
+						break;
+
+					// special case: question 16, third answer
+					case questionId === 16 && key === "barking" && answerIndex === 2:
+						dogAttributes[key] = 100; // sets to 0 instead of adding
+						break;
+
+					// special case: question 17, third answer
+					case questionId === 17 && key === "stubborn" && answerIndex === 2:
+						dogAttributes[key] = 100; // sets to 0 instead of adding
+						break;
+
+					// special case: question 18, fourth answer
+					case questionId === 18 && key === "energy" && answerIndex === 3:
+						dogAttributes[key] = 100; // sets to 0 instead of adding
+						break;
+
+					// special case: question 19, fourth answer
+					case questionId === 19 &&
+						key === "needsActivity" &&
+						answerIndex === 3:
+						dogAttributes[key] = 100; // sets to 0 instead of adding
+						break;
+
+					// special case: question 20, fourth answer
+					case questionId === 20 && key === "playfulness" && answerIndex === 3:
+						dogAttributes[key] = 100; // sets to 0 instead of adding
+						break;
+
+					// special case: question 21, fourth answer
+					case questionId === 21 && key === "training" && answerIndex === 3:
+						dogAttributes[key] = 100; // sets to 0 instead of adding
+						break;
+
+					///////////////////////////////
+
+					// default case for checkboxes
+					case Array.isArray(dogAttributes[key]):
+						dogAttributes[key].push(value);
+						break;
+
+					// default case for attributes that are equal to 0 at default
+					case [
 						"lifeExpectancy",
 						"availability",
 						"combing",
 						"shedding",
 						"drooling",
-					].includes(key)
-				) {
-					dogAttributes[key] = value;
-				} else {
-					dogAttributes[key] += value;
+					].includes(key):
+						dogAttributes[key] = 100;
+						break;
+
+					// default case for normal additive attributes
+					default:
+						dogAttributes[key] += value;
+						break;
 				}
 			});
 		}
@@ -268,7 +343,7 @@ function handleAllScores() {
 	});
 }
 
-// Changes points below 1 or above 5 for some of the attributes
+// Changes points below 1 or above 5, and from 100 to 0 when result doesn't matter to user
 function reduceExcessPoints() {
 	const attributesToCheck = [
 		"sociability",
@@ -287,7 +362,10 @@ function reduceExcessPoints() {
 	];
 
 	attributesToCheck.forEach((attribute) => {
-		if (dogAttributes[attribute] > 5) {
+		if (dogAttributes[attribute] === 100){
+			dogAttributes[attribute] = 0;
+		}
+		else if (dogAttributes[attribute] > 5) {
 			dogAttributes[attribute] = 5;
 		} else if (dogAttributes[attribute] < 1) {
 			dogAttributes[attribute] = 1;
@@ -395,7 +473,7 @@ btnResults.addEventListener("click", () => {
 	handleAllScores();
 	reduceExcessPoints();
 	saveResults();
-	window.location.href = "/results.html"
+	window.location.href = "./results.html";
 });
 
 document.addEventListener("DOMContentLoaded", function () {

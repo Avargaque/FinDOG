@@ -182,6 +182,8 @@ function showBreedDetails() {
 	} else {
 		console.error("Breed not found");
 	}
+
+	console.log(breed);
 }
 
 // updates block scores for breed traits
@@ -605,7 +607,7 @@ function checkQuiz() {
 	}
 	// takes user back to finish quiz
 	else {
-		window.location.href = "/breed-selector.html";
+		window.location.href = "./breed-selector.html";
 	}
 }
 
