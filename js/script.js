@@ -35,9 +35,7 @@ async function fetchDogBreeds() {
 		}
 		dogData = await response.json();
 
-		if (
-			window.location.href.includes("breeds-list.html")
-		) {
+		if (window.location.href.includes("breeds-list.html")) {
 			renderDogs(dogData);
 		}
 	} catch (error) {
@@ -97,7 +95,6 @@ function goToBreed() {
 	const breedsItems = document.querySelectorAll(".breeds-item");
 
 	breedsItems.forEach((item) => {
-		item.setAttribute("draggable", "true");
 		item.addEventListener("click", () => {
 			handleBreedSelection(item);
 		});
@@ -109,7 +106,7 @@ function goToBreed() {
 		});
 	});
 
-	function handleBreedSelection(item){
+	function handleBreedSelection(item) {
 		const itemName = item.querySelector(".breeds-item__name").textContent;
 
 		dogData.forEach((dog) => {
@@ -121,7 +118,7 @@ function goToBreed() {
 				let breedName = dog.name.toLowerCase().replace(/\s+/g, "-");
 
 				// opens in new window
-				window.open(`breed-details.html?breed=${breedName}`, '_blank');
+				window.open(`breed-details.html?breed=${breedName}`, "_blank");
 			}
 		});
 	}
@@ -318,10 +315,11 @@ function renderDogs(dogs) {
 	dogs.forEach((dog) => {
 		const dogElement = createDogForBreedsList(dog);
 
-		// sets quiz score for each breed
+		// sets quiz score and breed compatibility for each breed
 		if (window.location.href.includes("results.html")) {
 			dogElement.dataset.score = dog.score;
-			console.log("Breed: " + dog.name + " Score: " + dog.score)
+			dogElement.dataset.compatibility = dog.compatibility;
+			console.log("Breed: " + dog.name + " Score: " + dog.score);
 		}
 
 		container.appendChild(dogElement);
@@ -565,7 +563,9 @@ function resetFilters() {
 
 // shows user score in console
 function showUserScore(results) {
-	console.log("Wyniki gracza dla każdej cechy");
+	console.log(
+		"Wyniki gracza dla każdej cechy (0 oznacza cechy, które nie mają znaczenia dla użytkownika)"
+	);
 	console.log("size: " + results.size);
 	console.log("coatLength: " + results.coatLength);
 
@@ -595,14 +595,16 @@ function showUserScore(results) {
 function checkQuiz() {
 	// gets results from sessionStorage
 	const results = JSON.parse(sessionStorage.getItem("quizResults"));
-	showUserScore(results);
 
 	// shows results
 	if (results) {
 		fetchDogBreeds().then(() => {
 			compareResultsToBreeds(results);
+			checkCompatibility();
 			renderDogs(dogData);
 			goToBreed();
+			setCompatibility();
+			showUserScore(results);
 		});
 	}
 	// takes user back to finish quiz
@@ -641,6 +643,59 @@ function compareResultsToBreeds(results) {
 
 		// assigns score to the breed object
 		breed.score = score;
+	});
+}
+
+// checks compatibility
+function checkCompatibility() {
+	dogData.forEach((breed) => {
+		if (breed.score <= 8) {
+			breed.compatibility = "idealne dopasowanie";
+		} else if (breed.score <= 13) {
+			breed.compatibility = "bardzo dobre dopasowanie";
+		} else if (breed.score <= 19) {
+			breed.compatibility = "dobre dopasowanie";
+		} else if (breed.score <= 25) {
+			breed.compatibility = "przeciętne dopasowanie";
+		} else {
+			breed.compatibility = "złe dopasowanie";
+		}
+	});
+}
+
+// set compatibility visual effects
+function setCompatibility() {
+	const perfectCompatibilityElements = document.querySelectorAll(
+		'[data-compatibility="idealne dopasowanie"]'
+	);
+	const veryGoodCompatibilityElements = document.querySelectorAll(
+		'[data-compatibility="bardzo dobre dopasowanie"]'
+	);
+	const goodCompatibilityElements = document.querySelectorAll(
+		'[data-compatibility="dobre dopasowanie"]'
+	);
+	const averageCompatibilityElements = document.querySelectorAll(
+		'[data-compatibility="przeciętne dopasowanie"]'
+	);
+	const badCompatibilityElements = document.querySelectorAll(
+		'[data-compatibility="złe dopasowanie"]'
+	);
+
+	// sets visuals depending on compatibility
+	perfectCompatibilityElements.forEach((element) => {
+		element.classList.add("compatibility", "compatibility--perfect");
+	});
+	veryGoodCompatibilityElements.forEach((element) => {
+		element.classList.add("compatibility", "compatibility--very-good");
+	});
+	goodCompatibilityElements.forEach((element) => {
+		element.classList.add("compatibility", "compatibility--good");
+	});
+	averageCompatibilityElements.forEach((element) => {
+		element.classList.add("compatibility", "compatibility--average");
+	});
+	badCompatibilityElements.forEach((element) => {
+		element.classList.add("compatibility", "compatibility--bad");
 	});
 }
 

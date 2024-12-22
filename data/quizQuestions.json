@@ -141,7 +141,7 @@
 		"effects": [
 			{
 				"sociability": 2,
-				"goodWithKids": 5,
+				"goodWithKids": 3,
 				"playfulness": 2,
 				"energy": 1,
 				"stubborn": -2
@@ -193,7 +193,7 @@
 	},
 	{
 		"id": 12,
-		"question": "Jak często pies będzie zostawał sam w domu?",
+		"question": "Jak często pies będzie zostawał sam?",
 		"answers": [
 			"Nigdy lub prawie nigdy",
 			"Czasami",
@@ -253,14 +253,14 @@
 			{ "barking": -3 },
 			{ "barking": -1 },
 			{ "barking": 0 },
-			{ "barking": 3 }
+			{ "barking": 2 }
 		],
 		"inputType": "radio",
 		"userAnswerRadio": ""
 	},
 	{
 		"id": 17,
-		"question": "Czy przeszkadza ci kiedy pies nie zawsze słucha swojego właściciela, bywa uparty i chce robić co mu się podoba?",
+		"question": "Czy przeszkadza ci kiedy pies nie zawsze jest posłuszny i robi co mu się podoba?",
 		"answers": ["Bardzo", "Trochę", "Nie"],
 		"effects": [{ "stubborn": -3 }, { "stubborn": -1 }, { "stubborn": 0 }],
 		"inputType": "radio",

@@ -677,8 +677,9 @@ main {
 	}
 }
 
-// main for breeds list
+// main for breeds list and results
 .main-breeds-list {
+	position: relative;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
