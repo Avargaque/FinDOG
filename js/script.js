@@ -36,7 +36,9 @@ async function fetchDogBreeds() {
 		}
 		dogData = await response.json();
 
-		if (window.location.href.includes("breeds-list.html")) {
+		if (
+			window.location.href.includes("breeds-list.html")
+		) {
 			renderDogs(dogData);
 		}
 	} catch (error) {
@@ -77,6 +79,20 @@ function sortBreedsAlphabetically() {
 	items.forEach((item) => container.appendChild(item));
 }
 
+// sort breeds by quiz score percantage compatibility
+function sortBreedsByCompatibility() {
+	const container = document.getElementById("main-breeds-list");
+	const dogs = Array.from(container.children);
+
+	dogs.sort((a, b) => {
+		const scoreA = a.dataset.score ? parseInt(a.dataset.score) : Infinity;
+		const scoreB = b.dataset.score ? parseInt(b.dataset.score) : Infinity;
+		return scoreA - scoreB;
+	});
+
+	dogs.forEach((dogElement) => container.appendChild(dogElement));
+}
+
 // takes user to breed details
 function goToBreed() {
 	const breedsItems = document.querySelectorAll(".breeds-item");
@@ -98,7 +114,7 @@ function goToBreed() {
 	});
 }
 
-// shows breed details by changing breed info and characteristics
+// shows breed details by changing breed info and traits
 function showBreedDetails() {
 	const urlParams = new URLSearchParams(window.location.search);
 	const breedName = urlParams.get("breed");
@@ -133,7 +149,7 @@ function showBreedDetails() {
 		plLink.innerText = "Standard PL";
 		engLink.innerText = "Standard ENG";
 
-		// characteristics
+		// traits
 		updateScore("sociability", breed.sociability);
 		updateScore("goodWithKids", breed.goodWithKids);
 		updateScore("goodWithPets", breed.goodWithPets);
@@ -155,7 +171,7 @@ function showBreedDetails() {
 	}
 }
 
-// updates block scores for breed characteristics
+// updates block scores for breed traits
 function updateScore(containerId, value) {
 	const scoreBlocks = document.querySelectorAll(`#${containerId} .score-block`);
 	scoreBlocks.forEach((block) => block.classList.remove("active"));
@@ -286,12 +302,25 @@ function renderDogs(dogs) {
 	// creates HTML element for each dog
 	dogs.forEach((dog) => {
 		const dogElement = createDogForBreedsList(dog);
+
+		// sets quiz score for each breed
+		if (window.location.href.includes("results.html")) {
+			dogElement.dataset.score = dog.score;
+			console.log("Breed: " + dog.name + " Score: " + dog.score)
+		}
+
 		container.appendChild(dogElement);
 	});
 
 	console.log("Rendered dogs:", dogs);
 
-	sortBreedsAlphabetically();
+	// sorts results in proper order
+	if (window.location.href.includes("breeds-list.html")) {
+		sortBreedsAlphabetically();
+	} else if (window.location.href.includes("results.html")) {
+		sortBreedsByCompatibility();
+	}
+
 	goToBreed();
 }
 
@@ -518,6 +547,88 @@ function resetFilters() {
 	filterDogs();
 	renderDogs(dogData);
 }
+
+// shows user score in console
+function showUserScore(results) {
+	console.log("Wyniki gracza dla każdej cechy");
+	console.log("size: " + results.size);
+	console.log("coatLength: " + results.coatLength);
+
+	console.log("sociability: " + results.sociability);
+	console.log("goodWithKids: " + results.goodWithKids);
+	console.log("goodWithPets: " + results.goodWithPets);
+	console.log("approachToStrangers: " + results.approachToStrangers);
+	console.log("playfulness: " + results.playfulness);
+	console.log("energy: " + results.energy);
+	console.log("needsActivity: " + results.needsActivity);
+	console.log("controlling: " + results.controlling);
+	console.log("barking: " + results.barking);
+	console.log("training: " + results.training);
+	console.log("adaptability: " + results.adaptability);
+	console.log("canBeAlone: " + results.canBeAlone);
+	console.log("stubborn: " + results.stubborn);
+
+	console.log("shedding: " + results.shedding);
+	console.log("combing: " + results.combing);
+	console.log("drooling: " + results.drooling);
+
+	console.log("lifeExpectancy: " + results.lifeExpectancy);
+	console.log("availability: " + results.availability);
+}
+
+// checks if user completed quiz to get results
+function checkQuiz() {
+	// gets results from sessionStorage
+	const results = JSON.parse(sessionStorage.getItem("quizResults"));
+	showUserScore(results);
+
+	// shows results
+	if (results) {
+		fetchDogBreeds().then(() => {
+			compareResultsToBreeds(results);
+			renderDogs(dogData);
+			goToBreed();
+		});
+	}
+	// takes user back to finish quiz
+	else {
+		window.location.href = "/breed-selector.html";
+	}
+}
+
+// compares user scores to every breed traits - LOWER SCORE IS MORE COMPATIBLE
+function compareResultsToBreeds(results) {
+	dogData.forEach((breed) => {
+		let score = 0;
+
+		// compares every trait
+		for (const key in results) {
+			const userValue = results[key];
+			const breedValue = breed[key];
+
+			// compares arrays
+			if (Array.isArray(userValue)) {
+				if (userValue.includes(breedValue)) {
+					score += 0; // no penalty for a match
+				} else {
+					score += 3; // penalty for mismatch
+				}
+			}
+			// if userValue equals 0 it means that trait is indifferent to user
+			else if (userValue === 0 || breedValue === undefined) {
+				score += 0;
+			}
+			// compares normal traits
+			else {
+				score += Math.abs(userValue - breedValue);
+			}
+		}
+
+		// assigns score to the breed object
+		breed.score = score;
+	});
+}
+
 ////////////////////////////////////////////////////////////// EVENT LISTENERS
 
 email.addEventListener("click", copyMailAdress);
@@ -560,6 +671,11 @@ document.addEventListener("DOMContentLoaded", function () {
 			goToBreed();
 		});
 	}
+
+	if (window.location.href.includes("results.html")) {
+		checkQuiz();
+	}
+
 	if (window.location.href.includes("breed-details.html")) {
 		fetchDogBreeds().then(() => {
 			let currentDogName = localStorage.getItem("currentDogName");

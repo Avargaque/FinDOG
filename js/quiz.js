@@ -21,7 +21,7 @@ let dogAttributes = {
 	canBeAlone: 3,
 	goodWithKids: 3,
 	goodWithPets: 3,
-	adapdability: 3,
+	adaptability: 3,
 	stubborn: 3,
 	lifeExpectancy: 0,
 	availability: 0,
@@ -281,7 +281,7 @@ function reduceExcessPoints() {
 		"controlling",
 		"barking",
 		"training",
-		"adapdability",
+		"adaptability",
 		"canBeAlone",
 		"stubborn",
 	];
@@ -309,7 +309,7 @@ function resetScore() {
 		canBeAlone: 3,
 		goodWithKids: 3,
 		goodWithPets: 3,
-		adapdability: 3,
+		adaptability: 3,
 		stubborn: 3,
 		lifeExpectancy: 0,
 		availability: 0,
@@ -349,10 +349,10 @@ function showAlertResultBtn() {
 	}
 }
 
-// saves results to localStorage
+// saves results to sessionStorage
 function saveResults() {
 	const results = dogAttributes;
-	localStorage.setItem("quizResults", JSON.stringify(results));
+	sessionStorage.setItem("quizResults", JSON.stringify(results));
 }
 
 // shows user score in console
@@ -370,7 +370,7 @@ function showUserScore() {
 	console.log("controlling: " + dogAttributes.controlling);
 	console.log("barking: " + dogAttributes.barking);
 	console.log("training: " + dogAttributes.training);
-	console.log("adapdability: " + dogAttributes.adapdability);
+	console.log("adaptability: " + dogAttributes.adaptability);
 	console.log("canBeAlone: " + dogAttributes.canBeAlone);
 	console.log("stubborn: " + dogAttributes.stubborn);
 
@@ -395,11 +395,10 @@ btnResults.addEventListener("click", () => {
 	handleAllScores();
 	reduceExcessPoints();
 	saveResults();
-	showUserScore();
+	window.location.href = "/results.html"
 });
 
 document.addEventListener("DOMContentLoaded", function () {
 	resetScore();
-	showUserScore();
 	fetchQuizQuestions();
 });

@@ -31,7 +31,7 @@
 			{
 				"sociability": 1,
 				"needsActivity": -1,
-				"adapdability": 2,
+				"adaptability": 2,
 				"canBeAlone": 1,
 				"stubborn": -1
 			},
@@ -105,8 +105,8 @@
 			"Coś pomiędzy"
 		],
 		"effects": [
-			{ "sociability": 1, "adapdability": 2, "controlling": -1, "barking": -1 },
-			{ "adapdability": 1 },
+			{ "sociability": 1, "adaptability": 2, "controlling": -1, "barking": -1 },
+			{ "adaptability": 1 },
 			{}
 		],
 		"inputType": "radio",
@@ -186,8 +186,8 @@
         "question": "Czy otoczenie psa (miejsce zamieszkania, domownicy, styl życia) często będzie ulegać zmianie?",
         "answers": ["Tak", "Nie", "Ciężko powiedzieć"],
         "effects": [
-          { "adapdability": 2 },
-          { "adapdability": -1 },
+          { "adaptability": 2 },
+          { "adaptability": -1 },
           {}
         ],
         "inputType": "radio",
