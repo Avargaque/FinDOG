@@ -1415,28 +1415,22 @@ main {
   display: flex;
   flex-direction: column;
   width: 300px;
-  height: 300px;
+  height: 380px;
   align-items: center;
   padding: 1rem;
   transition: all 0.3s;
+  margin-bottom: 0.5rem;
 }
-@media (min-width: 400px) and (min-height: 600px) {
+@media (min-width: 620px) {
   .main-breeds-list .breeds-item {
-    width: 300px;
-    height: 350px;
+    margin-bottom: 0;
   }
 }
 .main-breeds-list .breeds-item__img {
-  width: 240px;
-  height: 160px;
+  width: 280px;
+  height: 186.6666666667px;
   -o-object-fit: cover;
      object-fit: cover;
-}
-@media (min-width: 400px) and (min-height: 600px) {
-  .main-breeds-list .breeds-item__img {
-    width: 280px;
-    height: 186.6666666667px;
-  }
 }
 .main-breeds-list .breeds-item__name {
   display: flex;

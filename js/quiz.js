@@ -134,6 +134,19 @@ function loadQuestion(questionIndex) {
 		label.append(span);
 		answersForm.append(label);
 	});
+
+	// goes to next question after choosing answer after small delay
+	const answersInputs = answersForm.querySelectorAll(".answers__label input");
+
+	answersInputs.forEach((input) => {
+		input.addEventListener("click", () => {
+			if (input.type === "radio") {
+				setTimeout(() => {
+					nextQuestion();
+				}, 300);
+			}
+		});
+	});
 }
 
 // loads next quiz question
@@ -362,10 +375,9 @@ function reduceExcessPoints() {
 	];
 
 	attributesToCheck.forEach((attribute) => {
-		if (dogAttributes[attribute] === 100){
+		if (dogAttributes[attribute] === 100) {
 			dogAttributes[attribute] = 0;
-		}
-		else if (dogAttributes[attribute] > 5) {
+		} else if (dogAttributes[attribute] > 5) {
 			dogAttributes[attribute] = 5;
 		} else if (dogAttributes[attribute] < 1) {
 			dogAttributes[attribute] = 1;

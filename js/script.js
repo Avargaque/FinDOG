@@ -96,17 +96,17 @@ function goToBreed() {
 
 	breedsItems.forEach((item) => {
 		item.addEventListener("click", () => {
-			handleBreedSelection(item);
+			handleBreedSelection(item, false);
 		});
 		item.addEventListener("mousedown", (event) => {
 			// pressing scroll
 			if (event.button === 1) {
-				handleBreedSelection(item);
+				handleBreedSelection(item, true);
 			}
 		});
 	});
 
-	function handleBreedSelection(item) {
+	function handleBreedSelection(item, isMouseDown) {
 		const itemName = item.querySelector(".breeds-item__name").textContent;
 
 		dogData.forEach((dog) => {
@@ -117,8 +117,15 @@ function goToBreed() {
 				// creates proper link
 				let breedName = dog.name.toLowerCase().replace(/\s+/g, "-");
 
+				// opens in the same window
+				if(!isMouseDown){
+					window.location.href = `breed-details.html?breed=${breedName}`, "_blank";
+				}
+
 				// opens in new window
-				window.open(`breed-details.html?breed=${breedName}`, "_blank");
+				if (isMouseDown){
+					window.open(`breed-details.html?breed=${breedName}`, "_blank");
+				}			
 			}
 		});
 	}
