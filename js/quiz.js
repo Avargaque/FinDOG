@@ -241,72 +241,63 @@ function handleScore(questionId, userAnswer, type) {
 			Object.entries(effects).forEach(([key, value]) => {
 				// handle cases with switch
 				switch (true) {
-					// special case: question 8, third answer
-					case questionId === 8 && key === "controlling" && answerIndex === 2:
+					case questionId === 6 && key === "controlling" && answerIndex === 2:
 						dogAttributes[key] = 100; // sets to 0 instead of adding
 						break;
 
-					// special case: question 9, third answer
-					case questionId === 9 && key === "goodWithKids" && answerIndex === 2:
+					case questionId === 7 && key === "goodWithKids" && answerIndex === 1:
 						dogAttributes[key] = 100; // sets to 0 instead of adding
 						break;
 
-					// special case: question 11, fourth answer
-					case questionId === 11 && key === "sociability" && answerIndex === 3:
+					case questionId === 9 && key === "sociability" && answerIndex === 3:
 						dogAttributes[key] = 100; // sets to 0 instead of adding
 						break;
 
-					// special case: question 12, first answer
-					case questionId === 12 && key === "canBeAlone" && answerIndex === 0:
+					case questionId === 9 && key === "sociability" && answerIndex === 2:
+						dogAttributes[key] = 3; // sets to 3 instead of adding
+						break;
+
+					case questionId === 10 && key === "canBeAlone" && answerIndex === 1:
 						dogAttributes[key] = 100; // sets to 0 instead of adding
 						break;
 
-					// special case: question 13, second answer
-					case questionId === 13 && key === "adaptability" && answerIndex === 1:
+					case questionId === 11 && key === "adaptability" && answerIndex === 1:
 						dogAttributes[key] = 100; // sets to 0 instead of adding
 						break;
 
-					// special case: question 14, third answer
-					case questionId === 14 && key === "goodWithPets" && answerIndex === 2:
+					case questionId === 12 && key === "goodWithPets" && answerIndex === 1:
 						dogAttributes[key] = 100; // sets to 0 instead of adding
 						break;
 
-					// special case: question 15, third answer
-					case questionId === 15 &&
+					case questionId === 13 &&
 						key === "approachToStrangers" &&
 						answerIndex === 2:
 						dogAttributes[key] = 100; // sets to 0 instead of adding
 						break;
 
-					// special case: question 16, third answer
-					case questionId === 16 && key === "barking" && answerIndex === 2:
+					case questionId === 14 && key === "barking" && answerIndex === 1:
 						dogAttributes[key] = 100; // sets to 0 instead of adding
 						break;
 
-					// special case: question 17, third answer
-					case questionId === 17 && key === "stubborn" && answerIndex === 2:
+					case questionId === 15 && key === "stubborn" && answerIndex === 1:
 						dogAttributes[key] = 100; // sets to 0 instead of adding
 						break;
 
-					// special case: question 18, fourth answer
-					case questionId === 18 && key === "energy" && answerIndex === 3:
+					case questionId === 16 && key === "energy" && answerIndex === 3:
 						dogAttributes[key] = 100; // sets to 0 instead of adding
 						break;
 
-					// special case: question 19, fourth answer
-					case questionId === 19 &&
+					case questionId === 17 &&
 						key === "needsActivity" &&
 						answerIndex === 3:
 						dogAttributes[key] = 100; // sets to 0 instead of adding
 						break;
 
-					// special case: question 20, fourth answer
-					case questionId === 20 && key === "playfulness" && answerIndex === 3:
+					case questionId === 18 && key === "playfulness" && answerIndex === 3:
 						dogAttributes[key] = 100; // sets to 0 instead of adding
 						break;
 
-					// special case: question 21, fourth answer
-					case questionId === 21 && key === "training" && answerIndex === 3:
+					case questionId === 19 && key === "training" && answerIndex === 3:
 						dogAttributes[key] = 100; // sets to 0 instead of adding
 						break;
 

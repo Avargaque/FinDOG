@@ -5,35 +5,29 @@
 		"answers": [
 			"By zyskać bliskiego przyjaciela",
 			"By służył jako kompan dla moich dzieci",
-			"By mieć towarzysza do spacerów i innych aktywności fizycznych",
+			"By mieć towarzysza do spacerów, sportu lub treningów",
 			"Dla obrony domu i bliskich"
 		],
 		"effects": [
-			{ "sociability": 2, "playfulness": 1 },
-			{ "sociability": 1, "goodWithKids": 1, "playfulness": 1, "energy": 1 },
-			{ "energy": 2, "needsActivity": 1, "training": 2 },
-			{
-				"approachToStrangers": -2,
-				"controlling": 2,
-				"training": 1,
-				"barking": 1,
-				"canBeAlone": 1
-			}
+			{ "sociability": 2},
+			{ "sociability": 2, "goodWithKids": 2, "playfulness": 2},
+			{ "energy": 2, "needsActivity": 2, "training": 2 },
+			{ "approachToStrangers": -2, "controlling": 2, "canBeAlone": 2 }
 		],
 		"inputType": "radio",
 		"userAnswerRadio": ""
 	},
 	{
 		"id": 2,
-		"question": "Czy miałeś wcześniej własnego psa na stałe?",
+		"question": "Czy miałeś/miałaś wcześniej własnego psa na stałe?",
 		"answers": ["Nie", "Tak"],
 		"effects": [
 			{
-				"sociability": 1,
-				"needsActivity": -1,
-				"adaptability": 1,
-				"canBeAlone": 1,
-				"stubborn": -1
+				"controlling": -2,
+				"needsActivity": -2,
+				"adaptability": 2,
+				"canBeAlone": 2,
+				"stubborn": -2
 			},
 			{}
 		],
@@ -53,34 +47,14 @@
 	},
 	{
 		"id": 4,
-		"question": "Jak duże podwórko pies będzie miał do dyspozycji?",
-		"answers": ["Brak podwórka", "Małe podwórko", "Duże podwórze lub ogród"],
-		"effects": [
-			{ "energy": -1, "needsActivity": -1 },
-			{},
-			{ "energy": 1, "needsActivity": 1 }
-		],
+		"question": "Czy pies będzie miał do dyspozycji duże podwórko lub ogród?",
+		"answers": ["Tak", "Nie"],
+		"effects": [{}, { "controlling": -2, "energy": -2, "needsActivity": -2 }],
 		"inputType": "radio",
 		"userAnswerRadio": ""
 	},
 	{
 		"id": 5,
-		"question": "Jak duży ruch uliczny ma miejsce przy podwórku, na którym przebywać będzie pies?",
-		"answers": [
-			"Pies nie będzie przebywać na podwórku",
-			"Niewielki ruch",
-			"Duży ruch"
-		],
-		"effects": [
-			{ "controlling": -1 },
-			{},
-			{ "controlling": -1, "approachToStrangers": 1 }
-		],
-		"inputType": "radio",
-		"userAnswerRadio": ""
-	},
-	{
-		"id": 6,
 		"question": "Gdzie pies będzie mieszkał i spał?",
 		"answers": [
 			"Będzie mieszkał i spał w domu",
@@ -89,71 +63,34 @@
 		],
 		"effects": [
 			{ "sociability": 2 },
-			{
-				"sociability": -1,
-				"barking": -1,
-				"canBeAlone": 2
-			},
-			{ "canBeAlone": 1 }
+			{ "sociability": -2, "barking": -2, "canBeAlone": 2 },
+			{ "canBeAlone": 2 }
 		],
 		"inputType": "radio",
 		"userAnswerRadio": ""
 	},
 	{
-		"id": 7,
-		"question": "Czy w twoim domu dominuje cisza i spokój, czy jest raczej głośno i ruchliwie? Weź pod uwagę domowników, inne zwierzęta, gości czy ogólny hałas.",
-		"answers": [
-			"Jest dużo hałasu i ruchu",
-			"Jest cicho i spokojnie",
-			"Coś pomiędzy"
-		],
-		"effects": [
-			{ "sociability": 1, "adaptability": 2, "controlling": -1, "barking": -1 },
-			{},
-			{ "adaptability": 1 }
-		],
-		"inputType": "radio",
-		"userAnswerRadio": ""
-	},
-	{
-		"id": 8,
-		"question": "Czy chcesz by twój pies pełnił rolę strażnika, broniąc i ostrzegając przed obcymi?",
+		"id": 6,
+		"question": "Czy chcesz, by twój pies pełnił rolę strażnika, broniąc domowników i terytorium oraz ostrzegając przed obcymi?",
 		"answers": ["Tak", "Nie, wręcz przeciwnie", "Bez znaczenia"],
 		"effects": [
-			{
-				"controlling": 2,
-				"barking": 2,
-				"approachToStrangers": -2,
-				"goodWithKids": -1,
-				"goodWithPets": -1,
-				"training": 1
-			},
-			{ "controlling": -2, "barking": -2, "approachToStrangers": 1 },
+			{ "controlling": 2, "barking": 2, "approachToStrangers": -2 },
+			{ "controlling": -2, "barking": -2, "approachToStrangers": 2 },
 			{ "controlling": 0 }
 		],
 		"inputType": "radio",
 		"userAnswerRadio": ""
 	},
 	{
-		"id": 9,
-		"question": "Jak bardzo istotne dla ciebie jest, aby pies był przyjazny dzieciom?",
-		"answers": ["Bardzo", "Trochę", "Bez znaczenia"],
-		"effects": [
-			{
-				"sociability": 2,
-				"goodWithKids": 3,
-				"playfulness": 2,
-				"energy": 1,
-				"stubborn": -2
-			},
-			{ "sociability": 1, "goodWithKids": 1, "playfulness": 1 },
-			{ "goodWithKids": 0 }
-		],
+		"id": 7,
+		"question": "Czy istotne dla ciebie jest, aby pies był przyjazny dzieciom?",
+		"answers": ["Tak", "Nie"],
+		"effects": [{ "goodWithKids": 2 }, { "goodWithKids": 0 }],
 		"inputType": "radio",
 		"userAnswerRadio": ""
 	},
 	{
-		"id": 10,
+		"id": 8,
 		"question": "Jak często planujesz wychodzić z psem na dłuższe spacery?",
 		"answers": [
 			"Rzadziej niż raz w tygodniu",
@@ -163,18 +100,13 @@
 		"effects": [
 			{ "energy": -2, "needsActivity": -2 },
 			{},
-			{
-				"energy": 2,
-				"needsActivity": 2,
-				"stubborn": -1,
-				"training": 1
-			}
+			{ "energy": 2, "needsActivity": 2 }
 		],
 		"inputType": "radio",
 		"userAnswerRadio": ""
 	},
 	{
-		"id": 11,
+		"id": 9,
 		"question": "Preferujesz mocno przywiązanego i nieodstępującego cię o krok czy mniej towarzyskiego, bardziej zdystansowanego psa?",
 		"answers": [
 			"Przywiązanego",
@@ -183,52 +115,49 @@
 			"Bez znaczenia"
 		],
 		"effects": [
-			{ "sociability": 3, "canBeAlone": -1, "stubborn": -1 },
-			{ "sociability": -3, "canBeAlone": 1, "stubborn": 1 },
-			{},
+			{ "sociability": 2},
+			{ "sociability": -2, "canBeAlone": 2},
+			{ "sociability": 3 },
 			{ "sociability": 0 }
 		],
 		"inputType": "radio",
 		"userAnswerRadio": ""
 	},
 	{
-		"id": 12,
-		"question": "Jak często pies będzie zostawał sam?",
+		"id": 10,
+		"question": "Czy pies często będzie zostawał sam?",
 		"answers": [
-			"Nigdy lub prawie nigdy",
-			"Czasami",
-			"Codziennie na wiele godzin"
+			"Tak",
+			"Nie"
 		],
-		"effects": [{ "canBeAlone": 0 }, { "canBeAlone": 1 }, { "canBeAlone": 3 }],
+		"effects": [{ "canBeAlone": 2 }, { "canBeAlone": 0 }],
 		"inputType": "radio",
 		"userAnswerRadio": ""
 	},
 	{
-		"id": 13,
-		"question": "Czy otoczenie psa (miejsce zamieszkania, domownicy, styl życia) często będzie ulegać zmianie?",
+		"id": 11,
+		"question": "Czy codzienny harmonogram psa oraz jego otoczenie (miejsce zamieszkania, domownicy, styl życia) często będzie ulegać zmianie?",
 		"answers": ["Tak", "Nie", "Ciężko powiedzieć"],
-		"effects": [{ "adaptability": 3 }, { "adaptability": 0 }, {}],
+		"effects": [{ "adaptability": 2 }, { "adaptability": 0 }, {}],
 		"inputType": "radio",
 		"userAnswerRadio": ""
 	},
 	{
-		"id": 14,
-		"question": "Czy pies będzie miał bliską styczność z innymi dużymi zwierzakami, takimi jak inny pies lub kot?",
+		"id": 12,
+		"question": "Czy pies będzie miał bliską styczność z innymi zwierzakami udomowionymi, takimi jak inny pies lub kot?",
 		"answers": [
 			"Tak, będzie miał zwierzęcych współlokatorów",
-			"Tak, ale w dalszym otoczeniu (np. sporadyczne wizyty gości z psem)",
-			"Nie, co najwyżej na spacerach"
+			"Nie, co najwyżej u gości lub na spacerach"
 		],
 		"effects": [
-			{ "goodWithPets": 3 },
-			{ "goodWithPets": 1 },
+			{ "goodWithPets": 2 },
 			{ "goodWithPets": 0 }
 		],
 		"inputType": "radio",
 		"userAnswerRadio": ""
 	},
 	{
-		"id": 15,
+		"id": 13,
 		"question": "Wolisz, aby pies łatwo ufał nowym osobom?",
 		"answers": ["Tak", "Nie", "Bez znaczenia"],
 		"effects": [
@@ -241,17 +170,15 @@
 	},
 
 	{
-		"id": 16,
+		"id": 14,
 		"question": "Czy przeszkadza ci częste szczekanie psa?",
 		"answers": [
-			"Tak, bardzo",
-			"Trochę",
+			"Tak",
 			"Nie, nie ma to dla mnie znaczenia",
 			"Wręcz przeciwnie, lubię szczekliwe psy"
 		],
 		"effects": [
-			{ "barking": -3 },
-			{ "barking": -1 },
+			{ "barking": -2 },
 			{ "barking": 0 },
 			{ "barking": 2 }
 		],
@@ -259,25 +186,25 @@
 		"userAnswerRadio": ""
 	},
 	{
-		"id": 17,
-		"question": "Czy przeszkadza ci kiedy pies nie zawsze jest posłuszny i robi co mu się podoba?",
-		"answers": ["Bardzo", "Trochę", "Nie"],
-		"effects": [{ "stubborn": -3 }, { "stubborn": -1 }, { "stubborn": 0 }],
+		"id": 15,
+		"question": "Czy bardzo przeszkadza ci kiedy pies często jest nieposłuszny i robi co mu się podoba?",
+		"answers": ["Tak", "Nie"],
+		"effects": [{ "stubborn": -2 }, { "stubborn": 0 }],
 		"inputType": "radio",
 		"userAnswerRadio": ""
 	},
 	{
-		"id": 18,
-		"question": "Czy preferujesz bardzo aktywnego psa, wymagającego dużo ruchu?",
+		"id": 16,
+		"question": "Czy preferujesz aktywnego, pełnego energii psa?",
 		"answers": [
-			"Tak, wolę psa aktywnego",
+			"Tak",
 			"Nie, wolę psa mniej wymagającego ruchu",
 			"Coś pomiędzy",
 			"Bez znaczenia"
 		],
 		"effects": [
-			{ "energy": 3, "needsActivity": 1 },
-			{ "energy": -3, "needsActivity": -1 },
+			{ "energy": 2},
+			{ "energy": -2},
 			{},
 			{ "energy": 0 }
 		],
@@ -285,17 +212,17 @@
 		"userAnswerRadio": ""
 	},
 	{
-		"id": 19,
+		"id": 17,
 		"question": "Czy preferujesz psa, który potrzebuje wielu różnych stymulujących zajęć?",
 		"answers": [
-			"Tak, chcę psa, któremu trzeba zapewniać zróżnicowane formy spędzania czasu",
-			"Nie, wolę takiego, który dobrze znosi monotonię",
+			"Tak, chcę psa, który preferuje zróżnicowane formy spędzania czasu",
+			"Nie, wolę psa, który dobrze znosi monotonię",
 			"Coś pomiędzy",
 			"Bez znaczenia"
 		],
 		"effects": [
-			{ "needsActivity": 3 },
-			{ "needsActivity": -3 },
+			{ "needsActivity": 2 },
+			{ "needsActivity": -2 },
 			{},
 			{ "needsActivity": 0 }
 		],
@@ -303,7 +230,7 @@
 		"userAnswerRadio": ""
 	},
 	{
-		"id": 20,
+		"id": 18,
 		"question": "Czy preferujesz psa, który uwielbia bawić się z tobą bez końca?",
 		"answers": [
 			"Tak",
@@ -312,8 +239,8 @@
 			"Bez znaczenia"
 		],
 		"effects": [
-			{ "playfulness": 3 },
-			{ "playfulness": -3 },
+			{ "playfulness": 2 },
+			{ "playfulness": -2 },
 			{},
 			{ "playfulness": 0 }
 		],
@@ -321,7 +248,7 @@
 		"userAnswerRadio": ""
 	},
 	{
-		"id": 21,
+		"id": 19,
 		"question": "Czy preferujesz psa, który kocha trening i poznawanie nowych sztuczek?",
 		"answers": [
 			"Tak",
@@ -329,20 +256,23 @@
 			"Coś pomiędzy",
 			"Bez znaczenia"
 		],
-		"effects": [{ "training": 3 }, { "training": -3 }, {}, { "training": 0 }],
+		"effects": [{ "training": 2 }, { "training": -2 }, {}, { "training": 0 }],
 		"inputType": "radio",
 		"userAnswerRadio": ""
 	},
 	{
-		"id": 22,
+		"id": 20,
 		"question": "Czy bardzo zależy ci na tym, by pies był długowieczny?",
-		"answers": ["Tak, to dla mnie bardzi ważne", "Nie jest to dla mnie aż tak istotne"],
+		"answers": [
+			"Tak, to dla mnie bardzo ważne",
+			"Nie jest to dla mnie aż tak istotne"
+		],
 		"effects": [{ "lifeExpectancy": 3 }, {}],
 		"inputType": "radio",
 		"userAnswerRadio": ""
 	},
 	{
-		"id": 23,
+		"id": 21,
 		"question": "Czy przeszkadza ci konieczność częstego czesania psa?",
 		"answers": ["Tak", "Nie"],
 		"effects": [{ "combing": 1 }, {}],
@@ -350,7 +280,7 @@
 		"userAnswerRadio": ""
 	},
 	{
-		"id": 24,
+		"id": 22,
 		"question": "Czy przeszkadza ci duża ilość sierści zostawianej przez psa?",
 		"answers": ["Tak", "Nie"],
 		"effects": [{ "shedding": 1 }, {}],
@@ -358,7 +288,7 @@
 		"userAnswerRadio": ""
 	},
 	{
-		"id": 25,
+		"id": 23,
 		"question": "Czy przeszkadza ci nadmierne ślinienie się psa?",
 		"answers": ["Tak", "Nie"],
 		"effects": [{ "drooling": 1 }, {}],
@@ -366,7 +296,7 @@
 		"userAnswerRadio": ""
 	},
 	{
-		"id": 26,
+		"id": 24,
 		"question": "Czy zależy ci na tym, aby dobrana rasa była jak najłatwiej dostępna do pozyskania w naszym kraju?",
 		"answers": ["Tak", "Nie jest to dla mnie istotne"],
 		"effects": [{ "availability": 3 }, {}],
@@ -374,7 +304,7 @@
 		"userAnswerRadio": ""
 	},
 	{
-		"id": 27,
+		"id": 25,
 		"question": "Jaki rozmiar psa preferujesz? (Możesz wybrać kilka odpowiedzi)",
 		"answers": ["Mały", "Średni", "Duży"],
 		"effects": [{ "size": 1 }, { "size": 2 }, { "size": 3 }],
@@ -382,7 +312,7 @@
 		"userAnswersCheckbox": []
 	},
 	{
-		"id": 28,
+		"id": 26,
 		"question": "Jaką długość sierści psa preferujesz? (Możesz wybrać kilka odpowiedzi)",
 		"answers": ["Krótka", "Średnia", "Długa"],
 		"effects": [{ "coatLength": 1 }, { "coatLength": 2 }, { "coatLength": 3 }],
