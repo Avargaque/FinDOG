@@ -571,7 +571,7 @@ function resetFilters() {
 // shows user score in console
 function showUserScore(results) {
 	console.log(
-		"Wyniki gracza dla każdej cechy (0 oznacza cechy, które nie mają znaczenia dla użytkownika)"
+		"Wyniki gracza dla każdej cechy w skali 1-5 (0 oznacza cechy, które nie mają znaczenia dla użytkownika)"
 	);
 	console.log("size: " + results.size);
 	console.log("coatLength: " + results.coatLength);
@@ -630,7 +630,7 @@ function compareResultsToBreeds(results) {
 			const userValue = results[key];
 			const breedValue = breed[key];
 
-			// compares arrays
+			// compares arrays from checkboxes
 			if (Array.isArray(userValue)) {
 				if (userValue.includes(breedValue)) {
 					score += 0; // no penalty for a match
@@ -656,13 +656,13 @@ function compareResultsToBreeds(results) {
 // checks compatibility
 function checkCompatibility() {
 	dogData.forEach((breed) => {
-		if (breed.score <= 8) {
+		if (breed.score <= 9) {
 			breed.compatibility = "idealne dopasowanie";
-		} else if (breed.score <= 13) {
+		} else if (breed.score <= 14) {
 			breed.compatibility = "bardzo dobre dopasowanie";
 		} else if (breed.score <= 19) {
 			breed.compatibility = "dobre dopasowanie";
-		} else if (breed.score <= 25) {
+		} else if (breed.score <= 24) {
 			breed.compatibility = "przeciętne dopasowanie";
 		} else {
 			breed.compatibility = "złe dopasowanie";

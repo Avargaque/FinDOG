@@ -26,6 +26,8 @@ w wynikach dać wyszukiwarkę i filtr tak jak w liście ras - wyniki psów powin
 
 WYSZUKIWARKA ANULUJE FILTRY I NA ODWROT - NAPRAWIC
 
+KLIKNIĘCIE PRZYCISKU ZAKOŃCZENIA QUIZU MIMO BRAKU ZAZNACZONEJ ODPOWIEDZI KOŃCZY QUIZ - NAPRAWIĆ
+
 -----------------------------------------------------------------
 obiekt rasy:
 - name

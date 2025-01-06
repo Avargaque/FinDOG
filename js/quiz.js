@@ -143,7 +143,7 @@ function loadQuestion(questionIndex) {
 			if (input.type === "radio") {
 				setTimeout(() => {
 					nextQuestion();
-				}, 300);
+				}, 500);
 			}
 		});
 	});
@@ -237,92 +237,28 @@ function handleScore(questionId, userAnswer, type) {
 		const answerIndex = question.answers.indexOf(answer);
 		if (answerIndex >= 0) {
 			const effects = question.effects[answerIndex];
-
+	
 			Object.entries(effects).forEach(([key, value]) => {
-				// handle cases with switch
-				switch (true) {
-					case questionId === 6 && key === "controlling" && answerIndex === 2:
-						dogAttributes[key] = 100; // sets to 0 instead of adding
-						break;
-
-					case questionId === 7 && key === "goodWithKids" && answerIndex === 1:
-						dogAttributes[key] = 100; // sets to 0 instead of adding
-						break;
-
-					case questionId === 9 && key === "sociability" && answerIndex === 3:
-						dogAttributes[key] = 100; // sets to 0 instead of adding
-						break;
-
-					case questionId === 9 && key === "sociability" && answerIndex === 2:
-						dogAttributes[key] = 3; // sets to 3 instead of adding
-						break;
-
-					case questionId === 10 && key === "canBeAlone" && answerIndex === 1:
-						dogAttributes[key] = 100; // sets to 0 instead of adding
-						break;
-
-					case questionId === 11 && key === "adaptability" && answerIndex === 1:
-						dogAttributes[key] = 100; // sets to 0 instead of adding
-						break;
-
-					case questionId === 12 && key === "goodWithPets" && answerIndex === 1:
-						dogAttributes[key] = 100; // sets to 0 instead of adding
-						break;
-
-					case questionId === 13 &&
-						key === "approachToStrangers" &&
-						answerIndex === 2:
-						dogAttributes[key] = 100; // sets to 0 instead of adding
-						break;
-
-					case questionId === 14 && key === "barking" && answerIndex === 1:
-						dogAttributes[key] = 100; // sets to 0 instead of adding
-						break;
-
-					case questionId === 15 && key === "stubborn" && answerIndex === 1:
-						dogAttributes[key] = 100; // sets to 0 instead of adding
-						break;
-
-					case questionId === 16 && key === "energy" && answerIndex === 3:
-						dogAttributes[key] = 100; // sets to 0 instead of adding
-						break;
-
-					case questionId === 17 &&
-						key === "needsActivity" &&
-						answerIndex === 3:
-						dogAttributes[key] = 100; // sets to 0 instead of adding
-						break;
-
-					case questionId === 18 && key === "playfulness" && answerIndex === 3:
-						dogAttributes[key] = 100; // sets to 0 instead of adding
-						break;
-
-					case questionId === 19 && key === "training" && answerIndex === 3:
-						dogAttributes[key] = 100; // sets to 0 instead of adding
-						break;
-
-					///////////////////////////////
-
+				if (value === 0) {
+					// sets to 0 instead of adding for indifferent to user values
+					dogAttributes[key] = 0;
+				} else if (Array.isArray(dogAttributes[key])) {
 					// default case for checkboxes
-					case Array.isArray(dogAttributes[key]):
-						dogAttributes[key].push(value);
-						break;
-
-					// default case for attributes that are equal to 0 at default
-					case [
+					dogAttributes[key].push(value);
+				} else if (
+					[
 						"lifeExpectancy",
 						"availability",
 						"combing",
 						"shedding",
 						"drooling",
-					].includes(key):
-						dogAttributes[key] += value;
-						break;
-
+					].includes(key)
+				) {
+					// default case for attributes that are equal to 0 at default
+					dogAttributes[key] += value;
+				} else {
 					// default case for normal additive attributes
-					default:
-						dogAttributes[key] += value;
-						break;
+					dogAttributes[key] += value;
 				}
 			});
 		}
@@ -343,35 +279,6 @@ function handleAllScores() {
 		}
 		if (question.userAnswersCheckbox) {
 			handleScore(question.id, question.userAnswersCheckbox, "checkbox");
-		}
-	});
-}
-
-// Changes points below 1 or above 5, and from 100 to 0 when result doesn't matter to user
-function reduceExcessPoints() {
-	const attributesToCheck = [
-		"sociability",
-		"goodWithKids",
-		"goodWithPets",
-		"approachToStrangers",
-		"playfulness",
-		"energy",
-		"needsActivity",
-		"controlling",
-		"barking",
-		"training",
-		"adaptability",
-		"canBeAlone",
-		"stubborn",
-	];
-
-	attributesToCheck.forEach((attribute) => {
-		if (dogAttributes[attribute] === 100) {
-			dogAttributes[attribute] = 0;
-		} else if (dogAttributes[attribute] > 5) {
-			dogAttributes[attribute] = 5;
-		} else if (dogAttributes[attribute] < 1) {
-			dogAttributes[attribute] = 1;
 		}
 	});
 }
@@ -474,7 +381,6 @@ btnResults.addEventListener("click", () => {
 	showAlertResultBtn();
 	saveAnswers();
 	handleAllScores();
-	reduceExcessPoints();
 	saveResults();
 	window.location.href = "./results.html";
 });
