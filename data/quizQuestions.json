@@ -335,8 +335,8 @@
 	},
 	{
 		"id": 22,
-		"question": "Czy zależy ci na tym, by pies był długowieczny?",
-		"answers": ["Tak, to dla mnie ważne", "Nie jest to dla mnie istotne"],
+		"question": "Czy bardzo zależy ci na tym, by pies był długowieczny?",
+		"answers": ["Tak, to dla mnie bardzi ważne", "Nie jest to dla mnie aż tak istotne"],
 		"effects": [{ "lifeExpectancy": 3 }, {}],
 		"inputType": "radio",
 		"userAnswerRadio": ""
