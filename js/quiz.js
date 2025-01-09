@@ -135,7 +135,7 @@ function loadQuestion(questionIndex) {
 		answersForm.append(label);
 	});
 
-	// goes to next question after choosing answer after small delay
+	// goes to next question after choosing answer after a small delay
 	const answersInputs = answersForm.querySelectorAll(".answers__label input");
 
 	answersInputs.forEach((input) => {
@@ -237,7 +237,7 @@ function handleScore(questionId, userAnswer, type) {
 		const answerIndex = question.answers.indexOf(answer);
 		if (answerIndex >= 0) {
 			const effects = question.effects[answerIndex];
-	
+
 			Object.entries(effects).forEach(([key, value]) => {
 				if (value === 0) {
 					// sets to 0 instead of adding for indifferent to user values
@@ -245,17 +245,6 @@ function handleScore(questionId, userAnswer, type) {
 				} else if (Array.isArray(dogAttributes[key])) {
 					// default case for checkboxes
 					dogAttributes[key].push(value);
-				} else if (
-					[
-						"lifeExpectancy",
-						"availability",
-						"combing",
-						"shedding",
-						"drooling",
-					].includes(key)
-				) {
-					// default case for attributes that are equal to 0 at default
-					dogAttributes[key] += value;
 				} else {
 					// default case for normal additive attributes
 					dogAttributes[key] += value;
@@ -309,8 +298,9 @@ function resetScore() {
 	};
 }
 
-// checks user answers for the last questions and shows alert if needed
-function showAlertResultBtn() {
+// checks if user chose an answer and shows alert if needed
+function checkAlertResultBtn() {
+	let isChecked;
 	// for checkbox
 	if ("userAnswersCheckbox" in quizQuestions[currentQuestionIndex]) {
 		const checkedCheckboxes = document.querySelectorAll(
@@ -318,9 +308,13 @@ function showAlertResultBtn() {
 		);
 
 		if (checkedCheckboxes.length === 0) {
+			isChecked = false;
 			answersForm.classList.add("check-alert");
 			answersForm.classList.add("check-alert--last");
 			return;
+		} else {
+			isChecked = true;
+			return isChecked;
 		}
 	}
 	// for radio
@@ -330,9 +324,13 @@ function showAlertResultBtn() {
 		);
 
 		if (checkedRadio === null) {
+			isChecked = false;
 			answersForm.classList.add("check-alert");
 			answersForm.classList.add("check-alert--last");
-			return;
+			return isChecked;
+		} else {
+			isChecked = true;
+			return isChecked;
 		}
 	}
 }
@@ -378,11 +376,12 @@ previousQuestionBtns.forEach((btn) => {
 });
 btnResults.addEventListener("click", () => {
 	resetScore();
-	showAlertResultBtn();
-	saveAnswers();
-	handleAllScores();
-	saveResults();
-	window.location.href = "./results.html";
+	if (checkAlertResultBtn()) {
+		saveAnswers();
+		handleAllScores();
+		saveResults();
+		window.location.href = "./results.html";
+	}
 });
 
 document.addEventListener("DOMContentLoaded", function () {

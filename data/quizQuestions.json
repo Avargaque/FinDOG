@@ -139,14 +139,12 @@
 	},
 	{
 		"id": 11,
-		"question": "Czy preferujesz psa, który kocha trening i poznawanie nowych sztuczek?",
+		"question": "Czy ważne dla ciebie jest, aby pies nadawał się do treningu i szkolenia oraz łatwiej przychodziła mu nauka sztuczek i komend?",
 		"answers": [
 			"Tak",
-			"Nie, wręcz przeciwnie",
-			"Coś pomiędzy",
-			"Bez znaczenia"
+			"Nie, nie jest to dla mnie istotne"
 		],
-		"effects": [{ "training": 2 }, { "training": -2 }, {}, { "training": 0 }],
+		"effects": [{ "training": 2 }, { "training": 0 }],
 		"inputType": "radio",
 		"userAnswerRadio": ""
 	},

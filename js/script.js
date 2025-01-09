@@ -35,7 +35,7 @@ async function fetchDogBreeds() {
 		}
 		dogData = await response.json();
 
-		if (window.location.href.includes("breeds-list.html")) {
+		if (document.body.getAttribute("data-page") === "breeds-list") {
 			renderDogs(dogData);
 		}
 	} catch (error) {
@@ -323,7 +323,7 @@ function renderDogs(dogs) {
 		const dogElement = createDogForBreedsList(dog);
 
 		// sets quiz score and breed compatibility for each breed
-		if (window.location.href.includes("results.html")) {
+		if (document.body.getAttribute("data-page") === "results") {
 			dogElement.dataset.score = dog.score;
 			dogElement.dataset.compatibility = dog.compatibility;
 			console.log("Breed: " + dog.name + " Score: " + dog.score);
@@ -335,9 +335,9 @@ function renderDogs(dogs) {
 	console.log("Rendered dogs:", dogs);
 
 	// sorts results in proper order
-	if (window.location.href.includes("breeds-list.html")) {
+	if (document.body.getAttribute("data-page") === "breeds-list") {
 		sortBreedsAlphabetically();
-	} else if (window.location.href.includes("results.html")) {
+	} else if (document.body.getAttribute("data-page") === "results") {
 		sortBreedsByCompatibility();
 	}
 
@@ -653,7 +653,7 @@ function compareResultsToBreeds(results) {
 	});
 }
 
-// checks compatibility
+// checks score compatibility
 function checkCompatibility() {
 	dogData.forEach((breed) => {
 		if (breed.score <= 9) {
@@ -670,7 +670,7 @@ function checkCompatibility() {
 	});
 }
 
-// set compatibility visual effects
+// sets compatibility visual effects
 function setCompatibility() {
 	const perfectCompatibilityElements = document.querySelectorAll(
 		'[data-compatibility="idealne dopasowanie"]'
@@ -743,17 +743,17 @@ window.addEventListener("load", () => {
 document.addEventListener("DOMContentLoaded", function () {
 	gsapInAnimations();
 
-	if (window.location.href.includes("breeds-list.html")) {
+	if (document.body.getAttribute("data-page") === "breeds-list") {
 		fetchDogBreeds().then(() => {
 			goToBreed();
 		});
 	}
 
-	if (window.location.href.includes("results.html")) {
+	if (document.body.getAttribute("data-page") === "results") {
 		checkQuiz();
 	}
 
-	if (window.location.href.includes("breed-details.html")) {
+	if (document.body.getAttribute("data-page") === "breed-details") {
 		fetchDogBreeds().then(() => {
 			let currentDogName = localStorage.getItem("currentDogName");
 			showBreedDetails();
