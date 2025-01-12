@@ -258,6 +258,9 @@ button {
     left: 80%;
   }
 }
+.pop-up-mail p {
+  margin-bottom: 0;
+}
 
 .pop-up-mail.show {
   display: block;

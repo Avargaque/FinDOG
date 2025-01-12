@@ -1,17 +1,8 @@
-import { gsap } from "https://cdn.jsdelivr.net/npm/gsap@3.12.2/index.js";
-
-const animationTime = 0.7;
-const animationTimeMs = 700;
-// function to set IN animations - do edycji
-function gsapInAnimations() {}
-
-// function to set OUT animations - do edycji
-function gsapOutAnimations() {}
+import './animations.js'
 
 //////////////////////////////////////////////////////////// VARIABLES
 
 const email = document.querySelector(".email");
-const burgerBtn = document.querySelector(".nav__burger-menu");
 const filterBtns = document.querySelectorAll(".search-filter");
 const filter = document.querySelector(".filter");
 const resetFilterBtn = document.querySelector(".reset");
@@ -249,63 +240,6 @@ function copyMailAdress() {
 	}, 2000);
 }
 
-// toggles burger menu
-function toggleBurgerMenu() {
-	burgerBtn.classList.toggle("nav__burger-menu--inactive");
-
-	if (burgerBtn.classList.contains("nav__burger-menu--inactive")) {
-		handleNavItemsOutAnimation();
-	} else {
-		handleNavItemsInAnimation();
-	}
-
-	disableBurgerMenu();
-}
-
-// disables burger menu for 1 second
-function disableBurgerMenu() {
-	burgerBtn.style.pointerEvents = "none";
-	setTimeout(() => {
-		burgerBtn.style.pointerEvents = "auto";
-	}, 1000);
-}
-
-// adds navItemsIn animation
-function handleNavItemsInAnimation() {
-	const btns = document.querySelectorAll(".nav__btn");
-	let delayTime = 0;
-	btns.forEach((item) => {
-		item.classList.add("nav-items-in");
-		item.classList.remove("nav-items-out");
-		item.style.animationDelay = "." + delayTime + "s";
-		delayTime++;
-	});
-}
-
-// adds navItemsOut animation
-function handleNavItemsOutAnimation() {
-	const btns = document.querySelectorAll(".nav__btn");
-	let delayTime = 0;
-	btns.forEach((item) => {
-		item.classList.add("nav-items-out");
-		item.classList.remove("nav-items-in");
-		item.style.animationDelay = "." + delayTime + "s";
-		delayTime++;
-	});
-}
-
-// resets animations after changing screen orientation
-function resetNavAnimations() {
-	const btns = document.querySelectorAll(".nav__btn");
-	let delayTime = 0;
-	btns.forEach((item) => {
-		burgerBtn.classList.add("nav__burger-menu--inactive");
-		item.classList.remove("nav-items-out");
-		item.classList.remove("nav-items-in");
-		item.style.animationDelay = "." + delayTime + "s";
-		delayTime++;
-	});
-}
 
 // renders dog breeds and shows them in main
 function renderDogs(dogs) {
@@ -709,8 +643,6 @@ function setCompatibility() {
 ////////////////////////////////////////////////////////////// EVENT LISTENERS
 
 email.addEventListener("click", copyMailAdress);
-burgerBtn.addEventListener("click", toggleBurgerMenu);
-screen.orientation.addEventListener("change", resetNavAnimations);
 filterBtns.forEach((btn) => {
 	btn.addEventListener("click", () => {
 		toggleFilter();
@@ -741,8 +673,6 @@ window.addEventListener("load", () => {
 ////////////////////////////////////////////////////////// DOM
 
 document.addEventListener("DOMContentLoaded", function () {
-	gsapInAnimations();
-
 	if (document.body.getAttribute("data-page") === "breeds-list") {
 		fetchDogBreeds().then(() => {
 			goToBreed();
@@ -763,6 +693,4 @@ document.addEventListener("DOMContentLoaded", function () {
 	handlePseudosliderChanges();
 	handleCheckboxChanges();
 	footerYear();
-
-	gsapOutAnimations();
 });
