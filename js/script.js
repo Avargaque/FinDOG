@@ -1,4 +1,4 @@
-import './animations.js'
+import "./animations.js";
 
 //////////////////////////////////////////////////////////// VARIABLES
 
@@ -109,14 +109,15 @@ function goToBreed() {
 				let breedName = dog.name.toLowerCase().replace(/\s+/g, "-");
 
 				// opens in the same window
-				if(!isMouseDown){
-					window.location.href = `breed-details.html?breed=${breedName}`, "_blank";
+				if (!isMouseDown) {
+					(window.location.href = `breed-details.html?breed=${breedName}`),
+						"_blank";
 				}
 
 				// opens in new window
-				if (isMouseDown){
+				if (isMouseDown) {
 					window.open(`breed-details.html?breed=${breedName}`, "_blank");
-				}			
+				}
 			}
 		});
 	}
@@ -240,7 +241,6 @@ function copyMailAdress() {
 	}, 2000);
 }
 
-
 // renders dog breeds and shows them in main
 function renderDogs(dogs) {
 	const container = document.getElementById("main-breeds-list");
@@ -286,22 +286,21 @@ function handlePseudosliderChanges() {
 		let rangeEnd = null;
 
 		const values = slider.querySelectorAll(".value");
-		const lines = slider.querySelectorAll(".line");
 
 		values.forEach((value) => {
 			value.addEventListener("click", () =>
-				handleValueClick(value, values, lines, sliderId)
+				handleValueClick(value, values, sliderId)
 			);
 			value.addEventListener("mouseenter", () =>
-				handleValueHover(value, values, lines, rangeStart, rangeEnd)
+				handleValueHover(value, values, rangeStart, rangeEnd)
 			);
 			value.addEventListener("mouseleave", () =>
-				updateSelection(values, lines, rangeStart, rangeEnd)
+				updateSelection(values, rangeStart, rangeEnd)
 			);
 		});
 
 		// handles selecting a value
-		function handleValueClick(value, values, lines, sliderId) {
+		function handleValueClick(value, values, sliderId) {
 			const clickedValue = parseInt(value.getAttribute("data-value"), 10);
 
 			if (rangeStart === null && rangeEnd === null) {
@@ -323,7 +322,7 @@ function handlePseudosliderChanges() {
 				}
 			}
 
-			updateSelection(values, lines, rangeStart, rangeEnd);
+			updateSelection(values, rangeStart, rangeEnd);
 
 			if (rangeStart !== null && rangeEnd !== null) {
 				selectedFilters[sliderId] = { min: rangeStart, max: rangeEnd };
@@ -335,7 +334,7 @@ function handlePseudosliderChanges() {
 		}
 
 		// handles hovering over a value
-		function handleValueHover(value, values, lines, rangeStart, rangeEnd) {
+		function handleValueHover(value, values, rangeStart, rangeEnd) {
 			if (rangeStart === null || rangeEnd === null) return;
 
 			// parses hovered element to int
@@ -346,7 +345,7 @@ function handlePseudosliderChanges() {
 			const max = Math.max(rangeStart, rangeEnd, valueData);
 
 			// updates the visuals
-			updateSelection(values, lines, min, max);
+			updateSelection(values, min, max);
 		}
 
 		// resets range of chosen values
@@ -354,18 +353,17 @@ function handlePseudosliderChanges() {
 			rangeStart = null;
 			rangeEnd = null;
 			delete selectedFilters[sliderId];
-			updateSelection(values, lines, null, null);
+			updateSelection(values, null, null);
 		}
 	});
 }
 
 // visually updates slider selection
-function updateSelection(values, lines, rangeStart, rangeEnd) {
+function updateSelection(values, rangeStart, rangeEnd) {
 	// removes previous selections
 	values.forEach((v) => {
 		v.classList.remove("selected");
 	});
-	lines.forEach((l) => l.classList.remove("selected"));
 
 	// returns if range is not selected
 	if (rangeStart === null || rangeEnd === null) return;
@@ -379,13 +377,40 @@ function updateSelection(values, lines, rangeStart, rangeEnd) {
 			v.classList.add("selected");
 		}
 	});
+}
 
-	lines.forEach((line, idx) => {
-		const lineValue = idx + 1;
-		if (lineValue >= min && lineValue < max) {
-			line.classList.add("selected");
-		}
+// resets all filters
+function resetFilters() {
+	// resets sliders
+	pseudosliders.forEach((slider) => {
+		const sliderId = slider.getAttribute("data-id");
+		selectedFilters[sliderId] = { min: null, max: null };
+
+		const values = slider.querySelectorAll(".value");
+
+		values.forEach((value) => value.classList.remove("selected"));
 	});
+
+	// resets checkboxes
+	const checkboxes = document.querySelectorAll(
+		".checkbox-container input[type='checkbox']"
+	);
+	checkboxes.forEach((checkbox) => {
+		checkbox.checked = false;
+	});
+
+	// resets search input
+	if (searchInput) {
+		searchInput.value = "";
+		searchQuery = "";
+	}
+
+	// clears data
+	selectedCheckboxes = {};
+	selectedFilters = {};
+
+	filterDogs();
+	renderDogs(dogData);
 }
 
 // handles filter checkboxes
@@ -464,42 +489,6 @@ function filterDogs() {
 	}
 
 	renderDogs(filteredDogs);
-}
-
-// resets filters
-function resetFilters() {
-	// resets sliders
-	pseudosliders.forEach((slider) => {
-		const sliderId = slider.getAttribute("data-id");
-		selectedFilters[sliderId] = { min: null, max: null };
-
-		const values = slider.querySelectorAll(".value");
-		const lines = slider.querySelectorAll(".line");
-
-		values.forEach((value) => value.classList.remove("selected"));
-		lines.forEach((line) => line.classList.remove("selected"));
-	});
-
-	// resets checkboxes
-	const checkboxes = document.querySelectorAll(
-		".checkbox-container input[type='checkbox']"
-	);
-	checkboxes.forEach((checkbox) => {
-		checkbox.checked = false;
-	});
-
-	// resets search input
-	if (searchInput) {
-		searchInput.value = "";
-		searchQuery = "";
-	}
-
-	// clears data
-	selectedCheckboxes = {};
-	selectedFilters = {};
-
-	filterDogs();
-	renderDogs(dogData);
 }
 
 // shows user score in console

@@ -410,6 +410,9 @@ button {
   margin: 1rem;
   text-align: center;
 }
+.filter .slider-container .slider-item p {
+  margin-bottom: 0;
+}
 @media (min-width: 576px) and (min-height: 500px) {
   .filter .slider-container .slider-item {
     width: 200px;
@@ -451,22 +454,27 @@ button {
 .pseudoslider {
   display: flex;
   align-items: center;
-  padding: 0.5rem;
+  margin: 0.5rem;
+  background-color: #f4e7fa;
 }
 .pseudoslider .value {
-  width: 20px;
+  width: 30px;
   height: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #430f58;
-  background-color: #fff;
-  font-size: 1rem;
-  border: 1px solid #430f58;
-  border-radius: 50%;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
   z-index: 5;
+}
+@media (min-width: 576px) {
+  .pseudoslider .value {
+    width: 40px;
+    height: 25px;
+  }
 }
 .pseudoslider .value:hover {
   background-color: #430f58;
@@ -475,17 +483,6 @@ button {
 .pseudoslider .value.selected {
   background-color: #430f58;
   color: #fff;
-}
-.pseudoslider .line {
-  height: 10px;
-  width: 22px;
-  margin-left: -5px;
-  margin-right: -5px;
-  background-color: #fff;
-  transition: background-color 0.3s;
-}
-.pseudoslider .line.selected {
-  background-color: #430f58;
 }
 .pseudoslider .value.hover-range {
   background-color: #430f58;
