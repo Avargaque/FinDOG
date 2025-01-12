@@ -4,8 +4,6 @@ zrobić animacje w gsap
 
 w wersji mobilnej źle się odznacza filtry (tak jakby zostawał hover po kliknięciu), nie wiem jak naprawić
 
-filtry po zresetowaniu do naprawy
-
 -------------------------------------------------------------
 
 

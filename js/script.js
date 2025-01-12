@@ -182,6 +182,43 @@ function showBreedDetails() {
 	console.log(breed);
 }
 
+// renders dog breeds and shows them in main
+function renderDogs(dogs) {
+	const container = document.getElementById("main-breeds-list");
+	container.innerHTML = "";
+
+	if (dogs.length === 0) {
+		container.innerHTML =
+			"<p class='breeds-item__description'>Brak wyników dla wybranych filtrów.</p>";
+		return;
+	}
+
+	// creates HTML element for each dog
+	dogs.forEach((dog) => {
+		const dogElement = createDogForBreedsList(dog);
+
+		// sets quiz score and breed compatibility for each breed
+		if (document.body.getAttribute("data-page") === "results") {
+			dogElement.dataset.score = dog.score;
+			dogElement.dataset.compatibility = dog.compatibility;
+			console.log("Breed: " + dog.name + " Score: " + dog.score);
+		}
+
+		container.appendChild(dogElement);
+	});
+
+	console.log("Rendered dogs:", dogs);
+
+	// sorts results in proper order
+	if (document.body.getAttribute("data-page") === "breeds-list") {
+		sortBreedsAlphabetically();
+	} else if (document.body.getAttribute("data-page") === "results") {
+		sortBreedsByCompatibility();
+	}
+
+	goToBreed();
+}
+
 // updates block scores for breed traits
 function updateScore(containerId, value) {
 	const scoreBlocks = document.querySelectorAll(`#${containerId} .score-block`);
@@ -241,121 +278,109 @@ function copyMailAdress() {
 	}, 2000);
 }
 
-// renders dog breeds and shows them in main
-function renderDogs(dogs) {
-	const container = document.getElementById("main-breeds-list");
-	container.innerHTML = "";
-
-	if (dogs.length === 0) {
-		container.innerHTML =
-			"<p class='breeds-item__description'>Brak wyników dla wybranych filtrów.</p>";
-		return;
-	}
-
-	// creates HTML element for each dog
-	dogs.forEach((dog) => {
-		const dogElement = createDogForBreedsList(dog);
-
-		// sets quiz score and breed compatibility for each breed
-		if (document.body.getAttribute("data-page") === "results") {
-			dogElement.dataset.score = dog.score;
-			dogElement.dataset.compatibility = dog.compatibility;
-			console.log("Breed: " + dog.name + " Score: " + dog.score);
-		}
-
-		container.appendChild(dogElement);
-	});
-
-	console.log("Rendered dogs:", dogs);
-
-	// sorts results in proper order
-	if (document.body.getAttribute("data-page") === "breeds-list") {
-		sortBreedsAlphabetically();
-	} else if (document.body.getAttribute("data-page") === "results") {
-		sortBreedsByCompatibility();
-	}
-
-	goToBreed();
-}
-
 // handles filter pseudosliders
 function handlePseudosliderChanges() {
 	pseudosliders.forEach((slider) => {
 		const sliderId = slider.getAttribute("data-id");
-		let rangeStart = null;
-		let rangeEnd = null;
-
 		const values = slider.querySelectorAll(".value");
 
-		values.forEach((value) => {
-			value.addEventListener("click", () =>
-				handleValueClick(value, values, sliderId)
-			);
-			value.addEventListener("mouseenter", () =>
-				handleValueHover(value, values, rangeStart, rangeEnd)
-			);
-			value.addEventListener("mouseleave", () =>
-				updateSelection(values, rangeStart, rangeEnd)
-			);
-		});
+		// keeps track of the selected range for this slider
+		const rangeState = { start: null, end: null };
 
-		// handles selecting a value
-		function handleValueClick(value, values, sliderId) {
-			const clickedValue = parseInt(value.getAttribute("data-value"), 10);
-
-			if (rangeStart === null && rangeEnd === null) {
-				rangeStart = clickedValue;
-				rangeEnd = clickedValue;
-			} else if (rangeStart !== null && rangeEnd !== null) {
-				if (clickedValue === rangeStart || clickedValue === rangeEnd) {
-					resetRange();
-				} else if (clickedValue > rangeStart && clickedValue < rangeEnd) {
-					resetRange();
-				} else {
-					rangeStart = Math.min(clickedValue, rangeStart, rangeEnd);
-					rangeEnd = Math.max(clickedValue, rangeStart, rangeEnd);
-				}
-			} else {
-				rangeEnd = clickedValue;
-				if (rangeEnd < rangeStart) {
-					[rangeStart, rangeEnd] = [rangeEnd, rangeStart];
-				}
-			}
-
-			updateSelection(values, rangeStart, rangeEnd);
-
-			if (rangeStart !== null && rangeEnd !== null) {
-				selectedFilters[sliderId] = { min: rangeStart, max: rangeEnd };
-			} else {
-				delete selectedFilters[sliderId];
-			}
-
-			filterDogs();
-		}
-
-		// handles hovering over a value
-		function handleValueHover(value, values, rangeStart, rangeEnd) {
-			if (rangeStart === null || rangeEnd === null) return;
-
-			// parses hovered element to int
-			const valueData = parseInt(value.getAttribute("data-value"), 10);
-
-			// compares hovered element to selected range
-			const min = Math.min(rangeStart, rangeEnd, valueData);
-			const max = Math.max(rangeStart, rangeEnd, valueData);
-
-			// updates the visuals
-			updateSelection(values, min, max);
-		}
-
-		// resets range of chosen values
-		function resetRange() {
-			rangeStart = null;
-			rangeEnd = null;
-			delete selectedFilters[sliderId];
-			updateSelection(values, null, null);
-		}
+		// event listeners
+		addPseudosliderEventListeners(values, sliderId, rangeState);
 	});
+}
+
+// adds pseudofilters event listeners
+function addPseudosliderEventListeners(values, sliderId, rangeState) {
+	values.forEach((value) => {
+		value.addEventListener("click", () =>
+			handleValueClick(value, values, sliderId, rangeState)
+		);
+		value.addEventListener("mouseenter", () =>
+			handleValueHover(value, values, rangeState)
+		);
+		value.addEventListener("mouseleave", () =>
+			updateSelection(values, rangeState.start, rangeState.end)
+		);
+	});
+}
+
+// handles selecting a value
+function handleValueClick(value, values, sliderId, rangeState) {
+	const clickedValue = parseInt(value.getAttribute("data-value"), 10);
+	
+	// 0 chosen values - adds 1 filter/starts range
+	if (rangeState.start === null && rangeState.end === null) {
+		rangeState.start = clickedValue;
+		rangeState.end = clickedValue;
+	}
+	// 2 chosen values
+	else if (rangeState.start !== null && rangeState.end !== null) {
+		// cancels filter
+		if (
+			clickedValue === rangeState.start ||
+			clickedValue === rangeState.end ||
+			(clickedValue > rangeState.start && clickedValue < rangeState.end)
+		) {
+			resetRange(values, sliderId, rangeState);
+		}
+		// adds wider range
+		else {
+			rangeState.start = Math.min(
+				clickedValue,
+				rangeState.start,
+				rangeState.end
+			);
+			rangeState.end = Math.max(clickedValue, rangeState.start, rangeState.end);
+		}
+	}
+	// 1 chosen value - selects range
+	else {
+		rangeState.end = clickedValue;
+		if (rangeState.end < rangeState.start) {
+			[rangeState.start, rangeState.end] = [rangeState.end, rangeState.start];
+		}
+	}
+
+	updateSelection(values, rangeState.start, rangeState.end);
+
+	// activates or disactivates filters
+	if (rangeState.start !== null && rangeState.end !== null) {
+		selectedFilters[sliderId] = { min: rangeState.start, max: rangeState.end };
+	} else {
+		delete selectedFilters[sliderId];
+	}
+
+	filterDogs();
+}
+
+// handles hovering over a value
+function handleValueHover(value, values, rangeState) {
+	// returns if there is no range selected
+	if (rangeState.start === null || rangeState.end === null) {
+		updateSelection(values, null, null);
+		return;
+	}
+
+	// parses hovered element to int
+	const hoveredValue = parseInt(value.getAttribute("data-value"), 10);
+
+	// compares hovered element to selected range
+	const min = Math.min(rangeState.start, rangeState.end, hoveredValue);
+	const max = Math.max(rangeState.start, rangeState.end, hoveredValue);
+
+	// updates the visuals
+	updateSelection(values, min, max);
+}
+
+// resets range of chosen values
+function resetRange(values, sliderId, rangeState) {
+	rangeState.start = null;
+	rangeState.end = null;
+	delete selectedFilters[sliderId];
+	updateSelection(values, null, null);
 }
 
 // visually updates slider selection
@@ -384,11 +409,12 @@ function resetFilters() {
 	// resets sliders
 	pseudosliders.forEach((slider) => {
 		const sliderId = slider.getAttribute("data-id");
-		selectedFilters[sliderId] = { min: null, max: null };
-
 		const values = slider.querySelectorAll(".value");
+		const rangeState = { start: null, end: null };
 
-		values.forEach((value) => value.classList.remove("selected"));
+		delete selectedFilters[sliderId];
+		updateSelection(values, null, null);
+		addPseudosliderEventListeners(values, sliderId, rangeState);
 	});
 
 	// resets checkboxes
@@ -410,7 +436,6 @@ function resetFilters() {
 	selectedFilters = {};
 
 	filterDogs();
-	renderDogs(dogData);
 }
 
 // handles filter checkboxes
