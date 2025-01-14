@@ -158,22 +158,6 @@
 	},
 	{
 		"id": 13,
-		"question": "Czy przeszkadza ci częste szczekanie psa?",
-		"answers": [
-			"Tak",
-			"Nie, nie ma to dla mnie znaczenia",
-			"Wręcz przeciwnie, lubię szczekliwe psy"
-		],
-		"effects": [
-			{ "barking": -2 },
-			{ "barking": 0 },
-			{ "barking": 2 }
-		],
-		"inputType": "radio",
-		"userAnswerRadio": ""
-	},
-	{
-		"id": 14,
 		"question": "Czy bardzo zależy ci na tym, by pies był długowieczny?",
 		"answers": [
 			"Tak, to dla mnie bardzo ważne",
@@ -184,10 +168,24 @@
 		"userAnswerRadio": ""
 	},
 	{
-		"id": 15,
+		"id": 14,
 		"question": "Czy zależy ci na tym, aby dobrana rasa była jak najłatwiej dostępna do pozyskania w naszym kraju?",
 		"answers": ["Tak", "Nie jest to dla mnie istotne"],
 		"effects": [{ "availability": 3 }, {}],
+		"inputType": "radio",
+		"userAnswerRadio": ""
+	},
+	{
+		"id": 15,
+		"question": "Czy przeszkadza ci częste szczekanie psa?",
+		"answers": [
+			"Tak",
+			"Nie"
+		],
+		"effects": [
+			{ "barking": -2 },
+			{ "barking": 0 }
+		],
 		"inputType": "radio",
 		"userAnswerRadio": ""
 	},

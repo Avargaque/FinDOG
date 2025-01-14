@@ -2,7 +2,7 @@ https://avargaque.github.io/FinDOG/index.html
 
 zrobić animacje w gsap
 
-w wersji mobilnej źle się odznacza filtry (tak jakby zostawał hover po kliknięciu), nie wiem jak naprawić
+w wyniki quizu dodać pytajnik który przy hoverze tłumaczy jak wyniki zostały wyliczone
 
 -------------------------------------------------------------
 

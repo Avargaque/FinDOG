@@ -72,7 +72,7 @@ function sortBreedsByCompatibility() {
 	const container = document.getElementById("main-breeds-list");
 	const dogs = Array.from(container.children);
 
-	dogs.sort((a, b) => {
+	dogs.sort((b, a) => {
 		const scoreA = a.dataset.score ? parseInt(a.dataset.score) : Infinity;
 		const scoreB = b.dataset.score ? parseInt(b.dataset.score) : Infinity;
 		return scoreA - scoreB;
@@ -310,7 +310,7 @@ function addPseudosliderEventListeners(values, sliderId, rangeState) {
 // handles selecting a value
 function handleValueClick(value, values, sliderId, rangeState) {
 	const clickedValue = parseInt(value.getAttribute("data-value"), 10);
-	
+
 	// 0 chosen values - adds 1 filter/starts range
 	if (rangeState.start === null && rangeState.end === null) {
 		rangeState.start = clickedValue;
@@ -558,6 +558,7 @@ function checkQuiz() {
 			checkCompatibility();
 			renderDogs(dogData);
 			goToBreed();
+			setScore();
 			setCompatibility();
 			showUserScore(results);
 		});
@@ -572,45 +573,88 @@ function checkQuiz() {
 function compareResultsToBreeds(results) {
 	dogData.forEach((breed) => {
 		let score = 0;
+		let scoreMax = 0;
 
 		// compares every trait
 		for (const key in results) {
 			const userValue = results[key];
 			const breedValue = breed[key];
 
-			// compares arrays from checkboxes
+			const groupOne = [
+				"sociability",
+				"goodWithKids",
+				"goodWithPets",
+				"approachToStrangers",
+				"controlling",
+				"canBeAlone",
+				"adaptability",
+				"playfulness",
+				"energy",
+				"needsActivity",
+				"training",
+				"stubborn"
+			];
+			const groupTwo = ["lifeExpectancy", "availability"];
+			const groupThree = ["barking","combing", "shedding", "drooling"];
+
+			// compares arrays from checkboxes (size, coatLength)
 			if (Array.isArray(userValue)) {
 				if (userValue.includes(breedValue)) {
-					score += 0; // no penalty for a match
+					score += 3; // match
+					scoreMax += 3;
 				} else {
-					score += 3; // penalty for mismatch
+					score += 0; // mismatch
+					scoreMax += 3;
 				}
 			}
-			// if userValue equals 0 it means that trait is indifferent to user
-			else if (userValue === 0 || breedValue === undefined) {
-				score += 0;
+			// compares groupOne traits
+			else if (userValue !== 0 && groupOne.includes(key)){
+				score += 4 - Math.abs(userValue - breedValue); // difference between user and breed values
+				scoreMax += 4; // maximal difference between user and breed values
 			}
-			// compares normal traits
+			else if (userValue === 0 && groupOne.includes(key)) {
+				score += 0;
+				scoreMax += 0;
+			}
+			// compares groupTwo traits
+			else if (userValue !== 0 && groupTwo.includes(key)){
+				score += 2 - Math.abs(userValue - breedValue); // difference between user and breed values
+				scoreMax += 2; // maximal difference between user and breed values
+			}
+			else if (userValue === 0 && groupTwo.includes(key)) {
+				score += 3;
+				scoreMax += 3;
+			}
+			// compares groupThree traits
+			else if (userValue !== 0 && groupThree.includes(key)) {
+				score += 4 - Math.abs(userValue - breedValue); // difference between user and breed values
+				scoreMax += 4; // maximal difference between user and breed values
+			}
+			else if (userValue === 0 && groupThree.includes(key)) {
+				score += 3;
+				scoreMax += 3;
+			}
+			// compares traits that don't matter to user (from groupONe and groupTwo)
 			else {
-				score += Math.abs(userValue - breedValue);
+				console.error("Error calculating score:", error);
 			}
 		}
 
-		// assigns score to the breed object
-		breed.score = score;
+		// assigns score to the breed object (in % compatibility)
+		breed.score = ((score * 100) / scoreMax).toFixed(0);
 	});
 }
 
-// checks score compatibility
+// checks score compatibility for dog breeds
 function checkCompatibility() {
 	dogData.forEach((breed) => {
-		if (breed.score <= 9) {
+		if (breed.score >= 84) {
 			breed.compatibility = "idealne dopasowanie";
-		} else if (breed.score <= 14) {
+		} else if (breed.score >= 72) {
 			breed.compatibility = "bardzo dobre dopasowanie";
-		} else if (breed.score <= 19) {
+		} else if (breed.score >= 60) {
 			breed.compatibility = "dobre dopasowanie";
-		} else if (breed.score <= 24) {
+		} else if (breed.score >= 48) {
 			breed.compatibility = "przeciętne dopasowanie";
 		} else {
 			breed.compatibility = "złe dopasowanie";
@@ -618,7 +662,16 @@ function checkCompatibility() {
 	});
 }
 
-// sets compatibility visual effects
+// sets score visual effects for dog breeds
+function setScore() {
+	const breedsItems = document.querySelectorAll(".breeds-item");
+	breedsItems.forEach((breed) => {
+		const score = breed.getAttribute("data-score");
+		breed.style.setProperty("--score-content", `"${score}"`);
+	});
+}
+
+// sets compatibility visual effects for dog breeds
 function setCompatibility() {
 	const perfectCompatibilityElements = document.querySelectorAll(
 		'[data-compatibility="idealne dopasowanie"]'

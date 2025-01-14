@@ -654,100 +654,160 @@ main .main-breeds-list .compatibility--perfect, main .main-breeds-list .compatib
   position: relative;
   background-color: rgba(94, 142, 214, 0.2);
 }
-main .main-breeds-list .compatibility--perfect::after, main .main-breeds-list .compatibility--perfect:hover::after {
-  content: "idealne dopasowanie";
+main .main-breeds-list .compatibility--perfect::before, main .main-breeds-list .compatibility--perfect::after, main .main-breeds-list .compatibility--perfect:hover::before, main .main-breeds-list .compatibility--perfect:hover::after {
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
+  color: #430f58;
+  text-transform: uppercase;
+}
+main .main-breeds-list .compatibility--perfect::before, main .main-breeds-list .compatibility--perfect:hover::before {
+  content: var(--score-content, "");
+  width: 50px;
+  height: 50px;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.6rem;
+  font-weight: 800;
+  background-color: rgba(94, 142, 214, 0.7);
+}
+main .main-breeds-list .compatibility--perfect::after, main .main-breeds-list .compatibility--perfect:hover::after {
+  content: "idealne dopasowanie";
   width: 250px;
   height: 30px;
   bottom: 1rem;
   left: 1rem;
-  color: #430f58;
   background-color: rgba(94, 142, 214, 0.2);
   font-size: 1.3rem;
-  text-transform: uppercase;
   font-weight: 600;
 }
 main .main-breeds-list .compatibility--very-good, main .main-breeds-list .compatibility--very-good:hover {
   position: relative;
   background-color: rgba(118, 197, 45, 0.2);
 }
-main .main-breeds-list .compatibility--very-good::after, main .main-breeds-list .compatibility--very-good:hover::after {
-  content: "bardzo dobre dopasowanie";
+main .main-breeds-list .compatibility--very-good::before, main .main-breeds-list .compatibility--very-good::after, main .main-breeds-list .compatibility--very-good:hover::before, main .main-breeds-list .compatibility--very-good:hover::after {
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
+  color: #430f58;
+  text-transform: uppercase;
+}
+main .main-breeds-list .compatibility--very-good::before, main .main-breeds-list .compatibility--very-good:hover::before {
+  content: var(--score-content, "");
+  width: 50px;
+  height: 50px;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.6rem;
+  font-weight: 800;
+  background-color: rgba(118, 197, 45, 0.7);
+}
+main .main-breeds-list .compatibility--very-good::after, main .main-breeds-list .compatibility--very-good:hover::after {
+  content: "bardzo dobre dopasowanie";
   width: 250px;
   height: 30px;
   bottom: 1rem;
   left: 1rem;
-  color: #430f58;
   background-color: rgba(118, 197, 45, 0.2);
   font-size: 1.3rem;
-  text-transform: uppercase;
   font-weight: 600;
 }
 main .main-breeds-list .compatibility--good, main .main-breeds-list .compatibility--good:hover {
   position: relative;
   background-color: rgba(197, 180, 24, 0.2);
 }
-main .main-breeds-list .compatibility--good::after, main .main-breeds-list .compatibility--good:hover::after {
-  content: "dobre dopasowanie";
+main .main-breeds-list .compatibility--good::before, main .main-breeds-list .compatibility--good::after, main .main-breeds-list .compatibility--good:hover::before, main .main-breeds-list .compatibility--good:hover::after {
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
+  color: #430f58;
+  text-transform: uppercase;
+}
+main .main-breeds-list .compatibility--good::before, main .main-breeds-list .compatibility--good:hover::before {
+  content: var(--score-content, "");
+  width: 50px;
+  height: 50px;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.6rem;
+  font-weight: 800;
+  background-color: rgba(197, 180, 24, 0.7);
+}
+main .main-breeds-list .compatibility--good::after, main .main-breeds-list .compatibility--good:hover::after {
+  content: "dobre dopasowanie";
   width: 250px;
   height: 30px;
   bottom: 1rem;
   left: 1rem;
-  color: #430f58;
   background-color: rgba(197, 180, 24, 0.2);
   font-size: 1.3rem;
-  text-transform: uppercase;
   font-weight: 600;
 }
 main .main-breeds-list .compatibility--average, main .main-breeds-list .compatibility--average:hover {
   position: relative;
   background-color: rgba(236, 170, 109, 0.2);
 }
-main .main-breeds-list .compatibility--average::after, main .main-breeds-list .compatibility--average:hover::after {
-  content: "przeciętne dopasowanie";
+main .main-breeds-list .compatibility--average::before, main .main-breeds-list .compatibility--average::after, main .main-breeds-list .compatibility--average:hover::before, main .main-breeds-list .compatibility--average:hover::after {
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
+  color: #430f58;
+  text-transform: uppercase;
+}
+main .main-breeds-list .compatibility--average::before, main .main-breeds-list .compatibility--average:hover::before {
+  content: var(--score-content, "");
+  width: 50px;
+  height: 50px;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.6rem;
+  font-weight: 800;
+  background-color: rgba(236, 170, 109, 0.7);
+}
+main .main-breeds-list .compatibility--average::after, main .main-breeds-list .compatibility--average:hover::after {
+  content: "przeciętne dopasowanie";
   width: 250px;
   height: 30px;
   bottom: 1rem;
   left: 1rem;
-  color: #430f58;
   background-color: rgba(236, 170, 109, 0.2);
   font-size: 1.3rem;
-  text-transform: uppercase;
   font-weight: 600;
 }
 main .main-breeds-list .compatibility--bad, main .main-breeds-list .compatibility--bad:hover {
   position: relative;
   background-color: rgba(182, 94, 94, 0.2);
 }
-main .main-breeds-list .compatibility--bad::after, main .main-breeds-list .compatibility--bad:hover::after {
-  content: "złe dopasowanie";
+main .main-breeds-list .compatibility--bad::before, main .main-breeds-list .compatibility--bad::after, main .main-breeds-list .compatibility--bad:hover::before, main .main-breeds-list .compatibility--bad:hover::after {
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
+  color: #430f58;
+  text-transform: uppercase;
+}
+main .main-breeds-list .compatibility--bad::before, main .main-breeds-list .compatibility--bad:hover::before {
+  content: var(--score-content, "");
+  width: 50px;
+  height: 50px;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.6rem;
+  font-weight: 800;
+  background-color: rgba(182, 94, 94, 0.7);
+}
+main .main-breeds-list .compatibility--bad::after, main .main-breeds-list .compatibility--bad:hover::after {
+  content: "złe dopasowanie";
   width: 250px;
   height: 30px;
   bottom: 1rem;
   left: 1rem;
-  color: #430f58;
   background-color: rgba(182, 94, 94, 0.2);
   font-size: 1.3rem;
-  text-transform: uppercase;
   font-weight: 600;
 }
 
