@@ -383,6 +383,11 @@ button {
 .filter .checkbox-container .checkbox-item span:hover {
   background-color: #f6f1f8;
 }
+@media (hover: none) {
+  .filter .checkbox-container .checkbox-item span:hover {
+    background-color: #fff;
+  }
+}
 .filter .checkbox-container .checkbox-item span:before {
   display: flex;
   flex-shrink: 0;
@@ -480,6 +485,12 @@ button {
   background-color: #430f58;
   color: #fff;
 }
+@media (hover: none) {
+  .pseudoslider .value:hover {
+    background-color: #f4e7fa;
+    color: #430f58;
+  }
+}
 .pseudoslider .value.selected {
   background-color: #430f58;
   color: #fff;
@@ -487,9 +498,6 @@ button {
 .pseudoslider .value.hover-range {
   background-color: #430f58;
   color: #fff;
-}
-.pseudoslider .line.hover-range {
-  background-color: #430f58;
 }
 
 .questions__progress-bar {
@@ -544,6 +552,11 @@ label.answers__label span {
 }
 label.answers__label span:hover {
   background-color: #f6f1f8;
+}
+@media (hover: none) {
+  label.answers__label span:hover {
+    background-color: #fff;
+  }
 }
 label.answers__label span:before {
   display: flex;
@@ -1335,6 +1348,12 @@ main {
 .main-breed-selector .next-question-icon:hover {
   cursor: pointer;
   transform: scale(120%);
+}
+@media (hover: none) {
+  .main-breed-selector .previous-question-icon:hover,
+  .main-breed-selector .next-question-icon:hover {
+    transform: scale(100%);
+  }
 }
 .main-breed-selector .btn-results {
   display: none;

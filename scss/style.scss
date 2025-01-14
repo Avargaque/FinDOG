@@ -604,6 +604,10 @@ main {
 	.next-question-icon:hover {
 		cursor: pointer;
 		transform: scale(120%);
+
+		@media (hover: none){
+			transform: scale(100%);
+		}
 	}
 
 	.btn-results {
