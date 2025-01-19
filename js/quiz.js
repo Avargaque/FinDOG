@@ -1,3 +1,8 @@
+import { previousQuestionOutAnimation } from "./animations.js";
+import { previousQuestionInAnimation } from "./animations.js";
+import { nextQuestionOutAnimation } from "./animations.js";
+import { nextQuestionInAnimation } from "./animations.js";
+
 let quizQuestions = [];
 let currentQuestionIndex = 0;
 
@@ -142,8 +147,12 @@ function loadQuestion(questionIndex) {
 		input.addEventListener("click", () => {
 			if (input.type === "radio") {
 				setTimeout(() => {
+					nextQuestionOutAnimation();
+				}, 300);
+				setTimeout(() => {
 					nextQuestion();
-				}, 500);
+					nextQuestionInAnimation();
+				}, 1000)	
 			}
 		});
 	});
@@ -369,10 +378,26 @@ function showUserScore() {
 }
 
 nextQuestionBtns.forEach((btn) => {
-	btn.addEventListener("click", nextQuestion);
+	btn.addEventListener("click", () => {
+		setTimeout(() => {
+			nextQuestionOutAnimation();
+		}, 300);
+		setTimeout(() => {
+			nextQuestion();
+			nextQuestionInAnimation();
+		}, 1000)
+	});
 });
 previousQuestionBtns.forEach((btn) => {
-	btn.addEventListener("click", previousQuestion);
+	btn.addEventListener("click", () => {
+		setTimeout(() => {
+			previousQuestionOutAnimation();
+		}, 300);
+		setTimeout(() => {
+			previousQuestion();
+			previousQuestionInAnimation();
+		}, 1000)
+	});
 });
 btnResults.addEventListener("click", () => {
 	resetScore();

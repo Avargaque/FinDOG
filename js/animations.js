@@ -4,20 +4,7 @@ const burgerBtn = document.querySelector(".nav__burger-menu");
 const allBtns = document.querySelectorAll("button");
 const navLogo = document.querySelector(".nav__logo");
 const navBtns = document.querySelectorAll(".nav__btn");
-const searchFilterBtns = document.querySelectorAll('.search-filter')
-
-// breeds list and results page animation
-const headerBreedsList = "";
-const mainBreedsList = "";
-
-// breed selector page animation
-const headerQuiz = "";
-const mainQuiz = "";
-
-// breed details page animation
-const breedInfo = "";
-const breedAbout = "";
-const breedAccordion = "";
+const searchFilterBtns = document.querySelectorAll('.search-filter');
 
 // adds navItemsIn animation
 function handleNavItemsInAnimation() {
@@ -296,6 +283,58 @@ export function filterOutAnimation(){
 	});
 	gsap.to(".filter", {
 		y: "-110%",
+		ease: "power2.out",
+		duration: 1,
+	});
+}
+
+// next quiz question animations
+export function nextQuestionOutAnimation(){
+	gsap.from(".main-breed-selector", {
+		x: "0",
+		ease: "power2.out",
+		duration: 1,
+	});
+	gsap.to(".main-breed-selector", {
+		x: "100vw",
+		ease: "power2.out",
+		duration: 1,
+	});
+}
+export function nextQuestionInAnimation(){
+	gsap.from(".main-breed-selector", {
+		x: "-100vw",
+		ease: "power2.out",
+		duration: 1,
+	});
+	gsap.to(".main-breed-selector", {
+		x: "0",
+		ease: "power2.out",
+		duration: 1,
+	});
+}
+
+// previous quiz question animations
+export function previousQuestionOutAnimation(){
+	gsap.from(".main-breed-selector", {
+		x: "0",
+		ease: "power2.out",
+		duration: 1,
+	});
+	gsap.to(".main-breed-selector", {
+		x: "-100vw",
+		ease: "power2.out",
+		duration: 1,
+	});
+}
+export function previousQuestionInAnimation(){
+	gsap.from(".main-breed-selector", {
+		x: "100vw",
+		ease: "power2.out",
+		duration: 1,
+	});
+	gsap.to(".main-breed-selector", {
+		x: "0",
 		ease: "power2.out",
 		duration: 1,
 	});
