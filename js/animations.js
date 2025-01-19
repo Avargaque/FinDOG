@@ -1,8 +1,23 @@
 import { gsap } from "https://cdn.jsdelivr.net/npm/gsap@3.12.2/index.js";
 
-const animationTime = 0.7;
-const animationTimeMs = 700;
+
 const burgerBtn = document.querySelector(".nav__burger-menu");
+const allBtns = document.querySelectorAll("button");
+const navLogo = document.querySelector(".nav__logo");
+const navBtns = document.querySelectorAll(".nav__btn");
+
+// breeds list and results page animation
+const headerBreedsList = "";
+const mainBreedsList = "";
+
+// breed selector page animation
+const headerQuiz = "";
+const mainQuiz = "";
+
+// breed details page animation
+const breedInfo = "";
+const breedAbout = "";
+const breedAccordion = "";
 
 // adds navItemsIn animation
 function handleNavItemsInAnimation() {
@@ -62,21 +77,231 @@ function disableBurgerMenu() {
 	}, 1000);
 }
 
+// disables buttons during animations
+function disableButtonsDuringAnimation(animationTime = 2000){
+	allBtns.forEach((btn) => {
+		btn.disabled = true;
+	});
+	setTimeout(() => {
+		allBtns.forEach((btn) => {
+			btn.disabled = false;
+		});
+	}, animationTime);
+}
 
-// function to set IN animations - do edycji
-function gsapInAnimations() {}
+// out of page animation
+export function outAnimation() {
+	gsap.to("header", {
+		y: "100vh",
+		ease: "power3.in",
+		duration: 1,
+	});
+	gsap.to("main", {
+		y: "100vh",
+		ease: "power3.in",
+		duration: 1,
+	});
+	gsap.to("footer", {
+		y: "100vh",
+		ease: "power3.in",
+		duration: 1,
+	});
+}
 
-// function to set OUT animations - do edycji
-function gsapOutAnimations() {}
+// animations on home page
+function homePageAnimations() {
+	// in animations
+	// let headerTimeline = gsap.timeline({
 
+	// })
+	gsap.from(".nav", {
+		y: "-100%",
+		ease: "power1.out",
+		duration: 1,
+	});
+	gsap.from(".main__races-img", {
+		x: "-150%",
+		ease: "power3.out",
+		duration: 1,
+	});
+	gsap.from(".main__quiz-img", {
+		x: "150%",
+		ease: "power3.out",
+		duration: 1,
+	});
+	gsap.from(".main__btn--quiz", {
+		x: "100vw",
+		ease: "back",
+		duration: 1.5,
+		delay: 0.5,
+	});
+	gsap.from(".main__btn--breeds", {
+		x: "-100vw",
+		ease: "back",
+		duration: 1.5,
+		delay: 0.5,
+	});
+	gsap.from(".footer", {
+		y: "100%",
+		ease: "power1.out",
+		duration: 1,
+	});
 
+	// out animation
+	allBtns.forEach((btn) => {
+		btn.addEventListener("click", () => {
+			outAnimation();
+		});
+	});
+}
 
+// animation on breeds list and results pages
+function breedsListPageAnimations() {
+	// in animations
+	gsap.from("header", {
+		x: "-100vw",
+		ease: "back",
+		duration: 1.5,
+	});
+	gsap.from("main", {
+		x: "-100vw",
+		ease: "back",
+		duration: 1.5,
+		delay: 0.5,
+	});
+	gsap.from("footer", {
+		x: "-100vw",
+		ease: "back",
+		duration: 1.5,
+		delay: 1,
+	});
+
+	// out animation
+	allBtns.forEach((btn) => {
+		btn.addEventListener("click", () => {
+			outAnimation();
+		});
+	});
+	navLogo.addEventListener("click", () => {
+		outAnimation();
+	});
+}
+
+// animation on quiz page
+function quizPageAnimations() {
+	// in animations
+	gsap.from("header", {
+		x: "-100vw",
+		ease: "back",
+		duration: 1.5,
+	});
+	gsap.from(".questions", {
+		x: "-100vw",
+		ease: "back",
+		duration: 1.5,
+		delay: 0.33,
+	});
+	gsap.from(".answers-arrows-container", {
+		x: "-100vw",
+		ease: "back",
+		duration: 1.5,
+		delay: 0.67,
+	});
+	gsap.from(".next-question-container", {
+		x: "-100vw",
+		ease: "back",
+		duration: 1.5,
+		delay: 0.67,
+	});
+	gsap.from("footer", {
+		x: "-100vw",
+		ease: "back",
+		duration: 1.5,
+		delay: 1,
+	});
+
+	// out animation
+	allBtns.forEach((btn) => {
+		btn.addEventListener("click", () => {
+			outAnimation();
+		});
+	});
+	navLogo.addEventListener("click", () => {
+		outAnimation();
+	});
+}
+
+// animation on breed details page
+function breedsDetailsPageAnimations(){
+		// in animations
+		gsap.from(".breed-image-container", {
+			x: "-100vw",
+			ease: "back",
+			duration: 1.5,
+		});
+		gsap.from(".breed-info-items", {
+			x: "-100vw",
+			ease: "back",
+			duration: 1.5,
+			delay: 0.33,
+		});
+		gsap.from(".breed-about", {
+			x: "-100vw",
+			ease: "back",
+			duration: 1.5,
+			delay: 0.67,
+		});
+		gsap.from(".accordion", {
+			x: "-100vw",
+			ease: "back",
+			duration: 1.5,
+			delay: 1,
+		});
+		gsap.from("footer", {
+			x: "-100vw",
+			ease: "back",
+			duration: 1.5,
+			delay: 1.5,
+		});
+	
+		// out animation
+		allBtns.forEach((btn) => {
+			btn.addEventListener("click", () => {
+				outAnimation();
+			});
+		});
+		navLogo.addEventListener("click", () => {
+			outAnimation();
+		});
+}
 
 screen.orientation.addEventListener("change", resetNavAnimations);
 burgerBtn.addEventListener("click", toggleBurgerMenu);
+navBtns.forEach((btn) => {
+	btn.addEventListener("click", () => {
+		handleNavItemsOutAnimation();
+	});
+});
 
 document.addEventListener("DOMContentLoaded", function () {
-	gsapInAnimations();
+	disableButtonsDuringAnimation();
 
-	gsapOutAnimations();
+	if (document.body.getAttribute("data-page") === "index") {
+		homePageAnimations();
+	}
+
+	if (document.body.getAttribute("data-page") === "breed-selector") {
+		quizPageAnimations();
+	}
+
+	if (
+		document.body.getAttribute("data-page") === "breeds-list" ||
+		document.body.getAttribute("data-page") === "results"
+	) {
+		breedsListPageAnimations();
+	}
+
+	if (document.body.getAttribute("data-page") === "breed-details") {
+		breedsDetailsPageAnimations();
+	}
 });

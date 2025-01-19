@@ -1,4 +1,4 @@
-// navigation items slide
+// navigation items slide on mobile devices
 @keyframes navItemsIn {
 	from {
 		transform: translateX(0);
@@ -24,7 +24,7 @@
 	animation: navItemsOut 1s backwards;
 }
 
-// background animation
+// background bones animation
 @keyframes spinForwards {
     from {
         transform:rotate(0deg);

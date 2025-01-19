@@ -380,7 +380,6 @@ btnResults.addEventListener("click", () => {
 		saveAnswers();
 		handleAllScores();
 		saveResults();
-		window.location.href = "./results.html";
 	}
 });
 

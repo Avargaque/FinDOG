@@ -85,14 +85,13 @@ a {
 	&__logo {
 		height: 100%;
 
-		a,
 		img {
 			display: block;
 			height: 100%;
 			width: 100%;
 		}
 
-		a:hover {
+		img:hover {
 			cursor: pointer;
 		}
 	}
@@ -207,6 +206,14 @@ a {
 }
 
 // header for home page and breed selection
+.header-home{
+	h1{
+		@media (min-width: 990px){
+			font-size: 26px;
+		}
+	}
+}
+
 .header-home,
 .header-breed-selector,
 .header-breed-details {
@@ -256,7 +263,7 @@ a {
 	}
 
 	h1 {
-		margin: 2rem 0 1rem 0;
+		padding: 2rem 0 1rem 0;
 		color: $main-color;
 		text-transform: uppercase;
 		letter-spacing: 1px;
@@ -394,6 +401,7 @@ main {
 		color: $background-color;
 		background-color: $highlight-color;
 		transition: background-color 0.4s, color 0.4s;
+		z-index: 10;
 	}
 
 	&__btn::after,
@@ -825,6 +833,11 @@ main {
 					a {
 						color: $highlight-color;
 						font-weight: 600;
+						transition: color 0.3s;
+					}
+
+					a:hover{
+						color: $supporting-color;
 					}
 
 					svg {
@@ -848,7 +861,6 @@ main {
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	padding: 0.5rem;
 	color: $main-color;
 	background-color: $background-color;
 	font-size: 1.1rem;
@@ -871,11 +883,11 @@ main {
 		justify-content: center;
 		align-items: center;
 		flex: 3;
-		padding: 0.5rem;
 
 		&-email {
 			min-width: 120px;
-			padding: 0.4rem;
+			padding: 0.5rem;
+			margin-bottom: 0;
 			transition: all 0.3s;
 			i {
 				margin-right: 0.3rem;
@@ -883,11 +895,7 @@ main {
 		}
 
 		.email {
-			padding: 1.3rem 0 1.2rem 0;
-
-			@media (min-width: 992px) {
-				padding: 1.2rem 0 1.1rem 0;
-			}
+			padding: 0.5rem;
 		}
 		.email:hover {
 			cursor: pointer;
@@ -895,7 +903,8 @@ main {
 		}
 
 		&-media-text {
-			padding: 0.4rem;
+			padding: 0.5rem;
+			margin-bottom: 0;
 		}
 
 		&-media-icons {
@@ -905,7 +914,7 @@ main {
 			align-items: center;
 			.media-icon {
 				align-self: center;
-				padding: 0.5rem 1rem;
+				padding: 0 1rem;
 				font-size: 2.6rem;
 				transition: all 0.3s;
 			}
@@ -926,6 +935,7 @@ main {
 		&--company-info {
 			flex: 2;
 			order: 4;
+			padding: 0.5rem;
 
 			@media (min-width: 576px) {
 				order: 2;

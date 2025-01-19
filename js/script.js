@@ -1,8 +1,9 @@
-import "./animations.js";
+import { outAnimation } from "./animations.js";
 
 //////////////////////////////////////////////////////////// VARIABLES
 
 const email = document.querySelector(".email");
+
 const filterBtns = document.querySelectorAll(".search-filter");
 const filter = document.querySelector(".filter");
 const resetFilterBtn = document.querySelector(".reset");
@@ -10,10 +11,19 @@ const applyFilterBtn = document.querySelector(".apply");
 const searchInput = document.querySelector(".searchbar__input");
 const pseudosliders = document.querySelectorAll(".pseudoslider");
 
+const mainQuizBtns = document.querySelectorAll(".main__btn--quiz");
+const mainBreedsBtns = document.querySelectorAll(".main__btn--breeds");
+const resultsBtn = document.querySelector(".btn-results");
+const navListBtn = document.querySelector(".nav__btn-list");
+const navQuizBtn = document.querySelector(".nav__btn-quiz");
+const navResultsBtn = document.querySelector(".nav__btn-results");
+const navLogoPressable = document.querySelector(".nav__logo--pressable");
+
 let dogData = []; // all dogs from JSON
 let selectedFilters = {}; // selected pseudoslider filters
 let selectedCheckboxes = {}; // selected checkbox filters
 let searchQuery = ""; // text in search container
+const animationTime = 1000; // out animation time in ms
 
 ////////////////////////////////////////////////////////////// FUNCTIONS
 
@@ -110,8 +120,11 @@ function goToBreed() {
 
 				// opens in the same window
 				if (!isMouseDown) {
-					(window.location.href = `breed-details.html?breed=${breedName}`),
-						"_blank";
+					document.body.classList.remove("loaded");
+					setTimeout(() => {
+						(window.location.href = `breed-details.html?breed=${breedName}`),
+							"_blank";
+					}, animationTime);
 				}
 
 				// opens in new window
@@ -592,10 +605,10 @@ function compareResultsToBreeds(results) {
 				"energy",
 				"needsActivity",
 				"training",
-				"stubborn"
+				"stubborn",
 			];
 			const groupTwo = ["lifeExpectancy", "availability"];
-			const groupThree = ["barking","combing", "shedding", "drooling"];
+			const groupThree = ["barking", "combing", "shedding", "drooling"];
 
 			// compares arrays from checkboxes (size, coatLength)
 			if (Array.isArray(userValue)) {
@@ -608,20 +621,18 @@ function compareResultsToBreeds(results) {
 				}
 			}
 			// compares groupOne traits
-			else if (userValue !== 0 && groupOne.includes(key)){
+			else if (userValue !== 0 && groupOne.includes(key)) {
 				score += 4 - Math.abs(userValue - breedValue); // difference between user and breed values
 				scoreMax += 4; // maximal difference between user and breed values
-			}
-			else if (userValue === 0 && groupOne.includes(key)) {
+			} else if (userValue === 0 && groupOne.includes(key)) {
 				score += 0;
 				scoreMax += 0;
 			}
 			// compares groupTwo traits
-			else if (userValue !== 0 && groupTwo.includes(key)){
+			else if (userValue !== 0 && groupTwo.includes(key)) {
 				score += 2 - Math.abs(userValue - breedValue); // difference between user and breed values
 				scoreMax += 2; // maximal difference between user and breed values
-			}
-			else if (userValue === 0 && groupTwo.includes(key)) {
+			} else if (userValue === 0 && groupTwo.includes(key)) {
 				score += 3;
 				scoreMax += 3;
 			}
@@ -629,8 +640,7 @@ function compareResultsToBreeds(results) {
 			else if (userValue !== 0 && groupThree.includes(key)) {
 				score += 4 - Math.abs(userValue - breedValue); // difference between user and breed values
 				scoreMax += 4; // maximal difference between user and breed values
-			}
-			else if (userValue === 0 && groupThree.includes(key)) {
+			} else if (userValue === 0 && groupThree.includes(key)) {
 				score += 3;
 				scoreMax += 3;
 			}
@@ -720,6 +730,56 @@ filterBtns.forEach((btn) => {
 		}
 	});
 });
+mainQuizBtns.forEach((btn) => {
+	btn.addEventListener("click", () => {
+		document.body.classList.remove("loaded"); // temporarily removes overflow
+		setTimeout(() => {
+			location.href = "./breed-selector.html";
+		}, animationTime);
+	});
+});
+mainBreedsBtns.forEach((btn) => {
+	btn.addEventListener("click", () => {
+		document.body.classList.remove("loaded");
+		setTimeout(() => {
+			location.href = "./breeds-list.html";
+		}, animationTime);
+	});
+});
+navListBtn.addEventListener("click", () => {
+	document.body.classList.remove("loaded");
+	setTimeout(() => {
+		location.href = "./breeds-list.html";
+	}, animationTime);
+});
+navQuizBtn.addEventListener("click", () => {
+	document.body.classList.remove("loaded");
+	setTimeout(() => {
+		location.href = "./breed-selector.html";
+	}, animationTime);
+});
+navResultsBtn.addEventListener("click", () => {
+	document.body.classList.remove("loaded");
+	setTimeout(() => {
+		location.href = "./results.html";
+	}, animationTime);
+});
+if (navLogoPressable) {
+	navLogoPressable.addEventListener("click", () => {
+		document.body.classList.remove("loaded");
+		setTimeout(() => {
+			location.href = "./index.html";
+		}, animationTime);
+	});
+}
+if (resultsBtn) {
+	resultsBtn.addEventListener("click", () => {
+		document.body.classList.remove("loaded");
+		setTimeout(() => {
+			location.href = "./results.html";
+		}, animationTime);
+	});
+}
 if (applyFilterBtn) {
 	applyFilterBtn.addEventListener("click", toggleFilter);
 }
@@ -742,12 +802,26 @@ window.addEventListener("load", () => {
 document.addEventListener("DOMContentLoaded", function () {
 	if (document.body.getAttribute("data-page") === "breeds-list") {
 		fetchDogBreeds().then(() => {
+			const breedsItems = document.querySelectorAll(".breeds-item");
+			breedsItems.forEach((breedBtn) => {
+				breedBtn.addEventListener("click", () => {
+					outAnimation();
+				});
+			});
 			goToBreed();
 		});
 	}
 
 	if (document.body.getAttribute("data-page") === "results") {
 		checkQuiz();
+		fetchDogBreeds().then(() => {
+			const breedsItems = document.querySelectorAll(".breeds-item");
+			breedsItems.forEach((breedBtn) => {
+				breedBtn.addEventListener("click", () => {
+					outAnimation();
+				});
+			});
+			breedsListPageAnimations()		});
 	}
 
 	if (document.body.getAttribute("data-page") === "breed-details") {

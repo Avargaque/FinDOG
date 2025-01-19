@@ -36,7 +36,6 @@
 			<div class="bg__4">
 				<img class="bg-bone" src="./img/bone.png" alt="mała kość" />
 			</div>
-			<div class="color-overlay-transparent"></div>
 		</div>
 		<div class="bg bg--right">
 			<div class="bg__1">
@@ -51,14 +50,11 @@
 			<div class="bg__4">
 				<img class="bg-bone" src="./img/bone.png" alt="mała kość" />
 			</div>
-			<div class="color-overlay-transparent"></div>
 		</div>
 		<div class="wrapper">
 			<nav class="nav">
-				<div class="nav__logo">
-					<a href="index.html"
-						><img src="./img/logo.svg" alt="logo FinDOG"
-					/></a>
+				<div class="nav__logo nav__logo--pressable">
+					<img src="./img/logo.svg" alt="logo FinDOG" />
 				</div>
 				<div class="nav__burger-container">
 					<svg
@@ -82,22 +78,13 @@
 					</svg>
 				</div>
 				<div class="nav__buttons">
-					<button
-						class="nav__btn nav__btn--inactive"
-						onclick="location.href='./breeds-list.html'"
-					>
+					<button class="nav__btn nav__btn--inactive nav__btn-list">
 						lista ras
 					</button>
-					<button
-						class="nav__btn nav__btn--inactive"
-						onclick="location.href='./breed-selector.html'"
-					>
+					<button class="nav__btn nav__btn--inactive nav__btn-quiz">
 						quiz doboru psa
 					</button>
-					<button
-						class="nav__btn nav__btn--inactive"
-						onclick="location.href='./results.html'"
-					>
+					<button class="nav__btn nav__btn--inactive nav__btn-results">
 						wyniki quizu
 					</button>
 				</div>
@@ -376,5 +363,6 @@
 			crossorigin="anonymous"
 		></script>
 		<script type="module" src="./js/script.js"></script>
+		<script type="module" src="./js/animations.js"></script>
 	</body>
 </html>

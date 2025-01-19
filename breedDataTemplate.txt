@@ -1,9 +1,6 @@
 https://avargaque.github.io/FinDOG/index.html
 
-zrobić animacje w gsap
-
-w wyniki quizu dodać pytajnik który przy hoverze tłumaczy jak wyniki zostały wyliczone
-
+animacja header strona glowna, filter, pytania quizu
 -------------------------------------------------------------
 
 
