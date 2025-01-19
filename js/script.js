@@ -1,4 +1,6 @@
 import { outAnimation } from "./animations.js";
+import { filterOutAnimation } from "./animations.js";
+import { filterInAnimation } from "./animations.js";
 
 //////////////////////////////////////////////////////////// VARIABLES
 
@@ -246,11 +248,31 @@ function updateScore(containerId, value) {
 // toggles filter button
 function toggleFilter() {
 	if (filter.style.opacity === "1") {
+		filterBtns.forEach((btn) => {
+			btn.removeEventListener("click", toggleFilter);
+		});
+		document.removeEventListener("click", hideFilter);
+		filterOutAnimation();
 		filter.style.pointerEvents = "none";
-		filter.style.opacity = "0";
+		setTimeout(() => {
+			filter.style.opacity = "0";
+			filterBtns.forEach((btn) => {
+				btn.addEventListener("click", toggleFilter);
+			});
+		}, animationTime+200);
 	} else {
-		filter.style.pointerEvents = "auto";
+		filterBtns.forEach((btn) => {
+			btn.removeEventListener("click", toggleFilter);
+		});
+		filterInAnimation();
 		filter.style.opacity = "1";
+		setTimeout(() => {
+			filter.style.pointerEvents = "auto";
+			document.addEventListener("click", hideFilter);
+			filterBtns.forEach((btn) => {
+				btn.addEventListener("click", toggleFilter);
+			});
+		}, animationTime+200);
 	}
 }
 
@@ -260,8 +282,7 @@ function hideFilter(event) {
 		!filter.contains(event.target) &&
 		!Array.from(filterBtns).some((btn) => btn.contains(event.target))
 	) {
-		filter.style.pointerEvents = "none";
-		filter.style.opacity = "0";
+		toggleFilter();
 		document.removeEventListener("click", hideFilter);
 	}
 }
@@ -721,14 +742,7 @@ function setCompatibility() {
 
 email.addEventListener("click", copyMailAdress);
 filterBtns.forEach((btn) => {
-	btn.addEventListener("click", () => {
-		toggleFilter();
-
-		// adds event listerner if filter is active
-		if (filter.style.opacity === "1") {
-			document.addEventListener("click", hideFilter);
-		}
-	});
+	btn.addEventListener("click", toggleFilter);
 });
 mainQuizBtns.forEach((btn) => {
 	btn.addEventListener("click", () => {
@@ -821,7 +835,7 @@ document.addEventListener("DOMContentLoaded", function () {
 					outAnimation();
 				});
 			});
-			breedsListPageAnimations()		});
+		});
 	}
 
 	if (document.body.getAttribute("data-page") === "breed-details") {

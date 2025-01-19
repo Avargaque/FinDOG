@@ -257,14 +257,14 @@ button {
 	width: calc(100vw - 20px);
 	max-height: calc(100vh - 200px);
 	max-width: 1200px;
-	margin-top: 188px;
+	margin-top: 196px;
 	color: $main-color;
 	font-size: 0.9rem;
 	background-color: $background-color;
 	border: solid 2px $highlight-color;
-	overflow-y: auto;
+	overflow-y: scroll;
 	pointer-events: none;
-	z-index: 100;
+	z-index: 5;
 
 	@media (max-height: 380px) {
 		max-height: calc(100vh - 150px);
