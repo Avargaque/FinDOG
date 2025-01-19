@@ -5,7 +5,7 @@ const allBtns = document.querySelectorAll("button");
 const navLogo = document.querySelector(".nav__logo");
 const navBtns = document.querySelectorAll(".nav__btn");
 const searchFilterBtns = document.querySelectorAll('.search-filter');
-
+const headerHome = document.querySelector('.header-home h1')
 // adds navItemsIn animation
 function handleNavItemsInAnimation() {
 	const btns = document.querySelectorAll(".nav__btn");
@@ -86,18 +86,21 @@ function disableButtonsDuringAnimation(animationTime = 2000) {
 export function outAnimation() {
 	gsap.to("header", {
 		y: "100vh",
-		ease: "power3.in",
-		duration: 1,
+		rotation: -10,
+		duration: 0.8,
+		ease: "power2.in"
 	});
 	gsap.to("main", {
 		y: "100vh",
-		ease: "power3.in",
+		rotation: 15,
 		duration: 1,
+		ease: "power2.in"
 	});
 	gsap.to("footer", {
 		y: "100vh",
-		ease: "power3.in",
-		duration: 1,
+		rotation: -20,
+		duration: 1.2,
+		ease: "power2.in"
 	});
 }
 
@@ -108,7 +111,7 @@ function homePageAnimations() {
 
 	// })
 	gsap.from(".nav", {
-		y: "-100%",
+		x: "-100%",
 		ease: "power1.out",
 		duration: 1,
 	});
@@ -116,26 +119,28 @@ function homePageAnimations() {
 		x: "-150%",
 		ease: "power3.out",
 		duration: 1,
+		delay: 0.33,
 	});
 	gsap.from(".main__quiz-img", {
 		x: "150%",
 		ease: "power3.out",
 		duration: 1,
+		delay: 0.33,
 	});
 	gsap.from(".main__btn--quiz", {
 		x: "100vw",
-		ease: "back",
+		ease: "power3.out",
 		duration: 1.5,
-		delay: 0.5,
+		delay: 0.67,
 	});
 	gsap.from(".main__btn--breeds", {
 		x: "-100vw",
-		ease: "back",
+		ease: "power3.out",
 		duration: 1.5,
-		delay: 0.5,
+		delay: 0.67,
 	});
 	gsap.from(".footer", {
-		y: "100%",
+		x: "100%",
 		ease: "power1.out",
 		duration: 1,
 	});
@@ -340,6 +345,46 @@ export function previousQuestionInAnimation(){
 	});
 }
 
+// home header animation
+function homeHeaderAnimation() {
+	const text = headerHome.textContent;
+	headerHome.textContent = ''; // clears h1
+  
+	const duration = 3.5;  // total time
+	const letterDuration = duration / text.length;
+	let timeline = gsap.timeline({ repeat: 0, delay: 1 });
+	
+	// adds cursor "|"
+	const cursor = document.createElement("span");
+	cursor.classList.add("cursor");
+	cursor.textContent = "|";
+	headerHome.appendChild(cursor);
+  
+	// cursor blink animation
+	gsap.to(cursor, {
+	  duration: 0.4,
+	  opacity: 0,
+	  repeat: -1,
+	  yoyo: true,
+	  ease: "none",
+	});
+  
+	// adds animation for every character
+	text.split("").forEach((char, index) => {
+	  timeline.to(headerHome, {
+		duration: letterDuration,
+		onUpdate: () => {
+		  if (index < text.length) {
+			headerHome.innerHTML = text.slice(0, index + 1);
+			headerHome.appendChild(cursor); // adds cursor behind characters
+			index++;
+		  }
+		},
+		ease: "none",
+	  });
+	});
+  }
+
 screen.orientation.addEventListener("change", resetNavAnimations);
 burgerBtn.addEventListener("click", toggleBurgerMenu);
 navBtns.forEach((btn) => {
@@ -351,6 +396,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	if (document.body.getAttribute("data-page") === "index") {
 		homePageAnimations();
+		homeHeaderAnimation();
 	}
 
 	if (document.body.getAttribute("data-page") === "breed-selector") {

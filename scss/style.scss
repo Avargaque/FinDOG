@@ -218,14 +218,35 @@ a {
 .header-breed-selector,
 .header-breed-details {
 	width: 100%;
+	max-width: 100%;
+	height: auto;
 	padding-top: 80px;
 
 	h1 {
-		text-align: center;
+		height: 165px;
+		width: 100%;
 		padding: 2rem 0;
+		text-align: center;
 		color: $main-color;
 
+		@media (min-width: 335px){
+			height: 141px;
+		}
+
+		@media (min-width: 411px){
+			height: 117px;
+		}
+
+		@media (min-width: 552px){
+			height: 93px;
+		}
+
+		@media (min-width: 990px){
+			height: 108px;
+		}
+
 		@media (min-width: 1200px) {
+			height: 148px;
 			padding: 4rem;
 		}
 	}

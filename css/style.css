@@ -1003,19 +1003,52 @@ a {
 .header-breed-selector,
 .header-breed-details {
   width: 100%;
+  max-width: 100%;
+  height: auto;
   padding-top: 80px;
 }
 .header-home h1,
 .header-breed-selector h1,
 .header-breed-details h1 {
-  text-align: center;
+  height: 165px;
+  width: 100%;
   padding: 2rem 0;
+  text-align: center;
   color: hsl(283, 71%, 20%);
+}
+@media (min-width: 335px) {
+  .header-home h1,
+  .header-breed-selector h1,
+  .header-breed-details h1 {
+    height: 141px;
+  }
+}
+@media (min-width: 411px) {
+  .header-home h1,
+  .header-breed-selector h1,
+  .header-breed-details h1 {
+    height: 117px;
+  }
+}
+@media (min-width: 552px) {
+  .header-home h1,
+  .header-breed-selector h1,
+  .header-breed-details h1 {
+    height: 93px;
+  }
+}
+@media (min-width: 990px) {
+  .header-home h1,
+  .header-breed-selector h1,
+  .header-breed-details h1 {
+    height: 108px;
+  }
 }
 @media (min-width: 1200px) {
   .header-home h1,
   .header-breed-selector h1,
   .header-breed-details h1 {
+    height: 148px;
     padding: 4rem;
   }
 }
