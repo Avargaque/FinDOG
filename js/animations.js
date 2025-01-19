@@ -4,8 +4,8 @@ const burgerBtn = document.querySelector(".nav__burger-menu");
 const allBtns = document.querySelectorAll("button");
 const navLogo = document.querySelector(".nav__logo");
 const navBtns = document.querySelectorAll(".nav__btn");
-const searchFilterBtns = document.querySelectorAll('.search-filter');
-const headerHome = document.querySelector('.header-home h1')
+const searchFilterBtns = document.querySelectorAll(".search-filter");
+const headers = document.querySelectorAll("header h1");
 // adds navItemsIn animation
 function handleNavItemsInAnimation() {
 	const btns = document.querySelectorAll(".nav__btn");
@@ -70,15 +70,15 @@ function disableButtonsDuringAnimation(animationTime = 2000) {
 		btn.disabled = true;
 	});
 	searchFilterBtns.forEach((btn) => {
-		btn.disabled = true
-	})
+		btn.disabled = true;
+	});
 	setTimeout(() => {
 		allBtns.forEach((btn) => {
 			btn.disabled = false;
 		});
 		searchFilterBtns.forEach((btn) => {
-			btn.disabled = false
-		})
+			btn.disabled = false;
+		});
 	}, animationTime);
 }
 
@@ -88,19 +88,53 @@ export function outAnimation() {
 		y: "100vh",
 		rotation: -10,
 		duration: 0.8,
-		ease: "power2.in"
+		ease: "power2.in",
 	});
 	gsap.to("main", {
 		y: "100vh",
 		rotation: 15,
 		duration: 1,
-		ease: "power2.in"
+		ease: "power2.in",
 	});
 	gsap.to("footer", {
 		y: "100vh",
 		rotation: -20,
 		duration: 1.2,
-		ease: "power2.in"
+		ease: "power2.in",
+	});
+}
+
+// breed details out of page animation
+function breedDetailsOutAnimation() {
+	gsap.to(".breed-image-container", {
+		y: "100vh",
+		rotation: -10,
+		duration: 0.6,
+		ease: "power2.in",
+	});
+	gsap.to(".breed-info-items", {
+		y: "100vh",
+		rotation: 15,
+		duration: 0.8,
+		ease: "power2.in",
+	});
+	gsap.to(".breed-about", {
+		y: "100vh",
+		rotation: -20,
+		duration: 1,
+		ease: "power2.in",
+	});
+	gsap.to(".accordion", {
+		y: "100vh",
+		rotation: 10,
+		duration: 1.2,
+		ease: "power2.in",
+	});
+	gsap.to("footer", {
+		y: "100vh",
+		rotation: -15,
+		duration: 1.4,
+		ease: "power2.in",
 	});
 }
 
@@ -176,12 +210,12 @@ function breedsListPageAnimations() {
 	allBtns.forEach((btn) => {
 		btn.addEventListener("click", outAnimation);
 	});
+
 	// disables animation on filter buttons
 	const applyBtn = document.querySelector(".apply");
 	const resetBtn = document.querySelector(".reset");
 	applyBtn.removeEventListener("click", outAnimation);
 	resetBtn.removeEventListener("click", outAnimation);
-
 	navLogo.addEventListener("click", outAnimation);
 }
 
@@ -260,13 +294,17 @@ function breedsDetailsPageAnimations() {
 
 	// out animation
 	allBtns.forEach((btn) => {
-		btn.addEventListener("click", outAnimation)
+		btn.addEventListener("click", breedDetailsOutAnimation);
 	});
-	navLogo.addEventListener("click", outAnimation)
+	const accordionBtns = document.querySelectorAll('.accordion-button')
+	accordionBtns.forEach((btn) => {
+		btn.removeEventListener("click", breedDetailsOutAnimation);
+	});
+	navLogo.addEventListener("click", breedDetailsOutAnimation);
 }
 
 // search filter IN animation
-export function filterInAnimation(){
+export function filterInAnimation() {
 	gsap.from(".filter", {
 		y: "-110%",
 		ease: "power2.out",
@@ -280,7 +318,7 @@ export function filterInAnimation(){
 }
 
 // search filter OUT animation
-export function filterOutAnimation(){
+export function filterOutAnimation() {
 	gsap.from(".filter", {
 		y: "0",
 		ease: "power2.out",
@@ -294,7 +332,7 @@ export function filterOutAnimation(){
 }
 
 // next quiz question animations
-export function nextQuestionOutAnimation(){
+export function nextQuestionOutAnimation() {
 	gsap.from(".main-breed-selector", {
 		x: "0",
 		ease: "power2.out",
@@ -306,7 +344,7 @@ export function nextQuestionOutAnimation(){
 		duration: 1,
 	});
 }
-export function nextQuestionInAnimation(){
+export function nextQuestionInAnimation() {
 	gsap.from(".main-breed-selector", {
 		x: "-100vw",
 		ease: "power2.out",
@@ -320,7 +358,7 @@ export function nextQuestionInAnimation(){
 }
 
 // previous quiz question animations
-export function previousQuestionOutAnimation(){
+export function previousQuestionOutAnimation() {
 	gsap.from(".main-breed-selector", {
 		x: "0",
 		ease: "power2.out",
@@ -332,7 +370,7 @@ export function previousQuestionOutAnimation(){
 		duration: 1,
 	});
 }
-export function previousQuestionInAnimation(){
+export function previousQuestionInAnimation() {
 	gsap.from(".main-breed-selector", {
 		x: "100vw",
 		ease: "power2.out",
@@ -345,50 +383,53 @@ export function previousQuestionInAnimation(){
 	});
 }
 
-// home header animation
-function homeHeaderAnimation() {
-	const text = headerHome.textContent;
-	headerHome.textContent = ''; // clears h1
-  
-	const duration = 3.5;  // total time
-	const letterDuration = duration / text.length;
-	let timeline = gsap.timeline({ repeat: 0, delay: 1 });
-	
-	// adds cursor "|"
-	const cursor = document.createElement("span");
-	cursor.classList.add("cursor");
-	cursor.textContent = "|";
-	headerHome.appendChild(cursor);
-  
-	// cursor blink animation
-	gsap.to(cursor, {
-	  duration: 0.4,
-	  opacity: 0,
-	  repeat: -1,
-	  yoyo: true,
-	  ease: "none",
+// header animation
+function headerAnimation(duration) {
+	headers.forEach((header) => {
+		const text = header.textContent;
+		header.textContent = ""; // clears header
+
+		const letterDuration = duration / text.length;
+		let timeline = gsap.timeline({ repeat: 0, delay: 1 });
+
+		// adds cursor "|"
+		const cursor = document.createElement("span");
+		cursor.classList.add("cursor");
+		cursor.textContent = "|";
+		header.appendChild(cursor);
+
+		// cursor blink animation
+		gsap.to(cursor, {
+			duration: 0.4,
+			opacity: 0,
+			repeat: -1,
+			yoyo: true,
+			ease: "none",
+		});
+
+		let index = 0;
+
+		// adds animation for every character
+		text.split("").forEach((char, i) => {
+			timeline.to(header, {
+				duration: letterDuration,
+				onUpdate: () => {
+					if (index <= i) {
+						header.innerHTML = text.slice(0, index + 1);
+						header.appendChild(cursor); // Add cursor after the characters
+						index++;
+					}
+				},
+				ease: "none",
+			});
+		});
 	});
-  
-	// adds animation for every character
-	text.split("").forEach((char, index) => {
-	  timeline.to(headerHome, {
-		duration: letterDuration,
-		onUpdate: () => {
-		  if (index < text.length) {
-			headerHome.innerHTML = text.slice(0, index + 1);
-			headerHome.appendChild(cursor); // adds cursor behind characters
-			index++;
-		  }
-		},
-		ease: "none",
-	  });
-	});
-  }
+}
 
 screen.orientation.addEventListener("change", resetNavAnimations);
 burgerBtn.addEventListener("click", toggleBurgerMenu);
 navBtns.forEach((btn) => {
-	btn.addEventListener("click", handleNavItemsOutAnimation)
+	btn.addEventListener("click", handleNavItemsOutAnimation);
 });
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -396,11 +437,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	if (document.body.getAttribute("data-page") === "index") {
 		homePageAnimations();
-		homeHeaderAnimation();
+		headerAnimation(3.5);
 	}
 
 	if (document.body.getAttribute("data-page") === "breed-selector") {
 		quizPageAnimations();
+		headerAnimation(1);
 	}
 
 	if (
@@ -408,6 +450,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		document.body.getAttribute("data-page") === "results"
 	) {
 		breedsListPageAnimations();
+		headerAnimation(2);
 	}
 
 	if (document.body.getAttribute("data-page") === "breed-details") {
