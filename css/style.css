@@ -1002,6 +1002,8 @@ a {
 .header-home,
 .header-breed-selector,
 .header-breed-details {
+  position: relative;
+  left: -100vw;
   width: 100%;
   max-width: 100%;
   height: auto;
@@ -1067,6 +1069,7 @@ a {
 }
 
 .header-breeds-list {
+  left: -100vw;
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -1139,6 +1142,7 @@ main {
   }
 }
 .main__races-img {
+  left: -100vw;
   position: relative;
   display: flex;
   flex: 1;
@@ -1164,6 +1168,7 @@ main {
   }
 }
 .main__quiz-img {
+  left: 100vw;
   display: none;
   position: relative;
   flex: 1;
@@ -1227,6 +1232,12 @@ main {
   transition: background-color 0.4s, color 0.4s;
   z-index: 10;
 }
+.main__btn--quiz {
+  left: 100vw;
+}
+.main__btn--breeds {
+  left: -100vw;
+}
 .main__btn::after, .main__btn::before {
   position: absolute;
   content: "";
@@ -1278,6 +1289,8 @@ main {
   }
 }
 .main-breed-selector .questions {
+  position: relative;
+  left: -100vw;
   display: flex;
   width: 100%;
   height: 100%;
@@ -1305,6 +1318,7 @@ main {
   font-size: 1.1rem;
 }
 .main-breed-selector .answers-arrows-container {
+  left: -100vw;
   position: relative;
   display: flex;
   width: 100%;
@@ -1384,6 +1398,8 @@ main {
   }
 }
 .main-breed-selector .next-question-container {
+  position: relative;
+  left: -100vw;
   padding-left: 1rem;
 }
 @media (min-width: 992px) {
@@ -1501,6 +1517,7 @@ main {
 }
 
 .main-breeds-list {
+  left: -100vw;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -1583,6 +1600,8 @@ main {
   }
 }
 .main-breed-details .breed-info-container .breed-image-container {
+  position: relative;
+  left: -100vw;
   display: flex;
   align-items: center;
   flex: 1;
@@ -1601,6 +1620,8 @@ main {
   width: 100%;
 }
 .main-breed-details .breed-info-container .breed-info-items {
+  position: relative;
+  left: -100vw;
   flex: 1;
   padding: 0.5rem;
 }
@@ -1660,6 +1681,14 @@ main {
 .main-breed-details .breed-info-container .breed-info-items .breed-info-item > * {
   padding: 0.2rem;
   line-height: normal;
+}
+.main-breed-details .breed-about {
+  position: relative;
+  left: -100vw;
+}
+.main-breed-details .accordion {
+  position: relative;
+  left: -100vw;
 }
 
 .footer {

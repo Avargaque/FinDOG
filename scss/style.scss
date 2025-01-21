@@ -217,6 +217,8 @@ a {
 .header-home,
 .header-breed-selector,
 .header-breed-details {
+	position: relative;
+	left: -100vw; // before animation
 	width: 100%;
 	max-width: 100%;
 	height: auto;
@@ -265,6 +267,7 @@ a {
 
 // header for breeds list page
 .header-breeds-list {
+	left: -100vw; // before animation
 	position: fixed;
 	display: flex;
 	flex-direction: column;
@@ -338,6 +341,7 @@ main {
 	}
 
 	&__races-img {
+		left: -100vw; // before animation
 		position: relative;
 		display: flex;
 		flex: 1;
@@ -361,6 +365,7 @@ main {
 	}
 
 	&__quiz-img {
+		left: 100vw; // before animation
 		display: none;
 		position: relative;
 		flex: 1;
@@ -423,6 +428,14 @@ main {
 		background-color: $highlight-color;
 		transition: background-color 0.4s, color 0.4s;
 		z-index: 10;
+
+		&--quiz{
+			left: 100vw; // before animation
+		}
+
+		&--breeds{
+			left: -100vw; // before animation
+		}
 	}
 
 	&__btn::after,
@@ -483,6 +496,8 @@ main {
 	}
 
 	.questions {
+		position: relative;
+		left: -100vw; // before animation
 		display: flex;
 		width: 100%;
 		height: 100%;
@@ -514,6 +529,7 @@ main {
 	}
 
 	.answers-arrows-container {
+		left: -100vw; // before animation
 		position: relative;
 		display: flex;
 		width: 100%;
@@ -592,6 +608,8 @@ main {
 		}
 	}
 	.next-question-container {
+		position: relative;
+		left: -100vw; // before animation
 		padding-left: 1rem;
 
 		@media (min-width: 992px) {
@@ -712,6 +730,7 @@ main {
 
 // main for breeds list and results
 .main-breeds-list {
+	left: -100vw; // before animation
 	position: relative;
 	display: flex;
 	flex-direction: row;
@@ -795,6 +814,8 @@ main {
 		}
 
 		.breed-image-container {
+			position: relative;
+			left: -100vw; // before animation
 			display: flex;
 			align-items: center;
 			flex: 1;
@@ -812,6 +833,8 @@ main {
 		}
 
 		.breed-info-items {
+			position: relative;
+			left: -100vw; // before animation
 			flex: 1;
 			padding: 0.5rem;
 
@@ -871,6 +894,16 @@ main {
 				line-height: normal;
 			}
 		}
+	}
+
+	.breed-about{
+		position: relative;
+		left: -100vw; // before animation
+	}
+
+	.accordion{
+		position: relative;
+		left: -100vw; // before animation
 	}
 }
 

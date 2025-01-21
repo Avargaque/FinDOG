@@ -149,26 +149,31 @@ function homePageAnimations() {
 		ease: "power1.out",
 		duration: 1,
 	});
-	gsap.from(".main__races-img", {
-		x: "-150%",
-		ease: "power3.out",
-		duration: 1,
-		delay: 0.33,
-	});
-	gsap.from(".main__quiz-img", {
-		x: "150%",
-		ease: "power3.out",
-		duration: 1,
-		delay: 0.33,
-	});
-	gsap.from(".main__btn--quiz", {
+	gsap.to(".header-home", {
 		x: "100vw",
+		ease: "power3.out",
+		duration: 1,
+	});
+	gsap.to(".main__races-img", {
+		x: "100vw",
+		ease: "power3.out",
+		duration: 1,
+		delay: 0.33,
+	});
+	gsap.to(".main__quiz-img", {
+		x: "-100vw",
+		ease: "power3.out",
+		duration: 1,
+		delay: 0.33,
+	});
+	gsap.to(".main__btn--quiz", {
+		x: "-100vw",
 		ease: "power3.out",
 		duration: 1.5,
 		delay: 0.67,
 	});
-	gsap.from(".main__btn--breeds", {
-		x: "-100vw",
+	gsap.to(".main__btn--breeds", {
+		x: "100vw",
 		ease: "power3.out",
 		duration: 1.5,
 		delay: 0.67,
@@ -188,13 +193,13 @@ function homePageAnimations() {
 // animation on breeds list and results pages
 function breedsListPageAnimations() {
 	// in animations
-	gsap.from("header", {
-		x: "-100vw",
+	gsap.to("header", {
+		x: "100vw",
 		ease: "back",
 		duration: 1.5,
 	});
-	gsap.from(".main-breeds-list", {
-		x: "-100vw",
+	gsap.to(".main-breeds-list", {
+		x: "100vw",
 		ease: "back",
 		duration: 1.5,
 		delay: 0.5,
@@ -222,25 +227,25 @@ function breedsListPageAnimations() {
 // animation on quiz page
 function quizPageAnimations() {
 	// in animations
-	gsap.from("header", {
-		x: "-100vw",
+	gsap.to("header", {
+		x: "100vw",
 		ease: "back",
 		duration: 1.5,
 	});
-	gsap.from(".questions", {
-		x: "-100vw",
+	gsap.to(".questions", {
+		x: "100vw",
 		ease: "back",
 		duration: 1.5,
 		delay: 0.33,
 	});
-	gsap.from(".answers-arrows-container", {
-		x: "-100vw",
+	gsap.to(".answers-arrows-container", {
+		x: "100vw",
 		ease: "back",
 		duration: 1.5,
 		delay: 0.67,
 	});
-	gsap.from(".next-question-container", {
-		x: "-100vw",
+	gsap.to(".next-question-container", {
+		x: "100vw",
 		ease: "back",
 		duration: 1.5,
 		delay: 0.67,
@@ -262,25 +267,25 @@ function quizPageAnimations() {
 // animation on breed details page
 function breedsDetailsPageAnimations() {
 	// in animations
-	gsap.from(".breed-image-container", {
-		x: "-100vw",
+	gsap.to(".breed-image-container", {
+		x: "100vw",
 		ease: "back",
 		duration: 1.5,
 	});
-	gsap.from(".breed-info-items", {
-		x: "-100vw",
+	gsap.to(".breed-info-items", {
+		x: "100vw",
 		ease: "back",
 		duration: 1.5,
 		delay: 0.33,
 	});
-	gsap.from(".breed-about", {
-		x: "-100vw",
+	gsap.to(".breed-about", {
+		x: "100vw",
 		ease: "back",
 		duration: 1.5,
 		delay: 0.67,
 	});
-	gsap.from(".accordion", {
-		x: "-100vw",
+	gsap.to(".accordion", {
+		x: "100vw",
 		ease: "back",
 		duration: 1.5,
 		delay: 1,
@@ -450,7 +455,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		document.body.getAttribute("data-page") === "results"
 	) {
 		breedsListPageAnimations();
-		headerAnimation(2);
+		headerAnimation(1);
 	}
 
 	if (document.body.getAttribute("data-page") === "breed-details") {

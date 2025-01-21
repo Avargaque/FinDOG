@@ -807,6 +807,13 @@ if (searchInput) {
 	});
 }
 
+// forces reload to properly load animation on mobile versions
+window.addEventListener('pageshow', function(event) {
+	if (event.persisted) {
+	  window.location.reload();
+	}
+  });
+
 window.addEventListener("load", () => {
 	document.body.classList.add("loaded");
 });

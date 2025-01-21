@@ -152,7 +152,7 @@ function loadQuestion(questionIndex) {
 				setTimeout(() => {
 					nextQuestion();
 					nextQuestionInAnimation();
-				}, 1000)	
+				}, 1000);
 			}
 		});
 	});
@@ -379,24 +379,38 @@ function showUserScore() {
 
 nextQuestionBtns.forEach((btn) => {
 	btn.addEventListener("click", () => {
+		// out
 		setTimeout(() => {
 			nextQuestionOutAnimation();
 		}, 300);
+		// in
 		setTimeout(() => {
 			nextQuestion();
 			nextQuestionInAnimation();
-		}, 1000)
+		}, 1000);
+		// blocks button
+		btn.style.pointerEvents = "none";
+		setTimeout(() => {
+			btn.style.pointerEvents = "auto";
+		}, 1500);
 	});
 });
 previousQuestionBtns.forEach((btn) => {
 	btn.addEventListener("click", () => {
+		// out
 		setTimeout(() => {
 			previousQuestionOutAnimation();
 		}, 300);
+		// in
 		setTimeout(() => {
 			previousQuestion();
 			previousQuestionInAnimation();
-		}, 1000)
+		}, 1000);
+		// blocks button
+		btn.style.pointerEvents = "none";
+		setTimeout(() => {
+			btn.style.pointerEvents = "auto";
+		}, 1500);
 	});
 });
 btnResults.addEventListener("click", () => {
