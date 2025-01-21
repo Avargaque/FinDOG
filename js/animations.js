@@ -340,24 +340,24 @@ export function filterOutAnimation() {
 export function nextQuestionOutAnimation() {
 	gsap.from(".main-breed-selector", {
 		x: "0",
-		ease: "power2.out",
+		ease: "power1.in",
 		duration: 1,
 	});
 	gsap.to(".main-breed-selector", {
 		x: "100vw",
-		ease: "power2.out",
+		ease: "power1.in",
 		duration: 1,
 	});
 }
 export function nextQuestionInAnimation() {
 	gsap.from(".main-breed-selector", {
 		x: "-100vw",
-		ease: "power2.out",
+		ease: "power1.out",
 		duration: 1,
 	});
 	gsap.to(".main-breed-selector", {
 		x: "0",
-		ease: "power2.out",
+		ease: "power1.out",
 		duration: 1,
 	});
 }
@@ -366,24 +366,24 @@ export function nextQuestionInAnimation() {
 export function previousQuestionOutAnimation() {
 	gsap.from(".main-breed-selector", {
 		x: "0",
-		ease: "power2.out",
+		ease: "power1.in",
 		duration: 1,
 	});
 	gsap.to(".main-breed-selector", {
 		x: "-100vw",
-		ease: "power2.out",
+		ease: "power1.in",
 		duration: 1,
 	});
 }
 export function previousQuestionInAnimation() {
 	gsap.from(".main-breed-selector", {
 		x: "100vw",
-		ease: "power2.out",
+		ease: "power1.out",
 		duration: 1,
 	});
 	gsap.to(".main-breed-selector", {
 		x: "0",
-		ease: "power2.out",
+		ease: "power1.out",
 		duration: 1,
 	});
 }
