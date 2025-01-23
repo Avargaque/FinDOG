@@ -153,17 +153,34 @@ function showBreedDetails() {
 		document.getElementById("breed-name").innerText = breed.name;
 		document.getElementById("breed-image").src = breed.photoBig;
 		document.getElementById("breed-image").alt = `Zdjęcie ${breed.name}`;
-		document.getElementById("breed-about").innerText = breed.longAbout;
+		document.getElementById("breed-about").innerHTML = breed.longAbout;
 		document.getElementById(
 			"breed-height"
-		).innerText = `Wzrost: ${breed.height}`;
-		document.getElementById("breed-weight").innerText = `Waga: ${breed.weight}`;
+		).innerHTML = `Wzrost: <b>${breed.height}`;
+		document.getElementById(
+			"breed-weight"
+		).innerHTML = `Waga: <b>${breed.weight}`;
 		document.getElementById(
 			"breed-life-expectancy"
-		).innerText = `Długość życia: ${breed.lifeExpectancyText}`;
+		).innerHTML = `Długość życia: <b>${breed.lifeExpectancyText}`;
 		document.getElementById(
 			"breed-fci-group"
-		).innerText = `Grupa FCI: ${breed.fciGroup}`;
+		).innerHTML = `Grupa FCI: <b>${breed.fciGroup}`;
+
+		// availability
+		if (breed.availability === 1) {
+			document.getElementById(
+				"breed-availability"
+			).innerHTML = `Dostępność rasy w Polsce: <b>niska lub zerowa <i class="fa-solid fa-arrow-trend-down"></i>`;
+		} else if (breed.availability === 2) {
+			document.getElementById(
+				"breed-availability"
+			).innerHTML = `Dostępność rasy w Polsce: <b>umiarkowana <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-tilde"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 12c0 -1.657 1.592 -3 3.556 -3c1.963 0 3.11 1.5 4.444 3c1.333 1.5 2.48 3 4.444 3s3.556 -1.343 3.556 -3" /></svg>`;
+		} else if (breed.availability === 3) {
+			document.getElementById(
+				"breed-availability"
+			).innerHTML = `Dostępność rasy w Polsce: <b>powszechna <i class="fa-solid fa-arrow-trend-up"></i>`;
+		}
 
 		// standards
 		const plLink = document.getElementById("standard-pl");
@@ -259,7 +276,7 @@ function toggleFilter() {
 			filterBtns.forEach((btn) => {
 				btn.addEventListener("click", toggleFilter);
 			});
-		}, animationTime+200);
+		}, animationTime + 200);
 	} else {
 		filterBtns.forEach((btn) => {
 			btn.removeEventListener("click", toggleFilter);
@@ -272,7 +289,7 @@ function toggleFilter() {
 			filterBtns.forEach((btn) => {
 				btn.addEventListener("click", toggleFilter);
 			});
-		}, animationTime+200);
+		}, animationTime + 200);
 	}
 }
 
@@ -603,7 +620,7 @@ function checkQuiz() {
 	}
 }
 
-// compares user scores to every breed traits - LOWER SCORE IS MORE COMPATIBLE
+// compares user scores to every breed traits
 function compareResultsToBreeds(results) {
 	dogData.forEach((breed) => {
 		let score = 0;
@@ -634,11 +651,11 @@ function compareResultsToBreeds(results) {
 			// compares arrays from checkboxes (size, coatLength)
 			if (Array.isArray(userValue)) {
 				if (userValue.includes(breedValue)) {
-					score += 3; // match
-					scoreMax += 3;
+					score += 4; // match
+					scoreMax += 4;
 				} else {
 					score += 0; // mismatch
-					scoreMax += 3;
+					scoreMax += 4;
 				}
 			}
 			// compares groupOne traits
@@ -651,22 +668,20 @@ function compareResultsToBreeds(results) {
 			}
 			// compares groupTwo traits
 			else if (userValue !== 0 && groupTwo.includes(key)) {
-				score += 2 - Math.abs(userValue - breedValue); // difference between user and breed values
-				scoreMax += 2; // maximal difference between user and breed values
+				score += (2 - Math.abs(userValue - breedValue)) * 2; // difference between user and breed values
+				scoreMax += 4; // maximal difference between user and breed values
 			} else if (userValue === 0 && groupTwo.includes(key)) {
-				score += 3;
-				scoreMax += 3;
+				score += 4;
+				scoreMax += 4;
 			}
 			// compares groupThree traits
 			else if (userValue !== 0 && groupThree.includes(key)) {
 				score += 4 - Math.abs(userValue - breedValue); // difference between user and breed values
 				scoreMax += 4; // maximal difference between user and breed values
 			} else if (userValue === 0 && groupThree.includes(key)) {
-				score += 3;
-				scoreMax += 3;
-			}
-			// compares traits that don't matter to user (from groupONe and groupTwo)
-			else {
+				score += 4;
+				scoreMax += 4;
+			} else {
 				console.error("Error calculating score:", error);
 			}
 		}
@@ -679,13 +694,13 @@ function compareResultsToBreeds(results) {
 // checks score compatibility for dog breeds
 function checkCompatibility() {
 	dogData.forEach((breed) => {
-		if (breed.score >= 84) {
+		if (breed.score >= 85) {
 			breed.compatibility = "idealne dopasowanie";
-		} else if (breed.score >= 72) {
+		} else if (breed.score >= 75) {
 			breed.compatibility = "bardzo dobre dopasowanie";
-		} else if (breed.score >= 60) {
+		} else if (breed.score >= 65) {
 			breed.compatibility = "dobre dopasowanie";
-		} else if (breed.score >= 48) {
+		} else if (breed.score >= 55) {
 			breed.compatibility = "przeciętne dopasowanie";
 		} else {
 			breed.compatibility = "złe dopasowanie";
@@ -808,11 +823,11 @@ if (searchInput) {
 }
 
 // forces reload to properly load animation on mobile versions
-window.addEventListener('pageshow', function(event) {
+window.addEventListener("pageshow", function (event) {
 	if (event.persisted) {
-	  window.location.reload();
+		window.location.reload();
 	}
-  });
+});
 
 window.addEventListener("load", () => {
 	document.body.classList.add("loaded");

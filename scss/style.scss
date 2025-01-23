@@ -265,7 +265,7 @@ a {
 
 // header for breeds list page
 .header-breeds-list {
-	left: -100vw; // before animation
+	left: calc(-100vw + 10px); // before animation
 	position: fixed;
 	display: flex;
 	flex-direction: column;
@@ -841,7 +841,7 @@ main {
 				padding: 1.5rem;
 			}
 			@media (min-width: 1100px) {
-				flex: 6;
+				flex: 5;
 			}
 
 			.breed-info-item {
@@ -849,12 +849,16 @@ main {
 				padding: 0.5rem;
 				font-size: 1.5rem;
 
-				@media (min-width: 768px) {
+				@media (min-width: 900px) {
+					font-size: 1.8rem;
+				}
+
+				@media (min-width: 1000px) {
 					padding: 1rem;
 				}
 
-				@media (min-width: 900px) {
-					font-size: 1.8rem;
+				p{
+					margin-bottom: 0;
 				}
 
 				i {
@@ -908,6 +912,7 @@ main {
 
 // footer
 .footer {
+	left: -100vw; // before animation
 	position: relative;
 	display: flex;
 	flex-direction: column;

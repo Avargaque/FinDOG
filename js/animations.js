@@ -145,7 +145,7 @@ function homePageAnimations() {
 
 	// })
 	gsap.from(".nav", {
-		x: "-100%",
+		x: "100vw",
 		ease: "power1.out",
 		duration: 1,
 	});
@@ -178,8 +178,8 @@ function homePageAnimations() {
 		duration: 1.5,
 		delay: 0.67,
 	});
-	gsap.from(".footer", {
-		x: "100%",
+	gsap.to(".footer", {
+		x: "100vw",
 		ease: "power1.out",
 		duration: 1,
 	});
@@ -204,8 +204,8 @@ function breedsListPageAnimations() {
 		duration: 1.5,
 		delay: 0.5,
 	});
-	gsap.from("footer", {
-		x: "-100vw",
+	gsap.to("footer", {
+		x: "100vw",
 		ease: "back",
 		duration: 1.5,
 		delay: 1,
@@ -250,8 +250,8 @@ function quizPageAnimations() {
 		duration: 1.5,
 		delay: 0.67,
 	});
-	gsap.from("footer", {
-		x: "-100vw",
+	gsap.to("footer", {
+		x: "100vw",
 		ease: "back",
 		duration: 1.5,
 		delay: 1,
@@ -290,8 +290,8 @@ function breedsDetailsPageAnimations() {
 		duration: 1.5,
 		delay: 1,
 	});
-	gsap.from("footer", {
-		x: "-100vw",
+	gsap.to("footer", {
+		x: "100vw",
 		ease: "back",
 		duration: 1.5,
 		delay: 1.5,

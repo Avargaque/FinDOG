@@ -303,7 +303,7 @@ button {
   width: calc(100vw - 20px);
   max-height: calc(100vh - 200px);
   max-width: 1200px;
-  margin-top: 196px;
+  margin-top: 188px;
   color: hsl(283, 71%, 20%);
   font-size: 0.9rem;
   background-color: #fff;
@@ -696,7 +696,7 @@ main .main-breeds-list .compatibility--very-good::after, main .main-breeds-list 
 }
 main .main-breeds-list .compatibility--good, main .main-breeds-list .compatibility--good:hover {
   position: relative;
-  background-color: rgba(197, 180, 24, 0.2);
+  background-color: rgba(186, 197, 24, 0.2);
 }
 main .main-breeds-list .compatibility--good::before, main .main-breeds-list .compatibility--good::after, main .main-breeds-list .compatibility--good:hover::before, main .main-breeds-list .compatibility--good:hover::after {
   display: flex;
@@ -714,7 +714,7 @@ main .main-breeds-list .compatibility--good::before, main .main-breeds-list .com
   right: 1rem;
   font-size: 1.6rem;
   font-weight: 800;
-  background-color: rgba(197, 180, 24, 0.7);
+  background-color: rgba(186, 197, 24, 0.7);
 }
 main .main-breeds-list .compatibility--good::after, main .main-breeds-list .compatibility--good:hover::after {
   content: "dobre dopasowanie";
@@ -722,7 +722,7 @@ main .main-breeds-list .compatibility--good::after, main .main-breeds-list .comp
   height: 30px;
   bottom: 1rem;
   left: 1rem;
-  background-color: rgba(197, 180, 24, 0.2);
+  background-color: rgba(186, 197, 24, 0.2);
   font-size: 1.3rem;
   font-weight: 600;
 }
@@ -1057,7 +1057,7 @@ a {
 }
 
 .header-breeds-list {
-  left: -100vw;
+  left: calc(-100vw + 10px);
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -1621,7 +1621,7 @@ main {
 }
 @media (min-width: 1100px) {
   .main-breed-details .breed-info-container .breed-info-items {
-    flex: 6;
+    flex: 5;
   }
 }
 .main-breed-details .breed-info-container .breed-info-items .breed-info-item {
@@ -1629,15 +1629,18 @@ main {
   padding: 0.5rem;
   font-size: 1.5rem;
 }
-@media (min-width: 768px) {
-  .main-breed-details .breed-info-container .breed-info-items .breed-info-item {
-    padding: 1rem;
-  }
-}
 @media (min-width: 900px) {
   .main-breed-details .breed-info-container .breed-info-items .breed-info-item {
     font-size: 1.8rem;
   }
+}
+@media (min-width: 1000px) {
+  .main-breed-details .breed-info-container .breed-info-items .breed-info-item {
+    padding: 1rem;
+  }
+}
+.main-breed-details .breed-info-container .breed-info-items .breed-info-item p {
+  margin-bottom: 0;
 }
 .main-breed-details .breed-info-container .breed-info-items .breed-info-item i {
   width: 25px;
@@ -1681,6 +1684,7 @@ main {
 }
 
 .footer {
+  left: -100vw;
   position: relative;
   display: flex;
   flex-direction: column;

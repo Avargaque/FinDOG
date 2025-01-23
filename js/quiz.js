@@ -22,7 +22,6 @@ let dogAttributes = {
 	training: 3,
 	approachToStrangers: 3,
 	controlling: 3,
-	barking: 3,
 	canBeAlone: 3,
 	goodWithKids: 3,
 	goodWithPets: 3,
@@ -30,6 +29,7 @@ let dogAttributes = {
 	stubborn: 3,
 	lifeExpectancy: 0,
 	availability: 0,
+	barking: 0,
 	combing: 0,
 	shedding: 0,
 	drooling: 0,
@@ -146,13 +146,17 @@ function loadQuestion(questionIndex) {
 	answersInputs.forEach((input) => {
 		input.addEventListener("click", () => {
 			if (input.type === "radio") {
+				input.disabled = true;
 				setTimeout(() => {
 					nextQuestionOutAnimation();
 				}, 300);
 				setTimeout(() => {
 					nextQuestion();
 					nextQuestionInAnimation();
-				}, 1000);
+				}, 1300);
+				setTimeout(() => {
+					input.disabled = false;
+				}, 1600);
 			}
 		});
 	});
@@ -291,7 +295,6 @@ function resetScore() {
 		training: 3,
 		approachToStrangers: 3,
 		controlling: 3,
-		barking: 3,
 		canBeAlone: 3,
 		goodWithKids: 3,
 		goodWithPets: 3,
@@ -299,6 +302,7 @@ function resetScore() {
 		stubborn: 3,
 		lifeExpectancy: 0,
 		availability: 0,
+		barking: 0,
 		combing: 0,
 		shedding: 0,
 		drooling: 0,
@@ -387,12 +391,12 @@ nextQuestionBtns.forEach((btn) => {
 		setTimeout(() => {
 			nextQuestion();
 			nextQuestionInAnimation();
-		}, 1000);
+		}, 1300);
 		// blocks button
 		btn.style.pointerEvents = "none";
 		setTimeout(() => {
 			btn.style.pointerEvents = "auto";
-		}, 1500);
+		}, 1600);
 	});
 });
 previousQuestionBtns.forEach((btn) => {
@@ -405,12 +409,12 @@ previousQuestionBtns.forEach((btn) => {
 		setTimeout(() => {
 			previousQuestion();
 			previousQuestionInAnimation();
-		}, 1000);
+		}, 1300);
 		// blocks button
 		btn.style.pointerEvents = "none";
 		setTimeout(() => {
 			btn.style.pointerEvents = "auto";
-		}, 1500);
+		}, 1600);
 	});
 });
 btnResults.addEventListener("click", () => {

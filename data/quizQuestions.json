@@ -160,7 +160,7 @@
 		"id": 13,
 		"question": "Czy bardzo zależy ci na tym, by pies był długowieczny?",
 		"answers": [
-			"Tak, to dla mnie bardzo ważne",
+			"Tak",
 			"Nie jest to dla mnie aż tak istotne"
 		],
 		"effects": [{ "lifeExpectancy": 3 }, {}],
@@ -170,7 +170,7 @@
 	{
 		"id": 14,
 		"question": "Czy zależy ci na tym, aby dobrana rasa była jak najłatwiej dostępna do pozyskania w naszym kraju?",
-		"answers": ["Tak", "Nie jest to dla mnie istotne"],
+		"answers": ["Tak", "Nie jest to dla mnie aż tak istotne"],
 		"effects": [{ "availability": 3 }, {}],
 		"inputType": "radio",
 		"userAnswerRadio": ""
@@ -183,15 +183,15 @@
 			"Nie"
 		],
 		"effects": [
-			{ "barking": -2 },
-			{ "barking": 0 }
+			{ "barking": 1 },
+			{}
 		],
 		"inputType": "radio",
 		"userAnswerRadio": ""
 	},
 	{
 		"id": 16,
-		"question": "Czy przeszkadza ci konieczność częstego czesania psa?",
+		"question": "Czy przeszkadza ci wymagająca pielęgnacja psa, taka jak częste kąpiele, czesanie i strzyżenie?",
 		"answers": ["Tak", "Nie"],
 		"effects": [{ "combing": 1 }, {}],
 		"inputType": "radio",
