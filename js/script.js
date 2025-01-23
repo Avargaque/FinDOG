@@ -622,6 +622,24 @@ function checkQuiz() {
 
 // compares user scores to every breed traits
 function compareResultsToBreeds(results) {
+
+	const groupOne = [
+		"sociability",
+		"goodWithKids",
+		"goodWithPets",
+		"approachToStrangers",
+		"controlling",
+		"canBeAlone",
+		"adaptability",
+		"playfulness",
+		"energy",
+		"needsActivity",
+		"training",
+		"stubborn",
+	];
+	const groupTwo = ["lifeExpectancy", "availability"];
+	const groupThree = ["barking", "combing", "shedding", "drooling"];
+
 	dogData.forEach((breed) => {
 		let score = 0;
 		let scoreMax = 0;
@@ -631,41 +649,26 @@ function compareResultsToBreeds(results) {
 			const userValue = results[key];
 			const breedValue = breed[key];
 
-			const groupOne = [
-				"sociability",
-				"goodWithKids",
-				"goodWithPets",
-				"approachToStrangers",
-				"controlling",
-				"canBeAlone",
-				"adaptability",
-				"playfulness",
-				"energy",
-				"needsActivity",
-				"training",
-				"stubborn",
-			];
-			const groupTwo = ["lifeExpectancy", "availability"];
-			const groupThree = ["barking", "combing", "shedding", "drooling"];
-
 			// compares arrays from checkboxes (size, coatLength)
 			if (Array.isArray(userValue)) {
 				if (userValue.includes(breedValue)) {
 					score += 4; // match
-					scoreMax += 4;
+					scoreMax += 4;			
 				} else {
 					score += 0; // mismatch
-					scoreMax += 4;
+					scoreMax += 4;	
 				}
 			}
+
 			// compares groupOne traits
 			else if (userValue !== 0 && groupOne.includes(key)) {
-				score += 4 - Math.abs(userValue - breedValue); // difference between user and breed values
+				score += 4 - Math.abs(userValue - breedValue); // difference 
 				scoreMax += 4; // maximal difference between user and breed values
 			} else if (userValue === 0 && groupOne.includes(key)) {
 				score += 0;
 				scoreMax += 0;
 			}
+
 			// compares groupTwo traits
 			else if (userValue !== 0 && groupTwo.includes(key)) {
 				score += (2 - Math.abs(userValue - breedValue)) * 2; // difference between user and breed values
@@ -674,6 +677,7 @@ function compareResultsToBreeds(results) {
 				score += 4;
 				scoreMax += 4;
 			}
+
 			// compares groupThree traits
 			else if (userValue !== 0 && groupThree.includes(key)) {
 				score += 4 - Math.abs(userValue - breedValue); // difference between user and breed values
@@ -681,13 +685,16 @@ function compareResultsToBreeds(results) {
 			} else if (userValue === 0 && groupThree.includes(key)) {
 				score += 4;
 				scoreMax += 4;
-			} else {
-				console.error("Error calculating score:", error);
+			} 
+			
+			else {
+				console.error("Error calculating score for key:", key);
 			}
 		}
+		console.log(scoreMax);
 
 		// assigns score to the breed object (in % compatibility)
-		breed.score = ((score * 100) / scoreMax).toFixed(0);
+		breed.score = ((score * 100) / scoreMax).toFixed(0);	
 	});
 }
 
