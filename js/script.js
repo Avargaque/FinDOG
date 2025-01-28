@@ -599,8 +599,8 @@ function showUserScore(results) {
 
 // checks if user completed quiz to get results
 function checkQuiz() {
-	// gets results from sessionStorage
-	const results = JSON.parse(sessionStorage.getItem("quizResults"));
+	// gets results from localStorage
+	const results = JSON.parse(localsession.getItem("quizResults"));
 
 	// shows results
 	if (results) {

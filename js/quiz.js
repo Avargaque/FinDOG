@@ -142,21 +142,24 @@ function loadQuestion(questionIndex) {
 
 	// goes to next question after choosing answer after a small delay
 	const answersInputs = answersForm.querySelectorAll(".answers__label input");
-
 	answersInputs.forEach((input) => {
 		input.addEventListener("click", () => {
 			if (input.type === "radio") {
-				input.disabled = true;
-				setTimeout(() => {
-					nextQuestionOutAnimation();
-				}, 300);
-				setTimeout(() => {
-					nextQuestion();
-					nextQuestionInAnimation();
-				}, 1300);
-				setTimeout(() => {
-					input.disabled = false;
-				}, 1600);
+				// runs animations and forces next question
+					setTimeout(() => {
+						nextQuestionOutAnimation();
+					}, 300);
+					setTimeout(() => {
+						nextQuestion();
+						nextQuestionInAnimation();
+					}, 1300);
+				// disables other inputs after selecting one to avoid bugs
+				answersInputs.forEach((input) => {
+					input.disabled = true;
+					setTimeout(() => {
+						input.disabled = false;
+					}, 1600);
+				})
 			}
 		});
 	});
