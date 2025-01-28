@@ -946,6 +946,7 @@ a {
   width: 100vw;
   height: 100px;
   font-weight: 600;
+  font-size: 1.3rem;
   letter-spacing: 2px;
   color: #fff;
   background-color: hsl(283, 71%, 20%);
@@ -1070,7 +1071,7 @@ a {
 }
 @media (min-width: 1200px) {
   .header-breeds-list {
-    left: calc(-100vw + (100vw - 1200px) / 2);
+    left: calc(-100vw + (100vw - 1200px) / 2 - 8px);
     width: 1200px;
   }
 }

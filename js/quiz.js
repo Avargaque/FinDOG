@@ -348,10 +348,10 @@ function checkAlertResultBtn() {
 	}
 }
 
-// saves results to sessionStorage
+// saves results to localStorage
 function saveResults() {
 	const results = dogAttributes;
-	sessionStorage.setItem("quizResults", JSON.stringify(results));
+	localStorage.setItem("quizResults", JSON.stringify(results));
 }
 
 // shows user score in console
