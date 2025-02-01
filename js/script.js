@@ -126,6 +126,8 @@ function goToBreed() {
 					setTimeout(() => {
 						(window.location.href = `breed-details.html?breed=${breedName}`),
 							"_blank";
+						// resets filters
+						resetFilters();
 					}, animationTime);
 				}
 
@@ -283,8 +285,8 @@ function toggleFilter() {
 		});
 		filterInAnimation();
 		filter.style.opacity = "1";
+		filter.style.pointerEvents = "auto";
 		setTimeout(() => {
-			filter.style.pointerEvents = "auto";
 			document.addEventListener("click", hideFilter);
 			filterBtns.forEach((btn) => {
 				btn.addEventListener("click", toggleFilter);
@@ -564,7 +566,26 @@ function filterDogs() {
 		filteredDogs = dogData;
 	}
 
-	renderDogs(filteredDogs);
+	// shows user score for results
+	if (document.body.getAttribute("data-page") === "results") {
+		const results = JSON.parse(localStorage.getItem("quizResults"));
+		compareResultsToBreeds(results);
+		checkCompatibility();
+		renderDogs(filteredDogs);
+		goToBreed();
+		setScore();
+		setCompatibility();
+	} else {
+		renderDogs(filteredDogs);
+	}
+
+	// reassigns out animation 
+	const breedsItems = document.querySelectorAll(".breeds-item");
+	breedsItems.forEach((breedBtn) => {
+		breedBtn.addEventListener("click", () => {
+			outAnimation();
+		});
+	});
 }
 
 // shows user score in console
@@ -622,7 +643,6 @@ function checkQuiz() {
 
 // compares user scores to every breed traits
 function compareResultsToBreeds(results) {
-
 	const groupOne = [
 		"sociability",
 		"goodWithKids",
@@ -653,16 +673,16 @@ function compareResultsToBreeds(results) {
 			if (Array.isArray(userValue)) {
 				if (userValue.includes(breedValue)) {
 					score += 4; // match
-					scoreMax += 4;			
+					scoreMax += 4;
 				} else {
 					score += 0; // mismatch
-					scoreMax += 4;	
+					scoreMax += 4;
 				}
 			}
 
 			// compares groupOne traits
 			else if (userValue !== 0 && groupOne.includes(key)) {
-				score += 4 - Math.abs(userValue - breedValue); // difference 
+				score += 4 - Math.abs(userValue - breedValue); // difference
 				scoreMax += 4; // maximal difference between user and breed values
 			} else if (userValue === 0 && groupOne.includes(key)) {
 				score += 0;
@@ -685,16 +705,14 @@ function compareResultsToBreeds(results) {
 			} else if (userValue === 0 && groupThree.includes(key)) {
 				score += 4;
 				scoreMax += 4;
-			} 
-			
-			else {
+			} else {
 				console.error("Error calculating score for key:", key);
 			}
 		}
 		console.log(scoreMax);
 
 		// assigns score to the breed object (in % compatibility)
-		breed.score = ((score * 100) / scoreMax).toFixed(0);	
+		breed.score = ((score * 100) / scoreMax).toFixed(0);
 	});
 }
 
