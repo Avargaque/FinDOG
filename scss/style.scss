@@ -245,6 +245,10 @@ a {
 	height: auto;
 	padding-top: 80px;
 
+	@media (max-height: 380px) {
+		padding-top: 4rem;
+	}
+
 	h1 {
 		width: 100%;
 		padding: 2rem 0;
@@ -738,6 +742,10 @@ main {
 	justify-content: center;
 	align-items: center;
 	margin-top: 188px;
+
+	@media (max-height: 380px) {
+		margin-top: 148px;
+	}
 
 	.breeds-item {
 		display: flex;

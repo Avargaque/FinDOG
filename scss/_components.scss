@@ -342,7 +342,7 @@ button {
 
 		.slider-item {
 			display: flex;
-			width: 160px;
+			width: 200px;
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
@@ -351,10 +351,6 @@ button {
 
 			p {
 				margin-bottom: 0;
-			}
-
-			@media (min-width: 576px) and (min-height: 500px) {
-				width: 200px;
 			}
 
 			@media (min-width: 992px) {

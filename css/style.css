@@ -388,7 +388,7 @@ button {
 }
 .filter .slider-container .slider-item {
   display: flex;
-  width: 160px;
+  width: 200px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -397,11 +397,6 @@ button {
 }
 .filter .slider-container .slider-item p {
   margin-bottom: 0;
-}
-@media (min-width: 576px) and (min-height: 500px) {
-  .filter .slider-container .slider-item {
-    width: 200px;
-  }
 }
 @media (min-width: 992px) {
   .filter .slider-container .slider-item {
@@ -1035,6 +1030,13 @@ a {
   height: auto;
   padding-top: 80px;
 }
+@media (max-height: 380px) {
+  .header-home,
+  .header-breed-selector,
+  .header-breed-details {
+    padding-top: 4rem;
+  }
+}
 .header-home h1,
 .header-breed-selector h1,
 .header-breed-details h1 {
@@ -1515,6 +1517,11 @@ main {
   justify-content: center;
   align-items: center;
   margin-top: 188px;
+}
+@media (max-height: 380px) {
+  .main-breeds-list {
+    margin-top: 148px;
+  }
 }
 .main-breeds-list .breeds-item {
   display: flex;
