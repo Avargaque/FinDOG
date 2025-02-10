@@ -357,32 +357,32 @@ function saveResults() {
 	localStorage.setItem("quizResults", JSON.stringify(results));
 }
 
-// shows user score in console
-function showUserScore() {
-	console.log("size: " + dogAttributes.size);
-	console.log("coatLength: " + dogAttributes.coatLength);
+// // shows user score in console
+// function showUserScore() {
+// 	console.log("size: " + dogAttributes.size);
+// 	console.log("coatLength: " + dogAttributes.coatLength);
 
-	console.log("sociability: " + dogAttributes.sociability);
-	console.log("goodWithKids: " + dogAttributes.goodWithKids);
-	console.log("goodWithPets: " + dogAttributes.goodWithPets);
-	console.log("approachToStrangers: " + dogAttributes.approachToStrangers);
-	console.log("playfulness: " + dogAttributes.playfulness);
-	console.log("energy: " + dogAttributes.energy);
-	console.log("needsActivity: " + dogAttributes.needsActivity);
-	console.log("controlling: " + dogAttributes.controlling);
-	console.log("barking: " + dogAttributes.barking);
-	console.log("training: " + dogAttributes.training);
-	console.log("adaptability: " + dogAttributes.adaptability);
-	console.log("canBeAlone: " + dogAttributes.canBeAlone);
-	console.log("stubborn: " + dogAttributes.stubborn);
+// 	console.log("sociability: " + dogAttributes.sociability);
+// 	console.log("goodWithKids: " + dogAttributes.goodWithKids);
+// 	console.log("goodWithPets: " + dogAttributes.goodWithPets);
+// 	console.log("approachToStrangers: " + dogAttributes.approachToStrangers);
+// 	console.log("playfulness: " + dogAttributes.playfulness);
+// 	console.log("energy: " + dogAttributes.energy);
+// 	console.log("needsActivity: " + dogAttributes.needsActivity);
+// 	console.log("controlling: " + dogAttributes.controlling);
+// 	console.log("barking: " + dogAttributes.barking);
+// 	console.log("training: " + dogAttributes.training);
+// 	console.log("adaptability: " + dogAttributes.adaptability);
+// 	console.log("canBeAlone: " + dogAttributes.canBeAlone);
+// 	console.log("stubborn: " + dogAttributes.stubborn);
 
-	console.log("shedding: " + dogAttributes.shedding);
-	console.log("combing: " + dogAttributes.combing);
-	console.log("drooling: " + dogAttributes.drooling);
+// 	console.log("shedding: " + dogAttributes.shedding);
+// 	console.log("combing: " + dogAttributes.combing);
+// 	console.log("drooling: " + dogAttributes.drooling);
 
-	console.log("lifeExpectancy: " + dogAttributes.lifeExpectancy);
-	console.log("availability: " + dogAttributes.availability);
-}
+// 	console.log("lifeExpectancy: " + dogAttributes.lifeExpectancy);
+// 	console.log("availability: " + dogAttributes.availability);
+// }
 
 nextQuestionBtns.forEach((btn) => {
 	btn.addEventListener("click", () => {

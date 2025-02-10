@@ -54,7 +54,7 @@ button {
 /* Firefox */
 * {
   scrollbar-width: auto;
-  scrollbar-color: hsl(281, 37%, 75%) #fff;
+  scrollbar-color: rgb(200, 168, 215) rgb(255, 255, 255);
 }
 
 /* Chrome, Edge, and Safari */
@@ -63,11 +63,11 @@ button {
 }
 
 *::-webkit-scrollbar-track {
-  background: #fff;
+  background: rgb(255, 255, 255);
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: hsl(281, 37%, 75%);
+  background-color: rgb(200, 168, 215);
   border-radius: 10px;
   -webkit-transition: background-color 0.3s ease;
   transition: background-color 0.3s ease;
@@ -227,8 +227,8 @@ button {
   padding: 15px;
   font-size: 1.2rem;
   font-weight: 600;
-  color: hsl(283, 71%, 20%);
-  background-color: #fff;
+  color: rgb(67, 15, 87);
+  background-color: rgb(255, 255, 255);
   box-shadow: 0 0 10px rgba(67, 15, 88, 0.4);
   transform: translate(-50%, -50%);
   z-index: 1000;
@@ -255,14 +255,14 @@ button {
   font-size: 14px;
   font-family: inherit;
   line-height: 18px;
-  color: hsl(283, 71%, 20%);
+  color: rgb(67, 15, 87);
   background-color: transparent;
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: 18px 18px;
   background-position: 95% center;
   border-radius: 50px;
-  border: 1px solid hsl(283, 71%, 20%);
+  border: 1px solid rgb(67, 15, 87);
   transition: all 250ms ease-in-out;
   backface-visibility: hidden;
   transform-style: preserve-3d;
@@ -278,12 +278,12 @@ button {
   }
 }
 .searchbar__input::-moz-placeholder {
-  color: color(hsl(283, 71%, 20%) a(0.8));
+  color: color(rgb(67, 15, 87) a(0.8));
   text-transform: uppercase;
   letter-spacing: 1.5px;
 }
 .searchbar__input::placeholder {
-  color: color(hsl(283, 71%, 20%) a(0.8));
+  color: color(rgb(67, 15, 87) a(0.8));
   text-transform: uppercase;
   letter-spacing: 1.5px;
 }
@@ -291,7 +291,7 @@ button {
   padding: 12px 0;
   outline: 0;
   border: 1px solid transparent;
-  border-bottom: 1px solid hsl(283, 71%, 20%);
+  border-bottom: 1px solid rgb(67, 15, 87);
   border-radius: 0;
   background-position: 100% center;
 }
@@ -304,10 +304,10 @@ button {
   max-height: calc(100vh - 200px);
   max-width: 1200px;
   margin-top: 188px;
-  color: hsl(283, 71%, 20%);
+  color: rgb(67, 15, 87);
   font-size: 0.9rem;
-  background-color: #fff;
-  border: solid 2px hsl(281, 37%, 75%);
+  background-color: rgb(255, 255, 255);
+  border: solid 2px rgb(200, 168, 215);
   overflow-y: scroll;
   pointer-events: none;
   z-index: 5;
@@ -350,13 +350,13 @@ button {
   background-color: #ece1f1;
 }
 .filter .checkbox-container .checkbox-item input:checked + span:before {
-  box-shadow: inset 0 0 0 0.375em hsl(281, 37%, 75%);
+  box-shadow: inset 0 0 0 0.375em rgb(200, 168, 215);
 }
 .filter .checkbox-container .checkbox-item span {
   display: flex;
   align-items: center;
   padding: 0.75em 1.5em 0.75em 0.75em;
-  color: hsl(283, 71%, 20%);
+  color: rgb(67, 15, 87);
   cursor: pointer;
   transition: 0.25s ease;
 }
@@ -365,19 +365,19 @@ button {
 }
 @media (hover: none) {
   .filter .checkbox-container .checkbox-item span:hover {
-    background-color: #fff;
+    background-color: rgb(255, 255, 255);
   }
 }
 .filter .checkbox-container .checkbox-item span:before {
   display: flex;
   flex-shrink: 0;
   content: "";
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   width: 1.5em;
   height: 1.5em;
   margin-right: 0.375em;
   transition: 0.25s ease;
-  box-shadow: inset 0 0 0 0.125em hsl(281, 37%, 75%);
+  box-shadow: inset 0 0 0 0.125em rgb(200, 168, 215);
 }
 .filter .slider-container {
   display: flex;
@@ -414,28 +414,28 @@ button {
   width: 200px;
   height: 40px;
   margin: 5px;
-  color: hsl(283, 71%, 20%);
+  color: rgb(67, 15, 87);
   font-weight: 600;
   letter-spacing: 1px;
   cursor: pointer;
 }
 .filter .buttons-container .reset {
-  background-color: hsl(281, 66%, 94%);
+  background-color: rgb(243, 230, 250);
 }
 .filter .buttons-container .apply {
-  background-color: hsl(281, 37%, 75%);
+  background-color: rgb(200, 168, 215);
 }
 .filter .buttons-container .apply:hover,
 .filter .buttons-container .reset:hover {
-  background-color: hsl(283, 71%, 20%);
-  color: #fff;
+  background-color: rgb(67, 15, 87);
+  color: rgb(255, 255, 255);
 }
 
 .pseudoslider {
   display: flex;
   align-items: center;
   margin: 0.5rem;
-  background-color: hsl(281, 66%, 94%);
+  background-color: rgb(243, 230, 250);
 }
 .pseudoslider .value {
   width: 30px;
@@ -443,7 +443,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: hsl(283, 71%, 20%);
+  color: rgb(67, 15, 87);
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
@@ -457,22 +457,22 @@ button {
   }
 }
 .pseudoslider .value:hover {
-  background-color: hsl(283, 71%, 20%);
-  color: #fff;
+  background-color: rgb(67, 15, 87);
+  color: rgb(255, 255, 255);
 }
 @media (hover: none) {
   .pseudoslider .value:hover {
-    background-color: hsl(281, 66%, 94%);
-    color: hsl(283, 71%, 20%);
+    background-color: rgb(243, 230, 250);
+    color: rgb(67, 15, 87);
   }
 }
 .pseudoslider .value.selected {
-  background-color: hsl(283, 71%, 20%);
-  color: #fff;
+  background-color: rgb(67, 15, 87);
+  color: rgb(255, 255, 255);
 }
 .pseudoslider .value.hover-range {
-  background-color: hsl(283, 71%, 20%);
-  color: #fff;
+  background-color: rgb(67, 15, 87);
+  color: rgb(255, 255, 255);
 }
 
 .questions__progress-bar {
@@ -480,14 +480,14 @@ button {
   border-bottom-right-radius: 12px;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
-  background: hsl(281, 66%, 94%);
+  background: rgb(243, 230, 250);
 }
 .questions__progress-bar--done {
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
-  box-shadow: 0 0 5px hsl(283, 71%, 20%);
+  box-shadow: 0 0 5px rgb(67, 15, 87);
   height: 15px;
   margin-bottom: 2rem;
   margin-top: 1rem;
@@ -498,7 +498,7 @@ button {
   }
 }
 .questions__progress-bar--done.bar {
-  background: hsl(283, 71%, 20%);
+  background: rgb(67, 15, 87);
 }
 
 label.answers__label {
@@ -516,13 +516,13 @@ label.answers__label input:checked + span {
   background-color: #ece1f1;
 }
 label.answers__label input:checked + span:before {
-  box-shadow: inset 0 0 0 0.375em hsl(281, 37%, 75%);
+  box-shadow: inset 0 0 0 0.375em rgb(200, 168, 215);
 }
 label.answers__label span {
   display: flex;
   align-items: center;
   padding: 0.75em 1.5em 0.75em 0.75em;
-  color: hsl(283, 71%, 20%);
+  color: rgb(67, 15, 87);
   transition: 0.25s ease;
 }
 label.answers__label span:hover {
@@ -530,19 +530,19 @@ label.answers__label span:hover {
 }
 @media (hover: none) {
   label.answers__label span:hover {
-    background-color: #fff;
+    background-color: rgb(255, 255, 255);
   }
 }
 label.answers__label span:before {
   display: flex;
   flex-shrink: 0;
   content: "";
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   width: 1.5em;
   height: 1.5em;
   margin-right: 0.375em;
   transition: 0.25s ease;
-  box-shadow: inset 0 0 0 0.125em hsl(281, 37%, 75%);
+  box-shadow: inset 0 0 0 0.125em rgb(200, 168, 215);
 }
 label.answers__label input[type=radio] + span {
   border-radius: 99em;
@@ -582,7 +582,7 @@ label.answers__label {
   }
 }
 .accordion .accordion-group .accordion-item .accordion-header {
-  border: solid 1px hsl(281, 66%, 94%);
+  border: solid 1px rgb(243, 230, 250);
   border-bottom: none;
 }
 .accordion .accordion-group .accordion-item .accordion-header .accordion-button {
@@ -590,7 +590,7 @@ label.answers__label {
   display: flex;
   flex-direction: column;
   text-align: center;
-  color: hsl(283, 71%, 20%);
+  color: rgb(67, 15, 87);
   font-size: 1.4rem;
   font-weight: 600;
   letter-spacing: 2px;
@@ -603,23 +603,23 @@ label.answers__label {
   width: 40px;
   height: 10px;
   margin: 0.5rem;
-  background-color: hsl(281, 66%, 94%);
+  background-color: rgb(243, 230, 250);
 }
 .accordion .accordion-group .accordion-item .accordion-header .accordion-button .score-blocks .score-block.active {
-  background-color: hsl(283, 71%, 20%);
+  background-color: rgb(67, 15, 87);
 }
 .accordion .accordion-group .accordion-item .accordion-header .accordion-button::after {
   position: absolute;
   right: 0.5rem;
   top: calc(50% - 4px);
-  color: hsl(283, 71%, 20%);
+  color: rgb(67, 15, 87);
 }
 .accordion .accordion-group .accordion-item .accordion-header .accordion-button:active {
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
 }
 .accordion .accordion-group .accordion-item .accordion-collapse {
-  color: hsl(283, 71%, 20%);
-  background-color: hsl(281, 66%, 94%);
+  color: rgb(67, 15, 87);
+  background-color: rgb(243, 230, 250);
   font-size: 1.2rem;
   font-weight: 500;
   border: none;
@@ -634,7 +634,7 @@ main .main-breeds-list .compatibility--perfect::before, main .main-breeds-list .
   justify-content: center;
   align-items: center;
   position: absolute;
-  color: hsl(283, 71%, 20%);
+  color: rgb(67, 15, 87);
   text-transform: uppercase;
 }
 main .main-breeds-list .compatibility--perfect::before, main .main-breeds-list .compatibility--perfect:hover::before {
@@ -666,7 +666,7 @@ main .main-breeds-list .compatibility--very-good::before, main .main-breeds-list
   justify-content: center;
   align-items: center;
   position: absolute;
-  color: hsl(283, 71%, 20%);
+  color: rgb(67, 15, 87);
   text-transform: uppercase;
 }
 main .main-breeds-list .compatibility--very-good::before, main .main-breeds-list .compatibility--very-good:hover::before {
@@ -698,7 +698,7 @@ main .main-breeds-list .compatibility--good::before, main .main-breeds-list .com
   justify-content: center;
   align-items: center;
   position: absolute;
-  color: hsl(283, 71%, 20%);
+  color: rgb(67, 15, 87);
   text-transform: uppercase;
 }
 main .main-breeds-list .compatibility--good::before, main .main-breeds-list .compatibility--good:hover::before {
@@ -730,7 +730,7 @@ main .main-breeds-list .compatibility--average::before, main .main-breeds-list .
   justify-content: center;
   align-items: center;
   position: absolute;
-  color: hsl(283, 71%, 20%);
+  color: rgb(67, 15, 87);
   text-transform: uppercase;
 }
 main .main-breeds-list .compatibility--average::before, main .main-breeds-list .compatibility--average:hover::before {
@@ -762,7 +762,7 @@ main .main-breeds-list .compatibility--bad::before, main .main-breeds-list .comp
   justify-content: center;
   align-items: center;
   position: absolute;
-  color: hsl(283, 71%, 20%);
+  color: rgb(67, 15, 87);
   text-transform: uppercase;
 }
 main .main-breeds-list .compatibility--bad::before, main .main-breeds-list .compatibility--bad:hover::before {
@@ -802,7 +802,7 @@ html {
 body {
   position: relative;
   height: 100%;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -832,7 +832,7 @@ a {
   min-height: 100vh;
   max-width: 100%;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   overflow: hidden;
   z-index: 0;
 }
@@ -853,8 +853,8 @@ a {
   height: 80px;
   width: calc(100vw - 20px);
   font-size: 1.2rem;
-  background-color: #fff;
-  border-bottom: 1px solid hsl(281, 37%, 75%);
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(200, 168, 215);
   z-index: 1000;
 }
 @media (min-width: 1200px) {
@@ -899,7 +899,7 @@ a {
   width: 60px;
   height: 60px;
   padding: 0.5rem;
-  color: hsl(283, 71%, 20%);
+  color: rgb(67, 15, 87);
 }
 @media (max-height: 380px) {
   .nav__burger-menu {
@@ -943,9 +943,9 @@ a {
   font-weight: 600;
   font-size: 1.3rem;
   letter-spacing: 2px;
-  color: #fff;
-  background-color: hsl(283, 71%, 20%);
-  border-bottom: 1px solid #fff;
+  color: rgb(255, 255, 255);
+  background-color: rgb(67, 15, 87);
+  border-bottom: 1px solid rgb(255, 255, 255);
   transition: all 0.3s;
 }
 @media (min-width: 768px) and (min-height: 380px) {
@@ -953,22 +953,22 @@ a {
     width: 200px;
     height: 100%;
     font-weight: 800;
-    color: hsl(283, 71%, 20%);
-    background-color: #fff;
-    border: solid #fff;
+    color: rgb(67, 15, 87);
+    background-color: rgb(255, 255, 255);
+    border: solid rgb(255, 255, 255);
     border-width: 2px 1px;
     animation: none;
   }
 }
 .nav__btn--active {
-  color: hsl(283, 71%, 20%);
-  background-color: #fff;
+  color: rgb(67, 15, 87);
+  background-color: rgb(255, 255, 255);
   font-weight: 800;
 }
 @media (min-width: 768px) {
   .nav__btn--active {
-    color: #fff;
-    background-color: hsl(283, 71%, 20%);
+    color: rgb(255, 255, 255);
+    background-color: rgb(67, 15, 87);
     font-weight: 600;
   }
 }
@@ -977,14 +977,14 @@ a {
 }
 .nav__btn--inactive:hover {
   cursor: pointer;
-  color: hsl(283, 71%, 20%);
-  background-color: #fff;
+  color: rgb(67, 15, 87);
+  background-color: rgb(255, 255, 255);
   font-weight: 800;
 }
 @media (min-width: 768px) {
   .nav__btn--inactive:hover {
-    color: #fff;
-    background-color: hsl(283, 71%, 20%);
+    color: rgb(255, 255, 255);
+    background-color: rgb(67, 15, 87);
     font-weight: 600;
   }
 }
@@ -1043,7 +1043,7 @@ a {
   width: 100%;
   padding: 2rem 0;
   text-align: center;
-  color: hsl(283, 71%, 20%);
+  color: rgb(67, 15, 87);
 }
 .header-home .breed-selector-img,
 .header-breed-selector .breed-selector-img,
@@ -1068,7 +1068,7 @@ a {
   width: calc(100vw - 20px);
   padding-top: 8rem;
   padding-bottom: 1rem;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   z-index: 10;
 }
 @media (min-width: 1200px) {
@@ -1084,7 +1084,7 @@ a {
 }
 .header-breeds-list h1 {
   padding: 2rem 0 1rem 0;
-  color: hsl(283, 71%, 20%);
+  color: rgb(67, 15, 87);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -1097,7 +1097,7 @@ a {
   display: flex;
   align-self: center;
   padding: 1rem;
-  color: hsl(283, 71%, 20%);
+  color: rgb(67, 15, 87);
   font-size: 1.4rem;
   transition: color 0.3s;
 }
@@ -1114,7 +1114,7 @@ a {
 }
 .header-breeds-list .search-container .search-filter:hover {
   cursor: pointer;
-  color: hsl(281, 37%, 75%);
+  color: rgb(200, 168, 215);
 }
 
 main {
@@ -1219,8 +1219,8 @@ main {
   font-weight: 600;
   letter-spacing: 2px;
   font-size: 1.8rem;
-  color: #fff;
-  background-color: hsl(281, 37%, 75%);
+  color: rgb(255, 255, 255);
+  background-color: rgb(200, 168, 215);
   transition: background-color 0.4s, color 0.4s;
   z-index: 10;
 }
@@ -1247,24 +1247,24 @@ main {
 }
 .main__btn:hover {
   cursor: pointer;
-  color: hsl(283, 71%, 20%);
-  background-color: #fff;
+  color: rgb(67, 15, 87);
+  background-color: rgb(255, 255, 255);
 }
 .main__btn:hover::after {
   width: 90%;
   height: 90%;
   bottom: -10px;
   right: -10px;
-  border-bottom: 3px solid hsl(283, 71%, 20%);
-  border-right: 3px solid hsl(283, 71%, 20%);
+  border-bottom: 3px solid rgb(67, 15, 87);
+  border-right: 3px solid rgb(67, 15, 87);
 }
 .main__btn:hover::before {
   width: 90%;
   height: 90%;
   top: -10px;
   left: -10px;
-  border-top: 3px solid hsl(283, 71%, 20%);
-  border-left: 3px solid hsl(283, 71%, 20%);
+  border-top: 3px solid rgb(67, 15, 87);
+  border-left: 3px solid rgb(67, 15, 87);
 }
 
 .main-breed-selector {
@@ -1301,7 +1301,7 @@ main {
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  color: hsl(283, 71%, 20%);
+  color: rgb(67, 15, 87);
 }
 .main-breed-selector .questions__progress .current-question-text, .main-breed-selector .questions__question .current-question-text {
   text-align: center;
@@ -1337,7 +1337,7 @@ main {
   flex-direction: column;
 }
 .main-breed-selector .check-alert {
-  border: 2px solid hsl(281, 37%, 75%);
+  border: 2px solid rgb(200, 168, 215);
 }
 @media (min-width: 768px) {
   .main-breed-selector .check-alert--last {
@@ -1357,8 +1357,8 @@ main {
   top: -10px;
   font-family: inherit;
   font-size: 1.1rem;
-  color: #fff;
-  background-color: hsl(281, 37%, 75%);
+  color: rgb(255, 255, 255);
+  background-color: rgb(200, 168, 215);
   z-index: 10;
 }
 @media (min-width: 576px) {
@@ -1421,7 +1421,7 @@ main {
   align-self: center;
   height: 50px;
   width: 30px;
-  color: hsl(281, 37%, 75%);
+  color: rgb(200, 168, 215);
   transition: transform 0.3s;
 }
 @media (min-width: 992px) {
@@ -1452,8 +1452,8 @@ main {
   font-weight: 600;
   letter-spacing: 2px;
   font-size: 1.2rem;
-  color: #fff;
-  background-color: hsl(281, 37%, 75%);
+  color: rgb(255, 255, 255);
+  background-color: rgb(200, 168, 215);
   transition: background-color 0.5s, color 0.5s;
 }
 @media (min-width: 768px) {
@@ -1488,24 +1488,24 @@ main {
 }
 .main-breed-selector .btn-results:hover {
   cursor: pointer;
-  color: hsl(283, 71%, 20%);
-  background-color: #fff;
+  color: rgb(67, 15, 87);
+  background-color: rgb(255, 255, 255);
 }
 .main-breed-selector .btn-results:hover::after {
   width: 90%;
   height: 90%;
   bottom: -10px;
   right: -10px;
-  border-bottom: 3px solid hsl(283, 71%, 20%);
-  border-right: 3px solid hsl(283, 71%, 20%);
+  border-bottom: 3px solid rgb(67, 15, 87);
+  border-right: 3px solid rgb(67, 15, 87);
 }
 .main-breed-selector .btn-results:hover::before {
   width: 90%;
   height: 90%;
   top: -10px;
   left: -10px;
-  border-top: 3px solid hsl(283, 71%, 20%);
-  border-left: 3px solid hsl(283, 71%, 20%);
+  border-top: 3px solid rgb(67, 15, 87);
+  border-left: 3px solid rgb(67, 15, 87);
 }
 
 .main-breeds-list {
@@ -1551,7 +1551,7 @@ main {
   text-align: center;
   width: 100%;
   height: 60px;
-  color: hsl(283, 71%, 20%);
+  color: rgb(67, 15, 87);
   font-size: 1.6rem;
   text-transform: uppercase;
 }
@@ -1562,7 +1562,7 @@ main {
   text-align: center;
   width: 100%;
   font-size: 1.2rem;
-  color: hsl(283, 71%, 20%);
+  color: rgb(67, 15, 87);
   overflow: hidden;
 }
 @media (min-width: 400px) and (min-height: 600px) {
@@ -1572,12 +1572,12 @@ main {
 }
 .main-breeds-list .breeds-item:hover {
   cursor: pointer;
-  background-color: hsl(281, 66%, 94%);
+  background-color: rgb(243, 230, 250);
   scale: 0.95;
 }
 
 .main-breed-details {
-  color: hsl(283, 71%, 20%);
+  color: rgb(67, 15, 87);
   font-size: 1.3rem;
   font-weight: 500;
 }
@@ -1666,13 +1666,13 @@ main {
 }
 .main-breed-details .breed-info-container .breed-info-items .breed-info-item .standard-pl a,
 .main-breed-details .breed-info-container .breed-info-items .breed-info-item .standard-eng a {
-  color: hsl(281, 37%, 75%);
+  color: rgb(200, 168, 215);
   font-weight: 600;
   transition: color 0.3s;
 }
 .main-breed-details .breed-info-container .breed-info-items .breed-info-item .standard-pl a:hover,
 .main-breed-details .breed-info-container .breed-info-items .breed-info-item .standard-eng a:hover {
-  color: hsl(281, 66%, 94%);
+  color: rgb(243, 230, 250);
 }
 .main-breed-details .breed-info-container .breed-info-items .breed-info-item .standard-pl svg,
 .main-breed-details .breed-info-container .breed-info-items .breed-info-item .standard-eng svg {
@@ -1699,11 +1699,11 @@ main {
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: hsl(283, 71%, 20%);
-  background-color: #fff;
+  color: rgb(67, 15, 87);
+  background-color: rgb(255, 255, 255);
   font-size: 1.1rem;
   font-weight: 800;
-  border-top: 1px solid hsl(281, 37%, 75%);
+  border-top: 1px solid rgb(200, 168, 215);
 }
 @media (min-width: 576px) {
   .footer {
@@ -1739,7 +1739,7 @@ main {
 }
 .footer__item .email:hover {
   cursor: pointer;
-  color: hsl(281, 37%, 75%);
+  color: rgb(200, 168, 215);
 }
 .footer__item-media-text {
   padding: 0.5rem;
@@ -1759,7 +1759,7 @@ main {
 }
 .footer__item-media-icons .media-icon:hover {
   cursor: pointer;
-  color: hsl(281, 37%, 75%);
+  color: rgb(200, 168, 215);
 }
 .footer__item--email-info {
   order: 3;

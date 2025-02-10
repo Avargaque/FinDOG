@@ -29,6 +29,35 @@ const animationTime = 1000; // out animation time in ms
 
 ////////////////////////////////////////////////////////////// FUNCTIONS
 
+//////////////// universal functions 
+
+// puts current year in footer
+function footerYear() {
+	let currentYear = new Date().getFullYear();
+	document.getElementById("currentYear").textContent = currentYear;
+}
+
+// copies e-mail address
+function copyMailAdress() {
+	const textarea = document.createElement("textarea");
+	textarea.value = this.textContent;
+	textarea.setAttribute("readonly", "");
+	textarea.style.position = "absolute";
+	textarea.style.left = "-9999px";
+	document.body.appendChild(textarea);
+	textarea.select();
+	document.execCommand("copy");
+	document.body.removeChild(textarea);
+	// 2sec pop-up
+	const popup = document.querySelector(".pop-up-mail");
+	popup.classList.add("show");
+	setTimeout(() => {
+		popup.classList.remove("show");
+	}, 2000);
+}
+
+//////////////// breeds list functions
+
 // fetches dog breeds
 async function fetchDogBreeds() {
 	try {
@@ -58,6 +87,43 @@ function createDogForBreedsList(dog) {
 	return dogElement;
 }
 
+// renders dog breeds and shows them in main
+function renderDogs(dogs) {
+	const container = document.getElementById("main-breeds-list");
+	container.innerHTML = "";
+
+	if (dogs.length === 0) {
+		container.innerHTML =
+			"<p class='breeds-item__description'>Brak wyników dla wybranych filtrów.</p>";
+		return;
+	}
+
+	// creates HTML element for each dog
+	dogs.forEach((dog) => {
+		const dogElement = createDogForBreedsList(dog);
+
+		// sets quiz score and breed compatibility for each breed
+		if (document.body.getAttribute("data-page") === "results") {
+			dogElement.dataset.score = dog.score;
+			dogElement.dataset.compatibility = dog.compatibility;
+			console.log("Breed: " + dog.name + " Score: " + dog.score);
+		}
+
+		container.appendChild(dogElement);
+	});
+
+	console.log("Rendered dogs:", dogs);
+
+	// sorts results in proper order
+	if (document.body.getAttribute("data-page") === "breeds-list") {
+		sortBreedsAlphabetically();
+	} else if (document.body.getAttribute("data-page") === "results") {
+		sortBreedsByCompatibility();
+	}
+
+	goToBreed();
+}
+
 // sorts breeds in alphabetical order
 function sortBreedsAlphabetically() {
 	const container = document.getElementById("main-breeds-list");
@@ -77,20 +143,6 @@ function sortBreedsAlphabetically() {
 
 	container.innerHTML = "";
 	items.forEach((item) => container.appendChild(item));
-}
-
-// sort breeds by quiz score percantage compatibility
-function sortBreedsByCompatibility() {
-	const container = document.getElementById("main-breeds-list");
-	const dogs = Array.from(container.children);
-
-	dogs.sort((b, a) => {
-		const scoreA = a.dataset.score ? parseInt(a.dataset.score) : Infinity;
-		const scoreB = b.dataset.score ? parseInt(b.dataset.score) : Infinity;
-		return scoreA - scoreB;
-	});
-
-	dogs.forEach((dogElement) => container.appendChild(dogElement));
 }
 
 // takes user to breed details of the dog he clicked
@@ -139,6 +191,8 @@ function goToBreed() {
 		});
 	}
 }
+
+/////////////// breeds details functions
 
 // shows breed details by changing breed info and traits
 function showBreedDetails() {
@@ -216,43 +270,6 @@ function showBreedDetails() {
 	console.log(breed);
 }
 
-// renders dog breeds and shows them in main
-function renderDogs(dogs) {
-	const container = document.getElementById("main-breeds-list");
-	container.innerHTML = "";
-
-	if (dogs.length === 0) {
-		container.innerHTML =
-			"<p class='breeds-item__description'>Brak wyników dla wybranych filtrów.</p>";
-		return;
-	}
-
-	// creates HTML element for each dog
-	dogs.forEach((dog) => {
-		const dogElement = createDogForBreedsList(dog);
-
-		// sets quiz score and breed compatibility for each breed
-		if (document.body.getAttribute("data-page") === "results") {
-			dogElement.dataset.score = dog.score;
-			dogElement.dataset.compatibility = dog.compatibility;
-			console.log("Breed: " + dog.name + " Score: " + dog.score);
-		}
-
-		container.appendChild(dogElement);
-	});
-
-	console.log("Rendered dogs:", dogs);
-
-	// sorts results in proper order
-	if (document.body.getAttribute("data-page") === "breeds-list") {
-		sortBreedsAlphabetically();
-	} else if (document.body.getAttribute("data-page") === "results") {
-		sortBreedsByCompatibility();
-	}
-
-	goToBreed();
-}
-
 // updates block scores for breed traits
 function updateScore(containerId, value) {
 	const scoreBlocks = document.querySelectorAll(`#${containerId} .score-block`);
@@ -263,6 +280,8 @@ function updateScore(containerId, value) {
 		}
 	}
 }
+
+/////////////// filter functions
 
 // toggles filter button
 function toggleFilter() {
@@ -304,31 +323,6 @@ function hideFilter(event) {
 		toggleFilter();
 		document.removeEventListener("click", hideFilter);
 	}
-}
-
-// puts current year in footer
-function footerYear() {
-	let currentYear = new Date().getFullYear();
-	document.getElementById("currentYear").textContent = currentYear;
-}
-
-// copies e-mail address
-function copyMailAdress() {
-	const textarea = document.createElement("textarea");
-	textarea.value = this.textContent;
-	textarea.setAttribute("readonly", "");
-	textarea.style.position = "absolute";
-	textarea.style.left = "-9999px";
-	document.body.appendChild(textarea);
-	textarea.select();
-	document.execCommand("copy");
-	document.body.removeChild(textarea);
-	// 2sec pop-up
-	const popup = document.querySelector(".pop-up-mail");
-	popup.classList.add("show");
-	setTimeout(() => {
-		popup.classList.remove("show");
-	}, 2000);
 }
 
 // handles filter pseudosliders
@@ -588,6 +582,8 @@ function filterDogs() {
 	});
 }
 
+//////////////// score functions
+
 // shows user score in console
 function showUserScore(results) {
 	console.log(
@@ -776,6 +772,20 @@ function setCompatibility() {
 	badCompatibilityElements.forEach((element) => {
 		element.classList.add("compatibility", "compatibility--bad");
 	});
+}
+
+// sort breeds by quiz score percantage compatibility
+function sortBreedsByCompatibility() {
+	const container = document.getElementById("main-breeds-list");
+	const dogs = Array.from(container.children);
+
+	dogs.sort((b, a) => {
+		const scoreA = a.dataset.score ? parseInt(a.dataset.score) : Infinity;
+		const scoreB = b.dataset.score ? parseInt(b.dataset.score) : Infinity;
+		return scoreA - scoreB;
+	});
+
+	dogs.forEach((dogElement) => container.appendChild(dogElement));
 }
 
 ////////////////////////////////////////////////////////////// EVENT LISTENERS
