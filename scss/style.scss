@@ -30,7 +30,7 @@ body.loaded {
 	overflow: auto;
 }
 
-h1{
+h1 {
 	font-size: 2rem;
 	font-weight: 700;
 	font-family: inherit;
@@ -66,7 +66,6 @@ a {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	flex-wrap: nowrap;
 	height: 80px;
 	width: calc(100vw - 20px);
 	font-size: 1.2rem;
@@ -83,8 +82,9 @@ a {
 	}
 
 	&__logo {
+		width: 79px;
 		height: 100%;
-
+		
 		img {
 			display: block;
 			height: 100%;
@@ -207,23 +207,23 @@ a {
 }
 
 // header for home page and breed selection
-.header-home{
+.header-home {
 	h1 {
 		height: 165px;
-		
-		@media (min-width: 335px){
+
+		@media (min-width: 335px) {
 			height: 141px;
 		}
 
-		@media (min-width: 411px){
+		@media (min-width: 411px) {
 			height: 117px;
 		}
 
-		@media (min-width: 552px){
+		@media (min-width: 552px) {
 			height: 93px;
 		}
 
-		@media (min-width: 990px){
+		@media (min-width: 990px) {
 			height: 108px;
 			font-size: 26px;
 		}
@@ -282,7 +282,7 @@ a {
 	z-index: 10;
 
 	@media (min-width: 1200px) {
-		left: calc(-100vw + (100vw - 1200px)/2 - 8px);
+		left: calc(-100vw + (100vw - 1200px) / 2 - 8px);
 		width: 1200px;
 	}
 
@@ -316,7 +316,7 @@ a {
 			p {
 				margin: 0 0.5rem 0 0;
 			}
-			i{
+			i {
 				margin-top: 0.4rem;
 			}
 		}
@@ -433,11 +433,11 @@ main {
 		transition: background-color 0.4s, color 0.4s;
 		z-index: 10;
 
-		&--quiz{
+		&--quiz {
 			left: 100vw; // before animation
 		}
 
-		&--breeds{
+		&--breeds {
 			left: -100vw; // before animation
 		}
 	}
@@ -656,7 +656,7 @@ main {
 		cursor: pointer;
 		transform: scale(120%);
 
-		@media (hover: none){
+		@media (hover: none) {
 			transform: scale(100%);
 		}
 	}
@@ -757,7 +757,7 @@ main {
 		transition: all 0.3s;
 		margin-bottom: 0.5rem;
 
-		@media (min-width: 620px){
+		@media (min-width: 620px) {
 			margin-bottom: 0;
 		}
 
@@ -866,7 +866,7 @@ main {
 					padding: 1rem;
 				}
 
-				p{
+				p {
 					margin-bottom: 0;
 				}
 
@@ -892,7 +892,7 @@ main {
 						transition: color 0.3s;
 					}
 
-					a:hover{
+					a:hover {
 						color: $supporting-color;
 					}
 
@@ -908,12 +908,12 @@ main {
 		}
 	}
 
-	.breed-about{
+	.breed-about {
 		position: relative;
 		left: -100vw; // before animation
 	}
 
-	.accordion{
+	.accordion {
 		position: relative;
 		left: -100vw; // before animation
 	}

@@ -849,7 +849,6 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  flex-wrap: nowrap;
   height: 80px;
   width: calc(100vw - 20px);
   font-size: 1.2rem;
@@ -868,6 +867,7 @@ a {
   }
 }
 .nav__logo {
+  width: 79px;
   height: 100%;
 }
 .nav__logo img {

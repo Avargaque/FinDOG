@@ -82,6 +82,8 @@ function disableButtonsDuringAnimation(animationTime = 2000) {
 	}, animationTime);
 }
 
+////////////////// GSAP
+
 // out of page animation
 export function outAnimation() {
 	gsap.to("header", {
