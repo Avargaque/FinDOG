@@ -346,14 +346,14 @@ export function nextQuestionOutAnimation() {
 		duration: 1,
 	});
 	gsap.to(".main-breed-selector", {
-		x: "100vw",
+		x: "-100vw",
 		ease: "power1.in",
 		duration: 1,
 	});
 }
 export function nextQuestionInAnimation() {
 	gsap.from(".main-breed-selector", {
-		x: "-100vw",
+		x: "100vw",
 		ease: "power1.out",
 		duration: 1,
 	});
@@ -372,14 +372,14 @@ export function previousQuestionOutAnimation() {
 		duration: 1,
 	});
 	gsap.to(".main-breed-selector", {
-		x: "-100vw",
+		x: "100vw",
 		ease: "power1.in",
 		duration: 1,
 	});
 }
 export function previousQuestionInAnimation() {
 	gsap.from(".main-breed-selector", {
-		x: "100vw",
+		x: "-100vw",
 		ease: "power1.out",
 		duration: 1,
 	});
