@@ -7,8 +7,8 @@ button {
 	transition: all 0.3s;
 }
 
-.invisible {
-	visibility: hidden;
+.visible {
+	visibility: visible;
 }
 
 // scrollbar
@@ -259,7 +259,7 @@ button {
 	max-width: 1200px;
 	margin-top: 188px;
 	color: $main-color;
-	font-size: 0.9rem;
+	font-size: 1.2rem;
 	background-color: $background-color;
 	border: solid 2px $highlight-color;
 	overflow-y: scroll;
@@ -268,7 +268,11 @@ button {
 
 	@media (max-height: 380px) {
 		max-height: calc(100vh - 150px);
-		margin-top: 140px;
+		margin-top: 148px;
+	}
+
+	@media (min-width: 364px) {
+		font-size: 0.9rem;
 	}
 
 	@media (min-width: 576px) and (min-height: 500px) {
@@ -353,6 +357,14 @@ button {
 				margin-bottom: 0;
 			}
 
+			@media (min-width: 364px) {
+				width: 150px;
+			}
+
+			@media (min-width: 576px) {
+				width: 200px;
+			}
+
 			@media (min-width: 992px) {
 				width: 220px;
 			}
@@ -400,8 +412,8 @@ button {
 	background-color: $supporting-color;
 
 	.value {
-		width: 30px;
-		height: 20px;
+		width: 40px;
+		height: 25px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -411,6 +423,11 @@ button {
 		cursor: pointer;
 		transition: background-color 0.3s, color 0.3s;
 		z-index: 5;
+
+		@media (min-width: 364px) {
+			width: 30px;
+			height: 20px;
+		}
 
 		@media (min-width: 576px) {
 			width: 40px;

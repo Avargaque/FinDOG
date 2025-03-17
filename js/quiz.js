@@ -65,21 +65,21 @@ function loadQuestion(questionIndex) {
 	// removes unnecessary arrows, adds result button
 	if (questionIndex === 0) {
 		previousQuestionBtns.forEach((btn) => {
-			btn.classList.add("invisible");
+			btn.classList.remove("visible");
 		});
 	} else {
 		previousQuestionBtns.forEach((btn) => {
-			btn.classList.remove("invisible");
+			btn.classList.add("visible");
 		});
 	}
 	if (questionIndex === quizQuestions.length - 1) {
 		nextQuestionBtns.forEach((btn) => {
-			btn.classList.add("invisible");
+			btn.classList.remove("visible");
 		});
 		btnResults.style.display = "block";
 	} else {
 		nextQuestionBtns.forEach((btn) => {
-			btn.classList.remove("invisible");
+			btn.classList.add("visible");
 		});
 		btnResults.style.display = "none";
 	}
@@ -152,13 +152,13 @@ function loadQuestion(questionIndex) {
 					setTimeout(() => {
 						nextQuestion();
 						nextQuestionInAnimation();
-					}, 1300);
+					}, 1000);
 				// disables other inputs after selecting one to avoid bugs
 				answersInputs.forEach((input) => {
 					input.disabled = true;
 					setTimeout(() => {
 						input.disabled = false;
-					}, 1600);
+					}, 1300);
 				})
 			}
 		});
@@ -394,12 +394,12 @@ nextQuestionBtns.forEach((btn) => {
 		setTimeout(() => {
 			nextQuestion();
 			nextQuestionInAnimation();
-		}, 1300);
+		}, 1000);
 		// blocks button
 		btn.style.pointerEvents = "none";
 		setTimeout(() => {
 			btn.style.pointerEvents = "auto";
-		}, 1600);
+		}, 1300);
 	});
 });
 previousQuestionBtns.forEach((btn) => {
@@ -412,12 +412,12 @@ previousQuestionBtns.forEach((btn) => {
 		setTimeout(() => {
 			previousQuestion();
 			previousQuestionInAnimation();
-		}, 1300);
+		}, 1000);
 		// blocks button
 		btn.style.pointerEvents = "none";
 		setTimeout(() => {
 			btn.style.pointerEvents = "auto";
-		}, 1600);
+		}, 1300);
 	});
 });
 btnResults.addEventListener("click", () => {

@@ -264,6 +264,8 @@ a {
 
 		img {
 			width: 100%;
+			margin-top: -20px;
+			margin-bottom: -20px;
 		}
 	}
 }
@@ -355,7 +357,7 @@ main {
 			align-self: flex-end;
 		}
 		img {
-			width: 209px;
+			width: 240px;
 			align-self: center;
 
 			@media (min-width: 576px) {
@@ -385,7 +387,7 @@ main {
 
 	&__button {
 		display: flex;
-		margin: 1.5rem 3rem;
+		margin: 1rem 0;
 		align-self: center;
 		flex: 1;
 
@@ -395,8 +397,8 @@ main {
 
 		.main__btn {
 			align-self: center;
-			width: 209px;
-			height: 63px;
+			width: 240px;
+			height: 70px;
 			font-size: 1.2rem;
 
 			@media (min-width: 576px) {
@@ -613,7 +615,6 @@ main {
 	}
 	.next-question-container {
 		position: relative;
-		left: -100vw; // before animation
 		padding-left: 1rem;
 
 		@media (min-width: 992px) {
@@ -623,15 +624,19 @@ main {
 
 	.previous-question-container--desktop,
 	.next-question-container--desktop {
-		display: none;
+		display: none;	
+		visibility: hidden;
 
 		@media (min-width: 768px) {
 			display: flex;
+			left: -100vw; // before animation
 			align-self: center;
 		}
 	}
 	.previous-question-container--mobile,
 	.next-question-container--mobile {
+		visibility: hidden;
+
 		@media (min-width: 768px) {
 			display: none;
 		}
@@ -924,7 +929,8 @@ main {
 	left: -100vw; // before animation
 	position: relative;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+	height: 50px;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
@@ -935,9 +941,9 @@ main {
 	border-top: 1px solid $highlight-color;
 
 	@media (min-width: 576px) {
-		flex-direction: row;
-		height: 100px;
+		height: 90px;
 	}
+
 	@media (min-width: 992px) {
 		font-size: 1.3rem;
 	}
@@ -949,7 +955,11 @@ main {
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		flex: 3;
+		flex: 1;
+
+		p{
+			margin: 0;
+		}
 
 		&-email {
 			min-width: 120px;
@@ -961,8 +971,17 @@ main {
 			}
 		}
 
+		.text{
+			display: none;
+
+			@media (min-width: 576px) {
+				display: inline;
+			}
+		}
+
 		.email {
 			padding: 0.5rem;
+			
 		}
 		.email:hover {
 			cursor: pointer;
@@ -970,8 +989,13 @@ main {
 		}
 
 		&-media-text {
+			display: none;
 			padding: 0.5rem;
 			margin-bottom: 0;
+
+			@media (min-width: 576px) {
+				display: inline;
+			}
 		}
 
 		&-media-icons {
@@ -981,9 +1005,13 @@ main {
 			align-items: center;
 			.media-icon {
 				align-self: center;
-				padding: 0 1rem;
+				padding: 0 0.5rem;
 				font-size: 2.6rem;
 				transition: all 0.3s;
+
+				@media (min-width: 400px) {
+					padding: 0 1rem;
+				}
 			}
 			.media-icon:hover {
 				cursor: pointer;
@@ -991,22 +1019,5 @@ main {
 			}
 		}
 
-		&--email-info {
-			order: 3;
-		}
-
-		&--media-info {
-			order: 1;
-		}
-
-		&--company-info {
-			flex: 2;
-			order: 4;
-			padding: 0.5rem;
-
-			@media (min-width: 576px) {
-				order: 2;
-			}
-		}
 	}
 }

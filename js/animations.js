@@ -148,8 +148,8 @@ function homePageAnimations() {
 	// })
 	gsap.from(".nav", {
 		x: "100vw",
-		ease: "power1.out",
-		duration: 1,
+		ease: "power3.out",
+		duration: 2,
 	});
 	gsap.to(".header-home", {
 		x: "100vw",
@@ -182,8 +182,8 @@ function homePageAnimations() {
 	});
 	gsap.to(".footer", {
 		x: "100vw",
-		ease: "power1.out",
-		duration: 1,
+		ease: "power3.out",
+		duration: 2,
 	});
 
 	// out animation
@@ -197,18 +197,18 @@ function breedsListPageAnimations() {
 	// in animations
 	gsap.to("header", {
 		x: "100vw",
-		ease: "back",
+		ease: "power3.out",
 		duration: 1.5,
 	});
 	gsap.to(".main-breeds-list", {
 		x: "100vw",
-		ease: "back",
+		ease: "power3.out",
 		duration: 1.5,
 		delay: 0.5,
 	});
 	gsap.to("footer", {
 		x: "100vw",
-		ease: "back",
+		ease: "power3.out",
 		duration: 1.5,
 		delay: 1,
 	});
@@ -231,30 +231,30 @@ function quizPageAnimations() {
 	// in animations
 	gsap.to("header", {
 		x: "100vw",
-		ease: "back",
+		ease: "power3.out",
 		duration: 1.5,
 	});
 	gsap.to(".questions", {
 		x: "100vw",
-		ease: "back",
+		ease: "power3.out",
 		duration: 1.5,
 		delay: 0.33,
 	});
 	gsap.to(".answers-arrows-container", {
 		x: "100vw",
-		ease: "back",
+		ease: "power3.out",
 		duration: 1.5,
 		delay: 0.67,
 	});
-	gsap.to(".next-question-container", {
+	gsap.to(".next-question-container--desktop", {
 		x: "100vw",
-		ease: "back",
+		ease: "power3.out",
 		duration: 1.5,
 		delay: 0.67,
 	});
 	gsap.to("footer", {
 		x: "100vw",
-		ease: "back",
+		ease: "power3.out",
 		duration: 1.5,
 		delay: 1,
 	});
@@ -271,30 +271,30 @@ function breedsDetailsPageAnimations() {
 	// in animations
 	gsap.to(".breed-image-container", {
 		x: "100vw",
-		ease: "back",
+		ease: "power3.out",
 		duration: 1.5,
 	});
 	gsap.to(".breed-info-items", {
 		x: "100vw",
-		ease: "back",
+		ease: "power3.out",
 		duration: 1.5,
 		delay: 0.33,
 	});
 	gsap.to(".breed-about", {
 		x: "100vw",
-		ease: "back",
+		ease: "power3.out",
 		duration: 1.5,
 		delay: 0.67,
 	});
 	gsap.to(".accordion", {
 		x: "100vw",
-		ease: "back",
+		ease: "power3.out",
 		duration: 1.5,
 		delay: 1,
 	});
 	gsap.to("footer", {
 		x: "100vw",
-		ease: "back",
+		ease: "power3.out",
 		duration: 1.5,
 		delay: 1.5,
 	});
@@ -343,24 +343,24 @@ export function nextQuestionOutAnimation() {
 	gsap.from(".main-breed-selector", {
 		x: "0",
 		ease: "power1.in",
-		duration: 1,
+		duration: 0.7,
 	});
 	gsap.to(".main-breed-selector", {
 		x: "-100vw",
 		ease: "power1.in",
-		duration: 1,
+		duration: 0.7,
 	});
 }
 export function nextQuestionInAnimation() {
 	gsap.from(".main-breed-selector", {
 		x: "100vw",
 		ease: "power1.out",
-		duration: 1,
+		duration: 0.7,
 	});
 	gsap.to(".main-breed-selector", {
 		x: "0",
 		ease: "power1.out",
-		duration: 1,
+		duration: 0.7,
 	});
 }
 
@@ -369,24 +369,24 @@ export function previousQuestionOutAnimation() {
 	gsap.from(".main-breed-selector", {
 		x: "0",
 		ease: "power1.in",
-		duration: 1,
+		duration: 0.7,
 	});
 	gsap.to(".main-breed-selector", {
 		x: "100vw",
 		ease: "power1.in",
-		duration: 1,
+		duration: 0.7,
 	});
 }
 export function previousQuestionInAnimation() {
 	gsap.from(".main-breed-selector", {
 		x: "-100vw",
 		ease: "power1.out",
-		duration: 1,
+		duration: 0.7,
 	});
 	gsap.to(".main-breed-selector", {
 		x: "0",
 		ease: "power1.out",
-		duration: 1,
+		duration: 0.7,
 	});
 }
 
