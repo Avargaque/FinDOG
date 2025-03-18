@@ -23,26 +23,11 @@
   animation: navItemsOut 1s backwards;
 }
 
-@keyframes spinForwards {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-@keyframes spinBackwards {
-  from {
-    transform: rotate(360deg);
-  }
-  to {
-    transform: rotate(0deg);
-  }
-}
 button {
   text-transform: uppercase;
   text-align: center;
   font-family: inherit;
+  line-height: inherit;
   border: none;
   transition: all 0.3s;
 }
@@ -88,6 +73,11 @@ button {
 }
 .bg__1, .bg__2, .bg__3, .bg__4 {
   position: fixed;
+}
+
+.bg-bone {
+  opacity: 0;
+  will-change: transform;
 }
 
 .bg--left {
@@ -344,8 +334,15 @@ button {
 .filter .checkbox-container .checkbox-item {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  flex-basis: 50%;
   padding: 1rem;
   border: none;
+}
+@media (min-width: 450px) {
+  .filter .checkbox-container .checkbox-item {
+    flex-basis: auto;
+  }
 }
 .filter .checkbox-container .checkbox-item input {
   position: absolute;
@@ -360,7 +357,7 @@ button {
 .filter .checkbox-container .checkbox-item span {
   display: flex;
   align-items: center;
-  padding: 0.75em 1.5em 0.75em 0.75em;
+  padding: 0.75em 0 0.75em 0.5em;
   color: rgb(67, 15, 87);
   cursor: pointer;
   transition: 0.25s ease;
@@ -383,6 +380,84 @@ button {
   margin-right: 0.375em;
   transition: 0.25s ease;
   box-shadow: inset 0 0 0 0.125em rgb(200, 168, 215);
+}
+.filter .checkbox-container .groups-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  flex-basis: 50%;
+  padding: 1rem;
+  border: none;
+}
+@media (min-width: 450px) {
+  .filter .checkbox-container .groups-container {
+    flex-basis: auto;
+  }
+}
+.filter .checkbox-container .groups-container .groups {
+  padding-top: 0.4rem;
+}
+.filter .checkbox-container .groups-container .groups .groups-row {
+  display: flex;
+  justify-content: center;
+  padding: 0.6rem 0;
+}
+@media (min-width: 364px) {
+  .filter .checkbox-container .groups-container .groups .groups-row {
+    padding: 0.4rem 0;
+  }
+}
+@media (min-width: 576px) and (min-height: 500px) {
+  .filter .checkbox-container .groups-container .groups .groups-row {
+    padding: 0.6rem 0;
+  }
+}
+.filter .checkbox-container .groups-container .groups .groups-row .group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 22px;
+  width: 22px;
+  margin: 0 3px;
+  color: rgb(67, 15, 87);
+  font-size: 1rem;
+  font-weight: 600;
+  border: solid 2px rgb(200, 168, 215);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+@media (min-width: 364px) {
+  .filter .checkbox-container .groups-container .groups .groups-row .group {
+    height: 17px;
+    width: 17px;
+    font-size: 0.8rem;
+    border: solid 1px rgb(200, 168, 215);
+  }
+}
+@media (min-width: 576px) and (min-height: 500px) {
+  .filter .checkbox-container .groups-container .groups .groups-row .group {
+    height: 22px;
+    width: 22px;
+    font-size: 1rem;
+    border: solid 2px rgb(200, 168, 215);
+  }
+}
+@media (min-width: 992px) {
+  .filter .checkbox-container .groups-container .groups .groups-row .group {
+    height: 25px;
+    width: 25px;
+    font-size: 1.1rem;
+  }
+}
+.filter .checkbox-container .groups-container .groups .groups-row .group.active {
+  background-color: rgb(67, 15, 87);
+  color: rgb(255, 255, 255);
+  border: solid 2px rgb(67, 15, 87);
+}
+.filter .checkbox-container .groups-container .groups .groups-row .group:hover {
+  background: rgb(67, 15, 87);
+  color: rgb(255, 255, 255);
+  border: solid 2px rgb(67, 15, 87);
 }
 .filter .slider-container {
   display: flex;
@@ -1045,7 +1120,8 @@ a {
 .header-breed-selector,
 .header-breed-details {
   position: relative;
-  left: -100vw;
+  left: -5vw;
+  opacity: 0;
   width: 100%;
   max-width: 100%;
   height: auto;
@@ -1083,7 +1159,8 @@ a {
 }
 
 .header-breeds-list {
-  left: calc(-100vw + 10px);
+  left: calc(-5vw + 10px);
+  opacity: 0;
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -1096,7 +1173,7 @@ a {
 }
 @media (min-width: 1200px) {
   .header-breeds-list {
-    left: calc(-100vw + (100vw - 1200px) / 2 - 8px);
+    left: calc(-5vw + (100vw - 1200px) / 2 - 8px);
     width: 1200px;
   }
 }
@@ -1157,7 +1234,8 @@ main {
   }
 }
 .main__races-img {
-  left: -100vw;
+  left: -5vw;
+  opacity: 0;
   position: relative;
   display: flex;
   flex: 1;
@@ -1183,7 +1261,8 @@ main {
   }
 }
 .main__quiz-img {
-  left: 100vw;
+  left: 5vw;
+  opacity: 0;
   display: none;
   position: relative;
   flex: 1;
@@ -1248,10 +1327,12 @@ main {
   z-index: 10;
 }
 .main__btn--quiz {
-  left: 100vw;
+  left: 5vw;
+  opacity: 0;
 }
 .main__btn--breeds {
-  left: -100vw;
+  left: -5vw;
+  opacity: 0;
 }
 .main__btn::after, .main__btn::before {
   position: absolute;
@@ -1305,7 +1386,8 @@ main {
 }
 .main-breed-selector .questions {
   position: relative;
-  left: -100vw;
+  left: -5vw;
+  opacity: 0;
   display: flex;
   width: 100%;
   height: 100%;
@@ -1333,7 +1415,8 @@ main {
   font-size: 1.1rem;
 }
 .main-breed-selector .answers-arrows-container {
-  left: -100vw;
+  left: -5vw;
+  opacity: 0;
   position: relative;
   display: flex;
   width: 100%;
@@ -1430,7 +1513,8 @@ main {
   .main-breed-selector .previous-question-container--desktop,
   .main-breed-selector .next-question-container--desktop {
     display: flex;
-    left: -100vw;
+    left: -5vw;
+    opacity: 0;
     align-self: center;
   }
 }
@@ -1537,7 +1621,8 @@ main {
 }
 
 .main-breeds-list {
-  left: -100vw;
+  left: -5vw;
+  opacity: 0;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -1626,7 +1711,8 @@ main {
 }
 .main-breed-details .breed-info-container .breed-image-container {
   position: relative;
-  left: -100vw;
+  left: -5vw;
+  opacity: 0;
   display: flex;
   align-items: center;
   flex: 1;
@@ -1646,7 +1732,8 @@ main {
 }
 .main-breed-details .breed-info-container .breed-info-items {
   position: relative;
-  left: -100vw;
+  left: -5vw;
+  opacity: 0;
   flex: 1;
   padding: 0.5rem;
 }
@@ -1712,15 +1799,18 @@ main {
 }
 .main-breed-details .breed-about {
   position: relative;
-  left: -100vw;
+  left: -5vw;
+  opacity: 0;
 }
 .main-breed-details .accordion {
   position: relative;
-  left: -100vw;
+  left: -5vw;
+  opacity: 0;
 }
 
 .footer {
-  left: -100vw;
+  left: -5vw;
+  opacity: 0;
   position: relative;
   display: flex;
   flex-direction: row;

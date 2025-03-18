@@ -3,6 +3,7 @@ button {
 	text-transform: uppercase;
 	text-align: center;
 	font-family: inherit;
+	line-height: inherit;
 	border: none;
 	transition: all 0.3s;
 }
@@ -52,6 +53,10 @@ button {
 	&__4 {
 		position: fixed;
 	}
+}
+.bg-bone {
+	opacity: 0; // Domyślnie ukryte
+	will-change: transform; // Optymalizacja renderowania
 }
 .bg--left {
 	left: 0;
@@ -294,8 +299,14 @@ button {
 		.checkbox-item {
 			display: flex;
 			flex-direction: column;
+			justify-content: center;
+			flex-basis: 50%;
 			padding: 1rem;
 			border: none;
+
+			@media (min-width: 450px) {
+				flex-basis: auto;
+			}
 
 			input {
 				position: absolute;
@@ -311,7 +322,7 @@ button {
 			span {
 				display: flex;
 				align-items: center;
-				padding: 0.75em 1.5em 0.75em 0.75em;
+				padding: 0.75em 0 0.75em 0.5em;
 				color: $main-color;
 				cursor: pointer;
 				transition: 0.25s ease;
@@ -332,6 +343,85 @@ button {
 					margin-right: 0.375em;
 					transition: 0.25s ease;
 					box-shadow: inset 0 0 0 0.125em $highlight-color;
+				}
+			}
+
+		}
+
+		.groups-container{
+			display: flex;
+			flex-direction: column;
+			align-items: start;
+			flex-basis: 50%;
+			padding: 1rem;
+			border: none;
+
+			@media (min-width: 450px) {
+				flex-basis: auto;
+			}
+
+			.groups{
+				padding-top: 0.4rem;
+
+				.groups-row{
+					display: flex;
+					justify-content: center;
+					padding: 0.6rem 0;
+
+					@media (min-width: 364px) {
+						padding: 0.4rem 0;
+					}
+
+					@media (min-width: 576px) and (min-height: 500px) {
+						padding: 0.6rem 0;
+					}
+	
+					.group{
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						height: 22px;
+						width: 22px;
+						margin: 0 3px;
+						color: $main-color;
+						font-size: 1rem;
+						font-weight: 600;
+						border: solid 2px $highlight-color;
+						cursor: pointer;
+						transition: all 0.3s ease;
+
+						@media (min-width: 364px) {
+							height: 17px;
+							width: 17px;
+							font-size: 0.8rem;
+							border: solid 1px $highlight-color;
+						}
+					
+						@media (min-width: 576px) and (min-height: 500px) {
+							height: 22px;
+							width: 22px;
+							font-size: 1rem;
+							border: solid 2px $highlight-color;
+						}
+					
+						@media (min-width: 992px) {
+							height: 25px;
+							width: 25px;
+							font-size: 1.1rem;
+						}
+					}
+
+					.group.active{
+						background-color: $main-color;
+						color: $background-color;
+						border: solid 2px $main-color;
+					}
+	
+					.group:hover{
+						background: $main-color;
+						color: $background-color;
+						border: solid 2px $main-color;
+					}
 				}
 			}
 		}

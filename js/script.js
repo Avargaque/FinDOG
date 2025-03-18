@@ -12,6 +12,7 @@ const resetFilterBtn = document.querySelector(".reset");
 const applyFilterBtn = document.querySelector(".apply");
 const searchInput = document.querySelector(".searchbar__input");
 const pseudosliders = document.querySelectorAll(".pseudoslider");
+const groupBtns = document.querySelectorAll(".group");
 
 const mainQuizBtns = document.querySelectorAll(".main__btn--quiz");
 const mainBreedsBtns = document.querySelectorAll(".main__btn--breeds");
@@ -19,17 +20,18 @@ const resultsBtn = document.querySelector(".btn-results");
 const navListBtn = document.querySelector(".nav__btn-list");
 const navQuizBtn = document.querySelector(".nav__btn-quiz");
 const navResultsBtn = document.querySelector(".nav__btn-results");
-const navLogoPressable = document.querySelector(".nav__logo--pressable");
+const navLogo = document.querySelector(".nav__logo");
 
 let dogData = []; // all dogs from JSON
 let selectedFilters = {}; // selected pseudoslider filters
 let selectedCheckboxes = {}; // selected checkbox filters
+let selectedGroups = []; // selected FCI groups filters
 let searchQuery = ""; // text in search container
-const animationTime = 1000; // out animation time in ms
+const animationTime = 800; // out animation time in ms
 
 ////////////////////////////////////////////////////////////// FUNCTIONS
 
-//////////////// universal functions 
+//////////////// universal functions
 
 // puts current year in footer
 function footerYear() {
@@ -472,6 +474,11 @@ function resetFilters() {
 		checkbox.checked = false;
 	});
 
+	// resets groups
+	groupBtns.forEach((btn) => {
+		btn.classList.remove("active");
+	});
+
 	// resets search input
 	if (searchInput) {
 		searchInput.value = "";
@@ -481,6 +488,7 @@ function resetFilters() {
 	// clears data
 	selectedCheckboxes = {};
 	selectedFilters = {};
+	selectedGroups = [];
 
 	filterDogs();
 }
@@ -509,6 +517,25 @@ function handleCheckboxChanges() {
 			filterDogs();
 		});
 	});
+}
+
+// handles single group filter changes
+function handleSingleGroupChanges(btn) {
+	btn.classList.toggle("active");
+	selectedGroups = [...document.querySelectorAll(".group.active")].map((el) =>
+		el.id.replace("group-", "")
+	);
+
+	filterDogs();
+}
+
+// handles all groups filters changes
+function handleAllGroupChanges(){
+	groupBtns.forEach((btn) => {
+		btn.addEventListener("change", () => {
+			filterDogs();
+		})
+	})	
 }
 
 // changes checkbox filters into dog properties
@@ -551,10 +578,18 @@ function filterDogs() {
 		}
 	}
 
+	// filters groups
+	if (selectedGroups.length > 0) {
+		filteredDogs = filteredDogs.filter((dog) => {
+			return selectedGroups.includes(dog.fciGroup);
+		});
+	}
+
 	// shows all dogs if no filters selected
 	if (
 		Object.keys(selectedFilters).length === 0 &&
 		Object.keys(selectedCheckboxes).length === 0 &&
+		selectedGroups.length === 0 &&
 		!searchQuery
 	) {
 		filteredDogs = dogData;
@@ -573,7 +608,7 @@ function filterDogs() {
 		renderDogs(filteredDogs);
 	}
 
-	// reassigns out animation 
+	// reassigns out animation
 	const breedsItems = document.querySelectorAll(".breeds-item");
 	breedsItems.forEach((breedBtn) => {
 		breedBtn.addEventListener("click", () => {
@@ -794,6 +829,11 @@ email.addEventListener("click", copyMailAdress);
 filterBtns.forEach((btn) => {
 	btn.addEventListener("click", toggleFilter);
 });
+groupBtns.forEach((btn) => {
+	btn.addEventListener("click", () => {
+		handleSingleGroupChanges(btn);
+	});
+});
 mainQuizBtns.forEach((btn) => {
 	btn.addEventListener("click", () => {
 		document.body.classList.remove("loaded"); // temporarily removes overflow
@@ -828,14 +868,12 @@ navResultsBtn.addEventListener("click", () => {
 		location.href = "./results.html";
 	}, animationTime);
 });
-if (navLogoPressable) {
-	navLogoPressable.addEventListener("click", () => {
-		document.body.classList.remove("loaded");
-		setTimeout(() => {
-			location.href = "./index.html";
-		}, animationTime);
-	});
-}
+navLogo.addEventListener("click", () => {
+	document.body.classList.remove("loaded");
+	setTimeout(() => {
+		location.href = "./index.html";
+	}, animationTime);
+});
 if (resultsBtn) {
 	resultsBtn.addEventListener("click", () => {
 		document.body.classList.remove("loaded");

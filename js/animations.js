@@ -64,126 +64,112 @@ function disableBurgerMenu() {
 	}, 1000);
 }
 
-// disables buttons during animations
-function disableButtonsDuringAnimation(animationTime = 2000) {
-	allBtns.forEach((btn) => {
-		btn.disabled = true;
-	});
-	searchFilterBtns.forEach((btn) => {
-		btn.disabled = true;
-	});
-	setTimeout(() => {
-		allBtns.forEach((btn) => {
-			btn.disabled = false;
-		});
-		searchFilterBtns.forEach((btn) => {
-			btn.disabled = false;
-		});
-	}, animationTime);
-}
-
 ////////////////// GSAP
 
 // out of page animation
 export function outAnimation() {
 	gsap.to("header", {
-		y: "100vh",
-		rotation: -10,
+		x: "10vw",
+		opacity: 0,
+		ease: "power3.out",
 		duration: 0.8,
-		ease: "power2.in",
 	});
 	gsap.to("main", {
-		y: "100vh",
-		rotation: 15,
-		duration: 1,
-		ease: "power2.in",
+		x: "5vw",
+		opacity: 0,
+		ease: "power3.out",
+		duration: 0.8,
+		delay: 0.1,
 	});
 	gsap.to("footer", {
-		y: "100vh",
-		rotation: -20,
-		duration: 1.2,
-		ease: "power2.in",
+		x: "5vw",
+		opacity: 0,
+		ease: "power3.out",
+		duration: 0.8,
+		delay: 0.2,
 	});
 }
 
 // breed details out of page animation
 function breedDetailsOutAnimation() {
 	gsap.to(".breed-image-container", {
-		y: "100vh",
-		rotation: -10,
-		duration: 0.6,
-		ease: "power2.in",
+		x: "10vw",
+		opacity: 0,
+		ease: "power3.out",
+		duration: 0.8,
 	});
 	gsap.to(".breed-info-items", {
-		y: "100vh",
-		rotation: 15,
+		x: "10vw",
+		opacity: 0,
+		ease: "power3.out",
 		duration: 0.8,
-		ease: "power2.in",
+		delay: 0.1,
 	});
 	gsap.to(".breed-about", {
-		y: "100vh",
-		rotation: -20,
-		duration: 1,
-		ease: "power2.in",
+		x: "10vw",
+		opacity: 0,
+		ease: "power3.out",
+		duration: 0.8,
+		delay: 0.2,
 	});
 	gsap.to(".accordion", {
-		y: "100vh",
-		rotation: 10,
-		duration: 1.2,
-		ease: "power2.in",
+		x: "10vw",
+		opacity: 0,
+		ease: "power3.out",
+		duration: 0.8,
+		delay: 0.3,
 	});
 	gsap.to("footer", {
-		y: "100vh",
-		rotation: -15,
-		duration: 1.4,
-		ease: "power2.in",
+		x: "10vw",
+		opacity: 0,
+		ease: "power3.out",
+		duration: 0.8,
+		delay: 0.4,
 	});
 }
 
 // animations on home page
 function homePageAnimations() {
 	// in animations
-	// let headerTimeline = gsap.timeline({
-
-	// })
-	gsap.from(".nav", {
-		x: "100vw",
-		ease: "power3.out",
-		duration: 2,
-	});
 	gsap.to(".header-home", {
-		x: "100vw",
+		x: "5vw",
+		opacity: 1,
 		ease: "power3.out",
-		duration: 1,
+		duration: 0.8,
 	});
 	gsap.to(".main__races-img", {
-		x: "100vw",
+		x: "5vw",
+		opacity: 1,
 		ease: "power3.out",
-		duration: 1,
-		delay: 0.33,
+		duration: 0.8,
+		delay: 0.1,
 	});
 	gsap.to(".main__quiz-img", {
-		x: "-100vw",
+		x: "-5vw",
+		opacity: 1,
 		ease: "power3.out",
-		duration: 1,
-		delay: 0.33,
+		duration: 0.8,
+		delay: 0.1,
 	});
 	gsap.to(".main__btn--quiz", {
-		x: "-100vw",
+		x: "-5vw",
+		opacity: 1,
 		ease: "power3.out",
-		duration: 1.5,
-		delay: 0.67,
+		duration: 0.8,
+		delay: 0.2,
 	});
 	gsap.to(".main__btn--breeds", {
-		x: "100vw",
+		x: "5vw",
+		opacity: 1,
 		ease: "power3.out",
-		duration: 1.5,
-		delay: 0.67,
+		duration: 0.8,
+		delay: 0.2,
 	});
 	gsap.to(".footer", {
-		x: "100vw",
+		x: "5vw",
+		opacity: 1,
 		ease: "power3.out",
-		duration: 2,
+		duration: 0.8,
 	});
 
 	// out animation
@@ -195,22 +181,25 @@ function homePageAnimations() {
 // animation on breeds list and results pages
 function breedsListPageAnimations() {
 	// in animations
-	gsap.to("header", {
-		x: "100vw",
+	gsap.to(".header-breeds-list", {
+		x: "5vw",
+		opacity: 1,
 		ease: "power3.out",
-		duration: 1.5,
+		duration: 0.8,
 	});
 	gsap.to(".main-breeds-list", {
-		x: "100vw",
+		x: "5vw",
+		opacity: 1,
 		ease: "power3.out",
-		duration: 1.5,
-		delay: 0.5,
+		duration: 0.8,
+		delay: 0.1,
 	});
 	gsap.to("footer", {
-		x: "100vw",
+		x: "5vw",
+		opacity: 1,
 		ease: "power3.out",
-		duration: 1.5,
-		delay: 1,
+		duration: 0.8,
+		delay: 0.2,
 	});
 
 	// out animation
@@ -230,33 +219,38 @@ function breedsListPageAnimations() {
 function quizPageAnimations() {
 	// in animations
 	gsap.to("header", {
-		x: "100vw",
+		x: "5vw",
+		opacity: 1,
 		ease: "power3.out",
-		duration: 1.5,
+		duration: 0.8,
 	});
 	gsap.to(".questions", {
-		x: "100vw",
+		x: "5vw",
+		opacity: 1,
 		ease: "power3.out",
-		duration: 1.5,
-		delay: 0.33,
+		duration: 0.8,
+		delay: 0.1,
 	});
 	gsap.to(".answers-arrows-container", {
-		x: "100vw",
+		x: "5vw",
+		opacity: 1,
 		ease: "power3.out",
-		duration: 1.5,
-		delay: 0.67,
+		duration: 0.8,
+		delay: 0.2,
 	});
 	gsap.to(".next-question-container--desktop", {
-		x: "100vw",
+		x: "5vw",
+		opacity: 1,
 		ease: "power3.out",
-		duration: 1.5,
-		delay: 0.67,
+		duration: 0.8,
+		delay: 0.2,
 	});
 	gsap.to("footer", {
-		x: "100vw",
+		x: "5vw",
+		opacity: 1,
 		ease: "power3.out",
-		duration: 1.5,
-		delay: 1,
+		duration: 0.8,
+		delay: 0.3,
 	});
 
 	// out animation
@@ -270,33 +264,38 @@ function quizPageAnimations() {
 function breedsDetailsPageAnimations() {
 	// in animations
 	gsap.to(".breed-image-container", {
-		x: "100vw",
+		x: "5vw",
+		opacity: 1,
 		ease: "power3.out",
-		duration: 1.5,
+		duration: 0.8,
 	});
 	gsap.to(".breed-info-items", {
-		x: "100vw",
+		x: "5vw",
+		opacity: 1,
 		ease: "power3.out",
-		duration: 1.5,
-		delay: 0.33,
+		duration: 0.8,
+		delay: 0.1,
 	});
 	gsap.to(".breed-about", {
-		x: "100vw",
+		x: "5vw",
+		opacity: 1,
 		ease: "power3.out",
-		duration: 1.5,
-		delay: 0.67,
+		duration: 0.8,
+		delay: 0.2,
 	});
 	gsap.to(".accordion", {
-		x: "100vw",
+		x: "5vw",
+		opacity: 1,
 		ease: "power3.out",
-		duration: 1.5,
-		delay: 1,
+		duration: 0.8,
+		delay: 0.3,
 	});
 	gsap.to("footer", {
-		x: "100vw",
+		x: "5vw",
+		opacity: 1,
 		ease: "power3.out",
-		duration: 1.5,
-		delay: 1.5,
+		duration: 0.8,
+		delay: 0.4,
 	});
 
 	// out animation
@@ -372,7 +371,7 @@ export function previousQuestionOutAnimation() {
 		duration: 0.7,
 	});
 	gsap.to(".main-breed-selector", {
-		x: "100vw",
+		x: "5vw",
 		ease: "power1.in",
 		duration: 0.7,
 	});
@@ -440,7 +439,6 @@ navBtns.forEach((btn) => {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-	disableButtonsDuringAnimation();
 
 	if (document.body.getAttribute("data-page") === "index") {
 		homePageAnimations();
@@ -463,4 +461,31 @@ document.addEventListener("DOMContentLoaded", function () {
 	if (document.body.getAttribute("data-page") === "breed-details") {
 		breedsDetailsPageAnimations();
 	}
+
+	// Pobierz wszystkie elementy tła
+	document.querySelectorAll(".bg-bone").forEach((bone, index) => {
+		// Pobranie zapisanej rotacji lub domyślnie 0
+		let lastRotation = parseFloat(localStorage.getItem(`boneRotation-${index}`)) || 0;
+
+		// Natychmiastowe ustawienie rotacji PRZED pokazaniem
+		bone.style.transform = `rotate(${lastRotation}deg)`;
+
+		// Płynne pokazanie kości po załadowaniu
+		gsap.to(bone, {
+			opacity: 1,
+			duration: 0.2,
+			ease: "power1.out",
+		});
+
+		// Uruchomienie nieskończonej animacji
+		gsap.to(bone, {
+			rotation: "+=360",
+			duration: 10 + index * 2,
+			repeat: -1,
+			ease: "linear",
+			onUpdate: function () {
+				localStorage.setItem(`boneRotation-${index}`, this.targets()[0]._gsap.rotation);
+			},
+		});
+	});
 });
