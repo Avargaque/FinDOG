@@ -394,10 +394,16 @@ button {
     flex-basis: auto;
   }
 }
+@media (min-width: 600px) {
+  .filter .checkbox-container .groups-container {
+    margin-right: 30px;
+  }
+}
 .filter .checkbox-container .groups-container .groups {
   padding-top: 0.4rem;
 }
 .filter .checkbox-container .groups-container .groups .groups-row {
+  position: relative;
   display: flex;
   justify-content: center;
   padding: 0.6rem 0;
@@ -458,6 +464,129 @@ button {
   background: rgb(67, 15, 87);
   color: rgb(255, 255, 255);
   border: solid 2px rgb(67, 15, 87);
+}
+.filter .checkbox-container .groups-container .groups .groups-row .group:hover::before {
+  opacity: 1;
+}
+.filter .checkbox-container .groups-container .groups .groups-row .group::before {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  left: -140px;
+  width: 130px;
+  height: 100px;
+  padding: 1rem;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(243, 230, 250);
+  color: rgb(67, 15, 87);
+  font-size: 1.2rem;
+  text-align: center;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  box-shadow: 0 0 10px rgba(67, 15, 88, 0.4);
+}
+@media (min-width: 364px) {
+  .filter .checkbox-container .groups-container .groups .groups-row .group::before {
+    left: -170px;
+    width: 160px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}
+@media (min-width: 450px) {
+  .filter .checkbox-container .groups-container .groups .groups-row .group::before {
+    left: -180px;
+    width: 170px;
+  }
+}
+@media (min-width: 576px) and (min-height: 500px) {
+  .filter .checkbox-container .groups-container .groups .groups-row .group::before {
+    left: -210px;
+    width: 200px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+}
+.filter .checkbox-container .groups-container .groups .groups-row .group::after {
+  position: absolute;
+  left: -50px;
+}
+.filter .checkbox-container .groups-container .groups .groups-row #group-1::before {
+  content: "Owczarki i inne psy pasterskie, z wyłączeniem szwajcarskich psów do bydła";
+  font-size: 1rem;
+}
+@media (min-width: 364px) {
+  .filter .checkbox-container .groups-container .groups .groups-row #group-1::before {
+    font-size: 0.8rem;
+  }
+}
+@media (min-width: 576px) and (min-height: 500px) {
+  .filter .checkbox-container .groups-container .groups .groups-row #group-1::before {
+    font-size: 1rem;
+  }
+}
+.filter .checkbox-container .groups-container .groups .groups-row #group-2::before {
+  content: "Pinczery i sznaucery, molosy, szwajcarskie psy górskie i do bydła, pozostałe rasy";
+  font-size: 1rem;
+}
+@media (min-width: 364px) {
+  .filter .checkbox-container .groups-container .groups .groups-row #group-2::before {
+    font-size: 0.8rem;
+  }
+}
+@media (min-width: 576px) and (min-height: 500px) {
+  .filter .checkbox-container .groups-container .groups .groups-row #group-2::before {
+    font-size: 1rem;
+  }
+}
+.filter .checkbox-container .groups-container .groups .groups-row #group-3::before {
+  content: "Teriery";
+}
+.filter .checkbox-container .groups-container .groups .groups-row #group-4::before {
+  content: "Jamniki";
+}
+.filter .checkbox-container .groups-container .groups .groups-row #group-5::before {
+  content: "Szpice i psy w typie pierwotnym";
+}
+.filter .checkbox-container .groups-container .groups .groups-row #group-6::before {
+  content: "Psy gończe i rasy pokrewne";
+}
+.filter .checkbox-container .groups-container .groups .groups-row #group-7::before {
+  content: "Wyżły";
+}
+.filter .checkbox-container .groups-container .groups .groups-row #group-8::before {
+  content: "Aportery, płochacze i psy dowodne";
+}
+.filter .checkbox-container .groups-container .groups .groups-row #group-9::before {
+  content: "Psy ozdobne i do towarzystwa";
+}
+.filter .checkbox-container .groups-container .groups .groups-row #group-10::before {
+  content: "Charty";
+}
+.filter .checkbox-container .groups-container .groups .groups-row .group::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -15px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 5px solid rgb(67, 15, 87);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+@media (min-width: 364px) {
+  .filter .checkbox-container .groups-container .groups .groups-row .group::after {
+    left: -15px;
+  }
+}
+.filter .checkbox-container .groups-container .groups .groups-row .group:hover::after {
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
 .filter .slider-container {
   display: flex;
