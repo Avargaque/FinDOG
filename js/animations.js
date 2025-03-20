@@ -176,6 +176,7 @@ function homePageAnimations() {
 	allBtns.forEach((btn) => {
 		btn.addEventListener("click", outAnimation);
 	});
+	navLogo.addEventListener("click", outAnimation)
 }
 
 // animation on breeds list and results pages
@@ -473,7 +474,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		// Płynne pokazanie kości po załadowaniu
 		gsap.to(bone, {
 			opacity: 1,
-			duration: 0.2,
+			duration: 1,
 			ease: "power1.out",
 		});
 

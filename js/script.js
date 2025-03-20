@@ -850,29 +850,49 @@ mainBreedsBtns.forEach((btn) => {
 		}, animationTime);
 	});
 });
-navListBtn.addEventListener("click", () => {
-	document.body.classList.remove("loaded");
-	setTimeout(() => {
-		location.href = "./breeds-list.html";
-	}, animationTime);
+navListBtn.addEventListener("mousedown", (e) => {
+    if (e.button === 1) { 
+        e.preventDefault();
+        window.open("./breeds-list.html", "_blank");
+    } else if (e.button === 0) { 
+        document.body.classList.remove("loaded");
+        setTimeout(() => {
+            location.href = "./breeds-list.html";
+        }, animationTime);
+    }
 });
-navQuizBtn.addEventListener("click", () => {
-	document.body.classList.remove("loaded");
-	setTimeout(() => {
-		location.href = "./breed-selector.html";
-	}, animationTime);
+navQuizBtn.addEventListener("mousedown", (e) => {
+    if (e.button === 1) { 
+        e.preventDefault();
+        window.open("./breed-selector.html", "_blank");
+    } else if (e.button === 0) { 
+        document.body.classList.remove("loaded");
+        setTimeout(() => {
+            location.href = "./breed-selector.html";
+        }, animationTime);
+    }
 });
-navResultsBtn.addEventListener("click", () => {
-	document.body.classList.remove("loaded");
-	setTimeout(() => {
-		location.href = "./results.html";
-	}, animationTime);
+navResultsBtn.addEventListener("mousedown", (e) => {
+    if (e.button === 1) { 
+        e.preventDefault();
+        window.open("./results.html", "_blank");
+    } else if (e.button === 0) { 
+        document.body.classList.remove("loaded");
+        setTimeout(() => {
+            location.href = "./results.html";
+        }, animationTime);
+    }
 });
-navLogo.addEventListener("click", () => {
-	document.body.classList.remove("loaded");
-	setTimeout(() => {
-		location.href = "./index.html";
-	}, animationTime);
+navLogo.addEventListener("mousedown", (e) => {
+    if (e.button === 1) { 
+        e.preventDefault();
+        window.open("./index.html", "_blank");
+    } else if (e.button === 0) { 
+        document.body.classList.remove("loaded");
+        setTimeout(() => {
+            location.href = "./index.html";
+        }, animationTime);
+    }
 });
 if (resultsBtn) {
 	resultsBtn.addEventListener("click", () => {
