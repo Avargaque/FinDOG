@@ -220,7 +220,7 @@ a {
 		align-items: center;
 	}
 
-	@media (min-width: 768px) and (min-height: 900px){
+	@media (min-width: 768px) and (min-height: 900px) {
 		padding-bottom: 20rem;
 	}
 
@@ -240,7 +240,7 @@ a {
 
 		h1 {
 			height: 86px;
-			max-width: 430px;
+			max-width: 393px;
 			padding-bottom: 0;
 			font-size: 2.4rem;
 
@@ -250,23 +250,31 @@ a {
 			}
 
 			@media (min-width: 768px) {
-				height: 86px;
-				max-width: 430px;
 				padding-top: 0;
 			}
 
-			@media (min-width: 1113px) {
-				height: 56px;
-				max-width: none;
-				padding-top: 0;
-			}
-
-			.important{
-				padding: 0 0.5rem;
-				color: $highlight-color;
-				font-size: 3rem;
-				letter-spacing: 2px;
-				font-weight: 800;
+			.important {
+				@media (min-width: 547px) {
+					padding: 0 0.5rem;
+					color: $highlight-color;
+					font-size: 3rem;
+					letter-spacing: 2px;
+					font-weight: 800;
+				}
+				@media (min-width: 768px) {
+					padding: 0;
+					color: $main-color;
+					font-size: 2.4rem;
+					font-weight: 700;
+					letter-spacing: 0;
+				}
+				@media (min-width: 1113px) {
+					padding: 0 0.5rem;
+					color: $highlight-color;
+					font-size: 3rem;
+					letter-spacing: 2px;
+					font-weight: 800;
+				}
 			}
 		}
 
@@ -396,7 +404,7 @@ a {
 	}
 }
 .header-breed-selector,
-.header-breed-details{
+.header-breed-details {
 	opacity: 0; // before animation
 	left: -5vw;
 }

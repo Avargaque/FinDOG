@@ -1250,7 +1250,7 @@ a {
 }
 .header-home .main-content h1 {
   height: 86px;
-  max-width: 430px;
+  max-width: 393px;
   padding-bottom: 0;
   font-size: 2.4rem;
 }
@@ -1262,24 +1262,35 @@ a {
 }
 @media (min-width: 768px) {
   .header-home .main-content h1 {
-    height: 86px;
-    max-width: 430px;
     padding-top: 0;
+  }
+}
+@media (min-width: 547px) {
+  .header-home .main-content h1 .important {
+    padding: 0 0.5rem;
+    color: rgb(200, 168, 215);
+    font-size: 3rem;
+    letter-spacing: 2px;
+    font-weight: 800;
+  }
+}
+@media (min-width: 768px) {
+  .header-home .main-content h1 .important {
+    padding: 0;
+    color: rgb(67, 15, 87);
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: 0;
   }
 }
 @media (min-width: 1113px) {
-  .header-home .main-content h1 {
-    height: 56px;
-    max-width: none;
-    padding-top: 0;
+  .header-home .main-content h1 .important {
+    padding: 0 0.5rem;
+    color: rgb(200, 168, 215);
+    font-size: 3rem;
+    letter-spacing: 2px;
+    font-weight: 800;
   }
-}
-.header-home .main-content h1 .important {
-  padding: 0 0.5rem;
-  color: rgb(200, 168, 215);
-  font-size: 3rem;
-  letter-spacing: 2px;
-  font-weight: 800;
 }
 .header-home .main-content p {
   font-size: 1.4rem;
