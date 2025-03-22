@@ -14,8 +14,8 @@ const searchInput = document.querySelector(".searchbar__input");
 const pseudosliders = document.querySelectorAll(".pseudoslider");
 const groupBtns = document.querySelectorAll(".group");
 
-const mainQuizBtns = document.querySelectorAll(".main__btn--quiz");
-const mainBreedsBtns = document.querySelectorAll(".main__btn--breeds");
+const mainQuizBtns = document.querySelectorAll(".main-btn--quiz");
+const mainBreedsBtns = document.querySelectorAll(".main-btn--breeds");
 const resultsBtn = document.querySelector(".btn-results");
 const navListBtn = document.querySelector(".nav__btn-list");
 const navQuizBtn = document.querySelector(".nav__btn-quiz");

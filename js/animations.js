@@ -88,6 +88,82 @@ export function outAnimation() {
 		duration: 0.8,
 		delay: 0.2,
 	});
+	// Pobierz wszystkie elementy tła
+	document.querySelectorAll(".bg-bone").forEach((bone, index) => {
+		// Pobranie zapisanej rotacji lub domyślnie 0
+		let lastRotation = parseFloat(localStorage.getItem(`boneRotation-${index}`)) || 0;
+
+		// Natychmiastowe ustawienie rotacji PRZED pokazaniem
+		bone.style.transform = `rotate(${lastRotation}deg)`;
+
+		// Płynne pokazanie kości po załadowaniu
+		gsap.to(bone, {
+			opacity: 0,
+			duration: 0.8,
+			ease: "power1.out",
+		});
+
+		// Uruchomienie nieskończonej animacji
+		gsap.to(bone, {
+			rotation: "+=360",
+			duration: 10 + index * 2,
+			repeat: -1,
+			ease: "linear",
+			onUpdate: function () {
+				localStorage.setItem(`boneRotation-${index}`, this.targets()[0]._gsap.rotation);
+			},
+		});
+	});
+}
+
+// out of home page animation
+function outAnimationHome() {
+	gsap.to(".main-content.one", {
+		x: "10vw",
+		opacity: 0,
+		ease: "power3.out",
+		duration: 0.8,
+	});
+	gsap.to(".main-content.two", {
+		x: "10vw",
+		opacity: 0,
+		ease: "power3.out",
+		duration: 0.8,
+		delay: 0.1,
+	});
+	gsap.to("footer", {
+		x: "10vw",
+		opacity: 0,
+		ease: "power3.out",
+		duration: 0.8,
+		delay: 0.2,
+	});
+	// Pobierz wszystkie elementy tła
+	document.querySelectorAll(".bg-bone").forEach((bone, index) => {
+		// Pobranie zapisanej rotacji lub domyślnie 0
+		let lastRotation = parseFloat(localStorage.getItem(`boneRotation-${index}`)) || 0;
+
+		// Natychmiastowe ustawienie rotacji PRZED pokazaniem
+		bone.style.transform = `rotate(${lastRotation}deg)`;
+
+		// Płynne pokazanie kości po załadowaniu
+		gsap.to(bone, {
+			opacity: 0,
+			duration: 0.8,
+			ease: "power1.out",
+		});
+
+		// Uruchomienie nieskończonej animacji
+		gsap.to(bone, {
+			rotation: "+=360",
+			duration: 10 + index * 2,
+			repeat: -1,
+			ease: "linear",
+			onUpdate: function () {
+				localStorage.setItem(`boneRotation-${index}`, this.targets()[0]._gsap.rotation);
+			},
+		});
+	});
 }
 
 // breed details out of page animation
@@ -126,57 +202,63 @@ function breedDetailsOutAnimation() {
 		duration: 0.8,
 		delay: 0.4,
 	});
+	// Pobierz wszystkie elementy tła
+	document.querySelectorAll(".bg-bone").forEach((bone, index) => {
+		// Pobranie zapisanej rotacji lub domyślnie 0
+		let lastRotation = parseFloat(localStorage.getItem(`boneRotation-${index}`)) || 0;
+
+		// Natychmiastowe ustawienie rotacji PRZED pokazaniem
+		bone.style.transform = `rotate(${lastRotation}deg)`;
+
+		// Płynne pokazanie kości po załadowaniu
+		gsap.to(bone, {
+			opacity: 0,
+			duration: 0.8,
+			ease: "power1.out",
+		});
+
+		// Uruchomienie nieskończonej animacji
+		gsap.to(bone, {
+			rotation: "+=360",
+			duration: 10 + index * 2,
+			repeat: -1,
+			ease: "linear",
+			onUpdate: function () {
+				localStorage.setItem(`boneRotation-${index}`, this.targets()[0]._gsap.rotation);
+			},
+		});
+	});
 }
 
 // animations on home page
 function homePageAnimations() {
 	// in animations
-	gsap.to(".header-home", {
+	gsap.to(".main-content.one", {
 		x: "5vw",
 		opacity: 1,
 		ease: "power3.out",
 		duration: 0.8,
 	});
-	gsap.to(".main__races-img", {
+	gsap.to(".main-content.two", {
 		x: "5vw",
 		opacity: 1,
 		ease: "power3.out",
 		duration: 0.8,
-		delay: 0.1,
-	});
-	gsap.to(".main__quiz-img", {
-		x: "-5vw",
-		opacity: 1,
-		ease: "power3.out",
-		duration: 0.8,
-		delay: 0.1,
-	});
-	gsap.to(".main__btn--quiz", {
-		x: "-5vw",
-		opacity: 1,
-		ease: "power3.out",
-		duration: 0.8,
-		delay: 0.2,
-	});
-	gsap.to(".main__btn--breeds", {
-		x: "5vw",
-		opacity: 1,
-		ease: "power3.out",
-		duration: 0.8,
-		delay: 0.2,
+		delay: 0.1
 	});
 	gsap.to(".footer", {
 		x: "5vw",
 		opacity: 1,
 		ease: "power3.out",
 		duration: 0.8,
+		delay: 0.2
 	});
 
 	// out animation
 	allBtns.forEach((btn) => {
-		btn.addEventListener("click", outAnimation);
+		btn.addEventListener("click", outAnimationHome);
 	});
-	navLogo.addEventListener("click", outAnimation)
+	navLogo.addEventListener("click", outAnimationHome)
 }
 
 // animation on breeds list and results pages
@@ -393,45 +475,75 @@ export function previousQuestionInAnimation() {
 // header animation
 function headerAnimation(duration) {
 	headers.forEach((header) => {
-		const text = header.textContent;
-		header.textContent = ""; // clears header
-
-		const letterDuration = duration / text.length;
-		let timeline = gsap.timeline({ repeat: 0, delay: 1 });
-
-		// adds cursor "|"
-		const cursor = document.createElement("span");
-		cursor.classList.add("cursor");
-		cursor.textContent = "|";
-		header.appendChild(cursor);
-
-		// cursor blink animation
-		gsap.to(cursor, {
-			duration: 0.4,
-			opacity: 0,
-			repeat: -1,
-			yoyo: true,
-			ease: "none",
-		});
-
-		let index = 0;
-
-		// adds animation for every character
-		text.split("").forEach((char, i) => {
-			timeline.to(header, {
-				duration: letterDuration,
-				onUpdate: () => {
-					if (index <= i) {
-						header.innerHTML = text.slice(0, index + 1);
-						header.appendChild(cursor); // Add cursor after the characters
-						index++;
-					}
-				},
-				ease: "none",
+	  const html = header.innerHTML;
+	  header.innerHTML = ""; // czyścimy header
+  
+	  // Dzielimy zawartość na segmenty: albo cały tekst, albo pełny tag <span>…</span>
+	  const segments = html.match(/<span[^>]*>[\s\S]*?<\/span>|[^<]+/g);
+	  const timeline = gsap.timeline({ delay: 0.5 });
+	  
+	  // Dodajemy kursor na końcu
+	  const cursor = document.createElement("span");
+	  cursor.classList.add("cursor");
+	  cursor.textContent = "|";
+	  
+	  segments.forEach(segment => {
+		if (segment.startsWith("<span")) {
+		  // Jeśli segment to span, tworzymy nowy span z kopiowanymi atrybutami
+		  const temp = document.createElement("div");
+		  temp.innerHTML = segment;
+		  const origSpan = temp.firstChild;
+		  
+		  // Tworzymy nowy span (pusty) do animacji
+		  const newSpan = document.createElement("span");
+		  newSpan.className = origSpan.className; // kopiujemy klasy (ew. inne atrybuty)
+		  header.appendChild(newSpan);
+		  
+		  // Pobieramy tekst do animacji z oryginalnego spana
+		  const spanText = origSpan.textContent;
+		  let current = "";
+		  // Dla spana ustawiamy czas animacji liter jako dwa razy dłuższy
+		  spanText.split("").forEach((char) => {
+			timeline.to({}, {
+			  duration: (duration / html.length) * 2,
+			  onComplete: () => {
+				current += char;
+				newSpan.textContent = current;
+			  },
+			  ease: "none"
 			});
-		});
+		  });
+		} else {
+		  // Dla zwykłych fragmentów tekstowych
+		  let current = "";
+		  const letters = segment.split("");
+		  // Tworzymy nowy węzeł tekstowy
+		  const textNode = document.createTextNode("");
+		  header.appendChild(textNode);
+		  letters.forEach((letter) => {
+			timeline.to({}, {
+			  duration: duration / html.length,
+			  onComplete: () => {
+				current += letter;
+				textNode.textContent = current;
+			  },
+			  ease: "none"
+			});
+		  });
+		}
+	  });
+	  
+	  header.appendChild(cursor);
+	  // Animacja migania kursora
+	  gsap.to(cursor, {
+		duration: 0.4,
+		opacity: 0,
+		repeat: -1,
+		yoyo: true,
+		ease: "none"
+	  });
 	});
-}
+  }  
 
 screen.orientation.addEventListener("change", resetNavAnimations);
 burgerBtn.addEventListener("click", toggleBurgerMenu);
@@ -443,12 +555,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	if (document.body.getAttribute("data-page") === "index") {
 		homePageAnimations();
-		headerAnimation(3.5);
+		headerAnimation(4);
 	}
 
 	if (document.body.getAttribute("data-page") === "breed-selector") {
 		quizPageAnimations();
-		headerAnimation(1);
+		headerAnimation(0.8);
 	}
 
 	if (
@@ -456,7 +568,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		document.body.getAttribute("data-page") === "results"
 	) {
 		breedsListPageAnimations();
-		headerAnimation(1);
+		headerAnimation(0.8);
 	}
 
 	if (document.body.getAttribute("data-page") === "breed-details") {
@@ -474,7 +586,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		// Płynne pokazanie kości po załadowaniu
 		gsap.to(bone, {
 			opacity: 1,
-			duration: 1,
+			duration: 0.8,
 			ease: "power1.out",
 		});
 

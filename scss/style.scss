@@ -208,29 +208,147 @@ a {
 
 // header for home page and breed selection
 .header-home {
-	h1 {
-		height: 165px;
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	left: -5vw;
 
-		@media (min-width: 335px) {
-			height: 141px;
+	@media (min-width: 768px) {
+		flex-direction: row;
+		align-items: center;
+	}
+
+	@media (min-width: 768px) and (min-height: 900px){
+		padding-bottom: 20rem;
+	}
+
+	.main-content {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		padding: 1rem 0;
+		text-align: center;
+		opacity: 0; // before animation
+
+		@media (min-width: 768px) {
+			padding: 1rem;
 		}
 
-		@media (min-width: 411px) {
-			height: 117px;
+		h1 {
+			height: 86px;
+			max-width: 430px;
+			padding-bottom: 0;
+			font-size: 2.4rem;
+
+			@media (min-width: 466px) {
+				max-width: none;
+				height: 56px;
+			}
+
+			@media (min-width: 768px) {
+				padding-top: 0;
+			}
+
+			.siebie{
+				padding-left: 0.5rem;
+				color: $highlight-color;
+				font-size: 3rem;
+				letter-spacing: 2px;
+				font-weight: 800;
+			}
 		}
 
-		@media (min-width: 552px) {
-			height: 93px;
+		p {
+			font-size: 1.4rem;
+
+			@media (min-width: 576px) {
+				font-size: 1.6rem;
+			}
 		}
 
-		@media (min-width: 990px) {
-			height: 108px;
-			font-size: 26px;
+		img {
+			width: 450px;
+			max-width: 90%;
 		}
 
-		@media (min-width: 1200px) {
-			height: 148px;
-			padding: 4rem;
+		.main-buttons {
+			display: flex;
+			justify-content: center;
+			align-content: center;
+		}
+
+		.main-btn {
+			position: relative;
+			width: 140px;
+			height: 80px;
+			padding: 1rem 2rem;
+			margin: 1rem;
+			font-weight: 600;
+			letter-spacing: 2px;
+			font-size: 1rem;
+			color: $background-color;
+			background-color: $highlight-color;
+			transition: background-color 0.4s, color 0.4s;
+			z-index: 10;
+
+			@media (min-width: 400px) {
+				width: 180px;
+				height: 50px;
+			}
+
+			@media (min-width: 576px) {
+				width: 210px;
+				height: 60px;
+				margin: 1.5rem;
+				font-size: 1.2rem;
+			}
+		}
+
+		.main-btn::after,
+		.main-btn::before {
+			position: absolute;
+			content: "";
+			width: 100%;
+			height: 100%;
+			transition: top 0.4s, bottom 0.4s, left 0.4s, right 0.4s;
+		}
+
+		.main-btn::after {
+			bottom: 0;
+			right: 0;
+		}
+
+		.main-btn::before {
+			top: 0;
+			left: 0;
+		}
+
+		.main-btn:hover {
+			cursor: pointer;
+			color: $main-color;
+			background-color: $background-color;
+		}
+
+		.main-btn:hover::after {
+			width: 90%;
+			height: 90%;
+			bottom: -10px;
+			right: -10px;
+			border-bottom: 3px solid $main-color;
+			border-right: 3px solid $main-color;
+		}
+
+		.main-btn:hover::before {
+			width: 90%;
+			height: 90%;
+			top: -10px;
+			left: -10px;
+			border-top: 3px solid $main-color;
+			border-left: 3px solid $main-color;
 		}
 	}
 }
@@ -239,8 +357,6 @@ a {
 .header-breed-selector,
 .header-breed-details {
 	position: relative;
-	left: -5vw;
-	opacity: 0; // before animation
 	width: 100%;
 	max-width: 100%;
 	height: auto;
@@ -270,11 +386,16 @@ a {
 		}
 	}
 }
+.header-breed-selector,
+.header-breed-details{
+	opacity: 0; // before animation
+	left: -5vw;
+}
 
 // header for breeds list page
 .header-breeds-list {
-	left: calc(-5vw + 10px); // before animation
 	opacity: 0;
+	left: calc(-5vw + 10px); // before animation
 	position: fixed;
 	display: flex;
 	flex-direction: column;
@@ -334,164 +455,6 @@ a {
 
 main {
 	flex: 1;
-}
-
-// main for home page
-.main {
-	display: flex;
-	flex: 1;
-	flex-direction: column;
-	justify-content: center;
-	align-items: stretch;
-
-	@media (min-width: 992px) {
-		flex-direction: row;
-	}
-
-	&__races-img {
-		left: -5vw;
-		opacity: 0; // before animation
-		position: relative;
-		display: flex;
-		flex: 1;
-		align-self: center;
-
-		@media (min-width: 992px) {
-			align-self: flex-end;
-		}
-		img {
-			width: 240px;
-			align-self: center;
-
-			@media (min-width: 576px) {
-				width: 300px;
-			}
-
-			@media (min-width: 992px) {
-				padding-bottom: 3rem;
-			}
-		}
-	}
-
-	&__quiz-img {
-		left: 5vw;
-		opacity: 0; // before animation
-		display: none;
-		position: relative;
-		flex: 1;
-		align-self: center;
-		img {
-			height: 500px;
-		}
-
-		@media (min-width: 992px) {
-			display: block;
-		}
-	}
-
-	&__button {
-		display: flex;
-		margin: 1rem 0;
-		align-self: center;
-		flex: 1;
-
-		@media (min-width: 992px) {
-			display: none;
-		}
-
-		.main__btn {
-			align-self: center;
-			width: 240px;
-			height: 70px;
-			font-size: 1.2rem;
-
-			@media (min-width: 576px) {
-				width: 300px;
-				height: 90px;
-				font-size: 1.8rem;
-			}
-		}
-	}
-
-	&__buttons {
-		display: none;
-		flex: 1;
-		flex-direction: column;
-		justify-content: space-around;
-		align-content: center;
-		flex-wrap: wrap;
-
-		@media (min-width: 992px) {
-			display: flex;
-		}
-	}
-
-	&__btn {
-		position: relative;
-		width: 300px;
-		height: 90px;
-		padding: 1rem 2rem;
-		font-weight: 600;
-		letter-spacing: 2px;
-		font-size: 1.8rem;
-		color: $background-color;
-		background-color: $highlight-color;
-		transition: background-color 0.4s, color 0.4s;
-		z-index: 10;
-
-		&--quiz {
-			left: 5vw;
-			opacity: 0; // before animation
-		}
-
-		&--breeds {
-			left: -5vw;
-			opacity: 0; // before animation
-		}
-	}
-
-	&__btn::after,
-	&__btn::before {
-		position: absolute;
-		content: "";
-		width: 100%;
-		height: 100%;
-		transition: top 0.4s, bottom 0.4s, left 0.4s, right 0.4s;
-	}
-
-	&__btn::after {
-		bottom: 0;
-		right: 0;
-	}
-
-	&__btn::before {
-		top: 0;
-		left: 0;
-	}
-
-	&__btn:hover {
-		cursor: pointer;
-		color: $main-color;
-		background-color: $background-color;
-	}
-
-	&__btn:hover::after {
-		width: 90%;
-		height: 90%;
-		bottom: -10px;
-		right: -10px;
-		border-bottom: 3px solid $main-color;
-		border-right: 3px solid $main-color;
-	}
-
-	&__btn:hover::before {
-		width: 90%;
-		height: 90%;
-		top: -10px;
-		left: -10px;
-		border-top: 3px solid $main-color;
-		border-left: 3px solid $main-color;
-	}
 }
 
 // main for breed selector page
