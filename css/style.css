@@ -1254,7 +1254,7 @@ a {
   padding-bottom: 0;
   font-size: 2.4rem;
 }
-@media (min-width: 466px) {
+@media (min-width: 547px) {
   .header-home .main-content h1 {
     max-width: none;
     height: 56px;
@@ -1262,11 +1262,20 @@ a {
 }
 @media (min-width: 768px) {
   .header-home .main-content h1 {
+    height: 86px;
+    max-width: 430px;
     padding-top: 0;
   }
 }
-.header-home .main-content h1 .siebie {
-  padding-left: 0.5rem;
+@media (min-width: 1113px) {
+  .header-home .main-content h1 {
+    height: 56px;
+    max-width: none;
+    padding-top: 0;
+  }
+}
+.header-home .main-content h1 .important {
+  padding: 0 0.5rem;
   color: rgb(200, 168, 215);
   font-size: 3rem;
   letter-spacing: 2px;
@@ -1274,6 +1283,7 @@ a {
 }
 .header-home .main-content p {
   font-size: 1.4rem;
+  color: rgb(67, 15, 87);
 }
 @media (min-width: 576px) {
   .header-home .main-content p {

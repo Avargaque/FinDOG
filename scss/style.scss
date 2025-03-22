@@ -244,17 +244,25 @@ a {
 			padding-bottom: 0;
 			font-size: 2.4rem;
 
-			@media (min-width: 466px) {
+			@media (min-width: 547px) {
 				max-width: none;
 				height: 56px;
 			}
 
 			@media (min-width: 768px) {
+				height: 86px;
+				max-width: 430px;
 				padding-top: 0;
 			}
 
-			.siebie{
-				padding-left: 0.5rem;
+			@media (min-width: 1113px) {
+				height: 56px;
+				max-width: none;
+				padding-top: 0;
+			}
+
+			.important{
+				padding: 0 0.5rem;
 				color: $highlight-color;
 				font-size: 3rem;
 				letter-spacing: 2px;
@@ -264,6 +272,7 @@ a {
 
 		p {
 			font-size: 1.4rem;
+			color: $main-color;
 
 			@media (min-width: 576px) {
 				font-size: 1.6rem;
