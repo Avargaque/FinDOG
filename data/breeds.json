@@ -84,7 +84,7 @@
 
         "size": 3,
         "coatLength": 1,       
-        "lifeExpectancy": 1,
+        "lifeExpectancy": 2,
         "availability": 2,
 
         "sociability": 3,
@@ -224,7 +224,7 @@
 
         "size": 3,
         "coatLength": 2,       
-        "lifeExpectancy": 1,
+        "lifeExpectancy": 2,
         "availability": 1,
 
         "sociability": 4,
@@ -259,7 +259,7 @@
 
         "size": 3,
         "coatLength": 3,       
-        "lifeExpectancy": 1,
+        "lifeExpectancy": 2,
         "availability": 2,
 
         "sociability": 4,
@@ -399,7 +399,7 @@
 
         "size": 3,
         "coatLength": 3,       
-        "lifeExpectancy": 1,
+        "lifeExpectancy": 2,
         "availability": 1,
 
         "sociability": 4,
@@ -434,7 +434,7 @@
 
         "size": 3,
         "coatLength": 2,       
-        "lifeExpectancy": 1,
+        "lifeExpectancy": 2,
         "availability": 1,
 
         "sociability": 4,
@@ -1029,7 +1029,7 @@
 
         "size": 3,
         "coatLength": 3,       
-        "lifeExpectancy": 1,
+        "lifeExpectancy": 2,
         "availability": 1,
         
         "sociability": 4,
@@ -1659,7 +1659,7 @@
 
         "size": 3,
         "coatLength": 1,       
-        "lifeExpectancy": 1,
+        "lifeExpectancy": 2,
         "availability": 3,
 
         "sociability": 5,
@@ -1904,7 +1904,7 @@
 
         "size": 3,
         "coatLength": 3,       
-        "lifeExpectancy": 1,
+        "lifeExpectancy": 2,
         "availability": 2,
 
         "sociability": 3,
@@ -2114,7 +2114,7 @@
 
         "size": 2,
         "coatLength": 1,       
-        "lifeExpectancy": 1,
+        "lifeExpectancy": 2,
         "availability": 3,
 
         "sociability": 4,
@@ -2394,7 +2394,7 @@
 
         "size": 3,
         "coatLength": 1,       
-        "lifeExpectancy": 1,
+        "lifeExpectancy": 2,
         "availability": 1,
 
         "sociability": 5,
@@ -2464,7 +2464,7 @@
         
         "size": 3,
         "coatLength": 1,       
-        "lifeExpectancy": 1,
+        "lifeExpectancy": 2,
         "availability": 1,
 
         "sociability": 4,
@@ -2587,6 +2587,181 @@
         "stubborn": 2,
         "shedding": 4,
         "combing": 2,
+        "drooling": 3
+    },
+    {
+        "name": "Nowofundland",
+        "photoSmall": "img/breeds/group2/nowofundland-ATTRIBUTION-s.jpg",
+        "photoBig": "img/breeds/group2/nowofundland-ATTRIBUTION-l.jpg",
+        "shortAbout": "Przyjazny, pogodny i cierpliwy",
+        "longAbout": "Nowofundland to bardzo czuły, opiekuńczy i łagodny olbrzym. Jest przyjaźnie nastawiony do każdego, jest cierpliwy i ufny, co czyni z niego fantastycznego towarzysza, również dla dzieci. Pomimo wyjątkowej łagodności, w razie potrzeby broni swoich opiekunów dzięki swemu bezgranicznemu oddaniu.",
+        "standardPl": "https://www.zkwp.pl/wzorce/50.pdf",
+        "standardEng": "https://www.fci.be/Nomenclature/Standards/050g02-en.pdf",
+        "fciGroup": "2",
+        "height": "64 - 72 cm",
+        "weight": "50 - 70 kg",
+        "lifeExpectancyText": "8 - 11 lat",
+
+        "size": 3,
+        "coatLength": 2,       
+        "lifeExpectancy": 1,
+        "availability": 3,
+
+        "sociability": 5,
+        "goodWithKids": 5,
+        "goodWithPets": 5,
+        "approachToStrangers": 5,
+        "playfulness": 4,
+        "energy": 3,
+        "needsActivity": 3,
+        "controlling": 5,
+        "barking": 1,
+        "training": 4,
+        "adaptability": 4,
+        "canBeAlone": 2,
+        "stubborn": 2,
+        "shedding": 3,
+        "combing": 2,
+        "drooling": 5
+    },
+    {
+        "name": "Pirenejski Pies Górski",
+        "photoSmall": "img/breeds/group2/pirenejski-pies-gorski-s.jpg",
+        "photoBig": "img/breeds/group2/pirenejski-pies-gorski-l.jpg",
+        "shortAbout": "Oddany i lojalny, niezależny stróż",
+        "longAbout": "Pirenejski Pies Górski to samodzielny i niezależny pies stróżujący. Jest oddany, lojalny i spokojny w znanym sobie otoczeniu, lecz nieufny stosunku do nieznajomych i bojowo nastawiony w przypadku zagrożenia. Ze względu na upór i niezależność, polecany raczej doświadczonym opiekunom.",
+        "standardPl": "https://www.zkwp.pl/wzorce/137.pdf",
+        "standardEng": "https://www.fci.be/Nomenclature/Standards/137g02-en.pdf",
+        "fciGroup": "2",
+        "height": "65 - 80 cm",
+        "weight": "40 - 70 kg",
+        "lifeExpectancyText": "10 - 12 lat",
+
+        "size": 3,
+        "coatLength": 2,       
+        "lifeExpectancy": 2,
+        "availability": 2,
+
+        "sociability": 5,
+        "goodWithKids": 3,
+        "goodWithPets": 3,
+        "approachToStrangers": 2,
+        "playfulness": 3,
+        "energy": 3,
+        "needsActivity": 4,
+        "controlling": 5,
+        "barking": 3,
+        "training": 2,
+        "adaptability": 4,
+        "canBeAlone": 5,
+        "stubborn": 5,
+        "shedding": 3,
+        "combing": 2,
+        "drooling": 3
+    },
+    {
+        "name": "Hovawart",
+        "photoSmall": "img/breeds/group2/hovawart-s.jpg",
+        "photoBig": "img/breeds/group2/hovawart-l.jpg",
+        "shortAbout": "Wierny, łagodny, wszechstronny",
+        "longAbout": "Hovawart to inteligentny, wierny i wszechstronny pies o zrównoważonym temperamencie. Jest oddany rodzinie, czujny i obdarzony silnym instynktem stróżującym. Wyróżnia się dużą pewnością siebie oraz odpornością na stres. Jest uparty, ale także lojalny i chętny do nauki. Hovawart może mieć umaszczenie czarne, blond, lub czarne podpalane.",
+        "standardPl": "https://www.zkwp.pl/wzorce/190.pdf",
+        "standardEng": "https://www.fci.be/Nomenclature/Standards/190g02-en.pdf",
+        "fciGroup": "2",
+        "height": "58 - 70 cm",
+        "weight": "30 - 40 kg",
+        "lifeExpectancyText": "10 - 14 lat",
+
+        "size": 3,
+        "coatLength": 2,       
+        "lifeExpectancy": 2,
+        "availability": 1,
+
+        "sociability": 5,
+        "goodWithKids": 4,
+        "goodWithPets": 4,
+        "approachToStrangers": 4,
+        "playfulness": 4,
+        "energy": 4,
+        "needsActivity": 4,
+        "controlling": 5,
+        "barking": 3,
+        "training": 4,
+        "adaptability": 4,
+        "canBeAlone": 3,
+        "stubborn": 4,
+        "shedding": 3,
+        "combing": 2,
+        "drooling": 2
+    },
+    {
+        "name": "Leonberger",
+        "photoSmall": "img/breeds/group2/leonberger-s.jpg",
+        "photoBig": "img/breeds/group2/leonberger-l.jpg",
+        "shortAbout": "Przyjacielski, posłuszny i uprzejmy",
+        "longAbout": "Leonberger to łagodny, cierpliwy i inteligentny pies, który mocno przywiązuje się do całej rodziny. Jest psem czujnym i odważnym - w razie potrzeby potrafi dobrze ocenić sytuację i zainterweniować. Leonbergery potrzebują bliskiego kontaktu z ludźmi, dużo przestrzeni do ruchu oraz regularnej pielęgnacji sierści.",
+        "standardPl": "https://www.zkwp.pl/wzorce/145.pdf",
+        "standardEng": "https://www.fci.be/Nomenclature/Standards/145g02-en.pdf",
+        "fciGroup": "2",
+        "height": "65 - 80 cm",
+        "weight": "40 - 75 kg",
+        "lifeExpectancyText": "7 - 10 lat",
+
+        "size": 3,
+        "coatLength": 3,       
+        "lifeExpectancy": 1,
+        "availability": 2,
+        
+        "sociability": 5,
+        "goodWithKids": 5,
+        "goodWithPets": 4,
+        "approachToStrangers": 4,
+        "playfulness": 4,
+        "energy": 3,
+        "needsActivity": 4,
+        "controlling": 4,
+        "barking": 4,
+        "training": 5,
+        "adaptability": 4,
+        "canBeAlone": 2,
+        "stubborn": 2,
+        "shedding": 3,
+        "combing": 4,
+        "drooling": 3
+    },
+    {
+        "name": "Landseer",
+        "photoSmall": "img/breeds/group2/landseer-s.jpg",
+        "photoBig": "img/breeds/group2/landseer-l.jpg",
+        "shortAbout": "Łagodny i życzliwy pływak",
+        "longAbout": "Landseer to spokojny, łagodny pies o przyjacielskim i życzliwym usposobieniu. Aby być szczęśliwym, musi być blisko swoich ludzi i mieć poczucie przynależności do rodziny. Jako pies pracujący lubi czuć się potrzebny, choć nie wymaga specjalnie dużo ruchu, a czas najczęściej spędza na spokojnym wylegiwaniu i obserwowaniu otoczenia. Landseer nade wszystko kocha wodę i pływanie.",
+        "standardPl": "https://www.zkwp.pl/wzorce/226.pdf",
+        "standardEng": "https://www.fci.be/Nomenclature/Standards/226g02-en.pdf",
+        "fciGroup": "2",
+        "height": "67 - 80 cm",
+        "weight": "45 - 68 kg",
+        "lifeExpectancyText": "8 - 12 lat",
+
+        "size": 3,
+        "coatLength": 2,       
+        "lifeExpectancy": 1,
+        "availability": 1,
+
+        "sociability": 4,
+        "goodWithKids": 5,
+        "goodWithPets": 4,
+        "approachToStrangers": 4,
+        "playfulness": 3,
+        "energy": 3,
+        "needsActivity": 4,
+        "controlling": 3,
+        "barking": 3,
+        "training": 3,
+        "adaptability": 4,
+        "canBeAlone": 3,
+        "stubborn": 3,
+        "shedding": 4,
+        "combing": 3,
         "drooling": 3
     }
 ]
